@@ -1,0 +1,536 @@
+
+* {box-sizing: border-box;}
+
+  *::before{box-sizing: border-box}
+
+  *::after{box-sizing: border-box}
+
+
+/*------------Etiquetas----------*/
+
+a{
+    color: rgb(17, 58, 8);
+    text-decoration: inherit;
+
+}
+
+p{
+    font-family: 'Luckiest Guy', cursive;
+}
+
+span{
+    
+    line-height: 175%;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: bolder;
+
+}
+
+header{
+    z-index: 2;
+    width: 100%;
+    height: 5.5em;
+    background-color: rgb(235, 206, 77);
+    padding-top: 1em;
+}
+    
+body{
+z-index: 0;
+background-image: url(/assets/huellas7.png),linear-gradient(90deg,rgb(238, 185, 87),
+rgb(212, 228, 123));
+height: 80em;
+margin: 0%;
+overflow-x: hidden;
+
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 9%;
+}
+
+h1{ 
+    margin-left: 4%;
+    line-height: 0.1em;
+}
+
+h2{
+    margin-top: 2em;
+}
+
+h3{
+
+line-height: 1em;
+text-indent: 0.7em;
+margin-top: 10%;
+color: rgba(0, 0, 0, 0.733);
+
+}
+
+form{
+
+margin-top: 5.2%;
+margin-left: -5.5%;
+text-align: left;
+width: 23em;
+height: 24em ;
+display: flex;
+flex-direction: column;
+border: 2px solid rgba(64, 114, 8, 0.199);
+padding-top: 4%;
+padding-left: 5%;
+padding-right: 5%;
+border-radius: 4%;
+background: linear-gradient(rgba(182, 192, 45, 0.8),rgba(208, 214, 119, 0.8))
+}
+
+form input{
+    margin-top: 5%;
+    margin-right: 20%;
+    padding: 2%;
+    border: 1px solid rgba(64, 114, 8, 0.55);
+    border-radius: 3%;
+    background-color: rgba(235, 241, 146, 0.733);
+    transition-duration: 0.65s;
+    width: 70%;
+
+}
+
+form input:focus{
+
+    width: 95%;
+    outline:none
+
+}
+
+footer input{
+    margin-top: 5%;
+    margin-right: 20%;
+    padding: 2%;
+    border: 1px solid rgba(64, 114, 8, 0.55);
+    border-radius: 3%;
+    background-color: rgba(235, 241, 146, 0.733);
+    width: 70%;
+}
+
+footer input:focus{
+
+outline: none;
+}
+
+legend{
+
+text-indent: 1em;
+
+}
+
+fieldset{
+
+    background-color: rgba(221, 255, 127,0.4);
+    border-radius: 3%;
+    border: 2px solid rgba(64, 114, 8, 0.199);
+
+}
+
+.formHeader{
+
+    margin-bottom: 1.5em;
+    border-radius: 3%;
+
+}
+
+footer{
+    margin-top: 10%;
+    width: 100%;
+    height: 15em;
+    background-color: rgba(149, 155, 61, 0.95);
+}
+
+/*-------------Clases------------*/
+
+.expanded{
+
+width: 29.8em !important;
+height: 31.2em !important;
+margin-top: 9.9em!important;
+transition-delay: 0.6s !important;
+transition: all 1s ease;
+
+}
+
+.desplazado{
+
+display:block;
+margin-top: 80%;
+opacity: 0;
+}
+
+.listContent{
+
+    width: 23em;
+    height: 15em;
+    border: 2px solid rgba(64, 114, 8, 0.199);
+    background-color: rgba(182, 192, 45, 0.9);
+    text-align: center;
+    transition: all 0.7s ease;
+
+    border-radius: 82px 48px 82px 48px;
+    -webkit-border-radius: 82px 48px 82px 48px;
+    -moz-border-radius: 82px 48px 82px 48px;
+
+    box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+    -webkit-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+    -moz-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+}
+
+.listContent:hover{
+
+transform: scale(1.1);
+
+}
+
+.contenedorLista{
+
+    margin-top: 15%;
+
+}
+
+.contenedorTexto{
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+li .contenedorTexto{
+
+margin-top: 13%;
+margin-left: 35%;
+}
+
+.botonera{
+    margin-left: 11em; 
+}
+
+.svg{
+    height: 3em;
+    transform: rotate(5deg);
+}
+
+.listIcon{
+float: left;
+margin-top: 20%;
+margin-left: 6%;
+}
+
+.icon{
+    margin-right: 2%;
+    margin-top: 2.5%;
+    transition: all 0.55s ease;
+}
+
+.icon:hover{
+
+    background-color: rgba(255, 136, 0,0.25);
+    border-radius: 20%;
+
+}
+
+.buttonHome {
+    margin-top: 1.5em;
+    padding: 9px 20px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    transition: all .5s ease;
+}
+   
+   .buttonHome:hover {
+    letter-spacing: 3px;
+    background-color: rgb(199, 152, 23);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(207, 114, 8) 0px 7px 29px 0px;
+}
+   
+   .buttonHome:active {
+    letter-spacing: 3px;
+    background-color: rgb(204, 153, 12);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(250, 100, 0) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.arrowIcon{
+
+    color: rgb(102, 167, 65);
+    
+}
+
+.sticky{
+
+    position:fixed;
+    top: 0;
+    width: 100%
+}
+
+.content{
+
+    padding:16px;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
+.visible{
+    position: absolute;
+    top: 31%;
+    left:41.5%;
+    transition-delay: 0.5s !important;
+    transition: all 1s ease;
+}
+
+.oculto{
+    
+    opacity: 0;
+    position: absolute;
+    top: 31%;
+    left: 10%;
+    transition: all 1s ease;
+}
+
+.formButton
+{
+    cursor: pointer;
+    outline: 0; 
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 3px 6px;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #3e5821;
+    border-color: #628b33;
+    margin: 0.3em;
+    margin-top: 1.5em;
+    margin-right: 0.5em;
+
+    }
+
+.formButton:hover {
+    color: #fff;
+    background-color: #628b33;
+    border-color: #628b33;
+}
+
+.footerlist{
+
+display: flex;
+flex-direction: row;
+margin-left: 25%;
+
+
+}
+
+.footersublist{
+
+display: flex;
+flex-direction: column;
+width: 20%;
+margin-top: 1.85em;
+}
+
+.footersublist li:nth-child(2n){
+
+    color: rgb(29, 78, 18);
+}
+
+#listSeparator{
+
+margin-top: 2%;
+background-color: rgba(98, 102, 41, 0.6);
+width: 2px;
+height: 11.5em;
+
+}
+
+/*------------ID------------*/
+
+#navBar{
+z-index: 1;
+width: 100%;
+height: 4em;
+background-color: rgb(235, 206, 77);
+}
+
+#contactIcons{
+    margin-left: 84%;
+}
+
+#navMenu{
+    position: absolute;
+    top: 9.3%;
+    margin-left: 97%;
+    margin-top: 0.6em;
+}
+
+#menuIcon{
+    transition: all .5s ease;
+    cursor:pointer;
+}
+
+#menuIcon:hover{
+    background-color: rgba(255, 136, 0,0.25);
+    border-radius: 10%;
+    padding-top: 60%;
+    padding-left: 15%;
+    padding-right: 15%;   
+}
+
+#unfoldableMenu{
+        position: absolute;
+        top: 130%;
+        left: 6em;
+        background-color: rgba(182, 192, 45, 0.8);
+        width: 22em;
+        height: 30em;
+        transition: all .8s ease;
+        border-radius: 1%;
+
+        -webkit-box-shadow: -10px 28px 40px -2px rgba(184,165,44,0.56);
+        -moz-box-shadow: -10px 28px 40px -2px rgba(184,165,44,0.56);
+        box-shadow: -10px 28px 40px -2px rgba(184,165,44,0.56);
+        
+}
+
+
+.desplegado{
+
+left:-15em !important;
+
+}
+
+#unfoldableMenu ul{
+    padding: 0;
+    margin: 0;
+}
+
+#unfoldableMenu li{
+    list-style: none;
+    display: flex;
+    margin-top: 10%;
+    transition-delay: .12s !important;
+    transition: all .5s ease;
+}
+
+#unfoldableMenu li:hover{
+background-color: rgba(202, 187, 53, 0.9);
+font-size: 83%;
+transform: scale(1.2);
+padding-top: 1em;
+padding-bottom: 1em;
+text-indent: 2em;
+}
+
+.textmenu{
+
+font-weight: bold;
+
+}
+
+#homeContent{
+ 
+    transition-delay: 0.18s !important;
+    transition: all 1s ease;
+ }
+
+#homeContainer{
+    
+        margin: 0 auto;
+        margin-top: 12em;
+        z-index: 1;
+        width: 33em;
+        height: 26em;
+        border: 2px solid rgba(226, 153, 57, 0.4);
+        border-radius: 6%;
+        background-color: rgba(235,235,157,0.85);
+        text-align: center;
+        transition: all 1s ease;
+        box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+        -webkit-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+        -moz-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+    
+}
+    
+#botonRegistro{
+   float: left;
+   margin-top: -12%;
+   margin-left: 9%;
+}
+
+#left{
+
+transform: rotate(180deg);
+
+}
+
+#FormularioLogIn{
+    color:black;
+    transition: all 2s ease;
+}
+
+#botoneraForm {
+    margin-left: 8%;
+    margin-top: 5%;
+    display:flex;
+    flex-direction: row;
+}
+
+#backward{
+
+font-size: 0.58em;
+
+
+}
+
+#backward:hover{
+
+    transition: all .55s ease;
+
+    background-color:rgba(98, 139, 51,0.18);
+    padding: 0.3em;
+    border-radius: 6%;
+
+}
+
+#footertext{
+    text-indent: -13em;
+    font-size: 2em;
+    margin-bottom: -0.6em;
+    
+}
+
+#footertextcontainer{
+
+    display: flex;
+    flex-direction: column;
+    text-indent: -26em;
+}
+
+#footersubscribe{
+    margin-top: 1.8em;
+    margin-left: 4em;
+}
+
+footer .formButton{
+    position: absolute;
+    bottom:-100.3em;
+    right: 8.8em;
+}
