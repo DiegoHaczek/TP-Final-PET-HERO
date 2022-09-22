@@ -1,0 +1,288 @@
+
+#login{
+
+    margin-top: 5.2%;
+    margin-left: -5.5%;
+    text-align: left;
+    width: 23em;
+    height: 24em ;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(64, 114, 8, 0.199);
+    padding-top: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 4%;
+    background: linear-gradient(rgba(182, 192, 45, 0.8),rgba(208, 214, 119, 0.8))
+}
+
+#registrodueño,#registroguardian{
+    /* position: relative;
+    left: 7.65em;
+    top: 2.6em;*/
+    margin: auto;
+    text-align: left;
+    width: 29em;
+    height: 37em ;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(156, 142, 14, 0.733);
+    padding-top: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 4%;
+    background: linear-gradient(-90deg,rgba(219, 175, 93, 0.75),
+    rgba(228, 217, 123, 0.8));
+  
+}
+
+#editarperfil{
+
+    
+    margin: auto;
+    width: 33em;
+    height: 45em ;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(64, 114, 8, 0.199);
+    padding-top: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 4%;
+    background: linear-gradient(rgba(182, 192, 45, 0.8),rgba(208, 214, 119, 0.8))
+
+}
+
+
+#editarmascota{
+    margin: auto;
+    width: 33em;
+    height: 69em ;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(64, 114, 8, 0.199);
+    padding-top: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 1%;
+    background: linear-gradient(-90deg,rgba(219, 175, 93, 0.75),
+    rgba(228, 217, 123, 0.8));}
+
+
+form input{
+    margin-top: 5%;
+    margin-right: 20%;
+    padding: 2%;
+    border: 1px solid rgba(64, 114, 8, 0.55);
+    border-radius: 3%;
+    background-color: rgba(235, 241, 146, 0.733);
+    transition-duration: 0.65s;
+    width: 70%;
+
+}
+
+form input:focus{
+
+    width: 95%;
+    outline:none;
+
+}
+
+
+#checkbox{
+    width: 4%;
+    margin-right: 5%;
+    background: rgba(235, 241, 146, 0.733);
+
+
+}
+
+#checkbox + span{
+    text-indent: -5em !important;
+}
+
+.radio{
+    width: 4%;
+    margin-right: 6%;
+}
+
+.radio:focus{
+    width: 4%;
+}
+
+.number{
+    width: 20%;
+    margin-right: 2%;
+}
+
+.number:focus{
+    width: 20%;
+}
+
+#editarmascota .number{
+    width: 40%;
+    margin-right: 2%;
+
+}
+
+.labelcheckbox{
+    margin-left: 6%;
+}
+
+textarea{
+    resize:none;
+    outline: none;
+    background-color: rgba(235, 208, 135, 0.4);
+    border: 1px solid rgba(156, 142, 14, 0.733);
+    width: 85%;
+    height: 5em;
+}
+
+legend{
+
+text-indent: 1em;
+
+}
+
+fieldset{
+
+    background-color: rgba(221, 255, 127,0.4);
+    border-radius: 3%;
+    border: 2px solid rgba(64, 114, 8, 0.199);
+}
+
+#fotoperfil:focus{
+width: 70%;
+}
+
+#editarperfil fieldset + fieldset, #editarmascota fieldset + fieldset{
+    
+    margin-top: 1em;
+}
+
+
+#registrodueño fieldset,#registroguardian fieldset, #editarmascota fieldset{
+
+    background-color: rgba(221, 175, 48, 0.4);
+    border: 2px solid rgba(156, 142, 14, 0.733);
+
+}
+
+#registrodueño input,#registroguardian input, #editarmascota input{
+    background-color: rgba(235, 208, 135, 0.4);
+    border: 1px solid rgba(156, 142, 14, 0.733);
+}
+
+#registrodueño .formButton,#registroguardian .formButton, #editarmascota .formButton{
+
+    color: rgb(97, 75, 1);
+    border-color: rgb(204, 139, 18);
+
+}
+
+#registrodueño .formButton:hover, #registroguardian .formButton:hover, #editarmascota .formButton:hover{
+    background-color: rgb(204, 139, 18);
+    color: #fff;
+
+}
+
+#registrodueño #botoneraForm, #registroguardian #botoneraForm, #editarmascota #botoneraForm{
+
+margin-left: 5em !important;
+
+}
+
+#registrodueño #backward:hover,#registroguardian #backward:hover, #editarmascota #backward:hover{
+
+background-color: rgba(97, 75, 1,0.3);
+;
+
+}
+
+
+.formHeader{
+
+    margin-bottom: 1.5em;
+    border-radius: 3%;
+
+}
+
+
+.formButton
+{   
+    cursor: pointer;
+    outline: 0; 
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 3px 6px;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #3e5821;
+    border-color: #628b33;
+    margin: 0.3em;
+    margin-top: 1.5em;
+    margin-right: 0.5em;
+
+    }
+
+.formButton:hover {
+    color: #fff;
+    background-color: #628b33;
+    border-color: #628b33;
+}
+
+#botoneraForm {
+    margin-left: 8%;
+    margin-top: 5%;
+    display:flex;
+    flex-direction: row;
+}
+
+
+#editarperfil #botoneraForm{
+
+margin-left: 20%;
+}
+
+a #backward{
+    margin-left: 6.5em;      
+    }
+
+    #editarperfil a #backward, #editarmascota a #backward{
+
+        margin-left: 8em;       
+        }
+
+#backward{
+font-size: 0.58em;
+}
+
+#backward:hover{
+
+    transition: all .55s ease;
+
+    background-color:rgba(98, 139, 51,0.18);
+    padding: 0.3em;
+    border-radius: 6%;
+
+}
+
+.activo{
+
+opacity: 100%;
+}
+
+
+.noactivo{
+
+opacity: 0%;
+
+}
+

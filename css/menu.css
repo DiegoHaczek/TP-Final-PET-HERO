@@ -1,0 +1,114 @@
+    #contenedorIcono{
+        position: relative;
+        top:-2.8em;
+        float: right;
+        margin-top: 3.5em;
+        margin-right: 3em;
+        display: flex;
+        flex-direction: column;
+        border:1em;
+    }
+     
+    #linea1,#linea2,#linea3{
+        margin-top: 15%;
+        top: 5em;
+        z-index: 2;
+        color: black;
+        background-color: black;
+        width: 1.7em;
+        height: 0.14em;
+        transition: all 1s ease;
+    }
+    
+    .animacionLinea1,.animacionLinea2,.animacionLinea3{
+        transition: all 1s ease;
+    }
+    .animacionLinea1{   
+        transform:translate(0%,0.45em) rotate(-45deg) ;
+    }
+    .animacionLinea2{
+        opacity: 0%;  
+    }
+    .animacionLinea3{
+        transform:translate(-0%,-0.35em) rotate(45deg) ;
+    }
+    
+    #animacionIcono{
+    z-index: 2;
+    position: relative;
+    left: 0.75em;
+    top: -0.8em;
+    float: right;
+    width: 0.1em;
+    height: 0.1em;
+    border-radius: 30%;
+    background-color: rgba(255, 136, 0,0.25);
+    opacity: 80%;
+    transition: all 1s ease !important;
+    }
+    
+.oculto{   
+        transition: all 1s ease !important;
+        opacity: 0%;
+    }
+    
+.visible{
+        transition: all 0.5s ease;
+        transform:  translate(-0.2em,0em) scale(20); 
+    }
+    
+#unfoldableMenu{
+        float:right;
+        position: relative;
+       left: 30em;
+        top: 3.3em;
+        background-color: rgba(182, 192, 45, 0.8);
+        width: 22em;
+        height: 30em;
+        transition: all .8s ease;
+        border-radius: 1%;
+        overflow: hidden;
+
+        -webkit-box-shadow: -10px 28px 40px -2px rgba(184,165,44,0.56);
+        -moz-box-shadow: -10px 28px 40px -2px rgba(184,165,44,0.56);
+        box-shadow: -10px 28px 40px -2px rgba(184,165,44,0.56);    
+}
+
+#unfoldableMenu ul{
+    padding: 0;
+    margin: 0;
+}
+
+#unfoldableMenu li{
+    list-style: none;
+    display: flex;
+    margin-top: 10%;
+    transition-delay: .12s !important;
+    transition: all .5s ease;
+}
+
+#unfoldableMenu li:hover{
+background-color: rgba(202, 187, 53, 0.7);
+font-size: 83%;
+transform: scale(1.2);
+padding-top: 1em;
+padding-bottom: 1em;
+text-indent: 2em;
+}
+
+.textmenu{
+font-weight: bold;
+}
+    
+.desplegado{
+        left: 4em !important;
+        transition-duration: 1.2s !important;
+        transition: all 1.3s ease;
+      }
+    
+.rebote{
+     left: 7em !important;
+    transition-delay: 0s;
+    transition-duration: 0.7s !important;
+}
+    

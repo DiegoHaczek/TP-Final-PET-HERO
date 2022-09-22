@@ -1,3 +1,6 @@
-@import url('/css/styles.css');
-@import url('/css/mediaqueries.css');
-@import url('/css/slider.css');
+@import url('styles.css');
+@import url('mediaqueries.css');
+@import url('slider.css');
+@import url('menu.css');
+@import url('footer.css');
+@import url('forms.css');

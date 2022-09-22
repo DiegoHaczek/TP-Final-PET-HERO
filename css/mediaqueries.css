@@ -1,0 +1,95 @@
+@media (max-width: 1800px){
+    #contactIcons{
+        margin-left: 85%;}
+}
+@media (max-width: 1500px){
+    li .contenedorTexto{
+        margin-top: 8% !important;
+    }
+    #contactIcons{
+        margin-left: 80%;  }
+
+        footer .formButton{
+            right: 1em;
+        }
+        #footertextcontainer{
+            margin-left: 10%;
+        }}
+@media (max-width: 1350px){
+    li .contenedorTexto{
+        margin-top: 5% !important;
+    }
+    .listContent{
+        height: 17em;
+    }
+    #mainContainer{
+        margin-right: 23% !important;
+        margin-left: 23% !important;
+    }
+}
+@media(max-width: 1280px){
+    #homeContent p{
+        margin-left: 3em;
+    }
+    #homeContainer{
+        height: 30em;
+    }
+    
+}
+@media (max-width: 1200px){
+    .contenedorLista ul{
+        display: flex;
+flex-direction: column;
+}
+        .listContent{
+            margin-bottom: 5em;
+            margin-left: 30%;
+        }
+        
+        #footersubscribe{
+            display: none;
+        }
+        .footersublist{
+            margin-right: 5em;
+        }
+        #footertextcontainer{
+            margin-left: 20%;
+        }
+        #homeContent .contenedorTexto{
+            margin-left: 8em;
+        }
+        
+
+}
+@media (max-width: 1100px){
+    #contactIcons{
+        margin-left: 75%;  }
+        #homeContainer{
+            height: 35em;
+        }
+        #homeContent p{
+            margin: 0 auto;
+        }
+        #homeContent .contenedorTexto{
+            display: flex;
+
+        }
+        #homeContent .contenedorTexto span:nth-child(2){
+            margin-left: -5em;
+            }
+        #homeContent .contenedorTexto span:nth-child(4){
+            margin-right: -5em;
+        }
+        .botonera{
+            margin-top: 5em;
+        }
+       
+    }
+    
+@media (max-width: 900px){
+    .listContent{
+        margin-left: 25%;
+    }
+    #contactIcons{
+        margin-left: 70%;  }
+}

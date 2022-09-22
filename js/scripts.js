@@ -1,35 +1,58 @@
-function desplegarMenu(){
 
-  var boton = document.getElementById('menuIcon');
-  var menu = document.getElementById('unfoldableMenu');
+function animacionMenu(){
+
+  var boton = document.getElementById('contenedorIcono');
+  var animacion =document.getElementById('animacionIcono');
+  boton.addEventListener ('mouseover',function(){   
+
+      if (animacion.className="oculto"){
+
+          animacion.classList.toggle('visible');
+
+        }else{
+              animacion.classList.toggle('oculto');
+          }
+})
+
+boton.addEventListener ('mouseout',function(){
   
-  boton.addEventListener('click',function(){
+      animacion.classList.toggle('visible');
+      animacion.classList.toggle('oculto'); 
       
-
-    menu.classList.toggle('desplegado');
-  
-  })
-  
+})
 }
-/*
+
 function desplegarMenu(){
 
-  var boton = document.getElementById('menuIcon');
-  var menu = document.getElementById('unfoldableMenu');
-  
-  boton.addEventListener('click',function(){
-      if(menu.style.left ==='6em'){
-  
-          menu.style.left = '-15em';
-  
-      }else{
-  menu.style.left = '6em';}
-  
-  })
-  
-}*/
+  var boton = document.getElementById('contenedorIcono');
+  var linea1 = document.getElementById('linea1');
+  var linea2 = document.getElementById('linea2');
+  var linea3 = document.getElementById('linea3');
+  var menu = document.getElementById('unfoldableMenu')
+ 
+  boton.addEventListener ('click',function(){
+   
+      linea1.classList.toggle('animacionLinea1')
+      linea2.classList.toggle('animacionLinea2')
+      linea3.classList.toggle('animacionLinea3')
+      
+      if (menu.className==""){
+      menu.classList.toggle('desplegado')
+      var animation = function (){
+          menu.classList.toggle('rebote');
+        }
+        setTimeout(animation,850)
+  }else{
 
-function animation(){
+      menu.className="desplegado";
+      setTimeout(function(){
+      menu.className="";
+      },600)
+  }
+    })
+  }
+
+function stickyNavbar(){
 
 window.onscroll = function() {stickyNavBar()}
 
@@ -61,11 +84,19 @@ botonGoback.addEventListener('click',desplazar)
 
 function desplazar(){
 
-content.classList.toggle("desplazado");
-contenedor.classList.toggle("expanded");
-formulario.classList.toggle("oculto");
-formulario.classList.toggle("visible");
 
+if (content.className=="desplazado"){
+  setTimeout(function(){
+content.classList.toggle("desplazado");
+  },300)}else{
+
+    content.classList.toggle("desplazado");
+
+  }
+
+contenedor.classList.toggle("expanded");
+formulario.classList.toggle("homeoculto");
+formulario.classList.toggle("homevisible");
 
 }}
 

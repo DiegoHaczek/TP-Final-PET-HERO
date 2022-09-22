@@ -8,7 +8,32 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 50px;
-    margin-top: 20%;
+  }
+
+  #sliderHeader{
+
+    margin: 0 auto;
+    margin-top: 12%;
+    width: 25em;
+    height: 6em;
+    border: 2px solid rgba(226, 153, 57, 0.4);
+
+    background-color: rgba(235,235,157,0.85);
+    text-align: center;
+    transition: all 1s ease;
+
+        box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+        -webkit-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+        -moz-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+
+        border-radius: 90px 90px 90px 0px / 55px 55px 55px 0px;
+      
+      }
+  #sliderHeader:hover{
+
+transform: scale(1.1);
+transition: all 0.8s ease;
+
   }
   
   button {
