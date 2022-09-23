@@ -2,11 +2,19 @@
 
 <main class="content">
 
-<div id="mainContainer">
+<div id="formContainer">
 
     <form id="editarperfil" action="" class="activo">
     <fieldset class="formHeader">
                     <h3><p>Editar Mi Perfil</p></h3>
+                    </fieldset>
+
+                    <fieldset>
+                    <label for="informacionpersonal"><strong><span>Información Personal</span></strong></label><br>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido">
+                    <input type="number" class="number" id="edad" name="edad" placeholder="Edad" min="18">
+
                     </fieldset>
 
                     <fieldset>
@@ -32,12 +40,12 @@
 
                 <fieldset>
                 <label for="remuneracion"><strong><span>Remuneración</span></strong></label><br>
-                    <input type="number" name="remuneracion" class="number" placeholder="$ARS" required></input>
+                    <input type="number" name="remuneracion" class="number" placeholder="$ARS" required min="400"></input>
                     <span>(Calculada en pesos argentinos por día.)</span>
                 </fieldset>
               
                     <div id="botoneraForm">
-                        <button class="formButton" type="submit" >Guardar Info</button>
+                        <button class="formButton" type="submit" ><a href="main.php">Guardar Info</a></button>
                         <button class="formButton" type="reset" >Limpiar Campos</button></div>
                     
 

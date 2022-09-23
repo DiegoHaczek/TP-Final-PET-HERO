@@ -243,6 +243,7 @@ margin-left: 87.5%;
 flex-direction: row;}
 
 
+
 #navMenu{
 
 position: relative;
@@ -302,16 +303,12 @@ transform: rotate(180deg);
 }
 
 #mainContainer{
-    max-width: 70em;
-    min-width: 30em;
+    overflow: hidden;
+    width: 90em;
     padding-top: 4em;
     padding-bottom: 4em;
-    margin: 0 auto;
     margin-top: 6%;
     margin-bottom: 10%;
-    z-index: 1;
-    margin-right: 30%;
-    margin-left: 30%;
     border: 2px solid rgba(226, 153, 57, 0.4);
     border-radius: 6%;
     background-color: rgba(235,235,157,0.85);
@@ -321,3 +318,73 @@ transform: rotate(180deg);
     -webkit-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
     -moz-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51); 
 }
+
+#formContainer{
+    width: 40em;
+    padding-top: 4em;
+    padding-bottom: 4em;
+    margin: 0 auto;
+    margin-top: 6%;
+    margin-bottom: 10%;
+    border: 2px solid rgba(226, 153, 57, 0.4);
+    border-radius: 6%;
+    background-color: rgba(235,235,157,0.85);
+    text-align: center;
+    transition: all 1s ease;
+    box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+    -webkit-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51);
+    -moz-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.51); 
+
+
+}
+
+.main{
+    margin-right: 15% !important;
+    margin-left:  15% !important;
+    max-width: 100em !important;
+
+}
+
+section{
+    margin: 0 auto;
+    justify-items: center;
+    width: 90%;
+    min-height: 5em;
+    background: linear-gradient(rgba(182, 192, 45, 0.8),rgba(208, 214, 119, 0.8));
+    border: 2px solid rgba(64, 114, 8, 0.199);
+    margin-bottom: 5%;
+    border-radius: 80px 80px 80px 80px;
+     padding-bottom: 2em;
+     box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.4);
+    -webkit-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.4);
+    -moz-box-shadow: 13px 19px 53px 3px rgba(114,128,58,0.4); 
+}
+
+section summary{
+
+    text-align: justify;
+    text-indent: 5em;
+}
+
+
+section:nth-child(even){
+    background: linear-gradient(-90deg,rgba(219, 175, 93, 0.75),
+    rgba(228, 217, 123, 0.8));
+    border: 2px solid rgba(156, 142, 14, 0.733);
+
+}
+
+details.estilizado{
+    
+    transition: all 1s ease-in-out;
+    max-height: 5em;
+    overflow: hidden;
+}
+
+details[open].estilizado{
+    max-height: 35em;
+    padding-bottom: 5em;
+}
+
+
+

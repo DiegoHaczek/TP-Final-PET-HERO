@@ -102,7 +102,7 @@
                 <li class="arrow">
                   <button class="next">
                     <span>
-                        <img class="arrowIcon" src="resources/rightarrow.png">
+                        <img class="arrowIcon" src="assets/rightarrow.png">
                     </span>
                   </button>
                 </li>

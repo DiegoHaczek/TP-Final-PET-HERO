@@ -2,7 +2,7 @@
 
 <main class="content">
 
-<div id="mainContainer">
+<div id="formContainer">
 
 
 
@@ -21,7 +21,7 @@
 
                     
                     <div id="botoneraForm">
-                        <button class="formButton" type="submit" >Ingresar</button>
+                       <button class="formButton" type="submit" > <a href="editarperfil.php">Ingresar</button></a>
                         <button class="formButton" type="reset" >Limpiar Campos</button></div>
 
                     </fieldset>

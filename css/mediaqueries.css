@@ -14,7 +14,11 @@
         }
         #footertextcontainer{
             margin-left: 10%;
-        }}
+        }
+    
+    .mainContainer{
+    }        
+    }
 @media (max-width: 1350px){
     li .contenedorTexto{
         margin-top: 5% !important;
@@ -23,8 +27,8 @@
         height: 17em;
     }
     #mainContainer{
-        margin-right: 23% !important;
-        margin-left: 23% !important;
+        margin-left: -10em !important;
+        transform: scale(0.8);
     }
 }
 @media(max-width: 1280px){
@@ -83,6 +87,9 @@ flex-direction: column;
         .botonera{
             margin-top: 5em;
         }
+        section{
+            margin-left: -2em !important;
+        }
        
     }
     
@@ -92,4 +99,10 @@ flex-direction: column;
     }
     #contactIcons{
         margin-left: 70%;  }
+
+    table{
+        margin-left: -0.5em !important;
+    }
+    
+        
 }

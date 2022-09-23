@@ -2,7 +2,7 @@
 
 <main class="content">
 
-<div id="mainContainer">
+<div id="formContainer">
 
     <form id="editarmascota" action="" class="activo">
     <fieldset class="formHeader">
@@ -40,8 +40,8 @@
                 <fieldset><label for="fotomascota"><strong><span>Ficha Médica</span></strong></label><br>
                      <input type="file" id="fotomascota" name="fotomascota" accept="image/*" required></fieldset>
 
-                    <div id="botoneraForm">
-                        <button class="formButton" type="submit" >Guardar Info</button>
+                     <div id="botoneraForm">
+                     <button class="formButton" type="submit" >Guardar Info</button>
                         <button class="formButton" type="reset" >Limpiar Campos</button></div>
 
                         <a href="index.php"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>

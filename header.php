@@ -54,7 +54,7 @@
                    </ul>
                </div>
            </div>
-       <div id="userFunctions">
+       <div id="userInfo">
        </div>
        </nav>
    </header>
