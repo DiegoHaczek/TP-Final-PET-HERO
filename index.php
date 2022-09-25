@@ -1,4 +1,5 @@
 <?php require 'header.php'?>
+<?php require 'visitornav.php'?>
 
     <a name="home"></a>
     <main class="content">
@@ -102,7 +103,7 @@
                 <li class="arrow">
                   <button class="next">
                     <span>
-                        <img class="arrowIcon" src="resources/rightarrow.png">
+                        <img class="arrowIcon" src="assets/rightarrow.png">
                     </span>
                   </button>
                 </li>

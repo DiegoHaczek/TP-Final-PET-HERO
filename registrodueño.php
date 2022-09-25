@@ -1,43 +1,41 @@
 <?php require 'header.php' ?>
+<?php require 'visitornav.php'?>
 
 <main class="content">
 
-<div id="mainContainer">
+        <div id="formContainer">
 
-
-
-                <form id="registrodueño" action="" class="activo">
+<form id="registrodueño" action="" class="activo">
                     
-                <fieldset class="formHeader">
-                    <h3><p>Registrarse como Dueño</p></h3>
+                    <fieldset class="formHeader">
+                        <h3><p>Registrarse como Dueño</p></h3>
                     </fieldset>
-
+    
                     <fieldset>
-                    <input type="text" name="username" placeholder="Username" autocomplete="off" required></input>
-                    <input type="password" name="password" placeholder="Password" autocomplete="off" required></input>
-                    <input type="password" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
-                    <input type="email" name="email" placeholder="Email" autocomplete="off" required></input>
-                    <input type="checkbox" id="checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
-
-                    
-                    <div id="botoneraForm">
-                        <button class="formButton" type="submit" >Ingresar</button>
-                        <button class="formButton" type="reset" >Limpiar Campos</button></div>
-
+                        <input type="text" name="username" placeholder="Username" autocomplete="off" required></input>
+                        <input type="password" name="password" placeholder="Password" autocomplete="off" required></input>
+                        <input type="password" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
+                        <input type="email" name="email" placeholder="Email" autocomplete="off" required></input>
+                        <input type="checkbox" id="checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
+    
+                        
+                        <div id="botoneraForm">
+                            <button class="formButton" type="submit" >Ingresar</button>
+                            <button class="formButton" type="reset" >Limpiar Campos</button></div>
+    
                     </fieldset>
-                        <a href="index.php"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>
-
+                            <a href="index.php"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>
+    
                 </form>
- 
+     
+        </div>
 
-</div>
 
-
-<a name="servicios" id="registro"></a>
+        <a name="servicios" id="registro"></a>
         <div class="contenedorLista"> 
             <ul>
 
-                <li class="listContent">
+            <li class="listContent">
                     <img class="listIcon" src="resources/catdog.png">
                     <div class="contenedorTexto">
                         <span>Completa el perfil de tu mascota y <strong>PET HERO</strong> te  mostrará 
@@ -57,11 +55,10 @@
                         </div>
                 </li>
             
-            </ul>
+            </ul>   
         </div>
 
-
-        
+      
 </main>
 
 
