@@ -34,9 +34,9 @@
         }
 
         public function mostrarUsuario (){
-            echo $this->userName;
-            echo $this->mail;
-            echo $this->contra;
+            echo $this->userName . " |";
+            echo $this->mail . " |";
+            echo $this->contra . " |";
         }
 
     }

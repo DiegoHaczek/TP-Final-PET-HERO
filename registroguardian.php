@@ -7,23 +7,22 @@
 <div id="formContainer">
 
 
-
-                <form id="registroguardian" action="" class="activo">
+                <form id="registroguardian" action="validarUsuario.php" class="activo" method = "post">
                     
                     <fieldset class="formHeader">
                     <h3><p>Registrarse como Guardián</p></h3>
                     </fieldset>
 
                     <fieldset>
-                    <input type="text" name="username" placeholder="Username" autocomplete="off" required></input>
-                    <input type="password" name="password" placeholder="Password" autocomplete="off" required></input>
-                    <input type="password" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
-                    <input type="email" name="email" placeholder="Email" autocomplete="off" required></input>
-                    <input type="checkbox" id="checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
-
+                    <input type="text"     id = "username" name="username" placeholder="Username" autocomplete="off" required></input>
+                    <input type="password" id = "password" name="password" placeholder="Password" autocomplete="off" required></input>
+                    <input type="password" id = "passwordconfirm" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
+                    <input type="email"    id = "mail" name="email" placeholder="Email" autocomplete="off" required></input>
+                    <input type="checkbox" id = "checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
+                    <input type="hidden"   id = "tipo" name = "tipo" value = "dueno"></input>
                     
                     <div id="botoneraForm">
-                       <button class="formButton" type="submit" > <a href="editarperfil.php">Ingresar</button></a>
+                       <button class="formButton" type="submit" > Ingresar</button>
                         <button class="formButton" type="reset" >Limpiar Campos</button></div>
 
                     </fieldset>

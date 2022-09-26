@@ -12,8 +12,5 @@
 
     }
 
-    $due = new dueno ("os","aas","tomas");
-
-    $due->mostrarUsuario();
 
 ?>
