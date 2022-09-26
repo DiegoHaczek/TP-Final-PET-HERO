@@ -1,24 +1,24 @@
 @media (max-width: 1800px){
-    #contactIcons{
-        margin-left: 85%;}
+    #navBarContent{
+        margin-right: 3% !important;}
+        .desplegado{margin-left: -5em;}
+        .rebote{left: 79% !important;}  
 }
 @media (max-width: 1500px){
     li .contenedorTexto{
         margin-top: 8% !important;
     }
-    #contactIcons{
-        margin-left: 80%;  }
+    #navBarContent{
+        margin-right: 4% !important;}
 
         footer .formButton{
             right: 1em;
         }
         #footertextcontainer{
             margin-left: 10%;
-        }
-    
-    .mainContainer{
-    }        
+        }            
     }
+
 @media (max-width: 1350px){
     li .contenedorTexto{
         margin-top: 5% !important;
@@ -26,10 +26,9 @@
     .listContent{
         height: 17em;
     }
+    /*
     #mainContainer{
-        margin-left: -10em !important;
-        transform: scale(0.8);
-    }
+        transform: scale(0.8);}*/
 }
 @media(max-width: 1280px){
     #homeContent p{
@@ -38,6 +37,7 @@
     #homeContainer{
         height: 30em;
     }
+    .desplegado{margin-left: -8em;}
     
 }
 @media (max-width: 1200px){
@@ -66,8 +66,7 @@ flex-direction: column;
 
 }
 @media (max-width: 1100px){
-    #contactIcons{
-        margin-left: 75%;  }
+    
         #homeContainer{
             height: 35em;
         }
@@ -90,19 +89,20 @@ flex-direction: column;
         section{
             margin-left: -2em !important;
         }
-       
+
+        #contenedorIcono{
+            margin-right: 0% !important;
+        }
+        #contactIcons{
+            opacity: 0%;}
     }
     
 @media (max-width: 900px){
     .listContent{
         margin-left: 25%;
-    }
-    #contactIcons{
-        margin-left: 70%;  }
-
+    }  
     table{
-        margin-left: -0.5em !important;
+        margin-left: 25px !important;
     }
-    
-        
+         
 }

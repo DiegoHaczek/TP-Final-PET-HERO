@@ -1,4 +1,6 @@
 <?php require 'header.php' ?>
+<?php require 'visitornav.php'?>
+
 
 <main class="content">
 
@@ -32,32 +34,9 @@
 
 </div>
 
-<a name="servicios" id="registro"></a>
-        <div class="contenedorLista"> 
-            <ul>
+<div class="contenedorInfo" id="infoRegistro"><div class="contenedorTexto"><span>Regístrate y completa tu <strong>Perfil</strong> para poder empezar a recibir reservas. <br><br>
+ Brindar un buen servicio te hará tener una <strong>Reputación</strong> más alta y mejores ofertas.</span></div></div>
 
-                <li class="listContent">
-                    <img class="listIcon" src="resources/catdog.png">
-                    <div class="contenedorTexto">
-                        <span>Completa el perfil de tu mascota y <strong>PET HERO</strong> te  mostrará 
-                            los Guardianes que mejor se ajusten a sus necesidades.</span></div>
-                </li>
-                <li class="listContent">
-                    <img class="listIcon" src="resources/personhome.png">
-                    <div class="contenedorTexto">
-                        <span>Regístrate como <strong>Guardián</strong>: dinos qué tipos de mascotas quieres cuidar,
-                             tu disponibilidad y paga. <br> !Nosotros haremos el resto! </span></div>
-                </li>
-                <li class="listContent">
-                    <img class="listIcon" src="resources/hombremujer.png">
-                    <div class="contenedorTexto">
-                        <span>Redacta reviews sobre los Guardianes que hayas contratado y ayuda a otros <strong>Dueños</strong> a
-                           tener una mejor experiencia.
-                        </div>
-                </li>
-            
-            </ul>
-        </div>
 </main>
 
 

@@ -1,4 +1,5 @@
 <?php require 'header.php'?>
+<?php require 'visitornav.php'?>
 
     <a name="home"></a>
     <main class="content">
