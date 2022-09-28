@@ -6,14 +6,14 @@
 
 
                 <div id="contactIcons">
-                <a href="#"><img class="icon" src="assets/facebook.png"></a>
-                <a href="#"><img class="icon" src="assets/instagram.png"></a>
-                <a href="#"> <img class="icon" src="assets/twitter.png"></a>
+                <a href="#"><img class="icon" src="../assets/facebook.png"></a>
+                <a href="#"><img class="icon" src="../assets/instagram.png"></a>
+                <a href="#"> <img class="icon" src="../assets/twitter.png"></a>
                 </div>
 
                     
                 <div id="userInfo">
-                <img class="imgperfilchica" src="assets/avatardefault.png">
+                <img class="imgperfilchica" src="../assets/avatardefault.png">
                 </div>
 
                 <span>Bienvenido, tunombre </span>

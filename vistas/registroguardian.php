@@ -7,7 +7,7 @@
 <div id="formContainer">
 
 
-                <form id="registroguardian" action="validarUsuario.php" class="activo" method = "post">
+                <form id="registroguardian" action="../procesos/validarUsuario.php" class="activo" method = "post">
                     
                     <fieldset class="formHeader">
                     <h3><p>Registrarse como Guardián</p></h3>

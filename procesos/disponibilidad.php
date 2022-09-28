@@ -1,9 +1,9 @@
-<?php require 'header.php'?>   <!--Muestro disponibilidad al duenio de acuerdo a lo indicado por el guardian-->
-<?php require 'usernav.php'?>
+<?php require '../vistas/header.php'?>   <!--Muestro disponibilidad al duenio de acuerdo a lo indicado por el guardian-->
+<?php require '../vistas/usernav.php'?>
 
 <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/><!--incluyo bootstrap-->
 <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet"/>
-<link rel="stylesheet" href="css/main.css">  <!--lo sobreescribo con mi css (que ya incluí en el header) porque me lo modifica-->
+<link rel="stylesheet" href="../css/main.css">  <!--lo sobreescribo con mi css (que ya incluí en el header) porque me lo modifica-->
 
 <main class="content">
 
@@ -65,7 +65,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-<script  src="js/datepickereditado.js"></script>
+<script  src="../js/datepickereditado.js"></script>
 
 <script>
 
@@ -74,4 +74,4 @@ $('.date').datepicker('setDatesDisabled',fechasNoDisponiblesJS);  //funcion de d
     </script>
 
 
-<?php require 'footer.php' ?>
+<?php require '../vistas/footer.php' ?>

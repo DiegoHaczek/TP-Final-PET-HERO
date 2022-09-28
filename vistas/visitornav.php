@@ -5,9 +5,9 @@
           <div id="navBarContent">
 
                 <div id="contactIcons">
-                <a href="#"><img class="icon" src="assets/facebook.png"></a>
-                <a href="#"><img class="icon" src="assets/instagram.png"></a>
-                <a href="#"> <img class="icon" src="assets/twitter.png"></a>
+                <a href="#"><img class="icon" src="../assets/facebook.png"></a>
+                <a href="#"><img class="icon" src="../assets/instagram.png"></a>
+                <a href="#"> <img class="icon" src="../assets/twitter.png"></a>
                 </div>
  
                 <div id="contenedorIcono">

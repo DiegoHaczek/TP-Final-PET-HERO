@@ -5,13 +5,13 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/><!-- incluyo bootstrap-->
 <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="css/main.css">  <!--lo sobreescribo con mi css (que ya incluí en el header) porque me lo modifica-->
+<link rel="stylesheet" href="../css/main.css">  <!--lo sobreescribo con mi css (que ya incluí en el header) porque me lo modifica-->
 
 <main class="content">
 
 <div id="formContainer">
 
-    <form id="editarperfil" action="disponibilidad.php" method="post" class="activo">
+    <form id="editarperfil" action="../procesos/disponibilidad.php" method="post" class="activo">
         <fieldset class="formHeader">
             <h3><p>Editar Mi Perfil</p></h3>
         </fieldset>
@@ -70,7 +70,7 @@
                         <button class="formButton" type="submit" style="transform: scale(1.45);" >Guardar Info</button>
                         <button class="formButton" type="reset" style="transform: scale(1.45); margin-left:4em" >Limpiar Campos</button></div>
                     
-                        <a href="index.php"><button id="goback"  type="button"><span id="backward" >Volver al Home</span></button></a>
+                        <a href="../index.php"><button id="goback"  type="button"><span id="backward" >Volver al Home</span></button></a>
     
 
     </form>
@@ -82,7 +82,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-<script  src="js/datepicker.js"></script>
+<script  src="../js/datepicker.js"></script>
 
 <script> //javascript
 

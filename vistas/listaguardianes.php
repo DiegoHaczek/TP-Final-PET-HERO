@@ -20,21 +20,21 @@
                         <tr class="espacio"><td></td></tr>
                         
                         <tr><td>
-                        <img  class ="imgperfilchica" src="assets/avatardefault.png">
+                        <img  class ="imgperfilchica" src="../assets/avatardefault.png">
                         </td><td><span>Pedro Funes</span></td><td><span>$400</span></td><td><span>Mediano/Chico</span></td><td><span>75/100</span></td>
                         <td><button class="formButton" type="submit">Ver Disponibilidad</button>
                         <button class="formButton" type="submit" >Ver info Completa</button></td></tr>
                         <tr class="espacio"><td></td></tr>
 
                         <tr><td>
-                        <img  class ="imgperfilchica" src="assets/avatardefault.png">
+                        <img  class ="imgperfilchica" src="../assets/avatardefault.png">
                         </td><td><span>Gabriel Rodriguez</span></td><td><span>$550</span></td><td><span>Todos</span></td><td><span>84/100</span></td>
                         <td><button class="formButton" type="submit">Ver Disponibilidad</button>
                         <button class="formButton" type="submit" >Ver info Completa</button></td></tr>
                         <tr class="espacio"><td></td></tr>
 
                         <tr><td>
-                        <img  class ="imgperfilchica" src="assets/avatardefault.png">
+                        <img  class ="imgperfilchica" src="../assets/avatardefault.png">
                         </td><td><span>Juan Perez</span></td><td><span>$600</span></td><td><span>Grande/Mediano</span></td><td><span>68/100</span></td>
                         <td><button class="formButton" type="submit">Ver Disponibilidad</button>
                         <button class="formButton" type="submit" >Ver info Completa</button></td></tr>

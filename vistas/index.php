@@ -56,19 +56,19 @@
             <ul>
 
                 <li class="listContent">
-                    <img class="listIcon" src="assets/catdog.png">
+                    <img class="listIcon" src="../assets/catdog.png">
                     <div class="contenedorTexto">
                         <span>Completa el perfil de tu mascota y <strong>PET HERO</strong> te  mostrará 
                             los Guardianes que mejor se ajusten a sus necesidades.</span></div>
                 </li>
                 <li class="listContent">
-                    <img class="listIcon" src="assets/personhome.png">
+                    <img class="listIcon" src="../assets/personhome.png">
                     <div class="contenedorTexto">
                         <span>Regístrate como <strong>Guardián</strong>: dinos qué tipos de mascotas quieres cuidar,
                              tu disponibilidad y paga. <br> !Nosotros haremos el resto! </span></div>
                 </li>
                 <li class="listContent">
-                    <img class="listIcon" src="assets/hombremujer.png">
+                    <img class="listIcon" src="../assets/hombremujer.png">
                     <div class="contenedorTexto">
                         <span>Redacta reviews sobre los Guardianes que hayas contratado y ayuda a otros <strong>Dueños</strong> a
                            tener una mejor experiencia.
@@ -96,14 +96,14 @@
                 <li class="arrow">
                   <button class="previous">
                     <span>
-                        <img class="arrowIcon" id="left" src="assets/rightarrow.png">
+                        <img class="arrowIcon" id="left" src="../assets/rightarrow.png">
                     </span>
                   </button>
                 </li>
                 <li class="arrow">
                   <button class="next">
                     <span>
-                        <img class="arrowIcon" src="assets/rightarrow.png">
+                        <img class="arrowIcon" src="../assets/rightarrow.png">
                     </span>
                   </button>
                 </li>
