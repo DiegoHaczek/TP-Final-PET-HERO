@@ -37,7 +37,7 @@
 #editarperfil{
     margin: auto;
     width: 33em;
-    height: 59em ;
+    height: 70em ;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -90,14 +90,16 @@ form input:focus{
     text-indent: -5em !important;
 }
 
-.radio{
-    width: 4%;
-    margin-right: 6%;
+input[type=radio]{
+    width: 4% !important;
+    margin-right: 6% !important;
 }
 
-.radio:focus{
-    width: 4%;
+input[type=radio]:focus{
+    width: 4% !important;
 }
+
+.activo
 
 .number{
     width: 20%;
@@ -231,13 +233,14 @@ a #backward{
 
 #backward{
 font-size: 0.58em;
+
 }
 
 #backward:hover{
     transition: all .55s ease;
     background-color:rgba(98, 139, 51,0.18);
-    padding: 0.3em;
     border-radius: 6%;
+    padding: 0.2em;
 
 }
 
