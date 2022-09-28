@@ -1,14 +1,22 @@
 <?php
-    abstract class Usuario{
+        namespace Models;
+        include_once 'Perfil.php';
+
+
+     abstract class Usuario extends Perfil{
+        
+        
         private $userName;
-        private $contra;
+        private $passWord;
         private $mail;
 
 
-        public function __construct ( $userName, $mail, $contra){
+        public function __construct ($nombre,$apellido,$edad,$fotoPerfil,$userName, $mail, $passWord){
+            
+            parent::__construct($nombre,$apellido,$edad,$fotoPerfil);
             $this -> userName = $userName;
             $this -> mail = $mail;
-            $this -> contra = $contra;
+            $this -> passWord = $passWord;
         }
 
         public function getUserName (){
@@ -25,21 +33,22 @@
         public function setMail ($userName){
             $this -> mail = $mail;
         }
-        public function getContra (){
-            return $this -> contra;
+        public function getPassWord (){
+            return $this -> passWord;
         }
 
-        public function setContra ($userName){
-            $this -> contra = $contra;
+        public function setPassWord ($userName){
+            $this -> passWord = $passWord;
         }
 
         public function mostrarUsuario (){
             echo $this->userName . " |";
             echo $this->mail . " |";
-            echo $this->contra . " |";
+            echo $this->passWord . " |";
         }
 
     }
+
 
 ?>
 

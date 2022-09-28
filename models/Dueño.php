@@ -1,8 +1,14 @@
 <?php
+        namespace Models;
 
-    include_once 'clases.php';
+    include_once 'Usuario.php';
+    include_once 'Perfil.php';
 
-    class Dueno extends Usuario{
+
+
+
+    class Dueño extends Usuario{
+    
 
         public function __construct ($userName, $mail, $contra){
             parent::__construct($userName, $mail,$contra);
