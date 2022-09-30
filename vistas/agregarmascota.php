@@ -15,17 +15,17 @@
                 <fieldset>
                         <label for="informacionbasica"><span><strong>Información Básica</strong></span></label>
                     <input type="text" name="nombre" placeholder="Nombre de la Mascota" required>
-                    <input type="number" class="number" name="edad" placeholder="Edad de la Mascota" min="0" required>
+                    <input type="number" class="number" name="edad" placeholder="Edad de la Mascota" min="0"  max="20" required>
                 </fieldset>
 
                 <fieldset>
                     <label for="tipoperro"><strong><span>Tipo de Perro</span></strong></label><br>
                     <label for="grande" class="labelcheckbox"><span>Grande</span></label>
-                    <input id="checkbox" type="checkbox" name="tipoperro" id="grande" value="grande">
+                    <input id="radio" type="radio" name="tipoperro"  value="grande">
                     <label for="mediano" class="labelcheckbox"><span>Mediano</span></label>
-                    <input id="checkbox" type="checkbox" name="tipoperro" id="mediano" value="mediano">
+                    <input id="radio" type="radio" name="tipoperro"  value="mediano">
                     <label for="chico" class="labelcheckbox"><span>Chico</span></label>
-                    <input id="checkbox" type="checkbox" name="tipoperro" id="chico" value="chico">
+                    <input id="radio" type="radio" name="tipoperro"  value="chico">
                 </fieldset>
 
                 <fieldset>

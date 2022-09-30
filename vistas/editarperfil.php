@@ -6,6 +6,7 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet"/>
 
 <link rel="stylesheet" href="../css/main.css">  <!--lo sobreescribo con mi css (que ya incluí en el header) porque me lo modifica-->
+<link rel="stylesheet" href="../css/override.css">
 
 <main class="content">
 
@@ -20,7 +21,7 @@
                     <label for="informacionpersonal" ><strong><span>Información Personal</span></strong></label><br>
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre">
                     <input type="text" id="apellido" name="apellido" placeholder="Apellido">
-                    <input type="number" class="number" id="edad" name="edad" placeholder="Edad" min="18">
+                    <input type="number" class="number" id="edad" name="edad" placeholder="Edad" min="18" max="90">
                 </fieldset>
 
                 <fieldset>
@@ -30,11 +31,11 @@
 
                 <fieldset>
                 <label title="Selecciona entre Disponibilidad Plena o Personalizada" for="disponibilidad"><strong><span>Disponibilidad</span></strong></label><br>
-                <label for="plena" ><strong><span>Plena</span></strong></label>
+                <label for="plena" ><span>Plena</span></label>
                 <input   type="radio" name="fechas" id="plena" value="plena" checked required>
-                <label for="finesdesemana" ><strong><span>Fines de Semana</span></strong></label>
+                <label for="finesdesemana" ><span>Fines de Semana</span></label>
                 <input   type="radio" name="fechas" id="finesdesemana" value="finesdesemana"><br>
-                <label for="personalizada" ><strong><span>Personalizada</span></strong></label>
+                <label for="personalizada" ><span>Personalizada</span></label>
                 <input  class="" type="radio" name="fechas" id="personalizada" >
                  
                 <div class="container" style="width:100%"><!-- ubicarlo dentro de 'container' -->
@@ -79,70 +80,6 @@
 
 </main>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-<script  src="../js/datepicker.js"></script>
 
-<script> //javascript
-
-let calendario = document.getElementById('calendario'); //logica para deshabilitar el datepicker cuando no esta seleccionado el radio
-
-let personalizada = document.getElementById('personalizada');
-let plena =document.getElementById('plena');
-let finesdesemana =document.getElementById('finesdesemana');
-
-personalizada.addEventListener('click',function(){
-  
-    $("#calendario").prop( "disabled", false );
-})
-
-
-plena.addEventListener('click',function(){
-  
-    $('.date').datepicker('setDates', [""]);
-    $("#calendario").prop( "disabled", true );
-})
-
-
-finesdesemana.addEventListener('click',function(){
-
-    $('.date').datepicker('setDates', [""]);
-    $("#calendario").prop( "disabled", true );
-})
-
-
-</script>
-
-<style>
-
-fieldset{
-    all:revert;
-    background-color: rgba(221, 255, 127,0.4);
-    border-radius: 3%;
-    border: 2px solid rgba(64, 114, 8, 0.199);
-}
-
-#plena,#finesdesemana,#personalizada{
-
-    width:10%;
-
-}
-
-input:disabled.form-control {
-opacity:40%;}
-
-#formContainer{
-    transform:scale(1.1);}
-
-input[type='number'] {
-    -moz-appearance:textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
-</style>
-
+<?php require 'datepicker.php' ?>
 <?php require 'footer.php' ?>

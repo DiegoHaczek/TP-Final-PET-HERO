@@ -7,3 +7,4 @@ $('.date').datepicker({
   updateViewDate: false,
   title: 'Elige tu Disponibilidad'
 });
+

@@ -1,0 +1,35 @@
+strong{
+
+    font-size:1.15em;
+    font-weight:bolder;
+
+}
+
+fieldset{
+    all:revert;
+    background-color: rgba(221, 255, 127,0.4);
+    border-radius: 3%;
+    border: 2px solid rgba(64, 114, 8, 0.199);
+}
+
+#plena,#finesdesemana,#personalizada{
+
+    width:10%;
+
+}
+
+input:disabled.form-control {
+opacity:40%;}
+
+#formContainer{
+    transform:scale(1.1);}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
