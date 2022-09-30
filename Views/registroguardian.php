@@ -7,7 +7,7 @@
 <div id="formContainer">
 
 
-                <form id="registroguardian" action="../procesos/validarUsuario.php" class="activo" method = "post">
+                <form id="registroguardian" action="<?php echo FRONT_ROOT."Guardian/Add"?>" class="activo" method = "post">
                     
                     <fieldset class="formHeader">
                     <h3><p>Registrarse como Guardián</p></h3>
@@ -16,17 +16,17 @@
                     <fieldset>
                     <input type="text"     id = "username" name="username" placeholder="Username" autocomplete="off" required></input>
                     <input type="password" id = "password" name="password" placeholder="Password" autocomplete="off" required></input>
-                    <input type="password" id = "passwordconfirm" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
-                    <input type="email"    id = "mail" name="email" placeholder="Email" autocomplete="off" required></input>
+                    <input type="password" id = "passwordconfirm" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" disabled></input>
+                    <input type="email"    name="mail" placeholder="Email" autocomplete="off" required></input>
                     <input type="checkbox" id = "checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
-                    <input type="hidden"   id = "tipo" name = "tipo" value = "dueno"></input>
+                    <!--<input type="hidden"   id = "tipo" name = "tipo" value = "dueno"></input> -->
                     
                     <div id="botoneraForm">
                        <button class="formButton" type="submit" > Ingresar</button>
                         <button class="formButton" type="reset" >Limpiar Campos</button></div>
 
                     </fieldset>
-                        <a href="index.php"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>
+                        <a href="<?php echo FRONT_ROOT."Home"?>"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>
 
                 </form>
  

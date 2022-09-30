@@ -7,15 +7,6 @@
         private $apellido;
         private $edad;
         private $fotoPerfil;
-
-        public function __construct($nombre,$apellido,$edad,$fotoPerfil){
-
-            $this->nombre = $nombre;
-            $this->apellido = $apellido;
-            $this->edad = $edad;
-            $this->fotoPerfil = $fotoPerfil;
-
-        }
         
        
         public function getNombre()

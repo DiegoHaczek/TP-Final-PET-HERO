@@ -1,52 +1,61 @@
 <?php
-        namespace Models;
-        include_once 'Perfil.php';
+    namespace Models;
 
 
-     abstract class Usuario extends Perfil{
+    abstract class Usuario extends Perfil{
         
-        
+        private $id;
         private $userName;
         private $passWord;
         private $mail;
 
-
-        public function __construct ($nombre,$apellido,$edad,$fotoPerfil,$userName, $mail, $passWord){
-            
-            parent::__construct($nombre,$apellido,$edad,$fotoPerfil);
-            $this -> userName = $userName;
-            $this -> mail = $mail;
-            $this -> passWord = $passWord;
+        public function getId()
+        {
+                return $this->id;
         }
 
-        public function getUserName (){
-            return $this -> userName;
+        public function setId($id): self
+        {
+                $this->id = $id;
+
+                return $this;
         }
 
-        public function setUserName ($userName){
-            $this -> userName = $userName;
-        }
-        public function getMail (){
-            return $this -> mail;
+        public function getUserName()
+        {
+                return $this->userName;
         }
 
-        public function setMail ($userName){
-            $this -> mail = $mail;
-        }
-        public function getPassWord (){
-            return $this -> passWord;
+        public function setUserName($userName): self
+        {
+                $this->userName = $userName;
+
+                return $this;
         }
 
-        public function setPassWord ($userName){
-            $this -> passWord = $passWord;
+        public function getPassWord()
+        {
+                return $this->passWord;
         }
 
-        public function mostrarUsuario (){
-            echo $this->userName . " |";
-            echo $this->mail . " |";
-            echo $this->passWord . " |";
+        public function setPassWord($passWord): self
+        {
+                $this->passWord = $passWord;
+
+                return $this;
         }
 
+        public function getMail()
+        {
+                return $this->mail;
+        }
+
+        public function setMail($mail): self
+        {
+                $this->mail = $mail;
+
+                return $this;
+        }
     }
 
 

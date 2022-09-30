@@ -24,7 +24,7 @@
                             <button class="formButton" type="reset" >Limpiar Campos</button></div>
     
                     </fieldset>
-                            <a href="index.php"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>
+                            <a href="<?php echo FRONT_ROOT."Home"?>"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>
     
                 </form>
      
@@ -36,19 +36,19 @@
             <ul>
 
             <li class="listContent">
-                    <img class="listIcon" src="resources/catdog.png">
+                    <img class="listIcon" src="<?php echo IMG_PATH;?>catdog.png">
                     <div class="contenedorTexto">
                         <span>Completa el perfil de tu mascota y <strong>PET HERO</strong> te  mostrará 
                             los Guardianes que mejor se ajusten a sus necesidades.</span></div>
                 </li>
                 <li class="listContent">
-                    <img class="listIcon" src="resources/personhome.png">
+                    <img class="listIcon" src="<?php echo IMG_PATH;?>personhome.png">
                     <div class="contenedorTexto">
                         <span>Regístrate como <strong>Guardián</strong>: dinos qué tipos de mascotas quieres cuidar,
                              tu disponibilidad y paga. <br> !Nosotros haremos el resto! </span></div>
                 </li>
                 <li class="listContent">
-                    <img class="listIcon" src="resources/hombremujer.png">
+                    <img class="listIcon" src="<?php echo IMG_PATH;?>hombremujer.png">
                     <div class="contenedorTexto">
                         <span>Redacta reviews sobre los Guardianes que hayas contratado y ayuda a otros <strong>Dueños</strong> a
                            tener una mejor experiencia.

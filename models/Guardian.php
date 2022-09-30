@@ -1,29 +1,12 @@
 <?php
     namespace Models;
 
-
-    include_once 'Usuario.php';
-    include_once 'Perfil.php';
-
-
     class Guardian extends Usuario {
 
         private $remumeracion;
         private $tipoPerro;
         private $disponibilidad;
         private $comentarios;
-
-        public function __construct($nombre,$apellido,$edad,$fotoPerfil,$userName, $mail, $passWord,$remuneracion,$tipoPerro,$disponibilidad,$comentarios){
-
-            parent::__construct($nombre,$apellido,$edad,$fotoPerfil,$userName, $mail, $passWord);
-
-            $this->remumeracion = $remuneracion;
-            $this->tipoPerro = $tipoPerro;
-            $this->disponibilidad = $disponibilidad;
-            $this->comentarios = $comentarios;
-            
-            
-        }
 
         public function getRemumeracion()
         {

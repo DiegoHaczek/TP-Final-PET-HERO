@@ -1,6 +1,6 @@
 <?php
 
-    include_once '../models/Guardian.php';
+    namespace Controllers;
 
     if (!empty($_POST)){
 
@@ -9,7 +9,7 @@
             echo "window.location = '../vistas/registroguardian.php';</script>";
         }
 
-        $guar = new Guardian($_POST["username"],$_POST["email"],$_POST["password"]);
+        $guar = new Guardian(NULL,NULL,NULL,NULL,$_POST["username"],$_POST["email"],$_POST["password"],NULL,NULL,NULL,NULL);
 
         $guar->mostrarUsuario();
     }

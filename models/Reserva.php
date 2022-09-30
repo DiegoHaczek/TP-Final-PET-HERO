@@ -1,5 +1,6 @@
 <?php 
 
+namespace Models;
 
 
 class Reserva {
@@ -9,16 +10,6 @@ class Reserva {
     private $nombreMascota;
     private $fechaInicio;
     private $duracion;
-
-    public function __construct($nombreUsuarioGuardian,$nombreUsuarioDueño,$nombreMascota,$fechaInicio,$duracion){
-
-        $this->nombreUsuarioGuardian = $nombreUsuarioGuardian;
-        $this->nombreUsuarioDueño = $nombreUsuarioDueño;
-        $this->nombreMascota = $nombreMascota;
-        $this->fechaInicio = $fechaInicio;
-        $this->duracion = $duracion;
-
-    }
 
     public function getNombreUsuarioGuardian()
     {
