@@ -5,14 +5,14 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/><!-- incluyo bootstrap-->
 <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="../css/main.css">  <!--lo sobreescribo con mi css (que ya incluí en el header) porque me lo modifica-->
-<link rel="stylesheet" href="../css/override.css">
+<link rel="stylesheet" href="<?php echo CSS_PATH;?>main.css">  <!--lo sobreescribo con mi css (que ya incluí en el header) porque me lo modifica-->
+<link rel="stylesheet" href="<?php echo CSS_PATH;?>override.css">
 
 <main class="content">
 
 <div id="formContainer">
 
-    <form id="editarperfil" action="../procesos/disponibilidad.php" method="post" class="activo">
+    <form id="editarperfil" action="<?php echo FRONT_ROOT."Guardian/EditProfile"?>" method="post" class="activo">
         <fieldset class="formHeader">
             <h3><p>Editar Mi Perfil</p></h3>
         </fieldset>
@@ -32,16 +32,16 @@
                 <fieldset>
                 <label title="Selecciona entre Disponibilidad Plena o Personalizada" for="disponibilidad"><strong><span>Disponibilidad</span></strong></label><br>
                 <label for="plena" ><span>Plena</span></label>
-                <input   type="radio" name="fechas" id="plena" value="plena" checked required>
+                <input   type="radio" name="disponibilidad" id="plena" value="plena" checked required>
                 <label for="finesdesemana" ><span>Fines de Semana</span></label>
-                <input   type="radio" name="fechas" id="finesdesemana" value="finesdesemana"><br>
+                <input   type="radio" name="disponibilidad" id="finesdesemana" value="finesdesemana"><br>
                 <label for="personalizada" ><span>Personalizada</span></label>
-                <input  class="" type="radio" name="fechas" id="personalizada" >
+                <input  class="" type="radio" name="disponibilidad" id="personalizada" >
                  
                 <div class="container" style="width:100%"><!-- ubicarlo dentro de 'container' -->
                     <input style="border: 1px solid rgba(64, 114, 8, 0.1) !important; border-radius: 3%; background-color:
                      rgba(235, 241, 146, 0.733); margin-left:-1em; margin-top:0.1em;"
-                      type="text" class="form-control date" placeholder="Selecciona fechas disponibles" name="fechas" id="calendario" autocomplete="off"
+                      type="text" class="form-control date" placeholder="Selecciona fechas disponibles" name="disponibilidad" id="calendario" autocomplete="off"
                      data-date-start-date="0d" data-date-end-date="+1m"  required disabled readonly><br>  <!-- setearle que 1.empiece a partir de hoy
                                                                                                                             2.termine en un mes
                                                                                                                             4. required ANTES del readonly (re, dis,read)

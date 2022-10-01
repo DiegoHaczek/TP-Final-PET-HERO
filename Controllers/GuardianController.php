@@ -31,6 +31,13 @@
         {
             //require_once(VIEWS_PATH."validate-session.php");
 
+
+            // 1.  <!------------------Validar Contraseñas----------------> 
+
+            // 2.  <!------------------Verificar que no existe UserName----------------> 
+
+            // 3. <!------------------Verificar que no exista Email----------------->
+
             $Guardian = new Guardian();
             $Guardian->setUserName($username);
             $Guardian->setPassWord($password);
@@ -38,7 +45,25 @@
 
             $this->GuardianDAO->Add($Guardian);
 
+            require_once(VIEWS_PATH."editarperfil.php");
+
             //$this->ShowAddView();
+        }
+
+        public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$remuneracion,$tipoperro,$disponibilidad)
+        {
+
+            $PerfilGuardian = new Guardian();
+            $PerfilGuardian->setNombre($nombre);
+            $PerfilGuardian->setApellido($apellido);
+            $PerfilGuardian->setEdad($edad);
+            $PerfilGuardian->setFotoPerfil($fotoperfil);
+            $PerfilGuardian->setRemuneracion($remuneracion);
+            $PerfilGuardian->setTipoPerro($tipoperro);
+            $PerfilGuardian->setDisponibilidad($disponibilidad);
+            
+            $this->GuardianDAO->EditProfile($PerfilGuardian);
+
         }
 
         public function Remove($id)

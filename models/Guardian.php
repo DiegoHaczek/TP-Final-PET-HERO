@@ -3,20 +3,20 @@
 
     class Guardian extends Usuario {
 
-        private $remumeracion;
+        private $remuneracion;
         private $tipoPerro;
         private $disponibilidad;
         private $comentarios;
 
-        public function getRemumeracion()
+        public function getRemuneracion()
         {
-                return $this->remumeracion;
+                return $this->remuneracion;
         }
 
      
-        public function setRemumeracion($remumeracion): self
+        public function setRemuneracion($remuneracion): self
         {
-                $this->remumeracion = $remumeracion;
+                $this->remuneracion = $remuneracion;
 
                 return $this;
         }
@@ -63,12 +63,6 @@
                 return $this;
         }
     }
-
-
-    $elprimerguardian = new Guardian('jose','perez',34,NULL,'josesitox100','joseperez@outlook.es','contrasegura123',600,'Mediano,Chico','Plena',NULL);
-
-
-    var_dump($elprimerguardian);
 
 
 ?>

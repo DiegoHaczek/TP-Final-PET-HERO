@@ -20,6 +20,33 @@
             $this->SaveData();
         }
 
+        public function EditProfile(Guardian $PerfilGuardian){
+
+            $this->RetrieveData();
+
+            $id = count ($this->GuardianList); ///cuenta los elementos que hay y calcula el ultimo id,
+                                               ///por ahora funciona, pero cuando se puedan borrar usuarios, no van a coincidir, 
+                                              ///o el usuario puede registrarse y salir sin completar el perfil y generaria problemas tmb
+
+            foreach ($this->GuardianList as $guardian){
+
+                if ($guardian->getId()==$id){
+
+                    $guardian->setNombre($PerfilGuardian->getNombre());
+                    $guardian->setApellido($PerfilGuardian->getApellido());
+                    $guardian->setEdad($PerfilGuardian->getEdad());
+                    $guardian->setFotoPerfil($PerfilGuardian->getFotoPerfil());
+                    $guardian->setRemuneracion($PerfilGuardian->getRemuneracion());
+                    $guardian->setTipoPerro($PerfilGuardian->getTipoPerro());
+                    $guardian->setDisponibilidad($PerfilGuardian->getDisponibilidad());
+
+                }
+            }
+
+            $this->SaveData();
+
+        }
+
         public function GetAll()
         {
             $this->RetrieveData();
@@ -55,6 +82,13 @@
                      $Guardian->setUserName($content["username"]);
                      $Guardian->setPassWord($content["password"]);
                      $Guardian->setMail($content["mail"]);
+                     $Guardian->setNombre($content["nombre"]);
+                     $Guardian->setApellido($content["apellido"]);
+                     $Guardian->setEdad($content["edad"]);
+                     $Guardian->setFotoPerfil($content["fotoperfil"]);
+                     $Guardian->setTipoPerro($content["tipoperro"]);
+                     $Guardian->setRemuneracion($content["remuneracion"]);
+                     $Guardian->setDisponibilidad($content["disponibilidad"]);
 
                      array_push($this->GuardianList, $Guardian);
                  }
@@ -72,6 +106,13 @@
                 $valuesArray["username"] = $Guardian->getUserName();
                 $valuesArray["password"] = $Guardian->getPassWord();
                 $valuesArray["mail"] = $Guardian->getMail();
+                $valuesArray["nombre"] = $Guardian->getNombre();
+                $valuesArray["apellido"] = $Guardian->getApellido();
+                $valuesArray["edad"] = $Guardian->getEdad();
+                $valuesArray["fotoperfil"] = $Guardian->getFotoPerfil();
+                $valuesArray["tipoperro"] = $Guardian->getTipoPerro();
+                $valuesArray["remuneracion"] = $Guardian->getRemuneracion();
+                $valuesArray["disponibilidad"] = $Guardian->getDisponibilidad();
                 array_push($arrayToEncode, $valuesArray);
             }
 

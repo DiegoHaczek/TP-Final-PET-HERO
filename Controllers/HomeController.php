@@ -20,7 +20,8 @@
         }
 
         public function registroDueno(){
-            require_once(VIEWS_PATH."registrodueño.php");
+            require_once(VIEWS_PATH."registrodueno.php");
+
         }
 
         /*public function ShowAddView()

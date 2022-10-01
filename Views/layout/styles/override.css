@@ -22,7 +22,7 @@ input:disabled.form-control {
 opacity:40%;}
 
 #formContainer{
-    transform:scale(1.1);}
+    transform:scale(1.0);}
 
 input[type='number'] {
     -moz-appearance:textfield;

@@ -6,7 +6,7 @@ define("FRONT_ROOT", "/TP-FINAL-PET-HERO/");
 define("VIEWS_PATH", "Views/");
 define("CSS_PATH", FRONT_ROOT.VIEWS_PATH . "layout/styles/");
 define("JS_PATH", FRONT_ROOT.VIEWS_PATH . "layout/scripts/");
-define("IMG_PATH", VIEWS_PATH . "img/");
+define("IMG_PATH", FRONT_ROOT.VIEWS_PATH . "img/");
 ?>
 
 
