@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "username": "juli",
+        "password": "hola",
+        "mail": "hola",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "mascotas": null,
+        "historial": null
+    },
+    {
+        "id": 2,
+        "username": "juli",
+        "password": "hola",
+        "mail": "hola",
+        "nombre": "Juli",
+        "apellido": "Juli",
+        "edad": "28",
+        "fotoperfil": "4841893.54643718c5033 (3).jpg",
+        "mascotas": null,
+        "historial": null
+    },
+    {
+        "id": 3,
+        "username": "Pepe",
+        "password": "123",
+        "mail": "123",
+        "nombre": "Pepe",
+        "apellido": "Pepin",
+        "edad": "23",
+        "fotoperfil": "a0cf48c1ae99a5502c2ac760e8cc371e (2).jpg",
+        "mascotas": null,
+        "historial": null
+    },
+    {
+        "id": 4,
+        "username": "carlito",
+        "password": "123",
+        "mail": "123",
+        "nombre": "carlito",
+        "apellido": "carlito",
+        "edad": "33",
+        "fotoperfil": "7fq3fsgc6wh91.png",
+        "mascotas": null,
+        "historial": null
+    }
+]

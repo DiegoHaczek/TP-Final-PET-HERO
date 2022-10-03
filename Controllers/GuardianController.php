@@ -45,7 +45,7 @@
 
             $this->GuardianDAO->Add($Guardian);
 
-            require_once(VIEWS_PATH."editarperfil.php");
+            require_once(VIEWS_PATH."editarperfilguardian.php");
 
             //$this->ShowAddView();
         }
@@ -63,6 +63,8 @@
             $PerfilGuardian->setDisponibilidad($disponibilidad);
             
             $this->GuardianDAO->EditProfile($PerfilGuardian);
+
+            require_once(VIEWS_PATH."main.php");
 
         }
 

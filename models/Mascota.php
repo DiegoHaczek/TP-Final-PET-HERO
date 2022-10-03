@@ -1,8 +1,9 @@
 <?php 
     namespace Models;
 
-    class Mascotas extends Perfil {
+    class Mascota extends Perfil {
 
+        private $id;
         private $tipoPerro;
         private $indicaciones;
 
@@ -27,6 +28,18 @@
         public function setIndicaciones($indicaciones): self
         {
                 $this->indicaciones = $indicaciones;
+
+                return $this;
+        }
+
+        public function getId()
+        {
+                return $this->id;
+        }
+
+        public function setId($id): self
+        {
+                $this->id = $id;
 
                 return $this;
         }

@@ -6,7 +6,7 @@
 
 <div id="formContainer">
 
-    <form id="editarmascota" action="" class="activo">
+    <form id="editarmascota" action="<?php echo FRONT_ROOT."Mascota/Add"?>" class="activo">
 
         <fieldset class="formHeader">
             <h3><p>Agregar Mascota</p></h3>
@@ -30,7 +30,7 @@
 
                 <fieldset>
                     <label for="consideraciones"><span><strong>Consideraciones / Cuidados especiales</strong></span></label>
-                    <textarea name="consideraciones" id="consideraciones" placeholder="Ingrese aquí información sobre consideraciones o cuidados especiales." required></textarea>
+                    <textarea name="indicaciones" id="indicaciones" placeholder="Ingrese aquí información sobre consideraciones o cuidados especiales." required></textarea>
                 </fieldset>
                 
                 <fieldset><label for="fichamedica"><strong><span>Foto de la Mascota</span></strong></label><br>

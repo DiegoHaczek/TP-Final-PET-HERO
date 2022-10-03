@@ -15,7 +15,7 @@
                     <summary><span><strong> Mis Mascotas </span></strong></summary>
                     <table>
                         
-                        <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Tamaño</span></th></tr>
+                        <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Tamaño</span></th><th><a href="<?php echo FRONT_ROOT."Home/registroMascota"?>"><button class="formButton">Agregar Mascotas</button></a></th></tr>
                         <tr class="espacio"><td></td></tr>
                         
                         <tr><td>

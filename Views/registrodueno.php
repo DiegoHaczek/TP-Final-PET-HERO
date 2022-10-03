@@ -5,7 +5,7 @@
 
         <div id="formContainer">
 
-<form id="registrodueño" action="" class="activo">
+<form id="registrodueño" action="<?php echo FRONT_ROOT."Dueno/Add"?>" class="activo">
                     
                     <fieldset class="formHeader">
                         <h3><p>Registrarse como Dueño</p></h3>
