@@ -34,5 +34,17 @@
         "fotoperfil": null,
         "mascotas": null,
         "historial": null
+    },
+    {
+        "id": 4,
+        "username": "pepex",
+        "password": "123",
+        "mail": "diegohaczek1996@hotmail.com",
+        "nombre": "diego",
+        "apellido": "haczek",
+        "edad": "40",
+        "fotoperfil": "",
+        "mascotas": null,
+        "historial": null
     }
 ]

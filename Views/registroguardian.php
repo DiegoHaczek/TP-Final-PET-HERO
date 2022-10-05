@@ -26,7 +26,7 @@
                         <button class="formButton" type="reset" >Limpiar Campos</button></div>
 
                     </fieldset>
-                        <a href="<?php echo FRONT_ROOT."Home"?>"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>
+                    <a href="<?php echo FRONT_ROOT."Home"?>"><button id="goback"  type="button"><span id="backward">Volver al Home</span></button></a>
 
                 </form>
  

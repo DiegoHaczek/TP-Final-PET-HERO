@@ -54,11 +54,11 @@
                 <fieldset>
                     <label for="tipoperro"><strong><span>Tipo de Perro:</span></strong></label><br>
                     <label for="grande" class="labelcheckbox"><span>Grande</span></label>
-                    <input id="checkbox" type="checkbox" name="tipoperro" id="grande" value="grande">
+                    <input id="checkbox" type="checkbox" name="tipoperro[]" id="grande" value="Grande">
                     <label for="mediano" class="labelcheckbox"><span>Mediano</span></label>
-                    <input id="checkbox" type="checkbox" name="tipoperro" id="mediano" value="mediano">
+                    <input id="checkbox" type="checkbox" name="tipoperro[]" id="mediano" value="Mediano">
                     <label for="chico" class="labelcheckbox"><span>Chico</span></label>
-                    <input id="checkbox" type="checkbox" name="tipoperro" id="chico" value="chico">
+                    <input id="checkbox" type="checkbox" name="tipoperro[]" id="chico" value="Chico">
                 </fieldset>
                 
 

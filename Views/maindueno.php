@@ -94,8 +94,8 @@
 
                     <summary><span><strong> Mis Reservas </span></strong></summary>
                         
-
-                    <button style="" class="buttonHome">Ver Guardianes</button>
+                    <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
+                    <button style="" class="buttonHome">Ver Guardianes</button></a>
 
 
                         

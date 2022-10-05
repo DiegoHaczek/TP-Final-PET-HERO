@@ -18,14 +18,15 @@
             require_once(VIEWS_PATH."validate-session.php");
             require_once(VIEWS_PATH."add-Guardian.php");
         }
+        */
 
         public function ShowListView()
         {
-            require_once(VIEWS_PATH."validate-session.php");
+           // require_once(VIEWS_PATH."validate-session.php");
             $GuardianList = $this->GuardianDAO->getAll();
             
-            require_once(VIEWS_PATH."Guardian-list.php");
-        }*/
+            require_once(VIEWS_PATH."listaguardianes.php");
+        }
 
         public function Add($username, $password, $mail)
         {
@@ -67,6 +68,8 @@
             require_once(VIEWS_PATH."mainguardian.php");
 
         }
+
+        
 
         public function Remove($id)
         {

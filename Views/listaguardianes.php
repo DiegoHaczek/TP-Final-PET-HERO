@@ -4,12 +4,9 @@
 <main class="content">
 
     <div id="mainContainer" class="">
-
                 
-                    
                 <section>
-                
-                    
+                       
                     <div class="sectioncontent">
 
                     <summary><span><strong> Lista de Guardianes </span></strong></summary>
@@ -19,35 +16,25 @@
                         <th><span>Reputación</span></th></tr>
                         <tr class="espacio"><td></td></tr>
                         
-                        <tr><td>
-                        <img  class ="imgperfilchica" src="../assets/avatardefault.png">
-                        </td><td><span>Pedro Funes</span></td><td><span>$400</span></td><td><span>Mediano/Chico</span></td><td><span>75/100</span></td>
-                        <td><button class="formButton" type="submit">Ver Disponibilidad</button>
-                        <button class="formButton" type="submit" >Ver info Completa</button></td></tr>
+                        <?php foreach($GuardianList as $guardian){ ?>
+                
+
+                            <tr><td>
+                        <img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
+                        </td><td><span><?php echo ucwords($guardian->getNombre()); ?></span></td><td><span><?php echo $guardian->getRemuneracion(); ?></span></td>
+                        <td><span><?php echo implode(", ",$guardian->getTipoPerro()); ?></span></td><td><span><?php echo ""; ?></span></td>
+                        <td>
+                        <button class="formButton" type="submit" >Ver Perfil</button></td></tr>
                         <tr class="espacio"><td></td></tr>
-
-                        <tr><td>
-                        <img  class ="imgperfilchica" src="../assets/avatardefault.png">
-                        </td><td><span>Gabriel Rodriguez</span></td><td><span>$550</span></td><td><span>Todos</span></td><td><span>84/100</span></td>
-                        <td><button class="formButton" type="submit">Ver Disponibilidad</button>
-                        <button class="formButton" type="submit" >Ver info Completa</button></td></tr>
-                        <tr class="espacio"><td></td></tr>
-
-                        <tr><td>
-                        <img  class ="imgperfilchica" src="../assets/avatardefault.png">
-                        </td><td><span>Juan Perez</span></td><td><span>$600</span></td><td><span>Grande/Mediano</span></td><td><span>68/100</span></td>
-                        <td><button class="formButton" type="submit">Ver Disponibilidad</button>
-                        <button class="formButton" type="submit" >Ver info Completa</button></td></tr>
-                        <tr class="espacio"><td></td></tr>
-
-
+                        
+                                <?php } ?>
                         </table>
-
 
                     </div>
                      </section>
 
-                     <button id="goback" type="button"><span id="backward">Volver al Home</span></button>
+                     <a href="<?php echo FRONT_ROOT."Home"?>">
+                     <button id="goback" type="button"><span id="backward">Volver al Home</span></button></a>
 
 
     </div>
