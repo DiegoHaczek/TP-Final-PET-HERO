@@ -61,7 +61,7 @@
             
             $this->DuenoDAO->EditProfile($PerfilDueno);
 
-            require_once(VIEWS_PATH."listamascotas.php");
+            require_once(VIEWS_PATH."maindueno.php");
 
         }
 

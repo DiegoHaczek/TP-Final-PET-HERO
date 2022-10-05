@@ -64,7 +64,7 @@
             
             $this->GuardianDAO->EditProfile($PerfilGuardian);
 
-            require_once(VIEWS_PATH."main.php");
+            require_once(VIEWS_PATH."mainguardian.php");
 
         }
 
