@@ -3,6 +3,8 @@
 
     class HomeController
     {
+        private $duenoDAO;
+        private $guardianDAO;
         /*private $userDAO;
 
         public function __construct()
@@ -32,7 +34,7 @@
         {
             require_once(VIEWS_PATH."validate-session.php");
             require_once(VIEWS_PATH."add-cellphone.php");
-        }
+        }*/
 
         public function Login($userName, $password)
         {
@@ -52,6 +54,6 @@
             session_destroy();
 
             $this->Index();
-        }*/
+        }
     }
 ?>

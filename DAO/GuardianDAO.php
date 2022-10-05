@@ -9,15 +9,51 @@
         private $GuardianList = array();
         private $fileName = ROOT."Data/Guardianes.json";
 
+        public function comprobarUser(Guardian $Guardian)
+        {
+            $this->RetrieveData();
+
+            foreach ($this->GuardianList as $UnGuardian) {
+                if ($Guardian->getUserName() == $UnGuardian->getUserName()) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public function comprobarMail(Guardian $Guardian)
+        {
+            $this->RetrieveData();
+
+            foreach ($this->GuardianList as $UnGuardian) {
+                if ($Guardian->getMail() == $UnGuardian->getMail()) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        
         public function Add(Guardian $Guardian)
         {
             $this->RetrieveData();
             
             $Guardian->setId($this->GetNextId());
             
-            array_push($this->GuardianList, $Guardian);
+            if (!$this->comprobarUser($Guardian) ) {
+                if (!$this->comprobarMail($Guardian)) {
+                    array_push($this->GuardianList, $Guardian);
 
-            $this->SaveData();
+                    $this->SaveData();
+                } else {
+                    echo "<script>alert('¡La dirección de mail ya está en uso!')</script>";
+                    require_once(VIEWS_PATH."home.php");
+                }
+            } else {
+                echo "<script>alert('¡El usuario ya existe!')</script>";
+                require_once(VIEWS_PATH."home.php");
+            }
         }
 
         public function EditProfile(Guardian $PerfilGuardian){

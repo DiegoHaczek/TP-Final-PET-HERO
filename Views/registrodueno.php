@@ -5,7 +5,7 @@
 
         <div id="formContainer">
 
-<form id="registrodueño" action="<?php echo FRONT_ROOT."Dueno/Add"?>" class="activo">
+<form id="registrodueño" action="<?php echo FRONT_ROOT."Dueno/Add"?>" class="activo" method="post">
                     
                     <fieldset class="formHeader">
                         <h3><p>Registrarse como Dueño</p></h3>
@@ -14,8 +14,8 @@
                     <fieldset>
                         <input type="text" name="username" placeholder="Username" autocomplete="off" required></input>
                         <input type="password" name="password" placeholder="Password" autocomplete="off" required></input>
-                        <input type="password" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
-                        <input type="email" name="email" placeholder="Email" autocomplete="off" required></input>
+                        <input type="password" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" disabled></input>
+                        <input type="email" name="mail" placeholder="Email" autocomplete="off" required></input>
                         <input type="checkbox" id="checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
     
                         
