@@ -9,6 +9,7 @@
         private $GuardianList = array();
         private $fileName = ROOT."Data/Guardianes.json";
 
+        /*
         public function comprobarUser(Guardian $Guardian)
         {
             $this->RetrieveData();
@@ -33,8 +34,20 @@
             }
 
             return false;
-        }
+        }*/
         
+        public function Add(Guardian $Guardian)
+        {
+            $this->RetrieveData();
+            
+            $Guardian->setId($this->GetNextId());
+            array_push($this->GuardianList, $Guardian);
+            $this->SaveData();
+               
+        }
+
+        /*
+
         public function Add(Guardian $Guardian)
         {
             $this->RetrieveData();
@@ -55,6 +68,8 @@
                 require_once(VIEWS_PATH."home.php");
             }
         }
+
+        */
 
         public function EditProfile(Guardian $PerfilGuardian){
 

@@ -26,7 +26,7 @@
             
             require_once(VIEWS_PATH."Dueno-list.php");
         }*/
-
+            /*
         public function Add($username, $password, $mail)
         {
             //require_once(VIEWS_PATH."validate-session.php");
@@ -48,6 +48,62 @@
             require_once(VIEWS_PATH."editarperfildueno.php");
 
             //$this->ShowAddView();
+        }*/
+
+
+        public function Add($username, $password,$passwordconfirm, $mail)
+        {
+            //require_once(VIEWS_PATH."validate-session.php");
+
+            if ($password==$passwordconfirm){  //Valida que las contraseñas sean iguales
+                
+                if(!$this->userExiste($username)){ //Valida que el nombre de usuario no exista
+
+                    if(!$this->mailExiste($mail)){ //Valida que el email no exista
+
+                    $Dueno = new Dueno();
+                    $Dueno->setUserName($username);
+                    $Dueno->setPassWord($password);
+                    $Dueno->setMail($mail);
+
+                    $this->DuenoDAO->Add($Dueno);
+                    require_once(VIEWS_PATH."editarperfildueno.php");
+                    }
+                    else{
+                        echo "<script>alert('El email ya existe')</script>";
+                        require_once(VIEWS_PATH."registrodueno.php");}
+                }
+                else{
+                    echo "<script>alert('El nombre de usuario ya existe')</script>";
+                    require_once(VIEWS_PATH."registrodueno.php");}
+            }
+            else{
+                echo "<script>alert('Las contraseñas no coinciden')</script>";
+                require_once(VIEWS_PATH."registrodueno.php"); }
+
+            //$this->ShowAddView();
+        }
+
+        public function userExiste($username)
+        {
+            $DuenoList= $this->DuenoDAO->getAll();
+            foreach ($DuenoList as $Dueno) {
+                if ($username == $Dueno->getUserName()) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public function mailExiste($mail)
+        {
+            $DuenoList= $this->DuenoDAO->getAll();
+            foreach ($DuenoList as $Dueno) {
+                if ($mail == $Dueno->getMail()) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public function EditProfile($nombre,$apellido,$edad,$fotoperfil)

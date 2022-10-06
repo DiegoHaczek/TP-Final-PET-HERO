@@ -9,6 +9,7 @@
         private $DuenoList = array();
         private $fileName = ROOT."Data/Duenos.json";
 
+        /*
         public function comprobarUser(Dueno $Dueno)
         {
             $this->RetrieveData();
@@ -33,7 +34,7 @@
             }
 
             return false;
-        }
+        }*/
 
 
         public function Add(Dueno $Dueno)
@@ -41,20 +42,9 @@
             $this->RetrieveData();
             
             $Dueno->setId($this->GetNextId());
-            
-            if (!$this->comprobarUser($Dueno) ) {
-                if (!$this->comprobarMail($Dueno)) {
-                    array_push($this->DuenoList, $Dueno);
-
-                    $this->SaveData();
-                } else {
-                    echo "<script>alert('¡La dirección de mail ya está en uso!')</script>";
-                    require_once(VIEWS_PATH."home.php");
-                }
-            } else {
-                echo "<script>alert('¡El usuario ya existe!')</script>";
-                require_once(VIEWS_PATH."home.php");
-            }
+            array_push($this->DuenoList, $Dueno);
+            $this->SaveData();
+               
             
         }
 

@@ -28,27 +28,59 @@
             require_once(VIEWS_PATH."listaguardianes.php");
         }
 
-        public function Add($username, $password, $mail)
+        public function Add($username, $password,$passwordconfirm, $mail)
         {
             //require_once(VIEWS_PATH."validate-session.php");
 
+            if ($password==$passwordconfirm){  //Valida que las contraseñas sean iguales
+                
+                if(!$this->userExiste($username)){ //Valida que el nombre de usuario no exista
 
-            // 1.  <!------------------Validar Contraseñas----------------> 
+                    if(!$this->mailExiste($mail)){ //Valida que el email no exista
 
-            // 2.  <!------------------Verificar que no existe UserName----------------> 
+                    $Guardian = new Guardian();
+                    $Guardian->setUserName($username);
+                    $Guardian->setPassWord($password);
+                    $Guardian->setMail($mail);
 
-            // 3. <!------------------Verificar que no exista Email----------------->
-
-            $Guardian = new Guardian();
-            $Guardian->setUserName($username);
-            $Guardian->setPassWord($password);
-            $Guardian->setMail($mail);
-
-            $this->GuardianDAO->Add($Guardian);
-
-            require_once(VIEWS_PATH."editarperfilguardian.php");
+                    $this->GuardianDAO->Add($Guardian);
+                    require_once(VIEWS_PATH."editarperfilguardian.php");
+                    }
+                    else{
+                        echo "<script>alert('El email ya existe')</script>";
+                        require_once(VIEWS_PATH."registroguardian.php");}
+                }
+                else{
+                    echo "<script>alert('El nombre de usuario ya existe')</script>";
+                    require_once(VIEWS_PATH."registroguardian.php");}
+            }
+            else{
+                echo "<script>alert('Las contraseñas no coinciden')</script>";
+                require_once(VIEWS_PATH."registroguardian.php"); }
 
             //$this->ShowAddView();
+        }
+
+        public function userExiste($username)
+        {
+            $GuardianList= $this->GuardianDAO->getAll();
+            foreach ($GuardianList as $Guardian) {
+                if ($username == $Guardian->getUserName()) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public function mailExiste($mail)
+        {
+            $GuardianList= $this->GuardianDAO->getAll();
+            foreach ($GuardianList as $Guardian) {
+                if ($mail == $Guardian->getMail()) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$remuneracion,$tipoperro,$disponibilidad)

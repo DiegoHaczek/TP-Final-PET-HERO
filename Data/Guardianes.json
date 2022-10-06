@@ -31,5 +31,21 @@
         ],
         "remuneracion": "800",
         "disponibilidad": "plena"
+    },
+    {
+        "id": 4,
+        "username": "juancito",
+        "password": "494",
+        "mail": "juan@hotmail.com",
+        "nombre": "juan",
+        "apellido": "",
+        "edad": "",
+        "fotoperfil": "",
+        "tipoperro": [
+            "Grande",
+            "Mediano"
+        ],
+        "remuneracion": "900",
+        "disponibilidad": "on"
     }
 ]

@@ -40,6 +40,10 @@
 
         public function Login($userName, $password)
         {
+
+            //1. declarar dao guardian y dueno 
+            //2. array merge con getAll de los dao como parametro
+
             $user = $this->userDAO->GetByUserName($userName);
 
             if(($user != null) && ($user->getPassword() === $password))
