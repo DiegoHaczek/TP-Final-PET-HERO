@@ -1,6 +1,6 @@
 <?php require 'header.php' ?>
 <?php require 'visitornav.php'?>
-
+<?php require_once 'validate-session.php'?> 
 
 
 <main class="content">

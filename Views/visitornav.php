@@ -20,11 +20,8 @@
                 <div id="unfoldableMenu">
                    <ul>
                        <li><a href="#home"><span class="textmenu">Log-In / Registro</span></a></li>
-                       <li><a href="#"><span class="textmenu">Mi Perfil</span></a></li>
-                       <li><a href="#"><span class="textmenu">Mis Reservas</span></a></li>
                        <li><a href="#"><span class="textmenu">Preguntas Frecuentes</span></a></li>
                        <li><a href="#"><span class="textmenu">Términos y Condiciones</span></a></li>
-                       <li><a href="#"><span class="textmenu">Cerrar Sesión</span></a></li>
                    </ul>
                 </div>
 

@@ -6,5 +6,13 @@
         "fotoperfil": "",
         "tipoperro": "grande",
         "indicaciones": "Es feo"
+    },
+    {
+        "id": 2,
+        "nombre": "Pepe",
+        "edad": "12",
+        "fotoperfil": "",
+        "tipoperro": "grande",
+        "indicaciones": "nada"
     }
 ]

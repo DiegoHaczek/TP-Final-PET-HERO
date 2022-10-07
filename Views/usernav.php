@@ -16,7 +16,7 @@
                 <img class="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
                 </div>
 
-                <span>Bienvenido, tunombre </span>
+                <span>Bienvenido, <?php echo $_SESSION["loggedUser"]?> </span>
 
                 <div id="contenedorIcono">
                 <span id="linea1" class=""></span>
@@ -37,7 +37,7 @@
                        <li><a href="#"><span class="textmenu">Mis Reservas</span></a></li>
                        <li><a href="#"><span class="textmenu">Preguntas Frecuentes</span></a></li>
                        <li><a href="#"><span class="textmenu">Términos y Condiciones</span></a></li>
-                       <li><a href="#"><span class="textmenu">Cerrar Sesión</span></a></li>
+                       <li><a href="<?php echo FRONT_ROOT."Home/Logout"?>"><span class="textmenu">Cerrar Sesión</span></a></li>
 
                    </ul>
                </div>

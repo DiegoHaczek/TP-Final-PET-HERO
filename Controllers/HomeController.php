@@ -1,20 +1,33 @@
 <?php
     namespace Controllers;
+    
+    use DAO\DuenoDAO as DuenoDAO; 
+    use Models\Dueno as Dueno;
+    use DAO\GuardianDAO as GuardianDAO; 
+    use Models\Guardian as Guardian;
 
     class HomeController
     {
         private $duenoDAO;
         private $guardianDAO;
-        /*private $userDAO;
 
         public function __construct()
         {
-            $this->userDAO = new UserDAO();
-        }*/
+            $this->duenoDAO = new DuenoDAO();
+            $this->guardianDAO = new GuardianDAO();
+        }
 
         public function Index($message = "")
         {
-            require_once(VIEWS_PATH."home.php");
+            if (isset($_SESSION["type"])) {
+                if ($_SESSION["type"] == "d") {
+                    require_once(VIEWS_PATH."maindueno.php");
+                } else if ($_SESSION["type"] == "g"){
+                    require_once(VIEWS_PATH."mainguardian.php");
+                }
+            } else {
+                require_once(VIEWS_PATH."home.php");
+            }
         }
 
         public function registroGuardian(){
@@ -32,27 +45,38 @@
 
         
 
-        /*public function ShowAddView()
+        public function ShowAddView()
         {
             require_once(VIEWS_PATH."validate-session.php");
-            require_once(VIEWS_PATH."add-cellphone.php");
-        }*/
+            //require_once(VIEWS_PATH."add-cellphone.php");
+        }
 
         public function Login($userName, $password)
         {
 
             //1. declarar dao guardian y dueno 
             //2. array merge con getAll de los dao como parametro
+            
+            $user = new Dueno();
+            $user = $this->duenoDAO->GetByUserName($userName);
 
-            $user = $this->userDAO->GetByUserName($userName);
+            if ($user == null) {
+                $user = new Guardian();
+                $user = $this->guardianDAO->GetByUserName($userName);
+            }
 
             if(($user != null) && ($user->getPassword() === $password))
             {
-                $_SESSION["loggedUser"] = $user;
-                $this->ShowAddView();
+                $_SESSION["loggedUser"] = $user->getUserName();
+                $_SESSION["type"] = $user->getType();
+                
+                $this->Index();
+                //$this->ShowAddView();
+                
             }
             else
-                $this->Index("Usuario y/o Contraseña incorrectos");
+                //agregar mensaje de error 
+                $this->Index();
         }
         
         public function Logout()

@@ -1,5 +1,6 @@
 <?php require 'header.php' ?>
 <?php require 'usernav.php'?>
+<?php require_once 'validate-session.php'?> 
 
 <link rel="stylesheet" href="<?php echo CSS_PATH;?>bootstrap.css">
 <!-- incluyo bootstrap-->

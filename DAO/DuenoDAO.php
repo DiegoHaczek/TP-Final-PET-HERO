@@ -146,6 +146,19 @@
             file_put_contents($this->fileName, $fileContent);
         }
 
+        public function GetByUserName($userName)
+        {
+            $this->RetrieveData();
+
+            foreach ($this->DuenoList as $key) {
+                if ($key->getUserName() == $userName) {
+                    return $key;
+                }
+            }
+
+            return null;
+        }
+
         private function GetNextId()
         {
             $id = 0;

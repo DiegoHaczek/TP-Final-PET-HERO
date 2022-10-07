@@ -28,14 +28,14 @@
 
             <div id="formularioLogin"   class="homeoculto">
 
-                <form id="login" action="">
+                <form id="login" action="<?php echo FRONT_ROOT."Home/Login"?>" method="post">
                     
                     <fieldset class="formHeader">
                     <h3><p>Ingrese sus Datos</p></h3>
                     </fieldset>
 
                     <fieldset>
-                    <input type="text" name="username" placeholder="Username" autocomplete="off" required></input>
+                    <input type="text" name="userName" placeholder="Username" autocomplete="off" required></input>
                     <input type="password" name="password" placeholder="Password" autocomplete="off"required></input>
                     
                     <div id="botoneraForm">

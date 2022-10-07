@@ -29,6 +29,10 @@
 
                 return $this;
         }
+
+        public function getType(){
+                return "d";
+        }
     }
 
 
