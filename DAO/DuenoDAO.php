@@ -150,9 +150,9 @@
         {
             $this->RetrieveData();
 
-            foreach ($this->DuenoList as $key) {
-                if ($key->getUserName() == $userName) {
-                    return $key;
+            foreach ($this->DuenoList as $dueno) {
+                if ($dueno->getUserName() == $userName) {
+                    return $dueno;
                 }
             }
 

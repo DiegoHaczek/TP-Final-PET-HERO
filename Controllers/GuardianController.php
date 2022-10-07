@@ -44,6 +44,10 @@
                     $Guardian->setMail($mail);
 
                     $this->GuardianDAO->Add($Guardian);
+
+                    $_SESSION["loggedUser"] = $Guardian->getUserName();
+                    $_SESSION["type"] = $Guardian->getType();
+
                     require_once(VIEWS_PATH."editarperfilguardian.php");
                     }
                     else{

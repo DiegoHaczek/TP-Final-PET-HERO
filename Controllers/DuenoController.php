@@ -67,6 +67,10 @@
                     $Dueno->setMail($mail);
 
                     $this->DuenoDAO->Add($Dueno);
+
+                    $_SESSION["loggedUser"] = $Dueno->getUserName();
+                    $_SESSION["type"] = $Dueno->getType();
+
                     require_once(VIEWS_PATH."editarperfildueno.php");
                     }
                     else{

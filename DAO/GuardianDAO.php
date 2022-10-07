@@ -176,9 +176,9 @@
         {
             $this->RetrieveData();
 
-            foreach ($this->GuardianList as $key) {
-                if ($key->getUserName() == $userName) {
-                    return $key;
+            foreach ($this->GuardianList as $guardian) {
+                if ($guardian->getUserName() == $userName) {
+                    return $guardian;
                 }
             }
 

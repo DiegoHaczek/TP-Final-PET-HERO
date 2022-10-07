@@ -1,61 +1,13 @@
 [
     {
         "id": 1,
-        "username": "luis",
-        "password": "123",
-        "mail": "123",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "mascotas": null,
-        "historial": null
-    },
-    {
-        "id": 2,
-        "username": "Juli",
-        "password": "123",
-        "mail": "juli@hotmail.com",
-        "nombre": "Juli\u00e1n",
-        "apellido": "Coronel",
-        "edad": "28",
-        "fotoperfil": "",
-        "mascotas": null,
-        "historial": null
-    },
-    {
-        "id": 3,
-        "username": "Pepe",
-        "password": "123",
-        "mail": "pepe@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "mascotas": null,
-        "historial": null
-    },
-    {
-        "id": 4,
-        "username": "pepex",
+        "username": "diegotehh",
         "password": "123",
         "mail": "diegohaczek1996@hotmail.com",
-        "nombre": "diego",
-        "apellido": "haczek",
-        "edad": "40",
-        "fotoperfil": "",
-        "mascotas": null,
-        "historial": null
-    },
-    {
-        "id": 5,
-        "username": "123",
-        "password": "123",
-        "mail": "123@hotmail.com",
-        "nombre": "jose",
-        "apellido": "luis",
-        "edad": "33",
-        "fotoperfil": "",
+        "nombre": "Diego",
+        "apellido": "Haczek",
+        "edad": "25",
+        "fotoperfil": "instagram.png",
         "mascotas": null,
         "historial": null
     }

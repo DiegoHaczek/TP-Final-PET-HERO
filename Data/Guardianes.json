@@ -1,51 +1,18 @@
 [
     {
         "id": 1,
-        "username": "diegote",
+        "username": "pedro",
         "password": "123",
-        "mail": "diegohaczek1996@hotmail.com",
-        "nombre": "Diego",
-        "apellido": "Haczek",
-        "edad": "",
-        "fotoperfil": "",
-        "tipoperro": [
-            "Grande",
-            "Mediano",
-            "Chico"
-        ],
-        "remuneracion": "1000",
-        "disponibilidad": "finesdesemana"
-    },
-    {
-        "id": 2,
-        "username": "pepe",
-        "password": "123",
-        "mail": "asd@hotmail.com",
+        "mail": "pedro@hotmail.com",
         "nombre": "Pedro",
         "apellido": "Perez",
-        "edad": "",
-        "fotoperfil": "",
-        "tipoperro": [
-            "Grande",
-            "Chico"
-        ],
-        "remuneracion": "800",
-        "disponibilidad": "plena"
-    },
-    {
-        "id": 4,
-        "username": "juancito",
-        "password": "494",
-        "mail": "juan@hotmail.com",
-        "nombre": "juan",
-        "apellido": "",
-        "edad": "",
-        "fotoperfil": "",
+        "edad": "40",
+        "fotoperfil": "huellas7.png",
         "tipoperro": [
             "Grande",
             "Mediano"
         ],
-        "remuneracion": "900",
-        "disponibilidad": "on"
+        "remuneracion": "1000",
+        "disponibilidad": "finesdesemana"
     }
 ]
