@@ -121,7 +121,8 @@
             
             $this->DuenoDAO->EditProfile($PerfilDueno);
 
-            require_once(VIEWS_PATH."maindueno.php");
+            header('location:../index.php');
+
 
         }
 

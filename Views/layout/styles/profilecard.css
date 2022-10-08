@@ -12,6 +12,7 @@
     color:rgb(15, 15, 15);
 }
 
+
 #perfildueño{
     height:20em;
 }
@@ -35,19 +36,27 @@
 
 .mainprofileinfo span{
     font-weight:bold;
+    font-size:1.1em;
 }
 
 .mainprofileinfo span:nth-child(4){
     margin-bottom:-2em;
 }
 .mainprofileinfo span:nth-child(5){
-    margin-bottom: 1.2em;
+    margin-bottom: 2.5em;
+}
+
+#perfilguardian .mainprofileinfo span:nth-child(3){
+    margin-top: -2em;
 }
 
 
-#perfildueño .mainprofileinfo span:nth-child(3){
-    margin-bottom:2.5em;
+#perfildueño .mainprofileinfo span:nth-child(2){
+    margin-bottom:-1.5em;
+    }
 
+#perfildueño .mainprofileinfo span:nth-child(3){
+    margin-bottom:2.7em;
     }
 
 .imgperfilgrande{
@@ -82,6 +91,7 @@
 .infopersonal span:nth-child(1){
     margin: 1em 0 0 1em;
     font-weight:bolder;
+    font-size:1.1em;
 }
 
 .infopersonal span:not(:first-child){
@@ -89,12 +99,13 @@
 }
 
 .infopersonal span:nth-child(3){
-    margin-top:1.8em;    
+    margin-top:1.3em;    
 }
 
 .infopersonal span:nth-child(4){
 
     align-self:center;
+    margin-left:5em;
     margin-top:-1.75em;
 }
 
@@ -120,12 +131,12 @@
     margin: 1em 0 0 1em;
     font-weight:bolder;
     align-self:start;
-    
+    font-size:1.1em;
 }
 
 .infoguardian span:not(:first-child){
        margin-left:2em;
-       margin-top:2em;
+       margin-top:1.7em;
 }
 
 .infoguardian span:nth-child(2){

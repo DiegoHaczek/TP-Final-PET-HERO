@@ -17,8 +17,8 @@
 
                                 <div class="mainprofileinfo">
                                     <img class="imgperfilgrande" src="<?php echo IMG_PATH;?>avatardefault.png">
-                                    <span>Nombre</span>
-                                    <span>Apellido</span>
+                                    <span><?php echo $usuario->getNombre();?></span>
+                                    <span><?php echo $usuario->getApellido();?></span>
                                 </div>
 
                                 <div class="secondaryprofileinfo">
@@ -26,16 +26,16 @@
                                     <div class="infopersonal">
                                         <span> Información Personal</span>
                                         <div class="separador"></div>
-                                        <span> Edad:</span>
-                                        <span> Email:</span>
+                                        <span> Edad: <strong><?php echo $usuario->getEdad();?></strong></span>
+                                        <span> Email: <strong><?php echo $usuario->getMail();?></strong></span>
                                     </div>
 
                                     <div class="infoguardian">
 
                                         <span>Información Dueño</span>
                                         <div class="separador"></div>
-                                        <span>Cantidad Mascotas:</span>
-                                        <span>Cantidad Reservas Completadas:</span>
+                                        <span>Cantidad Mascotas: <strong>0</strong> </span>
+                                        <span>Cantidad Reservas Completadas: <strong>0</strong></span>
                                         
 
                                         <button class="formButton" style="padding:0.3em 1em; position:relative; top:8.3em; right:2.7em">Editar</button>

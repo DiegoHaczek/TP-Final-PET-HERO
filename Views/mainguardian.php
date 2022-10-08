@@ -17,14 +17,14 @@
                         <summary><span style=" position:relative; bottom:2em;"><strong> Mi Perfil </span></strong></summary>
                         <div class="sectioncontent">
 
-                            <div class="profilecard">
+                            <div class="profilecard" id="perfilguardian">
 
                                 <div class="mainprofileinfo">
                                     <img class="imgperfilgrande" src="<?php echo IMG_PATH;?>avatardefault.png">
-                                    <span>Nombre</span>
-                                    <span>Apellido</span>
+                                    <span><?php echo ucwords($usuario->getNombre());?></span>
+                                    <span><?php echo ucwords($usuario->getApellido());?></span>
                                     <span>Reputacion</span>
-                                    <span>7/10</span>
+                                    <span>0/10</span>
                                 </div>
 
                                 <div class="secondaryprofileinfo">
@@ -32,28 +32,29 @@
                                     <div class="infopersonal">
                                         <span> Información Personal</span>
                                         <div class="separador"></div>
-                                        <span> Edad:</span>
-                                        <span> Email:</span>
+                                        <span>Edad: <strong><?php echo $usuario->getEdad();?></strong></span>
+                                        <span>Email: <strong><?php echo $usuario->getMail();?></strong></span>
                                     </div>
 
                                     <div class="infoguardian">
 
                                         <span>Información Guardián</span>
                                         <div class="separador"></div>
-                                        <span>Tipo de Perro:</span>
-                                        <span>Remuneración por Día:</span>
+                                        <span>Tipo de Perro: <strong><?php echo implode(", ",$usuario->getTipoPerro());?></strong></span>
+                                        <span>Remuneracion por Día: <strong><?php echo $usuario->getRemuneracion();?></strong></span>
                                         <span>Disponibilidad:</span>
                                            
-                                        <?php //include "../procesos/calculardisponibilidad.php" ?>
+                                        <?php include "disponibilidad.php" ?>
+                                    
 
                                         <div class="container" style="width:26%;">
-                                                <input style="border: 1px solid rgba(64, 114, 8, 0.1); position:relative; top:14.5em; right:20.6em; !important; border-radius: 3%; background-color:
+                                                <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:2.3em; right:0.8em; !important; border-radius: 3%; background-color:
                                                 rgba(235, 241, 146, 0.733);"
                                             type="text" class="form-control date" placeholder="Ver fechas" name="fechas" id="calendario" autocomplete="off"
                                             data-date-start-date="0d" data-date-end-date="+1m" value="" required readonly><br> 
                                             </div>
 
-                                        <button class="formButton" style="padding:0.3em 1em; position:relative; top:9em; right:3em">Editar</button>
+                                        <button class="formButton" style="padding:0.3em 1em; position:relative; top:13em; right:3em">Editar</button>
                                         
 
                                     </div>

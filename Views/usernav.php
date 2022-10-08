@@ -16,7 +16,7 @@
                 <img class="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
                 </div>
 
-                <span>Bienvenido, <?php echo $_SESSION["loggedUser"]?> </span>
+                <span>Bienvenido, <?php echo ucwords($_SESSION['loggedUser']);?> </span>
 
                 <div id="contenedorIcono">
                 <span id="linea1" class=""></span>

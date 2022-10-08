@@ -24,7 +24,7 @@
         {
            // require_once(VIEWS_PATH."validate-session.php");
             $GuardianList = $this->GuardianDAO->getAll();
-            
+
             require_once(VIEWS_PATH."listaguardianes.php");
         }
 
@@ -101,7 +101,7 @@
             
             $this->GuardianDAO->EditProfile($PerfilGuardian);
 
-            require_once(VIEWS_PATH."mainguardian.php");
+            header('location:../index.php');
 
         }
 

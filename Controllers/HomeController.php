@@ -20,9 +20,15 @@
         public function Index($message = "")
         {
             if (isset($_SESSION["type"])) {
+
                 if ($_SESSION["type"] == "d") {
+                    $usuario = New Dueno();
+                    $usuario = $this->duenoDAO->GetByUserName($_SESSION["loggedUser"]);
                     require_once(VIEWS_PATH."maindueno.php");
+
                 } else if ($_SESSION["type"] == "g"){
+                    $usuario = New Guardian();
+                    $usuario = $this->guardianDAO->GetByUserName($_SESSION["loggedUser"]);
                     require_once(VIEWS_PATH."mainguardian.php");
                 }
             } else {
@@ -30,12 +36,13 @@
             }
         }
 
+    
         public function registroGuardian(){
-            require_once(VIEWS_PATH."registroguardian.php");
+        require_once(VIEWS_PATH."registroguardian.php");
         }
 
         public function registroDueno(){
-            require_once(VIEWS_PATH."registrodueno.php");
+        require_once(VIEWS_PATH."registrodueno.php");
 
         }
 
