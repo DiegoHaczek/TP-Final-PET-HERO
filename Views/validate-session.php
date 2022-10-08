@@ -1,6 +1,6 @@
 <?php
   if(!isset($_SESSION["loggedUser"])){
-    require_once(FRONT_ROOT."Home/Index");
+    require_once(VIEWS_PATH."home.php");
   } 
 
 ?>

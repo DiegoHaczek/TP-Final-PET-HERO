@@ -10,5 +10,29 @@
         "fotoperfil": "instagram.png",
         "mascotas": null,
         "historial": null
+    },
+    {
+        "id": 2,
+        "username": "pepe",
+        "password": "123",
+        "mail": "pepe@hotmail.com",
+        "nombre": "pedro",
+        "apellido": "ramirez",
+        "edad": "40",
+        "fotoperfil": "menu.png",
+        "mascotas": null,
+        "historial": null
+    },
+    {
+        "id": 3,
+        "username": "pedro",
+        "password": "123",
+        "mail": "pedro@hotmail.com",
+        "nombre": "pedro",
+        "apellido": "pedraza",
+        "edad": "33",
+        "fotoperfil": "twitter.png",
+        "mascotas": null,
+        "historial": null
     }
 ]

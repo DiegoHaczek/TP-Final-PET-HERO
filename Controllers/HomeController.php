@@ -79,9 +79,9 @@
         
         public function Logout()
         {
+            unset($_SESSION["loggedUser"]);
             session_destroy();
-
-            $this->Index();
+            $this->index();
         }
     }
 ?>

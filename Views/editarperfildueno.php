@@ -1,7 +1,7 @@
-<?php require 'header.php' ?>
-<?php require 'visitornav.php'?>
 <?php require_once 'validate-session.php'?> 
 
+<?php require 'header.php' ?>
+<?php require 'visitornav.php'?>
 
 <main class="content">
 
@@ -31,7 +31,6 @@
     </form>
 
     <a href="../index.php"><button id="goback"  type="button" style="transform:translate(-2em)"><span id="backward" >Volver al Home</span></button></a>
-
 
 </div>
 
