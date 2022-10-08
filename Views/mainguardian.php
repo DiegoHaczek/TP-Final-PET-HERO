@@ -44,9 +44,8 @@
                                         <span>Remuneracion por Día: <strong><?php echo $usuario->getRemuneracion();?></strong></span>
                                         <span>Disponibilidad:</span>
                                            
-                                        <?php include "disponibilidad.php" ?>
+                                        <?php include (VIEWS_PATH."disponibilidad.php") ?>
                                     
-
                                         <div class="container" style="width:26%;">
                                                 <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:2.3em; right:0.8em; !important; border-radius: 3%; background-color:
                                                 rgba(235, 241, 146, 0.733);"

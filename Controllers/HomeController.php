@@ -19,7 +19,7 @@
 
         public function Index($message = "")
         {
-            if (isset($_SESSION["type"])) {
+            if (isset($_SESSION["loggedUser"])) {
 
                 if ($_SESSION["type"] == "d") {
                     $usuario = New Dueno();

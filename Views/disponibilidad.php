@@ -1,5 +1,5 @@
 <?php 
-            
+         
         date_default_timezone_set('America/Argentina/Buenos_Aires'); //seteo la zona horaria
 
         function cargarDias(){                                       //hago una funcion que cargue todos los dias disponibles del calendario
@@ -21,8 +21,6 @@
                 return $arregloFechas;
             }
 
-        if ($_POST){
-
             $fechasDisponibles = explode (",",$usuario->getDisponibilidad());   //Recibo el string de fechas y lo paso a arreglo
         
                $fechas=cargarDias();                               //cargo todas las fechas
@@ -36,16 +34,7 @@
                 <script> fechasNoDisponiblesJS.push('<?=$fecha?>')</script>   <!--Paso de PHP a JS-->
                 <?php  }
                    // echo "<script>console.log(fechasNoDisponiblesJS)</script>";
-            }
+            
 ?>               
                 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-<script  src="../js/datepickereditado.js"></script>
 
-<script>
-
-$('.date').datepicker('setDatesDisabled',fechasNoDisponiblesJS);  //funcion de datepicker que setea fechas no disponibles
-                                                                    //el dueño solo puede elegir de entre las fechas seleccionadas por el guardian
-    </script>

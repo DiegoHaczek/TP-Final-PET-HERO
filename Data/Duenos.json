@@ -22,5 +22,17 @@
         "fotoperfil": "twitter.png",
         "mascotas": null,
         "historial": null
+    },
+    {
+        "id": 3,
+        "username": "jose",
+        "password": "123",
+        "mail": "jose@hotmail.com",
+        "nombre": "diego",
+        "apellido": "perez",
+        "edad": "55",
+        "fotoperfil": "",
+        "mascotas": null,
+        "historial": null
     }
 ]
