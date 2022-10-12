@@ -70,6 +70,7 @@
 
                     $_SESSION["loggedUser"] = $Dueno->getUserName();
                     $_SESSION["type"] = $Dueno->getType();
+                    $_SESSION["id"] = $Dueno->getId();
 
                     require_once(VIEWS_PATH."editarperfildueno.php");
                     }

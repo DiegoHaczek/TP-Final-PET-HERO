@@ -47,6 +47,7 @@
 
                     $_SESSION["loggedUser"] = $Guardian->getUserName();
                     $_SESSION["type"] = $Guardian->getType();
+                    $_SESSION["id"] = $Guardian->getId();
 
                     require_once(VIEWS_PATH."editarperfilguardian.php");
                     }

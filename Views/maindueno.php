@@ -66,20 +66,6 @@
                     <button class="formButton" type="submit">Eliminar</button></td></tr>
                     <tr class="espacio"><td></td></tr>
 
-                    <tr><td>
-                    <img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
-                    </td><td><span>Pichicho</span></td><td><span>Chico</span></td><td><span>6</span></td>
-                    <td><button class="formButton" type="submit" >Ver Perfil</button>
-                    <button class="formButton" type="submit">Eliminar</button></td></tr>
-                    <tr class="espacio"><td></td></tr>
-
-                    <tr><td>
-                    <img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
-                    </td><td><span>Tomi</span></td><td><span>Grande</span></td><td><span>2</span></td>
-                    <td><button class="formButton" type="submit" >Ver Perfil</button>
-                    <button class="formButton" type="submit">Eliminar</button></td></tr>
-                    <tr class="espacio"><td></td></tr>
-
 
                     </table>
 

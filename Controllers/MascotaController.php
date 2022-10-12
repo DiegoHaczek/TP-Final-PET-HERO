@@ -45,6 +45,7 @@
             $Mascota->setFotoPerfil($fotoperfil);
             $Mascota->setTipoPerro($tipo);
             $Mascota->setIndicaciones($indicaciones);
+            $Mascota->setIdDueno($_SESSION["id"]);
 
             $this->MascotaDAO->Add($Mascota);
 

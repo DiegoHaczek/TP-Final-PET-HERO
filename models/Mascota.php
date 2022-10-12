@@ -4,6 +4,7 @@
     class Mascota extends Perfil {
 
         private $id;
+        private $idDueno;
         private $tipoPerro;
         private $indicaciones;
 
@@ -40,6 +41,18 @@
         public function setId($id): self
         {
                 $this->id = $id;
+
+                return $this;
+        }
+
+        public function getIdDueno()
+        {
+                return $this->idDueno;
+        }
+
+        public function setIdDueno($idDueno): self
+        {
+                $this->idDueno = $idDueno;
 
                 return $this;
         }
