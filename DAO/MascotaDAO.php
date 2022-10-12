@@ -25,7 +25,7 @@
             $this->RetrieveData();
 
             $id = count ($this->MascotaList); ///cuenta los elementos que hay y calcula el ultimo id,
-                                               ///por ahora funciona, pero cuando se puedan borrar usuarios, no van a coincidir, 
+                                              ///por ahora funciona, pero cuando se puedan borrar usuarios, no van a coincidir, 
                                               ///o el usuario puede registrarse y salir sin completar el perfil y generaria problemas tmb
 
             foreach ($this->MascotaList as $Mascota){

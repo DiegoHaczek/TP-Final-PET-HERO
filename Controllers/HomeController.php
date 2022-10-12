@@ -43,11 +43,10 @@
 
         public function registroDueno(){
         require_once(VIEWS_PATH."registrodueno.php");
-
         }
 
         public function registroMascota(){
-            require_once(VIEWS_PATH."agregarmascota.php");
+        require_once(VIEWS_PATH."agregarmascota.php");
         }
 
         public function ShowAddView()

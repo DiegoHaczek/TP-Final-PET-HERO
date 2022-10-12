@@ -34,5 +34,41 @@
         "fotoperfil": "",
         "mascotas": null,
         "historial": null
+    },
+    {
+        "id": 4,
+        "username": "asd",
+        "password": "123",
+        "mail": "asd@hotmail.com",
+        "nombre": "Jorge",
+        "apellido": "Ramirez",
+        "edad": "44",
+        "fotoperfil": "",
+        "mascotas": null,
+        "historial": null
+    },
+    {
+        "id": 5,
+        "username": "pablo",
+        "password": "123",
+        "mail": "pablo@hotmail.com",
+        "nombre": "Pablo",
+        "apellido": "Perez",
+        "edad": "55",
+        "fotoperfil": "",
+        "mascotas": null,
+        "historial": null
+    },
+    {
+        "id": 6,
+        "username": "juan",
+        "password": "123",
+        "mail": "juan123@hotmail.com",
+        "nombre": "Juan",
+        "apellido": "Perez",
+        "edad": "55",
+        "fotoperfil": "instagram.png",
+        "mascotas": null,
+        "historial": null
     }
 ]
