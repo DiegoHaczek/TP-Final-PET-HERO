@@ -25,5 +25,14 @@
         "fotoperfil": "",
         "tipoperro": "chico",
         "indicaciones": "xfsf"
+    },
+    {
+        "id": 4,
+        "idDueno": 1,
+        "nombre": "cachito",
+        "edad": "20",
+        "fotoperfil": "",
+        "tipoperro": "chico",
+        "indicaciones": "se porta bien"
     }
 ]

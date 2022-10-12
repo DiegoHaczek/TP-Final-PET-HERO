@@ -70,5 +70,17 @@
         "fotoperfil": "instagram.png",
         "mascotas": null,
         "historial": null
+    },
+    {
+        "id": 7,
+        "username": "martin",
+        "password": "123",
+        "mail": "martin@hotmail.com",
+        "nombre": "martin",
+        "apellido": "perez",
+        "edad": "66",
+        "fotoperfil": "twitter.png",
+        "mascotas": null,
+        "historial": null
     }
 ]

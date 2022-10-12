@@ -19,13 +19,16 @@
             require_once(VIEWS_PATH."add-Mascota.php");
         }
 
+
+        */
+
+
         public function ShowListView()
         {
             require_once(VIEWS_PATH."validate-session.php");
             $MascotaList = $this->MascotaDAO->getAll();
-            
-            require_once(VIEWS_PATH."Mascota-list.php");
-        }*/
+            require_once(VIEWS_PATH."listamascotas.php");
+        }
 
         public function Add($nombre, $edad, $tipo, $indicaciones, $fotoperfil)
         {

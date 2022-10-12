@@ -22,7 +22,7 @@
                 
 
                             <tr><td>
-                        <img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
+                            <img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
                         </td><td><span><?php echo ucwords($guardian->getNombre()); ?></span></td><td><span><?php echo $guardian->getRemuneracion(); ?></span></td>
                         <td><span><?php echo implode(", ",$guardian->getTipoPerro()); ?></span></td><td><span><?php echo ""; ?></span></td>
                         <td>

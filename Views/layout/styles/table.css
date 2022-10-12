@@ -29,24 +29,18 @@ table{
     color: #294b14e3;
     }
   
-    
-    
+  
     tr:not(.espacio) td{  
        background-image: linear-gradient(to bottom, #bfe1a5, #b8da9c, #b1d293, #abcb8a, #a4c481);
       background: linear-gradient(to bottom,#acd892 , #88b470); 
     } 
-    
     
 
     tr:not(.espacio):nth-child(4n+5) td{
       background: linear-gradient(to bottom, #d5e698 0%,#bbd363 100%);
        background-image: linear-gradient(to top, #8dcf63, #93cf72, #99cf7f, #a0cf8c, #a7cf99);
     }
-    
-
-    
-   
-
+  
     tr.espacio td{
       padding:0.51em;
     }
