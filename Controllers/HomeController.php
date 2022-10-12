@@ -74,7 +74,8 @@
             {
                 $_SESSION["loggedUser"] = $user->getUserName();
                 $_SESSION["type"] = $user->getType();
-                
+                $_SESSION["id"] = $user->getId();
+
                 $this->Index();
                 //$this->ShowAddView();
                 

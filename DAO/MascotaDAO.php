@@ -84,6 +84,7 @@
                      $Mascota->setFotoPerfil($content["fotoperfil"]);
                      $Mascota->setTipoPerro($content["tipoperro"]);
                      $Mascota->setIndicaciones($content["indicaciones"]);
+                     $Mascota->setIdDueno($content["idDueno"]);
 
                      array_push($this->MascotaList, $Mascota);
                  }
@@ -98,6 +99,7 @@
             {
                 $valuesArray = array();
                 $valuesArray["id"] = $Mascota->getId();
+                $valuesArray["idDueno"] = $Mascota->getIdDueno();
                 $valuesArray["nombre"] = $Mascota->getNombre();
                 $valuesArray["edad"] = $Mascota->getEdad();
                 $valuesArray["fotoperfil"] = $Mascota->getFotoPerfil();
