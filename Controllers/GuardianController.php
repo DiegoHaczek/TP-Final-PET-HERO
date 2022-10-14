@@ -1,8 +1,11 @@
 <?php
     namespace Controllers;
 
-    use DAO\GuardianDAO as GuardianDAO;
+
     use Models\Guardian as Guardian;
+    use DAO\GuardianDAO as GuardianDAO;
+    use Models\Dueno as Dueno;
+    use Controllers\DuenoController as DuenoController;
 
     class GuardianController
     {
@@ -58,17 +61,37 @@
             //$this->ShowAddView();
         }
 
-      
         public function mailExiste($mail)
         {
+            $controller = new DuenoController();
+            
+            if(!$controller->mailDuenoExiste($mail)){ ///verifico que mail no eixste en el otro DAO tampoco
+            
+                $GuardianList= $this->GuardianDAO->getAll();
+                foreach ($GuardianList as $Guardian) {
+                    if ($mail == $Guardian->getMail()) {
+                        return true;
+                    }
+            }
+            return false;
+        }else{
+            return true;
+        }
+        }
+
+        public function mailGuardianExiste($mail){//funcion llamada por el controller de dueno
+
             $GuardianList= $this->GuardianDAO->getAll();
-            foreach ($GuardianList as $Guardian) {
-                if ($mail == $Guardian->getMail()) {
-                    return true;
-                }
+                foreach ($GuardianList as $Guardian) {
+                    if ($mail == $Guardian->getMail()) {
+                        return true;
+                    }
             }
             return false;
         }
+
+        
+        
 
         public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$remuneracion,$tipoperro,$disponibilidad)
         {
@@ -92,8 +115,7 @@
             header('location:../index.php');
 
         }
-
-        
+       
 
         public function Remove($id)
         {

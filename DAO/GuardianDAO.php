@@ -136,9 +136,9 @@
         {
             $this->RetrieveData();
 
-            foreach ($this->DuenoList as $dueno) {
-                if ($dueno->getMail() == $mail) {
-                    return $dueno;
+            foreach ($this->GuardianList as $guardian) {
+                if ($guardian->getMail() == $mail) {
+                    return $guardian;
                 }
             }
 

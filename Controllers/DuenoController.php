@@ -3,6 +3,8 @@
 
     use DAO\DuenoDAO as DuenoDAO;
     use Models\Dueno as Dueno;
+    use Models\Guardian as Guardian;
+    use Controllers\GuardianController as GuardianController;
 
     class DuenoController
     {
@@ -46,11 +48,32 @@
 
         public function mailExiste($mail)
         {
+
+            $controller = new GuardianController();
+            
+            if(!$controller->mailGuardianExiste($mail)){ ///verifico que mail no eixste en el otro DAO tampoco
+
             $DuenoList= $this->DuenoDAO->getAll();
             foreach ($DuenoList as $Dueno) {
                 if ($mail == $Dueno->getMail()) {
                     return true;
                 }
+                }
+                return false;
+            }else{
+
+                return true;
+            }
+
+        }
+
+        public function mailDuenoExiste($mail){//funcion llamada por el controller de guardian
+
+            $DuenoList= $this->DuenoDAO->getAll();
+                foreach ($DuenoList as $Dueno) {
+                    if ($mail == $Dueno->getMail()) {
+                        return true;
+                    }
             }
             return false;
         }

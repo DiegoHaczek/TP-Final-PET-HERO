@@ -2,10 +2,10 @@
     {
         "id": 1,
         "password": "123",
-        "mail": "diegohaczek1996@hotmail.com",
+        "mail": "1@hotmail.com",
         "nombre": "Diego",
         "apellido": "Haczek",
-        "edad": "26",
+        "edad": "22",
         "fotoperfil": "twitter.png",
         "mascotas": null,
         "historial": null

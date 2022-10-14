@@ -93,7 +93,6 @@
         {
             unset($_SESSION["loggedUser"]);
             session_destroy();
-            echo "<script>alert('Deslogeado con éxito')</script>";
             $this->index();
         }
     }
