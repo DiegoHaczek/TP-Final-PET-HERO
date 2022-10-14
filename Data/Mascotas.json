@@ -1,38 +1,20 @@
 [
     {
         "id": 1,
-        "idDueno": 3,
-        "nombre": "Hola",
-        "edad": "2",
+        "idDueno": 1,
+        "nombre": "Diego",
+        "edad": "1",
         "fotoperfil": "",
         "tipoperro": "grande",
-        "indicaciones": "adfaf"
+        "indicaciones": "asd"
     },
     {
         "id": 2,
-        "idDueno": 3,
-        "nombre": "carlito",
-        "edad": "11",
-        "fotoperfil": "",
-        "tipoperro": "mediano",
-        "indicaciones": "fdfdf"
-    },
-    {
-        "id": 3,
         "idDueno": 1,
-        "nombre": "Juli",
-        "edad": "10",
+        "nombre": "juan",
+        "edad": "2",
         "fotoperfil": "",
-        "tipoperro": "chico",
-        "indicaciones": "xfsf"
-    },
-    {
-        "id": 4,
-        "idDueno": 1,
-        "nombre": "cachito",
-        "edad": "20",
-        "fotoperfil": "",
-        "tipoperro": "chico",
-        "indicaciones": "se porta bien"
+        "tipoperro": "grande",
+        "indicaciones": "asd"
     }
 ]

@@ -14,10 +14,9 @@
                     </fieldset>
 
                     <fieldset>
-                    <input type="text"     id = "username" name="username" placeholder="Username" autocomplete="off" required></input>
+                    <input type="email"    name="mail" placeholder="Email" autocomplete="off" required></input>
                     <input type="password" id = "password" name="password" placeholder="Password" autocomplete="off" required></input>
                     <input type="password" id = "passwordconfirm" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
-                    <input type="email"    name="mail" placeholder="Email" autocomplete="off" required></input>
                     <input type="checkbox" id = "checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
                     <!--<input type="hidden"   id = "tipo" name = "tipo" value = "dueno"></input> -->
                     

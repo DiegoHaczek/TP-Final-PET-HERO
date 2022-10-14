@@ -28,15 +28,26 @@
                 
                 </div>
 
-                
                <div id="unfoldableMenu">
                    <ul>
 
-                       <li><a href="#home"><span class="textmenu">Log-In / Registro</span></a></li>
-                       <li><a href="#"><span class="textmenu">Mi Perfil</span></a></li>
+                       <li><a href="<?php echo FRONT_ROOT."Home/Index"?>"><span class="textmenu">Home</span></a></li>
+                       
+                       <?php if($_SESSION['type']=='g'){?>
+                       <li><a href="#"?><span class="textmenu">Mi Perfil</span></a></li> 
+                       <?php } ?>
+
+                       <?php if($_SESSION['type']=='d'){?>
+                       <li><a href="<?php echo FRONT_ROOT."Mascota/ShowListView"?>"><span class="textmenu">Mis Mascotas</span></a></li> 
+                       <?php } ?>
+                       
                        <li><a href="#"><span class="textmenu">Mis Reservas</span></a></li>
-                       <li><a href="#"><span class="textmenu">Preguntas Frecuentes</span></a></li>
-                       <li><a href="#"><span class="textmenu">Términos y Condiciones</span></a></li>
+
+                       <?php if($_SESSION['type']=='d'){?>
+                       <li><a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>"><span class="textmenu">Guardianes</span></a></li>
+                       <?php } ?>
+
+
                        <li><a href="<?php echo FRONT_ROOT."Home/Logout"?>"><span class="textmenu">Cerrar Sesión</span></a></li>
 
                    </ul>

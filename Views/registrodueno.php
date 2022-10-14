@@ -12,10 +12,9 @@
                     </fieldset>
     
                     <fieldset>
-                        <input type="text" name="username" placeholder="Username" autocomplete="off" required></input>
+                        <input type="email" name="mail" placeholder="Email" autocomplete="off" required></input>
                         <input type="password" name="password" placeholder="Password" autocomplete="off" required></input>
                         <input type="password" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
-                        <input type="email" name="mail" placeholder="Email" autocomplete="off" required></input>
                         <input type="checkbox" id="checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
     
                         

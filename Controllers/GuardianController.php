@@ -28,24 +28,20 @@
             require_once(VIEWS_PATH."listaguardianes.php");
         }
 
-        public function Add($username, $password,$passwordconfirm, $mail)
+        public function Add($password,$passwordconfirm, $mail)
         {
             //require_once(VIEWS_PATH."validate-session.php");
 
             if ($password==$passwordconfirm){  //Valida que las contraseñas sean iguales
                 
-                if(!$this->userExiste($username)){ //Valida que el nombre de usuario no exista
-
                     if(!$this->mailExiste($mail)){ //Valida que el email no exista
 
                     $Guardian = new Guardian();
-                    $Guardian->setUserName($username);
                     $Guardian->setPassWord($password);
                     $Guardian->setMail($mail);
 
                     $this->GuardianDAO->Add($Guardian);
 
-                    $_SESSION["loggedUser"] = $Guardian->getUserName();
                     $_SESSION["type"] = $Guardian->getType();
                     $_SESSION["id"] = $Guardian->getId();
 
@@ -54,10 +50,6 @@
                     else{
                         echo "<script>alert('El email ya existe')</script>";
                         require_once(VIEWS_PATH."registroguardian.php");}
-                }
-                else{
-                    echo "<script>alert('El nombre de usuario ya existe')</script>";
-                    require_once(VIEWS_PATH."registroguardian.php");}
             }
             else{
                 echo "<script>alert('Las contraseñas no coinciden')</script>";
@@ -66,17 +58,7 @@
             //$this->ShowAddView();
         }
 
-        public function userExiste($username)
-        {
-            $GuardianList= $this->GuardianDAO->getAll();
-            foreach ($GuardianList as $Guardian) {
-                if ($username == $Guardian->getUserName()) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+      
         public function mailExiste($mail)
         {
             $GuardianList= $this->GuardianDAO->getAll();
@@ -101,6 +83,11 @@
             $PerfilGuardian->setDisponibilidad($disponibilidad);
             
             $this->GuardianDAO->EditProfile($PerfilGuardian);
+
+            $_SESSION["loggedUser"] = $nombre;
+
+            echo "<script>alert('Perfil creado con éxito')</script>";
+
 
             header('location:../index.php');
 

@@ -9,34 +9,7 @@
         private $DuenoList = array();
         private $fileName = ROOT."Data/Duenos.json";
 
-        /*
-        public function comprobarUser(Dueno $Dueno)
-        {
-            $this->RetrieveData();
-
-            foreach ($this->DuenoList as $UnDueno) {
-                if ($Dueno->getUserName() == $UnDueno->getUserName()) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public function comprobarMail(Dueno $Dueno)
-        {
-            $this->RetrieveData();
-
-            foreach ($this->DuenoList as $UnDueno) {
-                if ($Dueno->getMail() == $UnDueno->getMail()) {
-                    return true;
-                }
-            }
-
-            return false;
-        }*/
-
-
+    
         public function Add(Dueno $Dueno)
         {
             $this->RetrieveData();
@@ -106,7 +79,6 @@
                  {
                      $Dueno = new Dueno();
                      $Dueno->setId($content["id"]);
-                     $Dueno->setUserName($content["username"]);
                      $Dueno->setPassWord($content["password"]);
                      $Dueno->setMail($content["mail"]);
                      $Dueno->setNombre($content["nombre"]);
@@ -129,7 +101,6 @@
             {
                 $valuesArray = array();
                 $valuesArray["id"] = $Dueno->getId();
-                $valuesArray["username"] = $Dueno->getUserName();
                 $valuesArray["password"] = $Dueno->getPassWord();
                 $valuesArray["mail"] = $Dueno->getMail();
                 $valuesArray["nombre"] = $Dueno->getNombre();
@@ -146,12 +117,25 @@
             file_put_contents($this->fileName, $fileContent);
         }
 
-        public function GetByUserName($userName)
+        public function GetByName($name)
         {
             $this->RetrieveData();
 
             foreach ($this->DuenoList as $dueno) {
-                if ($dueno->getUserName() == $userName) {
+                if ($dueno->getNombre() == $name) {
+                    return $dueno;
+                }
+            }
+
+            return null;
+        }
+
+        public function GetByMail($mail)
+        {
+            $this->RetrieveData();
+
+            foreach ($this->DuenoList as $dueno) {
+                if ($dueno->getMail() == $mail) {
                     return $dueno;
                 }
             }

@@ -5,7 +5,6 @@
     abstract class Usuario extends Perfil{
         
         private $id;
-        private $userName;
         private $passWord;
         private $mail;
 
@@ -17,18 +16,6 @@
         public function setId($id): self
         {
                 $this->id = $id;
-
-                return $this;
-        }
-
-        public function getUserName()
-        {
-                return $this->userName;
-        }
-
-        public function setUserName($userName): self
-        {
-                $this->userName = $userName;
 
                 return $this;
         }

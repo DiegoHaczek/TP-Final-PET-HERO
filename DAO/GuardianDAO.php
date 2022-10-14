@@ -9,33 +9,6 @@
         private $GuardianList = array();
         private $fileName = ROOT."Data/Guardianes.json";
 
-        /*
-        public function comprobarUser(Guardian $Guardian)
-        {
-            $this->RetrieveData();
-
-            foreach ($this->GuardianList as $UnGuardian) {
-                if ($Guardian->getUserName() == $UnGuardian->getUserName()) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public function comprobarMail(Guardian $Guardian)
-        {
-            $this->RetrieveData();
-
-            foreach ($this->GuardianList as $UnGuardian) {
-                if ($Guardian->getMail() == $UnGuardian->getMail()) {
-                    return true;
-                }
-            }
-
-            return false;
-        }*/
-        
         public function Add(Guardian $Guardian)
         {
             $this->RetrieveData();
@@ -46,30 +19,6 @@
                
         }
 
-        /*
-
-        public function Add(Guardian $Guardian)
-        {
-            $this->RetrieveData();
-            
-            $Guardian->setId($this->GetNextId());
-            
-            if (!$this->comprobarUser($Guardian) ) {
-                if (!$this->comprobarMail($Guardian)) {
-                    array_push($this->GuardianList, $Guardian);
-
-                    $this->SaveData();
-                } else {
-                    echo "<script>alert('¡La dirección de mail ya está en uso!')</script>";
-                    require_once(VIEWS_PATH."home.php");
-                }
-            } else {
-                echo "<script>alert('¡El usuario ya existe!')</script>";
-                require_once(VIEWS_PATH."home.php");
-            }
-        }
-
-        */
 
         public function EditProfile(Guardian $PerfilGuardian){
 
@@ -130,7 +79,6 @@
                  {
                      $Guardian = new Guardian();
                      $Guardian->setId($content["id"]);
-                     $Guardian->setUserName($content["username"]);
                      $Guardian->setPassWord($content["password"]);
                      $Guardian->setMail($content["mail"]);
                      $Guardian->setNombre($content["nombre"]);
@@ -154,7 +102,6 @@
             {
                 $valuesArray = array();
                 $valuesArray["id"] = $Guardian->getId();
-                $valuesArray["username"] = $Guardian->getUserName();
                 $valuesArray["password"] = $Guardian->getPassWord();
                 $valuesArray["mail"] = $Guardian->getMail();
                 $valuesArray["nombre"] = $Guardian->getNombre();
@@ -172,13 +119,26 @@
             file_put_contents($this->fileName, $fileContent);
         }
 
-        public function GetByUserName($userName)
+        public function GetByName($name)
         {
             $this->RetrieveData();
 
             foreach ($this->GuardianList as $guardian) {
-                if ($guardian->getUserName() == $userName) {
+                if ($guardian->getNombre() == $name) {
                     return $guardian;
+                }
+            }
+
+            return null;
+        }
+
+        public function GetByMail($mail)
+        {
+            $this->RetrieveData();
+
+            foreach ($this->DuenoList as $dueno) {
+                if ($dueno->getMail() == $mail) {
+                    return $dueno;
                 }
             }
 

@@ -34,13 +34,6 @@
         {
             //require_once(VIEWS_PATH."validate-session.php");
 
-
-            // 1.  <!------------------Validar Contraseñas----------------> 
-
-            // 2.  <!------------------Verificar que no existe UserName----------------> 
-
-            // 3. <!------------------Verificar que no exista Email----------------->
-
             $Mascota = new Mascota();
             $Mascota->setNombre($nombre);
             //$Mascota->setApellido($apellido);
@@ -52,7 +45,9 @@
 
             $this->MascotaDAO->Add($Mascota);
 
-            require_once(VIEWS_PATH."agregarmascota.php");
+            echo "<script>alert('Mascota agregada con éxito')</script>";
+
+            header('location:../index.php');
 
             //$this->ShowAddView();
         }

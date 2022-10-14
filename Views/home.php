@@ -35,7 +35,7 @@
                     </fieldset>
 
                     <fieldset>
-                    <input type="text" name="userName" placeholder="Username" autocomplete="off" required></input>
+                    <input type="text" name="mail" placeholder="Email" autocomplete="off" required></input>
                     <input type="password" name="password" placeholder="Password" autocomplete="off"required></input>
                     
                     <div id="botoneraForm">

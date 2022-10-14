@@ -24,12 +24,12 @@
 
                 if ($_SESSION["type"] == "d") {
                     $usuario = New Dueno();
-                    $usuario = $this->duenoDAO->GetByUserName($_SESSION["loggedUser"]);
+                    $usuario = $this->duenoDAO->GetByName($_SESSION["loggedUser"]);
                     require_once(VIEWS_PATH."maindueno.php");
 
                 } else if ($_SESSION["type"] == "g"){
                     $usuario = New Guardian();
-                    $usuario = $this->guardianDAO->GetByUserName($_SESSION["loggedUser"]);
+                    $usuario = $this->guardianDAO->GetByName($_SESSION["loggedUser"]);
                     require_once(VIEWS_PATH."mainguardian.php");
                 }
             } else {
@@ -56,31 +56,35 @@
             //require_once(VIEWS_PATH."add-cellphone.php");
         }
 
-        public function Login($userName, $password)
+        public function Login($mail, $password)
         {
 
             //1. declarar dao guardian y dueno 
             //2. array merge con getAll de los dao como parametro
             
             $user = new Dueno();
-            $user = $this->duenoDAO->GetByUserName($userName);
+            $user = $this->duenoDAO->GetByMail($mail);
 
             if ($user == null) {
                 $user = new Guardian();
-                $user = $this->guardianDAO->GetByUserName($userName);
+                $user = $this->guardianDAO->GetByMail($mail);
             }
 
             if(($user != null) && ($user->getPassword() === $password))
             {
-                $_SESSION["loggedUser"] = $user->getUserName();
+                $_SESSION["loggedUser"] = $user->getNombre();
                 $_SESSION["type"] = $user->getType();
                 $_SESSION["id"] = $user->getId();
+
+                echo "<script>alert('Logeado con éxito')</script>";
 
                 $this->Index();
                 //$this->ShowAddView();
                 
             }
             else
+
+                 echo "<script>alert('Datos incorrectos')</script>";
                 //agregar mensaje de error 
                 $this->Index();
         }
@@ -89,6 +93,7 @@
         {
             unset($_SESSION["loggedUser"]);
             session_destroy();
+            echo "<script>alert('Deslogeado con éxito')</script>";
             $this->index();
         }
     }
