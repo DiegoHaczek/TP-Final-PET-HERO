@@ -34,9 +34,9 @@
                 <fieldset>
                 <label title="Selecciona entre Disponibilidad Plena o Personalizada" for="disponibilidad"><strong><span>Disponibilidad</span></strong></label><br>
                 <label for="plena" ><span>Plena</span></label>
-                <input   type="radio" name="disponibilidad" id="plena" value="plena" checked required>
+                <input   type="radio" name="disponibilidad" id="plena" value="Plena" checked required>
                 <label for="finesdesemana" ><span>Fines de Semana</span></label>
-                <input   type="radio" name="disponibilidad" id="finesdesemana" value="finesdesemana"><br>
+                <input   type="radio" name="disponibilidad" id="finesdesemana" value="Fines De Semana"><br>
                 <label for="personalizada" ><span>Personalizada</span></label>
                 <input  class="" type="radio" name="disponibilidad" id="personalizada" >
                  

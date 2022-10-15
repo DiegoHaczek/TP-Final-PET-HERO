@@ -145,6 +145,19 @@
             return null;
         }
 
+        public function GetById($id)
+        {
+            $this->RetrieveData();
+
+            foreach ($this->GuardianList as $guardian) {
+                if ($guardian->getId() == $id) {
+                    return $guardian;
+                }
+            }
+
+            return null;
+        }
+
         private function GetNextId()
         {
             $id = 0;

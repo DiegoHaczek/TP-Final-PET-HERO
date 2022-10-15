@@ -2,17 +2,8 @@
     {
         "id": 1,
         "idDueno": 1,
-        "nombre": "Diego",
-        "edad": "1",
-        "fotoperfil": "",
-        "tipoperro": "grande",
-        "indicaciones": "asd"
-    },
-    {
-        "id": 2,
-        "idDueno": 1,
-        "nombre": "juan",
-        "edad": "2",
+        "nombre": "Black",
+        "edad": "10",
         "fotoperfil": "",
         "tipoperro": "grande",
         "indicaciones": "asd"

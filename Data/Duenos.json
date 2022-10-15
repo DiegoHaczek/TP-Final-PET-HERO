@@ -5,7 +5,18 @@
         "mail": "1@hotmail.com",
         "nombre": "Diego",
         "apellido": "Haczek",
-        "edad": "22",
+        "edad": "26",
+        "fotoperfil": "twitter.png",
+        "mascotas": null,
+        "historial": null
+    },
+    {
+        "id": 2,
+        "password": "123",
+        "mail": "2@hotmail.com",
+        "nombre": "Juan",
+        "apellido": "Gomez",
+        "edad": "34",
         "fotoperfil": "twitter.png",
         "mascotas": null,
         "historial": null

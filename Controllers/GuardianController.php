@@ -31,6 +31,18 @@
             require_once(VIEWS_PATH."listaguardianes.php");
         }
 
+        public function ShowProfile($id){
+
+           if  ($this->GuardianDAO->GetById($id)){
+
+            $usuario = $this->GuardianDAO->GetById($id);
+
+            require_once(VIEWS_PATH."perfilguardian.php");
+
+           }
+
+        }
+
         public function Add($password,$passwordconfirm, $mail)
         {
             //require_once(VIEWS_PATH."validate-session.php");
@@ -90,9 +102,6 @@
             return false;
         }
 
-        
-        
-
         public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$remuneracion,$tipoperro,$disponibilidad)
         {
 
@@ -116,7 +125,6 @@
 
         }
        
-
         public function Remove($id)
         {
             //require_once(VIEWS_PATH."validate-session.php");

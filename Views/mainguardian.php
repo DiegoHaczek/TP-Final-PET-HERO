@@ -12,7 +12,7 @@
     <div id="mainContainer" class="">
 
                 
-    <section style="width:52em;padding:3em 0 4em 0">
+    <section style="width:52em;padding:3em 0 0 0">
                         
                         <summary><span style=" position:relative; bottom:2em;"><strong> Mi Perfil </span></strong></summary>
                         <div class="sectioncontent">
@@ -42,23 +42,28 @@
                                         <div class="separador"></div>
                                         <span>Tipo de Perro: <strong><?php echo implode(", ",$usuario->getTipoPerro());?></strong></span>
                                         <span>Remuneracion por Día: <strong><?php echo $usuario->getRemuneracion();?></strong></span>
-                                        <span>Disponibilidad:</span>
+                                        <span>Disponibilidad: <?php if($usuario->getDisponibilidad()=='Plena'||$usuario->getDisponibilidad()=='Fines De Semana'){
+                                            ?> <strong><?php echo $usuario->getDisponibilidad()?></strong>  <?php
+                                        }else{ ?> </span>
                                            
                                         <?php include (VIEWS_PATH."disponibilidad.php") ?>
                                     
                                         <div class="container" style="width:26%;">
-                                                <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:2.3em; right:0.8em; !important; border-radius: 3%; background-color:
+                                                <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:2.3em; right:3em; !important; border-radius: 3%; background-color:
                                                 rgba(235, 241, 146, 0.733);"
                                             type="text" class="form-control date" placeholder="Ver fechas" name="fechas" id="calendario" autocomplete="off"
                                             data-date-start-date="0d" data-date-end-date="+1m" value="" required readonly><br> 
                                             </div>
+                                            <?php } ?>
 
-                                        <button class="formButton" style="padding:0.3em 1em; position:relative; top:13em; right:3em">Editar</button>
                                         
-
                                     </div>
+
                                 </div>
+
                             </div>
+                            <button class="formButton" style="padding:0.3em 1em; position:relative; left:19em; bottom:5em;">Editar</button>
+
                         </div>
                     </section>
 
