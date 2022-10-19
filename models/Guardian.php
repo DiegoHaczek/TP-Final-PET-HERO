@@ -4,7 +4,7 @@
     class Guardian extends Usuario {
 
         private $remuneracion;
-        private $tipoPerro;
+        private $tamano;
         private $disponibilidad;
         private $comentarios;
 
@@ -22,15 +22,15 @@
         }
 
        
-        public function getTipoPerro()
+        public function getTamano()
         {
-                return $this->tipoPerro;
+                return $this->tamano;
         }
 
        
-        public function setTipoPerro($tipoPerro): self
+        public function setTamano($tamano): self
         {
-                $this->tipoPerro = $tipoPerro;
+                $this->tamano = $tamano;
 
                 return $this;
         }

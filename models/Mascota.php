@@ -5,18 +5,20 @@
 
         private $id;
         private $idDueno;
-        private $tipoPerro;
+        private $tamano;
+        private $raza;
+        private $especie;
         private $indicaciones;
 
         
-        public function getTipoPerro()
+        public function getTamano()
         {
-                return $this->tipoPerro;
+                return $this->tamano;
         }
 
-        public function setTipoPerro($tipoPerro): self
+        public function setTamano($tamano): self
         {
-                $this->tipoPerro = $tipoPerro;
+                $this->tamano = $tamano;
 
                 return $this;
         }
@@ -53,6 +55,30 @@
         public function setIdDueno($idDueno): self
         {
                 $this->idDueno = $idDueno;
+
+                return $this;
+        }
+
+        public function getRaza()
+        {
+                return $this->raza;
+        }
+
+        public function setRaza($raza): self
+        {
+                $this->raza = $raza;
+
+                return $this;
+        }
+
+        public function getEspecie()
+        {
+                return $this->especie;
+        }
+
+        public function setEspecie($especie): self
+        {
+                $this->especie = $especie;
 
                 return $this;
         }

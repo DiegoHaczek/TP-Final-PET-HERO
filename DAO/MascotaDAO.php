@@ -36,7 +36,7 @@
                     $Mascota->setApellido(NULL);
                     $Mascota->setEdad($PerfilMascota->getEdad());
                     $Mascota->setFotoPerfil($PerfilMascota->getFotoPerfil());
-                    $Mascota->setMascotas($PerfilMascota->getTipoPerro());
+                    $Mascota->setMascotas($PerfilMascota->getTamano());
                     $Mascota->setHistorial($PerfilMascota->getIndicaciones());
 
                 }
@@ -82,9 +82,11 @@
                      $Mascota->setApellido(NULL);
                      $Mascota->setEdad($content["edad"]);
                      $Mascota->setFotoPerfil($content["fotoperfil"]);
-                     $Mascota->setTipoPerro($content["tipoperro"]);
+                     $Mascota->setTamano($content["tamano"]);
                      $Mascota->setIndicaciones($content["indicaciones"]);
                      $Mascota->setIdDueno($content["idDueno"]);
+                     $Mascota->setRaza($content["raza"]);
+                     $Mascota->setEspecie($content["especie"]);
 
                      array_push($this->MascotaList, $Mascota);
                  }
@@ -103,8 +105,10 @@
                 $valuesArray["nombre"] = $Mascota->getNombre();
                 $valuesArray["edad"] = $Mascota->getEdad();
                 $valuesArray["fotoperfil"] = $Mascota->getFotoPerfil();
-                $valuesArray["tipoperro"] = $Mascota->getTipoPerro();
+                $valuesArray["tamano"] = $Mascota->getTamano();
                 $valuesArray["indicaciones"] = $Mascota->getIndicaciones();
+                $valuesArray["raza"] = $Mascota->getRaza();
+                $valuesArray["especie"] = $Mascota->getEspecie();
                 array_push($arrayToEncode, $valuesArray);
             }
 

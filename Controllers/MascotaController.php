@@ -30,7 +30,7 @@
             require_once(VIEWS_PATH."listamascotas.php");
         }
 
-        public function Add($nombre, $edad, $tipo, $indicaciones, $fotoperfil)
+        public function Add($nombre, $edad, $tamano, $especie, $raza, $indicaciones, $fotoperfil)
         {
             //require_once(VIEWS_PATH."validate-session.php");
 
@@ -39,9 +39,11 @@
             //$Mascota->setApellido($apellido);
             $Mascota->setEdad($edad);
             $Mascota->setFotoPerfil($fotoperfil);
-            $Mascota->setTipoPerro($tipo);
+            $Mascota->setTamano($tamano);
             $Mascota->setIndicaciones($indicaciones);
             $Mascota->setIdDueno($_SESSION["id"]);
+            $Mascota->setEspecie($especie);
+            $Mascota->setRaza($raza);
 
             $this->MascotaDAO->Add($Mascota);
 
@@ -60,7 +62,7 @@
             //$PerfilMascota->setApellido($apellido);
             $PerfilMascota->setEdad($edad);
             $PerfilMascota->setFotoPerfil($fotoperfil);
-            $Mascota->setTipoPerro($tipo);
+            $Mascota->setTamano($tipo);
             $Mascota->setIndicaciones($indicaciones);
             
             $this->MascotaDAO->EditProfile($PerfilMascota);

@@ -37,7 +37,7 @@
                     $guardian->setEdad($PerfilGuardian->getEdad());
                     $guardian->setFotoPerfil($PerfilGuardian->getFotoPerfil());
                     $guardian->setRemuneracion($PerfilGuardian->getRemuneracion());
-                    $guardian->setTipoPerro($PerfilGuardian->getTipoPerro());
+                    $guardian->setTamano($PerfilGuardian->getTamano());
                     $guardian->setDisponibilidad($PerfilGuardian->getDisponibilidad());
 
                 }
@@ -85,7 +85,7 @@
                      $Guardian->setApellido($content["apellido"]);
                      $Guardian->setEdad($content["edad"]);
                      $Guardian->setFotoPerfil($content["fotoperfil"]);
-                     $Guardian->setTipoPerro($content["tipoperro"]);
+                     $Guardian->setTamano($content["tamano"]);
                      $Guardian->setRemuneracion($content["remuneracion"]);
                      $Guardian->setDisponibilidad($content["disponibilidad"]);
 
@@ -108,7 +108,7 @@
                 $valuesArray["apellido"] = $Guardian->getApellido();
                 $valuesArray["edad"] = $Guardian->getEdad();
                 $valuesArray["fotoperfil"] = $Guardian->getFotoPerfil();
-                $valuesArray["tipoperro"] = $Guardian->getTipoPerro();
+                $valuesArray["tamano"] = $Guardian->getTamano();
                 $valuesArray["remuneracion"] = $Guardian->getRemuneracion();
                 $valuesArray["disponibilidad"] = $Guardian->getDisponibilidad();
                 array_push($arrayToEncode, $valuesArray);

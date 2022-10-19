@@ -1,11 +1,46 @@
 [
     {
-        "id": 1,
+        "id": 3,
         "idDueno": 1,
-        "nombre": "Black",
-        "edad": "10",
+        "nombre": "Carlito",
+        "edad": "12",
+        "fotoperfil": "Rottweiler",
+        "tamano": "grande",
+        "indicaciones": "perro",
+        "raza": "asdfasdf",
+        "especie": "asdfasdf"
+    },
+    {
+        "id": 4,
+        "idDueno": 1,
+        "nombre": "asdfasdf",
+        "edad": "3",
         "fotoperfil": "",
-        "tipoperro": "grande",
-        "indicaciones": "asd"
+        "tamano": "mediano",
+        "indicaciones": "es gordo",
+        "raza": "comun",
+        "especie": "comun"
+    },
+    {
+        "id": 5,
+        "idDueno": 1,
+        "nombre": "Juli",
+        "edad": "4",
+        "fotoperfil": "",
+        "tamano": "grande",
+        "indicaciones": "es gordo",
+        "raza": "gordo",
+        "especie": "perro"
+    },
+    {
+        "id": 6,
+        "idDueno": 1,
+        "nombre": "adfa",
+        "edad": "3",
+        "fotoperfil": "",
+        "tamano": "grande",
+        "indicaciones": "feo",
+        "raza": "dalmata",
+        "especie": "perro"
     }
 ]

@@ -102,7 +102,7 @@
             return false;
         }
 
-        public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$remuneracion,$tipoperro,$disponibilidad)
+        public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$remuneracion,$tamano,$disponibilidad)
         {
 
             $PerfilGuardian = new Guardian();
@@ -111,7 +111,7 @@
             $PerfilGuardian->setEdad($edad);
             $PerfilGuardian->setFotoPerfil($fotoperfil);
             $PerfilGuardian->setRemuneracion($remuneracion);
-            $PerfilGuardian->setTipoPerro($tipoperro);
+            $PerfilGuardian->setTamano($tamano);
             $PerfilGuardian->setDisponibilidad($disponibilidad);
             
             $this->GuardianDAO->EditProfile($PerfilGuardian);
