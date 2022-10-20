@@ -15,7 +15,7 @@ let finesdesemana =document.getElementById('finesdesemana');
 
 personalizada.addEventListener('click',function(){
   
-    $("#calendario").prop( "disabled", false );
+  $("#calendario").prop( "disabled", false );
 })
 
 plena.addEventListener('click',function(){

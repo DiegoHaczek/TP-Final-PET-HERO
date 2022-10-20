@@ -30,7 +30,7 @@
             require_once(VIEWS_PATH."listamascotas.php");
         }
 
-        public function Add($nombre, $edad, $tamano, $especie, $raza, $indicaciones, $fotoperfil)
+        public function Add($nombre, $edad, $tamano, $especie, $razaPerroChico , $razaPerroMediano, $razaPerroGrande , $razaGato , $indicaciones, $fotoperfil)
         {
             //require_once(VIEWS_PATH."validate-session.php");
 
@@ -43,7 +43,20 @@
             $Mascota->setIndicaciones($indicaciones);
             $Mascota->setIdDueno($_SESSION["id"]);
             $Mascota->setEspecie($especie);
-            $Mascota->setRaza($raza);
+            
+            if ($especie=="perro"){
+            if ($razaPerroChico){
+                $Mascota->setRaza($razaPerroChico);}else
+                if($razaPerroMediano){
+                    $Mascota->setRaza($razaPerroMediano);}else
+                if($razaPerroGrande){
+                    $Mascota->setRaza($razaPerroGrande);}
+
+                }else{
+                    $Mascota->setRaza($razaGato);
+                }
+
+
 
             $this->MascotaDAO->Add($Mascota);
 

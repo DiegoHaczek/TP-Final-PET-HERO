@@ -52,7 +52,7 @@
 #editarmascota{
     margin: auto;
     width: 33em;
-    height: 69em ;
+    min-height: 69em ;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -153,10 +153,12 @@ width: 70%;
     border: 2px solid rgba(156, 142, 14, 0.733);
 }
 
-#registrodueño input,#registroguardian input, #editarmascota input{
+#registrodueño input,#registroguardian input, #editarmascota input, #editarmascota select{
     background-color: rgba(235, 208, 135, 0.4);
     border: 1px solid rgba(156, 142, 14, 0.733);
 }
+
+
 
 #registrodueño .formButton,#registroguardian .formButton, #editarmascota .formButton{
     color: rgb(97, 75, 1);

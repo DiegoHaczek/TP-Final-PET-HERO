@@ -3,44 +3,146 @@
         "id": 1,
         "password": "123",
         "mail": "3@hotmail.com",
-        "nombre": "Jose",
-        "apellido": "Perez",
+        "nombre": "Juan",
+        "apellido": "Fernandez",
         "edad": "33",
-        "fotoperfil": "twitter.png",
-        "tipoperro": [
-            "Mediano",
-            "Chico"
+        "fotoperfil": "mascotas1.jpg",
+        "tamano": [
+            "Grande"
         ],
-        "remuneracion": "700",
-        "disponibilidad": "Fines De Semana"
+        "remuneracion": "600",
+        "disponibilidad": "26-10,03-11,28-10,20-10"
     },
     {
         "id": 2,
         "password": "123",
         "mail": "4@hotmail.com",
-        "nombre": "Mariano",
-        "apellido": "Martinez",
-        "edad": "40",
-        "fotoperfil": "twitter.png",
-        "tipoperro": [
-            "Grande",
-            "Mediano"
-        ],
-        "remuneracion": "800",
-        "disponibilidad": "Plena"
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
     },
     {
         "id": 3,
         "password": "123",
         "mail": "5@hotmail.com",
-        "nombre": "Pedro",
-        "apellido": "Perez",
-        "edad": "40",
-        "fotoperfil": "",
-        "tipoperro": [
-            "Grande"
-        ],
-        "remuneracion": "900",
-        "disponibilidad": "17-10,18-10,26-10,27-10,21-10"
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 4,
+        "password": "123",
+        "mail": "6@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 5,
+        "password": "123",
+        "mail": "7@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 6,
+        "password": "123",
+        "mail": "7@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 7,
+        "password": "123",
+        "mail": "7@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 8,
+        "password": "123",
+        "mail": "7@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 9,
+        "password": "123",
+        "mail": "7@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 10,
+        "password": "123",
+        "mail": "7@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 11,
+        "password": "123",
+        "mail": "7@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
+    },
+    {
+        "id": 12,
+        "password": "123",
+        "mail": "7@hotmail.com",
+        "nombre": null,
+        "apellido": null,
+        "edad": null,
+        "fotoperfil": null,
+        "tamano": null,
+        "remuneracion": null,
+        "disponibilidad": null
     }
 ]

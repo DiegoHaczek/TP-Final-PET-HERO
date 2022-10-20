@@ -49,7 +49,8 @@
 
             if ($password==$passwordconfirm){  //Valida que las contraseñas sean iguales
                 
-                    if(!$this->mailExiste($mail)){ //Valida que el email no exista
+
+                if(!$this->mailExiste($mail)){ //Valida que el email no exista
 
                     $Guardian = new Guardian();
                     $Guardian->setPassWord($password);
