@@ -1,6 +1,6 @@
 <?php 
          
-        date_default_timezone_set('America/Argentina/Buenos_Aires'); //seteo la zona horaria
+         date_default_timezone_set('America/Argentina/Buenos_Aires'); //seteo la zona horaria
 
         function cargarDias(){                                       //hago una funcion que cargue todos los dias disponibles del calendario
                 $fechaInicio = new DateTime();

@@ -79,6 +79,18 @@
             //$this->ShowAddView();
         }
 
+        public function disponibilidadById ($id){
+
+        $GuardianList=$this->GuardianDAO->getAll();
+        foreach($GuardianList as $Guardian){
+
+            if($Guardian->getId() == $id){
+                return $Guardian->getDisponibilidad();
+            }
+        }
+        return null;
+        }
+        
         public function mailExiste($mail)
         {
             $controller = new DuenoController();

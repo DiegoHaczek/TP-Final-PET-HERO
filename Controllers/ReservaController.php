@@ -1,29 +1,29 @@
 <?php
     namespace Controllers;
 
-    use Models\Dueno as Dueno;
     use Models\Guardian as Guardian;
     use Models\Reserva as Reserva;
-    use Models\Mascota as Mascota;
     use Controllers\GuardianController as GuardianController;
+    use Controllers\HomeController as HomeController;
 
     class ReservaController
     {
         
         public function Add($fechaInicio, $fechaFinal, $mascota, $idGuardian, $idDueno)
         {
-            //$inicio = date_create_from_format($fechaInicio, "d-m");
-            //$fin = date_create_from_format($fechaFinal, "d-m");
 
-            $inicio = explode("-",$fechaInicio); //recibo la fecha como string, la paso a arreglo
-            $final = explode ("-",$fechaFinal);
-            //var_dump($fechaInicio, $fechaFinal);
+            $controllerGuardian = new GuardianController();
+            date_default_timezone_set('America/Argentina/Buenos_Aires'); //seteo la zona horaria
+
+            $inicio = \date_create_from_format("d-m",$fechaInicio);
+            $fin = \date_create_from_format("d-m",$fechaFinal);
+
             //var_dump($inicio, $fin);
 
-            var_dump($mascota);
+            if ($inicio<=$fin) { 
 
+                if($this->comprobarDisponibilidad($inicio,$fin,$idGuardian)){
 
-            if ($inicio[0] <= $final [0] && $inicio[1] <= $final [1]) { //comparo dia y mes
                 $reserva = new Reserva();
                 $reserva->setIdDueno($idDueno);
                 $reserva->setIdGuardian($idGuardian);
@@ -32,15 +32,44 @@
                 $reserva->setNombreMascota($mascota);
 
                 echo "<script>alert('Reserva creada con éxito')</script>";
+                
+                $controllerHome = new HomeController();
+                $controllerHome->Index();} else {
 
-                header('location:../index.php');
+
+                echo "<script>alert('El Guardián no se encuentra disponible en las fechas indicadas')</script>";
+                $controllerGuardian->ShowProfile($idGuardian);
+
+                }
             } else {
                 
-                $controller = new GuardianController();
-
                 echo "<script>alert('La fecha final debe ser posterior a la fecha inicial')</script>";
-                $controller->ShowProfile($idGuardian);
+                $controllerGuardian->ShowProfile($idGuardian);
             }
         }
+
+        public function comprobarDisponibilidad($fechaInicio,$fechaFinal,$idGuardian){
+
+                $controllerGuardian = new GuardianController();
+                $disponibilidad = $controllerGuardian->disponibilidadById($idGuardian);
+                $arregloDisponibilidad = explode(",",$disponibilidad);
+
+                $unDia = new \DateInterval ("P1D");
+
+                //var_dump($arregloDisponibilidad);
+
+                for($fecha=$fechaInicio;$fecha<=$fechaFinal;$fecha->add($unDia)){
+
+                    $fechaFormateada= date_format($fecha,"d-m");
+
+                    if(!\in_array($fechaFormateada,$arregloDisponibilidad)){
+
+                        return false;
+                    }
+                }
+                return true;
+        }
     }
+
+    
 ?>

@@ -65,7 +65,7 @@
                         </div>
         </section>
 
-        <section id="reserva" style="width:43em;padding-bottom:4em;">
+        <section id="reserva" style="width:43em;padding-bottom:4em;display:none;">
             <div class="sectioncontent" style="">
 
                 <summary style="margin:2em 0;"><span ><strong> Datos de la Reserva </span></strong></summary>
@@ -101,8 +101,6 @@
                                     <br>
 
                                     
-
-                                    
                                     <?php foreach($mascotas as $mascota) { 
                                         
                                         if ($mascota->getIdDueno()==$_SESSION["id"]){
@@ -117,8 +115,6 @@
                                     <?php }}} ?>
                                     
 
-
-
                                     <?php // var_dump($mascotas);?>
 
                                     <input type="text" style="display:none" value="<?php echo $usuario->getId(); ?>" name="idGuardian">
@@ -131,17 +127,13 @@
                                             <button class="formButton" type="reset" >Limpiar Campos</button></div>    
 
                         </form>
-
-                    
+        
         </section>
+                    
 
-
-                                       
-
-             <a href="<?php echo FRONT_ROOT."Home"?>">
+              <a href="<?php echo FRONT_ROOT."Home"?>">
               <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver al Home</span></button></a>
  
-
 </main>
 
 <style>
