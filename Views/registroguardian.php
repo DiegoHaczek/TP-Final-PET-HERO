@@ -16,11 +16,11 @@
                     <fieldset>
                     <input type="email"    name="mail" placeholder="Email" autocomplete="off" required></input>
                     <input type="password" id = "password" name="password" placeholder="Password" autocomplete="off" required></input>
-                    <input type="password" id = "passwordconfirm" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" required></input>
-                    <input type="checkbox" id = "checkbox" required></input> <span>He leido y acepto los <a href="#"> términos y condiciones</a></span>
+                    <input type="password" id = "passwordconfirm" name="passwordconfirm" placeholder="Confirmar Password" autocomplete="off" style="margin-bottom:1em;"required></input>
+                    <input type="checkbox" id = "checkbox" required></input> <span style="margin-left:-0.5em;">He leido y acepto los <a href="#"> términos y condiciones</a></span>
                     <!--<input type="hidden"   id = "tipo" name = "tipo" value = "dueno"></input> -->
                     
-                    <div id="botoneraForm">
+                    <div id="botoneraForm" style="margin-top:0em;">
                        <button class="formButton" type="submit" > Ingresar</button>
                         <button class="formButton" type="reset" >Limpiar Campos</button></div>
 

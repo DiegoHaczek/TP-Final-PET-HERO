@@ -53,7 +53,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <label for="tamano"><strong><span>Tipo de Perro:</span></strong></label><br>
+                    <label for="tamano"><strong><span>Tamaño Mascotas a cuidar:</span></strong></label><br>
                     <label for="grande" class="labelcheckbox"><span>Grande</span></label>
                     <input id="checkbox" type="checkbox" name="tamano[]" id="grande" value="Grande">
                     <label for="mediano" class="labelcheckbox"><span>Mediano</span></label>

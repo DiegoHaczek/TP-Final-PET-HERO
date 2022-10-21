@@ -1,46 +1,79 @@
 [
     {
+        "id": 1,
+        "idDueno": 1,
+        "nombre": "Goku",
+        "edad": "5",
+        "fotoperfil": "",
+        "tamano": "chico",
+        "indicaciones": "Malo",
+        "raza": "terrier",
+        "especie": "perro"
+    },
+    {
+        "id": 2,
+        "idDueno": 1,
+        "nombre": "Popi",
+        "edad": "2",
+        "fotoperfil": "",
+        "tamano": "grande",
+        "indicaciones": "as",
+        "raza": "pitbull",
+        "especie": "perro"
+    },
+    {
         "id": 3,
         "idDueno": 1,
-        "nombre": "Carlito",
-        "edad": "12",
-        "fotoperfil": "Rottweiler",
-        "tamano": "grande",
-        "indicaciones": "perro",
-        "raza": "asdfasdf",
-        "especie": "asdfasdf"
+        "nombre": "Jose",
+        "edad": "5",
+        "fotoperfil": "",
+        "tamano": "mediano",
+        "indicaciones": "aa",
+        "raza": "esfinge",
+        "especie": "gato"
     },
     {
         "id": 4,
         "idDueno": 1,
-        "nombre": "asdfasdf",
-        "edad": "3",
+        "nombre": "coco",
+        "edad": "7",
         "fotoperfil": "",
-        "tamano": "mediano",
-        "indicaciones": "es gordo",
-        "raza": "comun",
-        "especie": "comun"
+        "tamano": "chico",
+        "indicaciones": "malo",
+        "raza": "pomerano",
+        "especie": "perro"
     },
     {
         "id": 5,
-        "idDueno": 1,
-        "nombre": "Juli",
+        "idDueno": 2,
+        "nombre": "Pipo",
         "edad": "4",
         "fotoperfil": "",
         "tamano": "grande",
-        "indicaciones": "es gordo",
-        "raza": "gordo",
+        "indicaciones": "Corre mucho",
+        "raza": "galgo",
         "especie": "perro"
     },
     {
         "id": 6,
-        "idDueno": 1,
-        "nombre": "adfa",
-        "edad": "3",
+        "idDueno": 2,
+        "nombre": "Toto",
+        "edad": "7",
         "fotoperfil": "",
-        "tamano": "grande",
-        "indicaciones": "feo",
-        "raza": "dalmata",
+        "tamano": "mediano",
+        "indicaciones": "Maulla",
+        "raza": "comun",
+        "especie": "gato"
+    },
+    {
+        "id": 7,
+        "idDueno": 2,
+        "nombre": "Chicho",
+        "edad": "9",
+        "fotoperfil": "",
+        "tamano": "chico",
+        "indicaciones": "Se porta bien",
+        "raza": "caniche",
         "especie": "perro"
     }
 ]

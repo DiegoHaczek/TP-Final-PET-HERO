@@ -2,6 +2,8 @@
 
 <?php require 'header.php' ?>
 <?php require 'usernav.php'?>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+
 
 <main class="content">
 
@@ -22,39 +24,48 @@
                 <fieldset>
                     <label for="tamano"><strong><span>Tamaño</span></strong></label><br>
                     <label for="grande" class="labelcheckbox"><span>Grande</span></label>
-                    <input id="radio" type="radio" name="tamano"  value="grande">
+                    <input id="radioGrande" type="radio" name="tamano"  value="grande">
                     <label for="mediano" class="labelcheckbox"><span>Mediano</span></label>
-                    <input id="radio" type="radio" name="tamano"  value="mediano">
+                    <input id="radioMediano" type="radio" name="tamano"  value="mediano">
                     <label for="chico" class="labelcheckbox"><span>Chico</span></label>
-                    <input id="radio" type="radio" name="tamano"  value="chico">
+                    <input id="radioChico" type="radio" name="tamano"  value="chico">
                 </fieldset>
 
                 <fieldset>
                     <label for="especie"><strong><span>Especie</span></strong></label><br>
                     <label for="perro" class="labelcheckbox"><span>Perro</span></label>
-                    <input id="radio" type="radio" name="especie"  value="perro">
+                    <input id="radioPerro" type="radio" name="especie"  value="perro">
                     <label for="gato" class="labelcheckbox"><span>Gato</span></label>
-                    <input id="radio" type="radio" name="especie"  value="gato">
+                    <input id="radioGato" type="radio" name="especie"  value="gato">
 
-                    <br>
-                    <label for="raza"><strong><span>Raza</span></strong></label><br>
-                    <select name="raza" id="raza">
+                    <br><br>
+                    <label for="raza"><strong><span>Raza</span></strong></label><br><br>
+
+                    <select name="raza" id="selectDefecto" style="" disabled>
                         <option value="">--Elige una opción--</option>
-                        <option value="">--Razas pequeñas--</option>
+                    </select>
+                    
+                    <select name="razaPerroChico" id="selectPerroChico" style="display:none;" >
+                        <option value="">--Razas Pequeñas-- </option>
                         <option value="chihuahua">Chihuahua</option>
                         <option value="pomerano">Pomerano</option>
                         <option value="terrier">Terrier</option>
                         <option value="caniche">Caniche</option>
-                        <option value="salchicha">Dachshund</option>
-                        <option value="">--Razas Medianas--</option>
+                    </select>
+                    
+                    <select name="razaPerroMediano" id="selectPerroMediano" style="display:none;" >
+                        <option value="">--Razas Medianas-- </option>
                         <option value="ovejero">Ovejero</option>
                         <option value="dalmata">Dálmata</option>
                         <option value="beagle">Beagle</option>
-                        <option value="bordercollie">Border Collie</option>
+                        <option value="border collie">Border Collie</option>
                         <option value="bulldog">Bulldog</option>
                         <option value="husky">Husky</option>
                         <option value="pastor">Pastor</option>
-                        <option value="">--Razas Grandes--</option>
+                    </select>
+
+                    <select name="razaPerroGrande" id="selectPerroGrande" style="display:none;" >
+                        <option value="">--Razas Grandes-- </option>
                         <option value="rottweiler">Rottweiler</option>
                         <option value="dogo">Dogo</option>
                         <option value="pitbull">Pitbull</option>
@@ -62,9 +73,9 @@
                         <option value="golden">Golden Retriever</option>
                         <option value="galgo">Galgo</option>
                     </select>
-
+                    
                     <br>
-                    <select name="raza" id="raza">
+                    <select name="razaGato" id="selectGato" style="position:relative;bottom:1.35em;display:none" >
                         <option value="">--Elige una opción--</option>
                         <option value="abisinio">Abisinio</option>
                         <option value="bengala">Bengala</option>
@@ -110,6 +121,106 @@
 
 </main>
 
+<style>
+
+#editarmascota select{
+    margin-left:2em; 
+    transform:scale(1.1); 
+    outline:none; 
+    margin-bottom:0.5em; 
+}
+
+
+</style>
+
+<script>
+
+    
+let radioChico = document.getElementById('radioChico');
+let radioMediano = document.getElementById('radioMediano');
+let radioGrande = document.getElementById('radioGrande');
+let radioGato = document.getElementById('radioGato');
+let radioPerro = document.getElementById('radioPerro');
+let selectGato = document.getElementById('selectGato');
+let selectPerroChico = document.getElementById('selectPerroChico');
+let selectPerroMediano = document.getElementById('selectPerroMediano');
+let selectPerroGrande = document.getElementById('selectPerroGrande');
+let selectDefecto = document.getElementById('selectDefecto');
+
+radioGato.addEventListener('click',function(){
+  
+    $("#selectDefecto").css( "display", "none" );
+    $("#selectPerroGrande").css( "display", "none" );
+    $("#selectPerroMediano").css( "display", "none" );
+    $("#selectPerroChico").css( "display", "none" );
+    $("#selectGato").css( "display", "block" );
+  
+})
+
+radioPerro.addEventListener('click',function(){
+
+    if($('#radioChico').is(':checked')){
+        $("#selectDefecto").css( "display", "none" );
+        $("#selectPerroMediano").css( "display", "none" );
+        $("#selectPerroGrande").css( "display", "none" );
+        $("#selectGato").css( "display", "none" );
+        $("#selectPerroChico").css( "display", "block" );
+    }
+
+    if($('#radioMediano').is(':checked')){
+        $("#selectDefecto").css( "display", "none" );
+        $("#selectPerroChico").css( "display", "none" );
+        $("#selectPerroGrande").css( "display", "none" );
+        $("#selectGato").css( "display", "none" );
+        $("#selectPerroMediano").css( "display", "block" );
+    }
+
+    if($('#radioGrande').is(':checked')){
+        $("#selectDefecto").css( "display", "none" );
+        $("#selectPerroMediano").css( "display", "none" );
+        $("#selectPerroChico").css( "display", "none" );
+        $("#selectGato").css( "display", "none" );
+        $("#selectPerroGrande").css( "display", "block" );
+    }
+
+    })
+
+
+radioChico.addEventListener('click',function(){
+
+    if($('#radioPerro').is(':checked')){
+        $("#selectDefecto").css( "display", "none" );
+        $("#selectPerroMediano").css( "display", "none" );
+        $("#selectPerroGrande").css( "display", "none" );
+        $("#selectGato").css( "display", "none" );
+        $("#selectPerroChico").css( "display", "block" );
+    }
+    })
+
+radioMediano.addEventListener('click',function(){
+
+    if($('#radioPerro').is(':checked')){
+        $("#selectDefecto").css( "display", "none" );
+        $("#selectPerroChico").css( "display", "none" );
+        $("#selectPerroGrande").css( "display", "none" );
+        $("#selectGato").css( "display", "none" );
+        $("#selectPerroMediano").css( "display", "block" );
+    }
+    })
+
+radioGrande.addEventListener('click',function(){
+
+    if($('#radioPerro').is(':checked')){
+        $("#selectDefecto").css( "display", "none" );
+        $("#selectPerroMediano").css( "display", "none" );
+        $("#selectPerroChico").css( "display", "none" );
+        $("#selectGato").css( "display", "none" );
+        $("#selectPerroGrande").css( "display", "block" );
+    }
+    })
+
+
+</script>
 
 
 <?php require 'footer.php' ?>

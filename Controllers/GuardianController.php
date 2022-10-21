@@ -6,6 +6,8 @@
     use DAO\GuardianDAO as GuardianDAO;
     use Models\Dueno as Dueno;
     use Controllers\DuenoController as DuenoController;
+    use Models\Mascota as Mascota;
+    use DAO\MascotaDAO as MascotaDAO;
 
     class GuardianController
     {
@@ -37,6 +39,9 @@
 
             $usuario = $this->GuardianDAO->GetById($id);
 
+            $mascotaDao = new MascotaDAO();
+            $mascotas = $mascotaDao->GetAll();
+
             require_once(VIEWS_PATH."perfilguardian.php");
 
            }
@@ -49,7 +54,8 @@
 
             if ($password==$passwordconfirm){  //Valida que las contraseñas sean iguales
                 
-                    if(!$this->mailExiste($mail)){ //Valida que el email no exista
+
+                if(!$this->mailExiste($mail)){ //Valida que el email no exista
 
                     $Guardian = new Guardian();
                     $Guardian->setPassWord($password);
