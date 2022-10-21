@@ -21,7 +21,7 @@
     margin: auto;
     text-align: left;
     width: 29em;
-    height: 37em ;
+    height: 33.5em ;
     display: flex;
     flex-direction: column;
     border: 2px solid rgba(156, 142, 14, 0.733);
@@ -34,7 +34,7 @@
   
 }
 
-#editarperfil{
+#editarperfil,#solicitarreserva{
     margin: auto;
     width: 33em;
     height: 70em ;
@@ -49,6 +49,19 @@
     background: linear-gradient(rgba(182, 192, 45, 0.8),rgba(208, 214, 119, 0.8))
 }
 
+#solicitarreserva{
+
+    height:37em; 
+
+}
+
+#solicitarreserva fieldset{
+
+    border: 2px solid rgba(64, 114, 8, 0.199);
+    
+
+}
+
 #editarmascota{
     margin: auto;
     width: 33em;
@@ -60,7 +73,7 @@
     padding-top: 4%;
     padding-left: 5%;
     padding-right: 5%;
-    border-radius: 1%;
+    border-radius: 2%;
     background: linear-gradient(-90deg,rgba(219, 175, 93, 0.75),
     rgba(228, 217, 123, 0.8));}
 
@@ -143,7 +156,7 @@ fieldset{
 width: 70%;
 }
 
-#editarperfil fieldset + fieldset, #editarmascota fieldset + fieldset{   
+#editarperfil fieldset + fieldset, #editarmascota fieldset + fieldset,#solicitarreserva fieldset + fieldset{   
     margin-top: 1em;
 }
 
@@ -156,6 +169,13 @@ width: 70%;
 #registrodueño input,#registroguardian input, #editarmascota input, #editarmascota select{
     background-color: rgba(235, 208, 135, 0.4);
     border: 1px solid rgba(156, 142, 14, 0.733);
+}
+
+#solicitarreserva select{
+    background-color:rgba(235, 241, 146, 0.733);    
+    cursor: pointer; 
+    border: 1px solid rgba(64, 114, 8, 0.1);
+
 }
 
 
@@ -220,7 +240,7 @@ background-color: rgba(97, 75, 1,0.3);
 }
 
 
-#editarperfil #botoneraForm{
+#editarperfil #botoneraForm,#solicitarreserva #botoneraForm{
 
 margin-left: 20%;
 }

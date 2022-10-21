@@ -64,6 +64,7 @@
             $this->SaveData();
         }
 
+
         private function RetrieveData()
         {
              $this->MascotaList = array();

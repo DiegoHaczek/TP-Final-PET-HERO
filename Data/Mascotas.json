@@ -42,5 +42,38 @@
         "indicaciones": "malo",
         "raza": "pomerano",
         "especie": "perro"
+    },
+    {
+        "id": 5,
+        "idDueno": 2,
+        "nombre": "Pipo",
+        "edad": "4",
+        "fotoperfil": "",
+        "tamano": "grande",
+        "indicaciones": "Corre mucho",
+        "raza": "galgo",
+        "especie": "perro"
+    },
+    {
+        "id": 6,
+        "idDueno": 2,
+        "nombre": "Toto",
+        "edad": "7",
+        "fotoperfil": "",
+        "tamano": "mediano",
+        "indicaciones": "Maulla",
+        "raza": "comun",
+        "especie": "gato"
+    },
+    {
+        "id": 7,
+        "idDueno": 2,
+        "nombre": "Chicho",
+        "edad": "9",
+        "fotoperfil": "",
+        "tamano": "chico",
+        "indicaciones": "Se porta bien",
+        "raza": "caniche",
+        "especie": "perro"
     }
 ]

@@ -36,7 +36,6 @@
 
             $Mascota = new Mascota();
             $Mascota->setNombre($nombre);
-            //$Mascota->setApellido($apellido);
             $Mascota->setEdad($edad);
             $Mascota->setFotoPerfil($fotoperfil);
             $Mascota->setTamano($tamano);
@@ -83,6 +82,7 @@
             require_once(VIEWS_PATH."listamascotas.php");
 
         }
+
 
         public function Remove($id)
         {

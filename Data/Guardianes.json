@@ -17,132 +17,46 @@
         "id": 2,
         "password": "123",
         "mail": "4@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
+        "nombre": "Ignacio",
+        "apellido": "Hernandez",
+        "edad": "40",
+        "fotoperfil": "mascotas2.jpg",
+        "tamano": [
+            "Grande",
+            "Mediano",
+            "Chico"
+        ],
+        "remuneracion": "1000",
+        "disponibilidad": "Plena"
     },
     {
         "id": 3,
         "password": "123",
         "mail": "5@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
+        "nombre": "Pedro",
+        "apellido": "Perez",
+        "edad": "50",
+        "fotoperfil": "mascotas2.jpg",
+        "tamano": [
+            "Mediano",
+            "Chico"
+        ],
+        "remuneracion": "1200",
+        "disponibilidad": "Fines De Semana"
     },
     {
         "id": 4,
         "password": "123",
         "mail": "6@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
-    },
-    {
-        "id": 5,
-        "password": "123",
-        "mail": "7@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
-    },
-    {
-        "id": 6,
-        "password": "123",
-        "mail": "7@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
-    },
-    {
-        "id": 7,
-        "password": "123",
-        "mail": "7@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
-    },
-    {
-        "id": 8,
-        "password": "123",
-        "mail": "7@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
-    },
-    {
-        "id": 9,
-        "password": "123",
-        "mail": "7@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
-    },
-    {
-        "id": 10,
-        "password": "123",
-        "mail": "7@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
-    },
-    {
-        "id": 11,
-        "password": "123",
-        "mail": "7@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
-    },
-    {
-        "id": 12,
-        "password": "123",
-        "mail": "7@hotmail.com",
-        "nombre": null,
-        "apellido": null,
-        "edad": null,
-        "fotoperfil": null,
-        "tamano": null,
-        "remuneracion": null,
-        "disponibilidad": null
+        "nombre": "Pipo",
+        "apellido": "Gorosito",
+        "edad": "50",
+        "fotoperfil": "mascotas2.jpg",
+        "tamano": [
+            "Mediano",
+            "Chico"
+        ],
+        "remuneracion": "1200",
+        "disponibilidad": "26-10,03-11,28-10,20-10"
     }
 ]

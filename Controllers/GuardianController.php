@@ -6,6 +6,8 @@
     use DAO\GuardianDAO as GuardianDAO;
     use Models\Dueno as Dueno;
     use Controllers\DuenoController as DuenoController;
+    use Models\Mascota as Mascota;
+    use DAO\MascotaDAO as MascotaDAO;
 
     class GuardianController
     {
@@ -36,6 +38,9 @@
            if  ($this->GuardianDAO->GetById($id)){
 
             $usuario = $this->GuardianDAO->GetById($id);
+
+            $mascotaDao = new MascotaDAO();
+            $mascotas = $mascotaDao->GetAll();
 
             require_once(VIEWS_PATH."perfilguardian.php");
 
