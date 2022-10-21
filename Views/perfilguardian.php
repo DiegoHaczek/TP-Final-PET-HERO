@@ -97,11 +97,10 @@
                                 </fieldset>
 
                                     <fieldset>
-                                    <label for="fechaFinal"><span><strong>Mascota a cuidar</strong></span></label>
+                                    <label for="mascotas"><span><strong>Mascotas a cuidar:</strong></span></label>
                                     <br>
 
-                                    <select name="mascota" id="" style="outline:none;transform:scale(1.1); margin: 1em 0 2em 4em;" >
-                                    <option value="">--Seleccione su Mascota-- </option>
+                                    
 
                                     
                                     <?php foreach($mascotas as $mascota) { 
@@ -111,11 +110,12 @@
                                             if(in_array($mascota->getTamano(), $usuario->getTamano())){
                                         ?>
 
-                                    <option value=""><?php echo ucwords($mascota->getNombre()); ?></option>
+                                        <label for="nombremascota"><span style="margin-left:1em;"><?php echo ucwords($mascota->getNombre()); echo " (".ucwords($mascota->getRaza()).")";?></span></label>
+                                        <input type="checkbox" id="checkbox" name="mascota[]" value="<?php echo $mascota->getNombre();?>"></input> <br>
                                     
                                 
                                     <?php }}} ?>
-                                    </select>
+                                    
 
 
 
