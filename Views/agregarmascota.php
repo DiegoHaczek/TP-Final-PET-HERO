@@ -14,7 +14,7 @@
         </fieldset>
 
                 <fieldset>
-                        <label for="informacionbasica"><span><strong>Información Básica</strong></span></label>
+                    <label for="informacionbasica"><span><strong>Información Básica</strong></span></label>
                     <input type="text" name="nombre" placeholder="Nombre de la Mascota" required>
                     <input type="number" class="number" name="edad" placeholder="Edad de la Mascota" min="0"  max="20" required>
                 </fieldset>

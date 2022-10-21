@@ -85,7 +85,7 @@
                      $Guardian->setApellido($content["apellido"]);
                      $Guardian->setEdad($content["edad"]);
                      $Guardian->setFotoPerfil($content["fotoperfil"]);
-                     $Guardian->setTamano($content["tamano"]);
+                     $Guardian->setTamano($content["tamano[]"]);
                      $Guardian->setRemuneracion($content["remuneracion"]);
                      $Guardian->setDisponibilidad($content["disponibilidad"]);
 
