@@ -24,11 +24,11 @@
                 <fieldset>
                     <label for="tamano"><strong><span>Tamaño</span></strong></label><br>
                     <label for="grande" class="labelcheckbox"><span>Grande</span></label>
-                    <input id="radioGrande" type="radio" name="tamano"  value="grande">
+                    <input id="radioGrande" type="radio" name="tamano"  value="Grande">
                     <label for="mediano" class="labelcheckbox"><span>Mediano</span></label>
-                    <input id="radioMediano" type="radio" name="tamano"  value="mediano">
+                    <input id="radioMediano" type="radio" name="tamano"  value="Mediano">
                     <label for="chico" class="labelcheckbox"><span>Chico</span></label>
-                    <input id="radioChico" type="radio" name="tamano"  value="chico">
+                    <input id="radioChico" type="radio" name="tamano"  value="Chico">
                 </fieldset>
 
                 <fieldset>

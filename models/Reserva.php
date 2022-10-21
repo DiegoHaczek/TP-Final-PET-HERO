@@ -5,32 +5,33 @@ namespace Models;
 
 class Reserva {
 
-    private $nombreUsuarioGuardian;
-    private $nombreUsuarioDueño;
+    private $idGuardian;
+    private $idDueno;
     private $nombreMascota;
     private $fechaInicio;
-    private $duracion;
+    private $fechaFinal;
+    private $estado;
 
-    public function getNombreUsuarioGuardian()
+    public function getIdGuardian()
     {
-        return $this->nombreUsuarioGuardian;
+        return $this->idGuardian;
     }
 
-    public function setNombreUsuarioGuardian($nombreUsuarioGuardian): self
+    public function setIdGuardian($idGuardian): self
     {
-        $this->nombreUsuarioGuardian = $nombreUsuarioGuardian;
+        $this->idGuardian = $idGuardian;
 
         return $this;
     }
 
-    public function getNombreUsuarioDue()
+    public function getIdDueno()
     {
-        return $this->nombreUsuarioDue;
+        return $this->idDueno;
     }
 
-    public function setNombreUsuarioDue($nombreUsuarioDue): self
+    public function setIdDueno($idDueno): self
     {
-        $this->nombreUsuarioDue = $nombreUsuarioDue;
+        $this->idDueno = $idDueno;
 
         return $this;
     }
@@ -59,14 +60,26 @@ class Reserva {
         return $this;
     }
 
-    public function getDuracion()
+    public function getEstado()
     {
-        return $this->duracion;
+        return $this->estado;
     }
 
-    public function setDuracion($duracion): self
+    public function setEstado($estado): self
     {
-        $this->duracion = $duracion;
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    public function getFechaFinal()
+    {
+        return $this->fechaFinal;
+    }
+
+    public function setFechaFinal($fechaFinal): self
+    {
+        $this->fechaFinal = $fechaFinal;
 
         return $this;
     }

@@ -5,7 +5,7 @@
         "nombre": "Goku",
         "edad": "5",
         "fotoperfil": "",
-        "tamano": "chico",
+        "tamano": "Chico",
         "indicaciones": "Malo",
         "raza": "terrier",
         "especie": "perro"
@@ -16,7 +16,7 @@
         "nombre": "Popi",
         "edad": "2",
         "fotoperfil": "",
-        "tamano": "grande",
+        "tamano": "Grande",
         "indicaciones": "as",
         "raza": "pitbull",
         "especie": "perro"
@@ -27,7 +27,7 @@
         "nombre": "Jose",
         "edad": "5",
         "fotoperfil": "",
-        "tamano": "mediano",
+        "tamano": "Mediano",
         "indicaciones": "aa",
         "raza": "esfinge",
         "especie": "gato"
@@ -38,7 +38,7 @@
         "nombre": "coco",
         "edad": "7",
         "fotoperfil": "",
-        "tamano": "chico",
+        "tamano": "Chico",
         "indicaciones": "malo",
         "raza": "pomerano",
         "especie": "perro"
@@ -49,7 +49,7 @@
         "nombre": "Pipo",
         "edad": "4",
         "fotoperfil": "",
-        "tamano": "grande",
+        "tamano": "Grande",
         "indicaciones": "Corre mucho",
         "raza": "galgo",
         "especie": "perro"
@@ -60,7 +60,7 @@
         "nombre": "Toto",
         "edad": "7",
         "fotoperfil": "",
-        "tamano": "mediano",
+        "tamano": "Mediano",
         "indicaciones": "Maulla",
         "raza": "comun",
         "especie": "gato"
@@ -71,7 +71,7 @@
         "nombre": "Chicho",
         "edad": "9",
         "fotoperfil": "",
-        "tamano": "chico",
+        "tamano": "Chico",
         "indicaciones": "Se porta bien",
         "raza": "caniche",
         "especie": "perro"
