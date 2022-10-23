@@ -3,6 +3,7 @@
 
     use DAO\MascotaDAO as MascotaDAO;
     use Models\Mascota as Mascota;
+    use Controllers\HomeController as HomeController;
 
     class MascotaController
     {
@@ -59,9 +60,12 @@
 
             $this->MascotaDAO->Add($Mascota);
 
-            echo "<script>alert('Mascota agregada con éxito')</script>";
+            //echo "<script>alert('Mascota agregada con éxito')</script>";
 
-            header('location:../index.php');
+            $alert=['tipo'=>"exito",'mensaje'=>"Mascota Agregada con Éxito"];
+            $controllerHome = new HomeController();
+            $controllerHome->index($alert);
+            //header('location:../index.php');
 
             //$this->ShowAddView();
         }

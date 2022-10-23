@@ -8,6 +8,7 @@
     use Controllers\DuenoController as DuenoController;
     use Models\Mascota as Mascota;
     use DAO\MascotaDAO as MascotaDAO;
+    use Controllers\HomeController as HomeController;
 
     class GuardianController
     {
@@ -33,7 +34,7 @@
             require_once(VIEWS_PATH."listaguardianes.php");
         }
 
-        public function ShowProfile($id){
+        public function ShowProfile($id,$alert = ""){
 
            if  ($this->GuardianDAO->GetById($id)){
 
@@ -69,11 +70,11 @@
                     require_once(VIEWS_PATH."editarperfilguardian.php");
                     }
                     else{
-                        echo "<script>alert('El email ya existe')</script>";
+                        $alert=['tipo'=>"error",'mensaje'=>"El Email ya está en uso"];
                         require_once(VIEWS_PATH."registroguardian.php");}
             }
             else{
-                echo "<script>alert('Las contraseñas no coinciden')</script>";
+                $alert=['tipo'=>"error",'mensaje'=>"Las contraseñas no coinciden"];
                 require_once(VIEWS_PATH."registroguardian.php"); }
 
             //$this->ShowAddView();
@@ -136,10 +137,9 @@
 
             $_SESSION["loggedUser"] = $nombre;
 
-            echo "<script>alert('Perfil creado con éxito')</script>";
-
-
-            header('location:../index.php');
+            $alert=['tipo'=>"exito",'mensaje'=>"Perfil Creado con Éxito"];
+            $controllerHome = new HomeController();
+            $controllerHome->index($alert);
 
         }
        

@@ -75,5 +75,49 @@
         "indicaciones": "Se porta bien",
         "raza": "caniche",
         "especie": "perro"
+    },
+    {
+        "id": 8,
+        "idDueno": 3,
+        "nombre": "asd",
+        "edad": "4",
+        "fotoperfil": "",
+        "tamano": "Grande",
+        "indicaciones": "asd",
+        "raza": "labrador",
+        "especie": "perro"
+    },
+    {
+        "id": 9,
+        "idDueno": 1,
+        "nombre": "Pepito",
+        "edad": "4",
+        "fotoperfil": "",
+        "tamano": "Mediano",
+        "indicaciones": "asd",
+        "raza": "beagle",
+        "especie": "perro"
+    },
+    {
+        "id": 10,
+        "idDueno": 1,
+        "nombre": "pepito",
+        "edad": "5",
+        "fotoperfil": "",
+        "tamano": "Grande",
+        "indicaciones": "asd",
+        "raza": "pitbull",
+        "especie": "perro"
+    },
+    {
+        "id": 11,
+        "idDueno": 1,
+        "nombre": "juan",
+        "edad": "4",
+        "fotoperfil": "",
+        "tamano": "Mediano",
+        "indicaciones": "asd",
+        "raza": "beagle",
+        "especie": "perro"
     }
 ]

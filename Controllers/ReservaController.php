@@ -13,6 +13,8 @@
         {
 
             $controllerGuardian = new GuardianController();
+            $controllerHome = new HomeController();
+
             date_default_timezone_set('America/Argentina/Buenos_Aires'); //seteo la zona horaria
 
             $inicio = \date_create_from_format("d-m",$fechaInicio);
@@ -31,20 +33,21 @@
                 $reserva->setFechaFinal($fechaFinal);
                 $reserva->setNombreMascota($mascota);
 
-                echo "<script>alert('Reserva creada con éxito')</script>";
+                $alert=['tipo'=>"exito",'mensaje'=>"Reserva Creada con Éxito"];
                 
-                $controllerHome = new HomeController();
-                $controllerHome->Index();} else {
+                $controllerHome->Index($alert);} else {
 
 
-                echo "<script>alert('El Guardián no se encuentra disponible en las fechas indicadas')</script>";
-                $controllerGuardian->ShowProfile($idGuardian);
+                //echo "<script>alert('El Guardián no se encuentra disponible en las fechas indicadas')</script>";
+
+                $alert=['tipo'=>"error",'mensaje'=>"El Guardián no se encuentra disponible en las fechas indicadas"];
+                $controllerGuardian->ShowProfile($idGuardian,$alert);
 
                 }
             } else {
-                
-                echo "<script>alert('La fecha final debe ser posterior a la fecha inicial')</script>";
-                $controllerGuardian->ShowProfile($idGuardian);
+
+                $alert=['tipo'=>"error",'mensaje'=>"La Fecha Final debe ser posterior a la Fecha Inicial"];
+                $controllerGuardian->ShowProfile($idGuardian,$alert);
             }
         }
 

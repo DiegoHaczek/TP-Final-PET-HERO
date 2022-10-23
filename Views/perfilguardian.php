@@ -9,6 +9,12 @@
 
 <main class="content">
 
+<?php if ($alert!="") {?>
+
+<div id="alert" class="<?php echo $alert['tipo'] ?>"><span><strong><?php echo $alert['mensaje']?></strong></span></div>
+
+<?php } ?>
+
     <div id="mainContainer" class="" style="width:75em;">
 
                 
@@ -42,11 +48,13 @@
                                         <div class="separador"></div>
                                         <span>Tipo de Perro: <strong><?php echo implode(", ",$usuario->getTamano());?></strong></span>
                                         <span>Remuneracion por Día: <strong><?php echo $usuario->getRemuneracion();?></strong></span>
-                                        <span>Disponibilidad: <?php if($usuario->getDisponibilidad()=='Plena'||$usuario->getDisponibilidad()=='Fines De Semana'){
-                                            ?> <strong><?php echo $usuario->getDisponibilidad()?></strong>  <?php
-                                        }else{ ?> </span>
+                                        <span>Disponibilidad: </span>
                                            
-                                        <?php include (VIEWS_PATH."disponibilidad.php") ?>
+                                        <?php include (VIEWS_PATH."disponibilidad.php"); 
+                                        
+                                        if ($usuario->getDisponibilidad()=='Plena') { 
+                                            
+                                        ?> <span style="position:relative;left:7em;bottom:3.45em;"><strong><?php echo $usuario->getDisponibilidad();} else{ ?></strong></span>
                                     
                                         <div class="container" style="width:26%;">
                                                 <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:2.3em; right:3em; !important; border-radius: 3%; background-color:
@@ -111,10 +119,8 @@
                                         <label for="nombremascota"><span style="margin-left:1em;"><?php echo ucwords($mascota->getNombre()); echo " (".ucwords($mascota->getRaza()).")";?></span></label>
                                         <input type="checkbox" id="checkbox" name="mascota[]" value="<?php echo $mascota->getNombre();?>"></input> <br>
                                     
-                                
                                     <?php }}} ?>
                                     
-
                                     <?php // var_dump($mascotas);?>
 
                                     <input type="text" style="display:none" value="<?php echo $usuario->getId(); ?>" name="idGuardian">
@@ -131,8 +137,8 @@
         </section>
                     
 
-              <a href="<?php echo FRONT_ROOT."Home"?>">
-              <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver al Home</span></button></a>
+              <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
+              <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver a Guardianes</span></button></a>
  
 </main>
 
@@ -147,8 +153,15 @@
 
 <script>
 
+<?php if ($usuario->getDisponibilidad()=='Fines De Semana') {?>  
+
+$('.date').datepicker('setDaysOfWeekDisabled',[1,2,3,4,5]);
+
+<?php }else{  if ($usuario->getDisponibilidad()!='Plena'){?>
+
 $('.date').datepicker('setDatesDisabled',fechasNoDisponiblesJS);  //funcion de datepicker que setea fechas no disponibles
-                                                                    //el dueño solo puede elegir de entre las fechas seleccionadas por el guardian
+                                                                  //el dueño solo puede elegir de entre las fechas seleccionadas por el guardian
+<?php }} ?>
 let solicitarReserva = document.getElementById('solicitar');
 let formularioReserva = document.getElementById('reserva');
 
@@ -157,6 +170,13 @@ solicitarReserva.addEventListener('click',function(){
     $("#reserva").css( "display", "block" );
 
 })
+
+
+if (!$("#alert").hasClass("")){
+
+$("#alert").animate({bottom:"3%"},{duration:800}).delay(1000).animate({bottom:"-8%"},{duration:800});
+
+}
 
 
 </script>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo CSS_PATH;?>main.css">
     <script type="text/javascript" src="<?php echo JS_PATH;?>scripts.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
     <link rel="icon" type="image/x-icon" href="<?php echo IMG_PATH;?>favicoin.png">
 
     <!--Fuentes-->

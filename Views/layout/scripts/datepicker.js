@@ -5,6 +5,8 @@ $('.date').datepicker({
   format: 'dd-mm',
   clearBtn: true,
   updateViewDate: false,
-  title: 'Elige tu Disponibilidad'
+  title: 'Elige tu Disponibilidad',
+  weekStart: 1
+
 });
 

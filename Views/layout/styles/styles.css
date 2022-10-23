@@ -370,3 +370,52 @@ details[open].estilizado{
     padding-bottom: 5em;
 }
 
+#alert {
+    z-index: 2;
+    position: fixed;
+    width: 55%;
+    height: 3.5em;
+    bottom:-8%;
+    left:22.5%;
+    border-radius: 5px;
+    font-size:1.1rem;
+    transition-delay: all 1s ease;
+
+}
+
+.mostrar{
+ 
+    transition-delay: all 1s ease;
+    transform:translate(0,-6.5em);
+
+}
+
+
+
+
+#alert span{
+    position:relative;
+    left:2em;
+    top:0.8em;
+}
+
+.exito{
+
+    background-color: rgba(143, 221, 143,0.93);
+    border: 1px solid rgb(104, 161, 104);
+
+}
+
+.error{
+
+    background-color: rgba(238, 142, 142, 0.93);
+    border: 1px solid rgb(170, 103, 103);
+
+}
+
+.advertencia{
+    background-color: rgba(233, 214, 106,0.93);
+    border: 1px solid rgb(173, 159, 79);
+
+}
+

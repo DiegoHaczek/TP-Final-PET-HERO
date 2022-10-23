@@ -1,4 +1,3 @@
-
 function animacionMenu(){
 
   var boton = document.getElementById('contenedorIcono');
@@ -148,5 +147,16 @@ nextItem.addEventListener('click', showNextItem);
 previousItem.addEventListener('click', showPreviousItem);
 document.addEventListener('keydown', keyPress);
 }
+
+function mostrarAlerta(){
+
+  if (!$("#alert").hasClass("")){
+
+    $("#alert").animate({bottom:"3%"},{duration:800}).delay(1000).animate({bottom:"-8%"},{duration:800});
+    
+    }
+
+}
+
 
 

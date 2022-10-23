@@ -18,7 +18,7 @@
             $this->guardianDAO = new GuardianDAO();
         }
 
-        public function Index($message = "")
+        public function Index($alert = "")
         {
             if (isset($_SESSION["loggedUser"])) {
 
@@ -38,11 +38,11 @@
         }
 
     
-        public function registroGuardian(){
+        public function registroGuardian($alert = ""){
         require_once(VIEWS_PATH."registroguardian.php");
         }
 
-        public function registroDueno(){
+        public function registroDueno($alert = ""){
         require_once(VIEWS_PATH."registrodueno.php");
         }
 
@@ -76,24 +76,26 @@
                 $_SESSION["type"] = $user->getType();
                 $_SESSION["id"] = $user->getId();
 
-                echo "<script>alert('Logeado con éxito')</script>";
+                $alert=['tipo'=>"exito",'mensaje'=>"Logeado con Éxito"];
 
-                $this->Index();
+
+                $this->Index($alert);
                 //$this->ShowAddView();
                 
             }
             else
 
-                 echo "<script>alert('Datos incorrectos')</script>";
+                $alert=['tipo'=>"error",'mensaje'=>"Datos Incorrectos"];
                 //agregar mensaje de error 
-                $this->Index();
+                $this->Index($alert);
         }
         
         public function Logout()
         {
             unset($_SESSION["loggedUser"]);
             session_destroy();
-            $this->index();
+            $alert=['tipo'=>"exito",'mensaje'=>"Deslogeado con Éxito"];
+            $this->Index($alert);
         }
     }
 ?>

@@ -6,7 +6,9 @@ $('.date').datepicker({
       //format: 'dd-mm',
     format: 'dd-mm',
     clearBtn: true,
-    updateViewDate: false
+    updateViewDate: false,
+    weekStart: 1
+
   });
   
 

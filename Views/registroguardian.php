@@ -4,6 +4,12 @@
 
 <main class="content">
 
+<?php if ($alert!="") {?>
+
+<div id="alert" class="<?php echo $alert['tipo'] ?>"><span><strong><?php echo $alert['mensaje']?></strong></span></div>
+
+<?php } ?>
+
 <div id="formContainer">
 
 
@@ -37,6 +43,11 @@
 
 </main>
 
+<script>
+if (!$("#alert").hasClass("")){
+$("#alert").animate({bottom:"3%"},{duration:800}).delay(1000).animate({bottom:"-8%"},{duration:800});
+}
+</script>
 
 
 <?php require 'footer.php' ?>

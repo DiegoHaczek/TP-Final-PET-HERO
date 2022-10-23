@@ -20,5 +20,16 @@
         "fotoperfil": "twitter.png",
         "mascotas": null,
         "historial": null
+    },
+    {
+        "id": 3,
+        "password": "123",
+        "mail": "10@hotmail.com",
+        "nombre": "pedro",
+        "apellido": "Haczek",
+        "edad": "54",
+        "fotoperfil": "mascotas4.jpg",
+        "mascotas": null,
+        "historial": null
     }
 ]
