@@ -87,6 +87,18 @@
 
         }
 
+        public function countMascotas ($idDueno){
+
+            $MascotaList = $this->MascotaDAO->getAll();
+            $cantidad=0;
+            foreach($MascotaList as $mascota){
+                if($mascota->getIdDueno()==$idDueno){
+                    $cantidad++;
+                }
+            }
+            return $cantidad;
+        }
+
 
         public function Remove($id)
         {

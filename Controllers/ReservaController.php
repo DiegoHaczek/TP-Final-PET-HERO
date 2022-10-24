@@ -37,7 +37,7 @@
                         
                         $controllerHome->Index($alert);
                     } else {
-                        $alert=['tipo'=>"error",'mensaje'=>"Las mascotas son de distintas razas"];
+                        $alert=['tipo'=>"error",'mensaje'=>"Las Mascotas indicadas son de distintas razas"];
                         $controllerGuardian->ShowProfile($idGuardian,$alert);
                     }
                 } else {
@@ -57,25 +57,41 @@
         }
 
         public function comprobarDisponibilidad($fechaInicio,$fechaFinal,$idGuardian){
+            
+            $controllerGuardian = new GuardianController();
+            $disponibilidad = $controllerGuardian->disponibilidadById($idGuardian);
 
-                $controllerGuardian = new GuardianController();
-                $disponibilidad = $controllerGuardian->disponibilidadById($idGuardian);
-                $arregloDisponibilidad = explode(",",$disponibilidad);
+                if ($disponibilidad=='Plena'){return true;}else{
 
-                $unDia = new \DateInterval ("P1D");
+                    if ($disponibilidad=='Fines De Semana'){
 
-                //var_dump($arregloDisponibilidad);
+                        $dateDiff = $fechaInicio->diff($fechaFinal);
 
-                for($fecha=$fechaInicio;$fecha<=$fechaFinal;$fecha->add($unDia)){
+                        if($dateDiff->d>1){
+                            return false;
 
-                    $fechaFormateada= date_format($fecha,"d-m");
+                        }else{
+                            return true;
+                        }
 
-                    if(!\in_array($fechaFormateada,$arregloDisponibilidad)){
+                    }else{
 
-                        return false;
-                    }
-                }
-                return true;
+                        $arregloDisponibilidad = explode(",",$disponibilidad);
+
+                        $unDia = new \DateInterval ("P1D");
+
+                        //var_dump($arregloDisponibilidad);
+
+                        for($fecha=$fechaInicio;$fecha<=$fechaFinal;$fecha->add($unDia)){
+
+                            $fechaFormateada= date_format($fecha,"d-m");
+
+                            if(!\in_array($fechaFormateada,$arregloDisponibilidad)){
+
+                                return false;
+                            }
+                        }
+                        return true;}}
         }
 
         public function comprobarRaza($mascota){

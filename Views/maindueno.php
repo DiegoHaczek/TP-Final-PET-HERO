@@ -40,7 +40,7 @@
 
                                         <span>Información Dueño</span>
                                         <div class="separador"></div>
-                                        <span>Cantidad Mascotas: <strong>0</strong> </span>
+                                        <span>Cantidad Mascotas: <strong><?php echo $cantidadMascotas; ?></strong> </span>
                                         <span>Cantidad Reservas Completadas: <strong>0</strong></span>
                                         
 
@@ -77,7 +77,7 @@
                     
                     <div class="sectioncontent">
 
-                    <summary><span><strong> Mis Reservas </span></strong></summary>
+                    <summary><span style=" position:relative; bottom:-1.5em;"><strong> Mis Reservas </span></strong></summary>
                         
                     <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
                     <button style="" class="buttonHome">Ver Guardianes</button></a>

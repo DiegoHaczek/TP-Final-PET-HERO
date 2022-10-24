@@ -37,7 +37,6 @@
 #editarperfil,#solicitarreserva{
     margin: auto;
     width: 33em;
-    height: 70em ;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -49,9 +48,13 @@
     background: linear-gradient(rgba(182, 192, 45, 0.8),rgba(208, 214, 119, 0.8))
 }
 
+#editarperfil{
+    height: 70em ;
+}
+
 #solicitarreserva{
 
-    height:37em; 
+    min-height:10em; 
 
 }
 

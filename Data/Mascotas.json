@@ -119,5 +119,27 @@
         "indicaciones": "asd",
         "raza": "beagle",
         "especie": "perro"
+    },
+    {
+        "id": 12,
+        "idDueno": 1,
+        "nombre": "Pepito",
+        "edad": "17",
+        "fotoperfil": "",
+        "tamano": "Mediano",
+        "indicaciones": "asd",
+        "raza": "border collie",
+        "especie": "perro"
+    },
+    {
+        "id": 13,
+        "idDueno": 2,
+        "nombre": "Pipi",
+        "edad": "10",
+        "fotoperfil": "",
+        "tamano": "Grande",
+        "indicaciones": "malo",
+        "raza": "galgo",
+        "especie": "perro"
     }
 ]

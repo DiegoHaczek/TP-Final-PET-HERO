@@ -31,5 +31,27 @@
         "fotoperfil": "mascotas4.jpg",
         "mascotas": null,
         "historial": null
+    },
+    {
+        "id": 4,
+        "password": "123",
+        "mail": "12@hotmail.com",
+        "nombre": "Horacio",
+        "apellido": "Cabak",
+        "edad": "18",
+        "fotoperfil": "mascotas2.jpg",
+        "mascotas": null,
+        "historial": null
+    },
+    {
+        "id": 5,
+        "password": "123",
+        "mail": "20@hotmail.com",
+        "nombre": "Martin",
+        "apellido": "Martinez",
+        "edad": "31",
+        "fotoperfil": "mascotas4.jpg",
+        "mascotas": null,
+        "historial": null
     }
 ]

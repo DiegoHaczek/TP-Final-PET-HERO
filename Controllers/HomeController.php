@@ -5,6 +5,8 @@
     use Models\Dueno as Dueno;
     use DAO\GuardianDAO as GuardianDAO; 
     use Models\Guardian as Guardian;
+    use Controllers\MascotaController as MascotaController;
+    use Models\Mascota as Mascota;
     
 
     class HomeController
@@ -25,6 +27,8 @@
                 if ($_SESSION["type"] == "d") {
                     $usuario = New Dueno();
                     $usuario = $this->duenoDAO->GetByName($_SESSION["loggedUser"]);
+                    $controllerMascota = new MascotaController();
+                    $cantidadMascotas = $controllerMascota->countMascotas($_SESSION["id"]);
                     require_once(VIEWS_PATH."maindueno.php");
 
                 } else if ($_SESSION["type"] == "g"){

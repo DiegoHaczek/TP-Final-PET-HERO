@@ -104,7 +104,7 @@
 
                                 </fieldset>
 
-                                    <fieldset>
+                                    <fieldset style="padding-bottom:1em;">
                                     <label for="mascotas"><span><strong>Mascotas a cuidar:</strong></span></label>
                                     <br>
 
@@ -129,7 +129,7 @@
                                         
                                     </fieldset>
                                 
-                                        <div id="botoneraForm">
+                                        <div id="botoneraForm" style="margin-bottom:1em;">
                                             <button  class="formButton" type="submit"  style="margin-left:1.3em;">Solicitar</button>
                                             <button class="formButton" type="reset" >Limpiar Campos</button></div>    
 
@@ -139,7 +139,7 @@
                     
 
               <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
-              <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em; display:none"><span id="backward">Volver a Guardianes</span></button></a>
+              <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver a Guardianes</span></button></a>
  
 </main>
 
