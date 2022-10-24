@@ -20,22 +20,27 @@
             $inicio = \date_create_from_format("d-m",$fechaInicio);
             $fin = \date_create_from_format("d-m",$fechaFinal);
 
+            //var_dump($mascota);
             //var_dump($inicio, $fin);
 
             if ($inicio<=$fin) { 
-
                 if($this->comprobarDisponibilidad($inicio,$fin,$idGuardian)){
+                    if ($this->comprobarRaza($mascota)) {
+                        $reserva = new Reserva();
+                        $reserva->setIdDueno($idDueno);
+                        $reserva->setIdGuardian($idGuardian);
+                        $reserva->setFechaInicio($fechaInicio);
+                        $reserva->setFechaFinal($fechaFinal);
+                        $reserva->setNombreMascota($mascota);
 
-                $reserva = new Reserva();
-                $reserva->setIdDueno($idDueno);
-                $reserva->setIdGuardian($idGuardian);
-                $reserva->setFechaInicio($fechaInicio);
-                $reserva->setFechaFinal($fechaFinal);
-                $reserva->setNombreMascota($mascota);
-
-                $alert=['tipo'=>"exito",'mensaje'=>"Reserva Creada con Éxito"];
-                
-                $controllerHome->Index($alert);} else {
+                        $alert=['tipo'=>"exito",'mensaje'=>"Reserva Creada con Éxito"];
+                        
+                        $controllerHome->Index($alert);
+                    } else {
+                        $alert=['tipo'=>"error",'mensaje'=>"Las mascotas son de distintas razas"];
+                        $controllerGuardian->ShowProfile($idGuardian,$alert);
+                    }
+                } else {
 
 
                 //echo "<script>alert('El Guardián no se encuentra disponible en las fechas indicadas')</script>";
@@ -71,6 +76,28 @@
                     }
                 }
                 return true;
+        }
+
+        public function comprobarRaza($mascota){
+
+            $raza = array();
+            
+
+            foreach ($mascota as $value) {
+                $item = explode(",", $value);
+                array_push($raza, $item[1]);
+            }
+
+            $primeraRaza = $raza[0];
+
+            foreach($raza as $item){
+                if($primeraRaza != $item){
+                    return false;
+                }
+            }
+
+            return true;
+
         }
     }
 

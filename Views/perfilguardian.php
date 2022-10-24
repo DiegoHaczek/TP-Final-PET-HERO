@@ -117,7 +117,8 @@
                                         ?>
 
                                         <label for="nombremascota"><span style="margin-left:1em;"><?php echo ucwords($mascota->getNombre()); echo " (".ucwords($mascota->getRaza()).")";?></span></label>
-                                        <input type="checkbox" id="checkbox" name="mascota[]" value="<?php echo $mascota->getNombre();?>"></input> <br>
+                                        <input type="checkbox" id="checkbox" name="mascota[]" value="<?php echo ucwords($mascota->getNombre()).",".ucwords($mascota->getRaza());?>"></input> 
+                                        <br>
                                     
                                     <?php }}} ?>
                                     
@@ -138,7 +139,7 @@
                     
 
               <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
-              <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver a Guardianes</span></button></a>
+              <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em; display:none"><span id="backward">Volver a Guardianes</span></button></a>
  
 </main>
 
