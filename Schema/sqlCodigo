@@ -1,0 +1,37 @@
+create database if not exists pet_hero;
+use pet_hero;
+
+create table dueno (id_dueno int auto_increment unique, nombre varchar(30), apellido varchar(30), 
+edad int, foto_perfil varchar(30), email varchar(30) unique, password varchar(30), primary key (id_dueno));
+
+create table guardian (id_guardian int auto_increment unique, nombre varchar(30), apellido varchar(30), 
+edad int, foto_perfil varchar(30), email varchar(30) unique, password varchar(30), tamaño varchar(30), 
+tarifa int, disponibilidad varchar(30), reputacion float(5), primary key (id_guardian));
+
+create table mascota (id_mascota int auto_increment unique, id_dueno int, nombre varchar(30), edad int, foto_perfil varchar(30),
+ficha_medica varchar(30), video varchar(30), tamaño varchar(30), raza varchar(30), especie varchar(30), 
+indicaciones varchar(30), primary key (id_mascota),
+constraint foreign key (id_dueno) references dueno(id_dueno));
+
+create table reserva (id_reserva int auto_increment unique, id_dueno int, id_guardian int, id_mascota int, fecha_inicio varchar(30),
+fecha_final varchar(30), estado varchar(30), primary key (id_reserva), 
+constraint foreign key (id_dueno) references dueno(id_dueno), 
+constraint foreign key (id_guardian) references guardian(id_guardian),
+constraint foreign key (id_mascota) references mascota(id_mascota));
+
+insert into dueno(nombre, apellido, edad, foto_perfil, email, password) values('Juan', 'Hernández', 32, null, '1@hotmail.com', '123');
+insert into dueno(nombre, apellido, edad, foto_perfil, email, password) values('Pedro', 'Gómez', 29, null, '2@hotmail.com', '123');
+insert into guardian(nombre, apellido, edad, foto_perfil, email, password, tamaño, tarifa, disponibilidad, reputacion) values('Luis', 'Pérez', 19, null, '3@hotmail.com', '123', 'grande', 400, 'plena', 5);
+insert into guardian(nombre, apellido, edad, foto_perfil, email, password, tamaño, tarifa, disponibilidad, reputacion) values('Jorge', 'Coronel', 59, null, '4@hotmail.com', '123', 'chico', 500, 'plena', 4);
+insert into mascota(id_dueno, nombre, edad, tamaño, raza, especie, indicaciones) values (1, 'coco', 4, 'grande', 'labrador', 'perro', 'es gordo');
+insert into mascota(id_dueno, nombre, edad, tamaño, raza, especie, indicaciones) values (2, 'pepito', 5, 'chico', 'caniche', 'perro', 'insoportable');
+insert into reserva(id_dueno, id_guardian, id_mascota, fecha_inicio, fecha_final, estado) values (1, 1, 2, '3-11', '4-11', 'aceptado');
+
+delete from mascota where id_mascota = 1;
+
+drop table reserva;
+drop table mascota;
+drop table guardian;
+drop table duenos;
+
+select * from reserva;

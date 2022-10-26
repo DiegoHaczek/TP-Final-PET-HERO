@@ -3,21 +3,41 @@
 
     use DAO\IDuenoDAO as IDuenoDAO;
     use Models\Dueno as Dueno;
+    use DAO\Connection as Connection;
+    use \Exception as Exception;
 
     class DuenoDAO implements IDuenoDAO
     {
         private $DuenoList = array();
         private $fileName = ROOT."Data/Duenos.json";
+        private $tableName = "dueno";
 
     
         public function Add(Dueno $Dueno)
         {
-            $this->RetrieveData();
+            /*$this->RetrieveData();
             
             $Dueno->setId($this->GetNextId());
             array_push($this->DuenoList, $Dueno);
-            $this->SaveData();
-               
+            $this->SaveData();*/
+
+            try {
+                $query = "INSERT INTO ".$this->tableName." (nombre, apellido, edad, foto_perfil, email, password) VALUES (:nombre, :apellido, :edad, :foto_perfil, :email, :password);";
+                
+                $parameters["nombre"] = $Dueno->getNombre();
+                $parameters["apellido"] = $Dueno->getApellido();
+                $parameters["edad"] = $Dueno->getEdad();
+                $parameters["foto_perfil"] = $Dueno->getFotoPerfil();
+                $parameters["email"] = $Dueno->getMail();
+                $parameters["password"] = $Dueno->getPassWord();
+
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters);
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
             
         }
 
