@@ -22,12 +22,9 @@
             $this->SaveData();*/
 
             try {
-                $query = "INSERT INTO ".$this->tableName." (nombre, apellido, edad, foto_perfil, email, password) VALUES (:nombre, :apellido, :edad, :foto_perfil, :email, :password);";
+                $query = "INSERT INTO ".$this->tableName." (email, password) VALUES (:email, :password);";
                 
-                $parameters["nombre"] = $Dueno->getNombre();
-                $parameters["apellido"] = $Dueno->getApellido();
-                $parameters["edad"] = $Dueno->getEdad();
-                $parameters["foto_perfil"] = $Dueno->getFotoPerfil();
+                
                 $parameters["email"] = $Dueno->getMail();
                 $parameters["password"] = $Dueno->getPassWord();
 
@@ -43,6 +40,26 @@
 
         public function EditProfile(Dueno $PerfilDueno){
 
+            try {
+
+                $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad, foto_perfil=:foto_perfil WHERE id_dueno = ".$_SESSION["id"].";";
+                
+                $parameters["nombre"] = $PerfilDueno->getNombre();
+                $parameters["apellido"] = $PerfilDueno->getApellido();
+                $parameters["edad"] = $PerfilDueno->getEdad();
+                $parameters["foto_perfil"] = $PerfilDueno->getFotoPerfil();
+                
+
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters);
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
+
+
+            /*
             $this->RetrieveData();
 
             $id = count ($this->DuenoList); ///cuenta los elementos que hay y calcula el ultimo id,
@@ -63,9 +80,35 @@
                 }
             }
 
-            $this->SaveData();
+            $this->SaveData();*/
+        }
+
+        public function GetIdByMail($mail){
+
+            try {
+
+                $result = array();
+
+                $query = "SELECT id_dueno from ".$this->tableName." WHERE EMAIL = :email;";
+                
+                
+                $parameters["email"] = $mail;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                $id=$result[0]["id_dueno"];
+                //var_dump($id);
+                return $id;
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
 
         }
+
+        
 
         public function GetAll()
         {

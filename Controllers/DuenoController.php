@@ -32,7 +32,7 @@
 
                   //  $_SESSION["loggedUser"] = $Dueno->getNombre();
                     $_SESSION["type"] = $Dueno->getType();
-                    $_SESSION["id"] = $Dueno->getId();
+                    $_SESSION["id"] = $this->DuenoDAO->GetIdByMail($mail);
 
                     require_once(VIEWS_PATH."editarperfildueno.php");
                     }

@@ -141,5 +141,16 @@
         "indicaciones": "malo",
         "raza": "galgo",
         "especie": "perro"
+    },
+    {
+        "id": 14,
+        "idDueno": 5,
+        "nombre": "Perro",
+        "edad": "1",
+        "fotoperfil": "",
+        "tamano": "Chico",
+        "indicaciones": "asd",
+        "raza": "chihuahua",
+        "especie": "perro"
     }
 ]
