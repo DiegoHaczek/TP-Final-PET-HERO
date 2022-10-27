@@ -3,98 +3,132 @@
 
     use DAO\IGuardianDAO as IGuardianDAO;
     use Models\Guardian as Guardian;
+    use DAO\Connection as Connection;
+    use \Exception as Exception;
 
     class GuardianDAO implements IGuardianDAO
     {
         private $GuardianList = array();
-        private $fileName = ROOT."Data/Guardianes.json";
+        private $tableName = "guardian";
 
         public function Add(Guardian $Guardian)
         {
-            $this->RetrieveData();
-            
-            $Guardian->setId($this->GetNextId());
-            array_push($this->GuardianList, $Guardian);
-            $this->SaveData();
+            try {
+                $query = "INSERT INTO ".$this->tableName." (email, password) VALUES (:email, :password);";
+                
+                
+                $parameters["email"] = $Guardian->getMail();
+                $parameters["password"] = $Guardian->getPassWord();
+
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters);
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
                
         }
 
 
         public function EditProfile(Guardian $PerfilGuardian){
 
-            $this->RetrieveData();
+            try {
 
-            $id = count ($this->GuardianList); ///cuenta los elementos que hay y calcula el ultimo id,
-                                               ///por ahora funciona, pero cuando se puedan borrar usuarios, no van a coincidir, 
-                                              ///o el usuario puede registrarse y salir sin completar el perfil y generaria problemas tmb
+                $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad, foto_perfil=:foto_perfil, tamano=:tamano, tarifa=:tarifa, disponibilidad=:disponibilidad WHERE id_guardian = ".$_SESSION["id"].";";
+                
+                $parameters["nombre"] = $PerfilGuardian->getNombre();
+                $parameters["apellido"] = $PerfilGuardian->getApellido();
+                $parameters["edad"] = $PerfilGuardian->getEdad();
+                $parameters["foto_perfil"] = $PerfilGuardian->getFotoPerfil();
+                $parameters["tamano"] = implode(",", $PerfilGuardian->getTamano());
+                $parameters["tarifa"] = $PerfilGuardian->getRemuneracion();
+                $parameters["disponibilidad"] = $PerfilGuardian->getDisponibilidad();
+                //$parameters["reputacion"] = $PerfilGuardian->getReputacion
+            
+                $this->connection = Connection::GetInstance();
 
-            foreach ($this->GuardianList as $guardian){
+                $this->connection->ExecuteNonQuery($query, $parameters);
 
-                if ($guardian->getId()==$id){
-
-                    $guardian->setNombre($PerfilGuardian->getNombre());
-                    $guardian->setApellido($PerfilGuardian->getApellido());
-                    $guardian->setEdad($PerfilGuardian->getEdad());
-                    $guardian->setFotoPerfil($PerfilGuardian->getFotoPerfil());
-                    $guardian->setRemuneracion($PerfilGuardian->getRemuneracion());
-                    $guardian->setTamano($PerfilGuardian->getTamano());
-                    $guardian->setDisponibilidad($PerfilGuardian->getDisponibilidad());
-
-                }
+            } catch (Excepcion $ex){
+                throw $ex;
             }
-
-            $this->SaveData();
-
-        }
-
-        public function GetAll()
-        {
-            $this->RetrieveData();
-
-            return $this->GuardianList;
         }
 
         public function Remove($id)
         {            
-            $this->RetrieveData();
-            
-            $this->GuardianList = array_filter($this->GuardianList, function($Guardian) use($id){                
-                return $Guardian->getId() != $id;
-            });
-            
-            $this->SaveData();
+            try {
+                $query = "delete from ".$this->tableName." WHERE id_guardian = :id_guardian;";
+
+                $parameters["id"] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->ExecuteNonQuery($query,$parameters);
+
+                //var_dump($id);
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
         }
 
-        private function RetrieveData()
+        public function GetAll()
         {
-             $this->GuardianList = array();
+            try{
+                $this->GuardianList = array();
+                
+                $query = "SELECT * FROM ".$this->tableName;
 
-             if(file_exists($this->fileName))
-             {
-                 $jsonToDecode = file_get_contents($this->fileName);
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query);
 
-                 $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
-                 
-                 foreach($contentArray as $content)
-                 {
-                     $Guardian = new Guardian();
-                     $Guardian->setId($content["id"]);
-                     $Guardian->setPassWord($content["password"]);
-                     $Guardian->setMail($content["mail"]);
-                     $Guardian->setNombre($content["nombre"]);
-                     $Guardian->setApellido($content["apellido"]);
-                     $Guardian->setEdad($content["edad"]);
-                     $Guardian->setFotoPerfil($content["fotoperfil"]);
-                     $Guardian->setTamano($content["tamano"]);
-                     $Guardian->setRemuneracion($content["remuneracion"]);
-                     $Guardian->setDisponibilidad($content["disponibilidad"]);
+                foreach ($resultSet as $row){
+                    $Guardian = new Guardian();
+                    $Guardian->setId($row["id_guardian"]);
+                    $Guardian->setMail($row["email"]);
+                    $Guardian->setNombre($row["nombre"]);
+                    $Guardian->setApellido($row["apellido"]);
+                    $Guardian->setEdad($row["edad"]);
+                    $Guardian->setFotoPerfil($row["foto_perfil"]);
+                    $Guardian->setPassWord($row["password"]);
+                    $Guardian->setRemuneracion($row["tarifa"]);
+                    $Guardian->setTamano($row["tamano"]);
+                    $Guardian->setDisponibilidad($row["disponibilidad"]);
 
-                     array_push($this->GuardianList, $Guardian);
-                 }
-             }
+                    array_push($this->GuardianList, $Guardian);
+                }
+
+                return $this->GuardianList;
+            }catch(Exception $ex){
+                return $ex;
+            }
         }
 
-        private function SaveData()
+        public function GetIdByMail($mail){
+
+            try {
+
+                $result = array();
+
+                $query = "SELECT id_guardian from ".$this->tableName." WHERE EMAIL = :email;";
+                
+                
+                $parameters["email"] = $mail;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                $id=$result[0]["id_guardian"];
+                //var_dump($id);
+                return $id;
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
+
+        }
+        /*private function SaveData()
         {
             $arrayToEncode = array();
 
@@ -117,57 +151,64 @@
             $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
 
             file_put_contents($this->fileName, $fileContent);
-        }
-
-        public function GetByName($name)
-        {
-            $this->RetrieveData();
-
-            foreach ($this->GuardianList as $guardian) {
-                if ($guardian->getNombre() == $name) {
-                    return $guardian;
-                }
-            }
-
-            return null;
-        }
+        }*/
 
         public function GetByMail($mail)
         {
-            $this->RetrieveData();
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE email = :email;";
 
-            foreach ($this->GuardianList as $guardian) {
-                if ($guardian->getMail() == $mail) {
-                    return $guardian;
-                }
+                $parameters["email"] = $mail;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                $Guardian = new Guardian();
+                $Guardian->setId($result[0]["id_guardian"]);
+                $Guardian->setMail($result[0]["email"]);
+                $Guardian->setNombre($result[0]["nombre"]);
+                $Guardian->setApellido($result[0]["apellido"]);
+                $Guardian->setEdad($result[0]["edad"]);
+                $Guardian->setFotoPerfil($result[0]["foto_perfil"]);
+                $Guardian->setPassWord($result[0]["password"]);
+                $Guardian->setRemuneracion($result[0]["tarifa"]);
+                $Guardian->setTamano($result[0]["tamano"]);
+                $Guardian->setDisponibilidad($result[0]["disponibilidad"]);
+
+                return $Guardian;
+            }catch(Exception $ex){
+                return $ex;
             }
-
-            return null;
         }
 
-        public function GetById($id)
-        {
-            $this->RetrieveData();
+        public function GetById($id){
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_GUARDIAN = :id_guardian;";
 
-            foreach ($this->GuardianList as $guardian) {
-                if ($guardian->getId() == $id) {
-                    return $guardian;
-                }
+                $parameters["id_guardian"] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                var_dump($result);
+                $Guardian = new Guardian();
+                $Guardian->setId($result[0]["id_guardian"]);
+                $Guardian->setMail($result[0]["email"]);
+                $Guardian->setNombre($result[0]["nombre"]);
+                $Guardian->setApellido($result[0]["apellido"]);
+                $Guardian->setEdad($result[0]["edad"]);
+                $Guardian->setFotoPerfil($result[0]["foto_perfil"]);
+                $Guardian->setPassWord($result[0]["password"]);
+                $Guardian->setRemuneracion($result[0]["tarifa"]);
+                $Guardian->setTamano($result[0]["tamano"]);
+                $Guardian->setDisponibilidad($result[0]["disponibilidad"]);
+
+                return $Guardian;
+            }catch(Exception $ex){
+                return $ex;
             }
-
-            return null;
-        }
-
-        private function GetNextId()
-        {
-            $id = 0;
-
-            foreach($this->GuardianList as $Guardian)
-            {
-                $id = ($Guardian->getId() > $id) ? $Guardian->getId() : $id;
-            }
-
-            return $id + 1;
         }
     }
 ?>

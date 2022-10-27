@@ -46,7 +46,7 @@
 
                                         <span>Información Guardián</span>
                                         <div class="separador"></div>
-                                        <span>Tipo de Perro: <strong><?php echo implode(", ",$usuario->getTamano());?></strong></span>
+                                        <span>Tipo de Perro: <strong><?php echo $usuario->getTamano();?></strong></span>
                                         <span>Remuneracion por Día: <strong><?php echo $usuario->getRemuneracion();?></strong></span>
                                         <span>Disponibilidad: <?php if($usuario->getDisponibilidad()=='Plena'||$usuario->getDisponibilidad()=='Fines De Semana'){
                                             ?> <strong><?php echo $usuario->getDisponibilidad()?></strong>  <?php

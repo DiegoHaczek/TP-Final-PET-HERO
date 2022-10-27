@@ -65,7 +65,7 @@
                     $this->GuardianDAO->Add($Guardian);
 
                     $_SESSION["type"] = $Guardian->getType();
-                    $_SESSION["id"] = $Guardian->getId();
+                    $_SESSION["id"] = $this->GuardianDAO->GetIdByMail($mail);
 
                     require_once(VIEWS_PATH."editarperfilguardian.php");
                     }

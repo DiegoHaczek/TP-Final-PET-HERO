@@ -71,10 +71,11 @@
         public function mailDuenoExiste($mail){//funcion llamada por el controller de guardian
 
             $DuenoList= $this->DuenoDAO->getAll();
-                foreach ($DuenoList as $Dueno) {
-                    if ($mail == $Dueno->getMail()) {
-                        return true;
-                    }
+
+            foreach ($DuenoList as $Dueno) {
+                if ($mail == $Dueno->getMail()) {
+                    return true;
+                }
             }
             return false;
         }

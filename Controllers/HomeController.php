@@ -26,14 +26,14 @@
 
                 if ($_SESSION["type"] == "d") {
                     $usuario = New Dueno();
-                    $usuario = $this->duenoDAO->GetByName($_SESSION["loggedUser"]);
+                    $usuario = $this->duenoDAO->GetById($_SESSION["id"]);
                     $controllerMascota = new MascotaController();
                     $cantidadMascotas = $controllerMascota->countMascotas($_SESSION["id"]);
                     require_once(VIEWS_PATH."maindueno.php");
 
                 } else if ($_SESSION["type"] == "g"){
                     $usuario = New Guardian();
-                    $usuario = $this->guardianDAO->GetByName($_SESSION["loggedUser"]);
+                    $usuario = $this->guardianDAO->GetById($_SESSION["id"]);
                     require_once(VIEWS_PATH."mainguardian.php");
                 }
             } else {

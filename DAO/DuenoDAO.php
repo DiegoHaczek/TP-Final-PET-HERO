@@ -9,17 +9,11 @@
     class DuenoDAO implements IDuenoDAO
     {
         private $DuenoList = array();
-        private $fileName = ROOT."Data/Duenos.json";
         private $tableName = "dueno";
 
     
         public function Add(Dueno $Dueno)
         {
-            /*$this->RetrieveData();
-            
-            $Dueno->setId($this->GetNextId());
-            array_push($this->DuenoList, $Dueno);
-            $this->SaveData();*/
 
             try {
                 $query = "INSERT INTO ".$this->tableName." (email, password) VALUES (:email, :password);";
@@ -57,30 +51,6 @@
             } catch (Excepcion $ex){
                 throw $ex;
             }
-
-
-            /*
-            $this->RetrieveData();
-
-            $id = count ($this->DuenoList); ///cuenta los elementos que hay y calcula el ultimo id,
-                                               ///por ahora funciona, pero cuando se puedan borrar usuarios, no van a coincidir, 
-                                              ///o el usuario puede registrarse y salir sin completar el perfil y generaria problemas tmb
-
-            foreach ($this->DuenoList as $Dueno){
-
-                if ($Dueno->getId()==$id){
-
-                    $Dueno->setNombre($PerfilDueno->getNombre());
-                    $Dueno->setApellido($PerfilDueno->getApellido());
-                    $Dueno->setEdad($PerfilDueno->getEdad());
-                    $Dueno->setFotoPerfil($PerfilDueno->getFotoPerfil());
-                    $Dueno->setMascotas($PerfilDueno->getMascotas());
-                    $Dueno->setHistorial($PerfilDueno->getHistorial());
-
-                }
-            }
-
-            $this->SaveData();*/
         }
 
         public function GetIdByMail($mail){
@@ -108,57 +78,55 @@
 
         }
 
-        
+        public function Remove($id)
+        {            
+            try {
+                $query = "delete from ".$this->tableName." WHERE id_dueno = :id_dueno;";
+
+                $parameters["id"] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->ExecuteNonQuery($query,$parameters);
+
+                //var_dump($id);
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
+        }
 
         public function GetAll()
         {
-            $this->RetrieveData();
+            try{
+                $this->DuenoList = array();
+                
+                $query = "SELECT * FROM ".$this->tableName;
 
-            return $this->DuenoList;
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query);
+
+                foreach ($resultSet as $row){
+                    $Dueno = new Dueno();
+                    $Dueno->setId($row["id_dueno"]);
+                    $Dueno->setMail($row["email"]);
+                    $Dueno->setNombre($row["nombre"]);
+                    $Dueno->setApellido($row["apellido"]);
+                    $Dueno->setEdad($row["edad"]);
+                    $Dueno->setFotoPerfil($row["foto_perfil"]);
+                    $Dueno->setPassWord($row["password"]);
+
+                    array_push($this->DuenoList, $Dueno);
+                }
+
+                return $this->DuenoList;
+            }catch(Exception $ex){
+                return $ex;
+            }
         }
 
-        public function Remove($id)
-        {            
-            $this->RetrieveData();
-            
-            $this->DuenoList = array_filter($this->DuenoList, function($Dueno) use($id){                
-                return $Dueno->getId() != $id;
-            });
-            
-            $this->SaveData();
-        }
-
-        private function RetrieveData()
+        /*private function SaveData()
         {
-             $this->DuenoList = array();
-
-             if(file_exists($this->fileName))
-             {
-                 $jsonToDecode = file_get_contents($this->fileName);
-
-                 $contentArray = ($jsonToDecode) ? json_decode($jsonToDecode, true) : array();
-                 
-                 foreach($contentArray as $content)
-                 {
-                     $Dueno = new Dueno();
-                     $Dueno->setId($content["id"]);
-                     $Dueno->setPassWord($content["password"]);
-                     $Dueno->setMail($content["mail"]);
-                     $Dueno->setNombre($content["nombre"]);
-                     $Dueno->setApellido($content["apellido"]);
-                     $Dueno->setEdad($content["edad"]);
-                     $Dueno->setFotoPerfil($content["fotoperfil"]);
-                     $Dueno->setMascotas($content["mascotas"]);
-                     $Dueno->setHistorial($content["historial"]);
-
-                     array_push($this->DuenoList, $Dueno);
-                 }
-             }
-        }
-
-        private function SaveData()
-        {
-            $arrayToEncode = array();
+            /*$arrayToEncode = array();
 
             foreach($this->DuenoList as $Dueno)
             {
@@ -178,44 +146,76 @@
             $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
 
             file_put_contents($this->fileName, $fileContent);
-        }
 
-        public function GetByName($name)
-        {
-            $this->RetrieveData();
+            try {
+                $arrayToEncode = array();
 
-            foreach ($this->DuenoList as $dueno) {
-                if ($dueno->getNombre() == $name) {
-                    return $dueno;
+                $query = "INSERT INTO ".$this->tableName." (email, password, nombre, apellido, edad, fotoperfil) VALUES (:email, :password, :nombre, :apellido, :edad, :foto_perfil);";
+
+                foreach ($this->DuenoList as $Dueno) {
+                    
                 }
-            }
 
-            return null;
+            } catch (Exception $ex) {
+                return $ex;
+            }
+        }*/
+
+        public function GetById($id){
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_DUENO = :id_dueno;";
+
+                $parameters["id_dueno"] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                var_dump($result);
+                $Dueno = new Dueno();
+                $Dueno->setId($result[0]["id_dueno"]);
+                $Dueno->setMail($result[0]["email"]);
+                $Dueno->setNombre($result[0]["nombre"]);
+                $Dueno->setApellido($result[0]["apellido"]);
+                $Dueno->setEdad($result[0]["edad"]);
+                $Dueno->setFotoPerfil($result[0]["foto_perfil"]);
+                $Dueno->setPassWord($result[0]["password"]);
+
+                return $Dueno;
+            }catch(Exception $ex){
+                return $ex;
+            }
         }
 
         public function GetByMail($mail)
         {
-            $this->RetrieveData();
+            try{
+                $query = "SELECT * FROM ".$this->tableName." WHERE email = :email;";
 
-            foreach ($this->DuenoList as $dueno) {
-                if ($dueno->getMail() == $mail) {
-                    return $dueno;
+                $parameters["email"] = $mail;
+                var_dump($mail);
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                var_dump($result);
+                if (isset($result[0])) {
+                    $Dueno = new Dueno();
+                    $Dueno->setId($result[0]["id_dueno"]);
+                    $Dueno->setMail($result[0]["email"]);
+                    $Dueno->setNombre($result[0]["nombre"]);
+                    $Dueno->setApellido($result[0]["apellido"]);
+                    $Dueno->setEdad($result[0]["edad"]);
+                    $Dueno->setFotoPerfil($result[0]["foto_perfil"]);
+                    $Dueno->setPassWord($result[0]["password"]);
+                } else {
+                    $Dueno = null;
                 }
+                
+                return $Dueno;
+            }catch(Exception $ex){
+                return $ex;
             }
-
-            return null;
-        }
-
-        private function GetNextId()
-        {
-            $id = 0;
-
-            foreach($this->DuenoList as $Dueno)
-            {
-                $id = ($Dueno->getId() > $id) ? $Dueno->getId() : $id;
-            }
-
-            return $id + 1;
         }
     }
 ?>
