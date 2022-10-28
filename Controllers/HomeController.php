@@ -7,6 +7,9 @@
     use Models\Guardian as Guardian;
     use Controllers\MascotaController as MascotaController;
     use Models\Mascota as Mascota;
+    use Models\Reserva as Reserva;
+    use Controllers\Reserva as ReservaController;
+    use DAO\ReservaDAO as ReservaDAO;
     
 
     class HomeController
@@ -34,6 +37,10 @@
                 } else if ($_SESSION["type"] == "g"){
                     $usuario = New Guardian();
                     $usuario = $this->guardianDAO->GetById($_SESSION["id"]);
+                    
+                    $reservaDao = new ReservaDAO();
+                    $reservas = $reservaDao->GetByIdGuardian($_SESSION["id"]);
+                    
                     require_once(VIEWS_PATH."mainguardian.php");
                 }
             } else {

@@ -5,6 +5,7 @@ namespace Models;
 
 class Reserva {
 
+    private $id;
     private $idGuardian;
     private $idDueno;
     private $idMascota;
@@ -80,6 +81,20 @@ class Reserva {
     public function setFechaFinal($fechaFinal): self
     {
         $this->fechaFinal = $fechaFinal;
+
+        return $this;
+    }
+
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    
+    public function setId($id): self
+    {
+        $this->id = $id;
 
         return $this;
     }

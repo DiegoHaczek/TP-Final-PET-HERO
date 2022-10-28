@@ -125,6 +125,21 @@
 
         }
 
+        public function updateEstado($idReserva,$estado){
+
+
+            $this->ReservaDAO->updateEstado($idReserva,$estado);
+
+
+
+            $alert=['tipo'=>"exito",'mensaje'=>"Estado Reserva Actualizado"];
+
+            $controllerHome = new HomeController();
+            $controllerHome->index($alert);
+
+
+        }
+
         
     }
 

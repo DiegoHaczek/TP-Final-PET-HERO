@@ -105,6 +105,58 @@
                 return $ex;
             }
         }
+
+        public function GetByIdGuardian($id){
+           
+            try{
+                $this->ReservaList = array();
+                
+                $query = "SELECT * FROM ".$this->tableName." WHERE ID_GUARDIAN = :id_guardian;";
+
+                $parameters["id_guardian"] = $id;
+
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query,$parameters);
+
+                foreach ($resultSet as $row){
+                    $Reserva = new Reserva();
+                    $Reserva->setId($row["id_reserva"]);
+                    $Reserva->setIdDueno($row["id_dueno"]);
+                    $Reserva->setIdGuardian($row["id_guardian"]);
+                    $Reserva->setIdMascota($row["id_mascota"]);
+                    $Reserva->setFechaInicio($row["fecha_inicio"]);
+                    $Reserva->setFechaFinal($row["fecha_final"]);
+                    $Reserva->setEstado($row["estado"]);
+
+                    array_push($this->ReservaList, $Reserva);
+                }
+
+                return $this->ReservaList;
+            }catch(Exception $ex){
+                return $ex;
+            }
+        }
+
+        public function updateEstado ($idReserva,$estado){
+
+            try {
+
+                $query = "UPDATE ".$this->tableName." SET estado=:estado WHERE id_reserva=:id_reserva ;";
+                
+                $parameters["estado"] = $estado;
+                $parameters["id_reserva"] = $idReserva;
+               
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters);
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
+
+
+        }
     }
 
 
