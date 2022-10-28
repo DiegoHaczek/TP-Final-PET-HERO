@@ -390,6 +390,29 @@ details[open].estilizado{
 
 }
 
+#reserva{
+
+    position:relative;
+
+
+}
+.oculta{
+
+    z-index: 0 !important;
+    opacity:0;
+    left:-3em;
+    bottom:39em;
+    transition: all 1s ease !important;
+    margin-bottom:-40em !important;
+}
+
+.desplegada{
+
+    opacity: 100;
+    bottom:0em;
+    transition: all 1.3s ease !important;
+
+}
 
 
 

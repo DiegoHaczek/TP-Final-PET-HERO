@@ -171,7 +171,7 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                var_dump($result);
+                //var_dump($result);
                 $Dueno = new Dueno();
                 $Dueno->setId($result[0]["id_dueno"]);
                 $Dueno->setMail($result[0]["email"]);
@@ -193,12 +193,12 @@
                 $query = "SELECT * FROM ".$this->tableName." WHERE email = :email;";
 
                 $parameters["email"] = $mail;
-                var_dump($mail);
+                //var_dump($mail);
                 $this->connection = Connection::GetInstance();
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                var_dump($result);
+                //var_dump($result);
                 if (isset($result[0])) {
                     $Dueno = new Dueno();
                     $Dueno->setId($result[0]["id_dueno"]);

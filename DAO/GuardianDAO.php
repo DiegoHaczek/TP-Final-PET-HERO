@@ -164,6 +164,8 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
+                if(isset($result[0])) {
+
                 $Guardian = new Guardian();
                 $Guardian->setId($result[0]["id_guardian"]);
                 $Guardian->setMail($result[0]["email"]);
@@ -175,6 +177,9 @@
                 $Guardian->setRemuneracion($result[0]["tarifa"]);
                 $Guardian->setTamano($result[0]["tamano"]);
                 $Guardian->setDisponibilidad($result[0]["disponibilidad"]);
+                }else{
+                    $Guardian = null;
+                }
 
                 return $Guardian;
             }catch(Exception $ex){
@@ -192,7 +197,7 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                var_dump($result);
+                //var_dump($result);
                 $Guardian = new Guardian();
                 $Guardian->setId($result[0]["id_guardian"]);
                 $Guardian->setMail($result[0]["email"]);

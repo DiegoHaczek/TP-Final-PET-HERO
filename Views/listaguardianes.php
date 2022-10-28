@@ -15,7 +15,7 @@
                     <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Tarifa diaria</span></th><th><span>Tipo de Perro</span></th> 
-                        <th><span>Reputación</span></th> <th><span>Disponibilidad</span></th></tr>
+                         <th><span>Disponibilidad</span></th></tr>
                         <tr class="espacio"><td></td></tr>
                         
                         <?php foreach($GuardianList as $guardian){ ?>
@@ -24,9 +24,8 @@
                             <tr><td>
                             <img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
                         </td><td><span><?php echo ucwords($guardian->getNombre()); ?></span></td><td><span><?php echo $guardian->getRemuneracion(); ?></span></td>
-                        <td><span><?php echo implode(", ",$guardian->getTamano()); ?></span></td><td><span><?php echo ""; ?>
-                        
-                        </span></td><td><span><?php if($guardian->getDisponibilidad()=='Plena'||$guardian->getDisponibilidad()=='Fines De Semana')
+                        <td><span><?php echo $guardian->getTamano(); ?></span></td>
+                        <td><span><?php if($guardian->getDisponibilidad()=='Plena'||$guardian->getDisponibilidad()=='Fines De Semana')
                                                     {echo $guardian->getDisponibilidad();}
                                                                 else{echo 'Personalizada';} ?></span></td>
 

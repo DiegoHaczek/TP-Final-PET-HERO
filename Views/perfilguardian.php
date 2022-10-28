@@ -18,12 +18,12 @@
     <div id="mainContainer" class="" style="width:75em;">
 
                 
-        <section style="width:52em;padding:3em 0 4em 0">
+        <section style="width:52em;padding:3em 0 4em 0;position:relative;z-index: 1 !important">
                         
                         <summary><span style=" position:relative; bottom:2em;"><strong> Perfil </span></strong></summary>
                         <div class="sectioncontent" style="height:26em">
 
-                            <div class="profilecard" id="perfilguardian">
+                            <div class="profilecard" id="perfilguardian" >
 
                                 <div class="mainprofileinfo">
                                     <img class="imgperfilgrande" src="<?php echo IMG_PATH;?>avatardefault.png">
@@ -46,7 +46,7 @@
 
                                         <span>Información Guardián</span>
                                         <div class="separador"></div>
-                                        <span>Tipo de Perro: <strong><?php echo implode(", ",$usuario->getTamano());?></strong></span>
+                                        <span>Tipo de Perro: <strong><?php echo $usuario->getTamano();?></strong></span>
                                         <span>Remuneracion por Día: <strong><?php echo $usuario->getRemuneracion();?></strong></span>
                                         <span>Disponibilidad: </span>
                                            
@@ -73,7 +73,7 @@
                         </div>
         </section>
 
-        <section id="reserva" style="width:43em;padding-bottom:4em;display:none;">
+        <section id="reserva" class="oculta" style="width:43em;padding-bottom:4em;">
             <div class="sectioncontent" style="">
 
                 <summary style="margin:2em 0;"><span ><strong> Datos de la Reserva </span></strong></summary>
@@ -166,9 +166,21 @@ $('.date').datepicker('setDatesDisabled',fechasNoDisponiblesJS);  //funcion de d
 let solicitarReserva = document.getElementById('solicitar');
 let formularioReserva = document.getElementById('reserva');
 
+
 solicitarReserva.addEventListener('click',function(){
 
-    $("#reserva").css( "display", "block" );
+    if($("#reserva").hasClass("oculta")){
+
+        $("#reserva").removeClass("oculta");
+        $("#reserva").addClass("desplegada");
+
+        setTimeout(function(){
+
+            window.scroll({left: 0, top: document.body.scrollHeight, behavior: "smooth"});
+
+        },330)
+        
+    }
 
 })
 
