@@ -7,7 +7,7 @@ class Reserva {
 
     private $idGuardian;
     private $idDueno;
-    private $nombreMascota;
+    private $idMascota;
     private $fechaInicio;
     private $fechaFinal;
     private $estado;
@@ -36,14 +36,14 @@ class Reserva {
         return $this;
     }
 
-    public function getNombreMascota()
+    public function getIdMascota()
     {
-        return $this->nombreMascota;
+        return $this->idMascota;
     }
 
-    public function setNombreMascota($nombreMascota): self
+    public function setIdMascota($idMascota): self
     {
-        $this->nombreMascota = $nombreMascota;
+        $this->idMascota = $idMascota;
 
         return $this;
     }

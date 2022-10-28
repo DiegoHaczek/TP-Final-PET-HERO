@@ -83,7 +83,7 @@
             try {
                 $query = "delete from ".$this->tableName." WHERE id_dueno = :id_dueno;";
 
-                $parameters["id"] = $id;
+                $parameters["id_dueno"] = $id;
 
                 $this->connection = Connection::GetInstance();
 

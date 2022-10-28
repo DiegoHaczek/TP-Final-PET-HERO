@@ -5,11 +5,18 @@
     use Models\Reserva as Reserva;
     use Controllers\GuardianController as GuardianController;
     use Controllers\HomeController as HomeController;
+    use DAO\ReservaDAO as ReservaDAO;
 
     class ReservaController
     {
-        
-        public function Add($fechaInicio, $fechaFinal, $mascota, $idGuardian, $idDueno)
+        private $ReservaDAO;
+
+        public function __construct()
+        {
+            $this->ReservaDAO = new ReservaDAO();
+        }
+
+        public function Add($fechaInicio, $fechaFinal, $mascota, $idGuardian, $idDueno, $idMascota)
         {
 
             $controllerGuardian = new GuardianController();
@@ -31,7 +38,9 @@
                         $reserva->setIdGuardian($idGuardian);
                         $reserva->setFechaInicio($fechaInicio);
                         $reserva->setFechaFinal($fechaFinal);
-                        $reserva->setNombreMascota($mascota);
+                        $reserva->setIdMascota($idMascota);
+
+                        $this->ReservaDAO->Add($reserva);
 
                         $alert=['tipo'=>"exito",'mensaje'=>"Reserva Creada con Éxito"];
                         
@@ -115,6 +124,8 @@
             return true;
 
         }
+
+        
     }
 
     

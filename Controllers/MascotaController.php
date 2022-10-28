@@ -106,7 +106,7 @@
             
             $this->MascotaDAO->Remove($id);
 
-            //$this->ShowListView();
+            $this->ShowListView();
         }
     }
 ?>

@@ -60,7 +60,7 @@
             try {
                 $query = "delete from ".$this->tableName." WHERE id_guardian = :id_guardian;";
 
-                $parameters["id"] = $id;
+                $parameters["id_guardian"] = $id;
 
                 $this->connection = Connection::GetInstance();
 

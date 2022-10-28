@@ -73,7 +73,7 @@
                         </div>
         </section>
 
-        <section id="reserva" class="oculta" style="width:43em;padding-bottom:4em;">
+        <section id="reserva" class="" style="width:43em;padding-bottom:4em;">
             <div class="sectioncontent" style="">
 
                 <summary style="margin:2em 0;"><span ><strong> Datos de la Reserva </span></strong></summary>
@@ -113,10 +113,10 @@
                                         
                                         if ($mascota->getIdDueno()==$_SESSION["id"]){
                                             
-                                            if(in_array($mascota->getTamano(), $usuario->getTamano())){
+                                            if(in_array($mascota->getTamano(), explode(",",$usuario->getTamano()))){
                                         ?>
 
-                                        <label for="nombremascota"><span style="margin-left:1em;"><?php echo ucwords($mascota->getNombre()); echo " (".ucwords($mascota->getRaza()).")";?></span></label>
+                                        <label for="idMascota"><span style="margin-left:1em;"><?php echo ucwords($mascota->getNombre()); echo " (".ucwords($mascota->getRaza()).")";?></span></label>
                                         <input type="checkbox" id="checkbox" name="mascota[]" value="<?php echo ucwords($mascota->getNombre()).",".ucwords($mascota->getRaza());?>"></input> 
                                         <br>
                                     
@@ -126,6 +126,7 @@
 
                                     <input type="text" style="display:none" value="<?php echo $usuario->getId(); ?>" name="idGuardian">
                                     <input type="text" style="display:none" value="<?php echo $_SESSION["id"]; ?>" name="idDueno">
+                                    <input type="text" style="display:none" value="<?php echo $mascota->getId(); ?>" name="idMascota">
                                         
                                     </fieldset>
                                 

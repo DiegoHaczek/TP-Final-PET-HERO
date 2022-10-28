@@ -9,6 +9,7 @@
         private $raza;
         private $especie;
         private $indicaciones;
+        private $fichaMedica;
 
         
         public function getTamano()
@@ -79,6 +80,18 @@
         public function setEspecie($especie): self
         {
                 $this->especie = $especie;
+
+                return $this;
+        }
+
+        public function getFichaMedica()
+        {
+                return $this->fichaMedica;
+        }
+
+        public function setFichaMedica($fichaMedica): self
+        {
+                $this->fichaMedica = $fichaMedica;
 
                 return $this;
         }
