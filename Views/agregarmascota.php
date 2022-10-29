@@ -9,7 +9,7 @@
 
 <div id="formContainer">
 
-    <form id="editarmascota" action="<?php echo FRONT_ROOT."Mascota/Add"?>" class="activo">
+    <form id="editarmascota" action="<?php echo FRONT_ROOT."Mascota/Add"?>" method="post" enctype="multipart/form-data" class="activo" >
 
         <fieldset class="formHeader">
             <h3><p>Agregar Mascota</p></h3>
@@ -95,17 +95,17 @@
                     <textarea name="indicaciones" id="indicaciones" placeholder="Ingrese aquí información sobre consideraciones o cuidados especiales." required></textarea>
                 </fieldset>
                 
-                <fieldset><label for="fichamedica"><strong><span>Foto de la Mascota</span></strong></label><br>
-                     <input type="file" id="fichamedica" name="fichamedica" accept="image/*" required>
+                <fieldset><label for="fotoperfil"><strong><span>Foto de la Mascota</span></strong></label><br>
+                     <input type="file" id="fotoperfil" name="fotoperfil" accept="image/*" required>
                 </fieldset>
 
-                <fieldset><label for="fichamedica"><span><strong>Video de la Mascota </strong> (Opcional)</span></label><br>
-                     <input type="file" id="fichamedica" name="fichamedica" accept="video/*">
+                <fieldset><label for="videomascota"><span><strong>Video de la Mascota </strong> (Opcional)</span></label><br>
+                     <input type="file" id="videomascota" name="" accept="video/*" >
                 </fieldset>
 
 
-                <fieldset><label for="fotomascota"><strong><span>Ficha Médica</span></strong></label><br>
-                     <input type="file" id="fotomascota" name="fotomascota" accept="image/*" required>
+                <fieldset><label for="fichamedica"><strong><span>Ficha Médica</span></strong></label><br>
+                     <input type="file" id="fichamedica" name="" accept="image/*" >
                 </fieldset>
 
                      <div id="botoneraForm">

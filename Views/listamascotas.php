@@ -24,7 +24,7 @@
                             
                             <?php if($mascota->getIdDueno()==$_SESSION["id"]) { ?>
                             <tr><td>
-                            <img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png"></td><td><span><?php echo ucwords($mascota->getNombre()); ?> </span> </td>
+                            <img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$mascota->getFotoPerfil();?>"></td><td><span><?php echo ucwords($mascota->getNombre()); ?> </span> </td>
                             <td> <span> <?php echo ucwords($mascota->getEspecie()); ?> </span> </td>  <td> <span> <?php echo $mascota->getEdad(); ?></span> </td> 
                             <td> <span> <?php echo ucwords($mascota->getTamano()); ?></span> </td>  <td> <span> <?php echo ucwords($mascota->getRaza()); ?></span> </td>  
                             <td> <button class="formButton" type="submit" >Ver Perfil</button></td><td> 

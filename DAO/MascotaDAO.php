@@ -9,7 +9,7 @@
         private $MascotaList = array();
         private $tableName = "mascota";
 
-        public function Add(Mascota $Mascota)
+        public function Add(Mascota $Mascota,$tmp_name)
         {
             try {
                 $query = "INSERT INTO ".$this->tableName." (nombre, edad, tamano, raza, especie, indicaciones, id_dueno, foto_perfil, ficha_medica) VALUES (:nombre, :edad, :tamano, :raza, :especie, :indicaciones, :id_dueno, :foto_perfil, :ficha_medica);";
@@ -22,7 +22,14 @@
                 $parameters["especie"] = $Mascota->getEspecie();
                 $parameters["indicaciones"] = $Mascota->getIndicaciones();
                 $parameters["id_dueno"] = $_SESSION["id"];
-                $parameters["foto_perfil"] = $Mascota->getFotoPerfil();
+
+                $nombre_imagen= $Mascota->getFotoPerfil();
+                $ruta="Upload/img".$nombre_imagen;
+
+                move_uploaded_file($tmp_name,$ruta);
+                $parameters["foto_perfil"] = $ruta;
+
+
                 $parameters["ficha_medica"] = $Mascota->getFichaMedica();
 
                 $this->connection = Connection::GetInstance();

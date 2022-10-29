@@ -31,13 +31,16 @@
             require_once(VIEWS_PATH."listamascotas.php");
         }
 
-        public function Add($nombre, $edad, $tamano, $especie, $razaPerroChico , $razaPerroMediano, $razaPerroGrande , $razaGato , $indicaciones, $fotoperfil)
+        public function Add($nombre, $edad, $tamano, $especie, $razaPerroChico ,
+         $razaPerroMediano, $razaPerroGrande , $razaGato , $indicaciones, $fotoperfil,$tmp_name)
         {
             //require_once(VIEWS_PATH."validate-session.php");
-
             $Mascota = new Mascota();
             $Mascota->setNombre($nombre);
             $Mascota->setEdad($edad);
+            //var_dump($fotoperfil);
+
+            
             $Mascota->setFotoPerfil($fotoperfil);
             $Mascota->setTamano($tamano);
             $Mascota->setIndicaciones($indicaciones);
@@ -58,7 +61,7 @@
 
 
 
-            $this->MascotaDAO->Add($Mascota);
+            $this->MascotaDAO->Add($Mascota,$tmp_name);
 
             //echo "<script>alert('Mascota agregada con éxito')</script>";
 
