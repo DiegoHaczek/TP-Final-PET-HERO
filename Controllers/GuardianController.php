@@ -121,7 +121,7 @@
             return false;
         }
 
-        public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$remuneracion,$tamano,$disponibilidad)
+        public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name,$remuneracion,$tamano,$disponibilidad)
         {
 
             $PerfilGuardian = new Guardian();
@@ -133,7 +133,7 @@
             $PerfilGuardian->setTamano($tamano);
             $PerfilGuardian->setDisponibilidad($disponibilidad);
             
-            $this->GuardianDAO->EditProfile($PerfilGuardian);
+            $this->GuardianDAO->EditProfile($PerfilGuardian,$tmp_name);
 
             $_SESSION["loggedUser"] = $nombre;
 

@@ -22,7 +22,16 @@
                             <div class="profilecard" id="perfildueño">
 
                                 <div class="mainprofileinfo">
+
+                                    <?php if ($usuario->getFotoPerfil()){ ?>
+
+                                    <img class="imgperfilgrande" src="<?php echo FRONT_ROOT.$usuario->getFotoPerfil();?>" style="border: 1px solid gray">
+
+                                    <?php }else{ ?>
+
                                     <img class="imgperfilgrande" src="<?php echo IMG_PATH;?>avatardefault.png">
+
+                                        <?php } ?>
                                     <span><?php echo ucwords($usuario->getNombre());?></span>
                                     <span><?php echo ucwords($usuario->getApellido());?></span>
                                 </div>

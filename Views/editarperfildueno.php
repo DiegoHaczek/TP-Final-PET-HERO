@@ -7,7 +7,7 @@
 
 <div id="formContainer">
 
-    <form id="editarperfil" action="<?php echo FRONT_ROOT."Dueno/EditProfile"?>" method="post" class="activo" style="height: 39em">
+    <form id="editarperfil" action="<?php echo FRONT_ROOT."Dueno/EditProfile"?>" method="post" class="activo" enctype="multipart/form-data" style="height: 39em">
         <fieldset class="formHeader">
             <h3><p>Editar Mi Perfil</p></h3>
         </fieldset>

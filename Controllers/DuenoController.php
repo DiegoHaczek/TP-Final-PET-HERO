@@ -34,6 +34,7 @@
                     $_SESSION["type"] = $Dueno->getType();
                     $_SESSION["id"] = $this->DuenoDAO->GetIdByMail($mail);
 
+
                     require_once(VIEWS_PATH."editarperfildueno.php");
                     }
                     else{
@@ -80,7 +81,7 @@
             return false;
         }
 
-        public function EditProfile($nombre,$apellido,$edad,$fotoperfil)
+        public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name)
         {
 
             $PerfilDueno = new Dueno();
@@ -89,9 +90,10 @@
             $PerfilDueno->setEdad($edad);
             $PerfilDueno->setFotoPerfil($fotoperfil);
             
-            $this->DuenoDAO->EditProfile($PerfilDueno);
+            $this->DuenoDAO->EditProfile($PerfilDueno,$tmp_name);
 
             $_SESSION["loggedUser"] = $nombre;
+
 
             $alert=['tipo'=>"exito",'mensaje'=>"Perfil Creado con Éxito"];
             $controllerHome = new HomeController();

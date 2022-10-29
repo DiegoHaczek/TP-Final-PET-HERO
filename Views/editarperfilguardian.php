@@ -14,7 +14,7 @@
 
 <div id="formContainer">
 
-    <form id="editarperfil" action="<?php echo FRONT_ROOT."Guardian/EditProfile"?>" method="post" class="activo">
+    <form id="editarperfil" action="<?php echo FRONT_ROOT."Guardian/EditProfile"?>" method="post" enctype="multipart/form-data" class="activo">
         <fieldset class="formHeader">
             <h3><p>Editar Mi Perfil</p></h3>
         </fieldset>

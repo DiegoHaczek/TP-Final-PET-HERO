@@ -32,7 +32,7 @@
             
         }
 
-        public function EditProfile(Dueno $PerfilDueno){
+        public function EditProfile(Dueno $PerfilDueno,$tmp_name){
 
             try {
 
@@ -41,9 +41,21 @@
                 $parameters["nombre"] = $PerfilDueno->getNombre();
                 $parameters["apellido"] = $PerfilDueno->getApellido();
                 $parameters["edad"] = $PerfilDueno->getEdad();
-                $parameters["foto_perfil"] = $PerfilDueno->getFotoPerfil();
-                
 
+
+                if($PerfilDueno->getFotoPerfil()){
+                    
+                    $nombre_imagen= $PerfilDueno->getFotoPerfil();
+                    $ruta="Upload/img".$nombre_imagen;
+                    move_uploaded_file($tmp_name,$ruta);
+                }
+                    else{$ruta=null;}
+    
+                    $parameters["foto_perfil"] = $ruta;
+    
+                    $_SESSION["fotoPerfil"] =  $ruta;
+
+                
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->ExecuteNonQuery($query, $parameters);

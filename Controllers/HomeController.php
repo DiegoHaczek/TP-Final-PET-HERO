@@ -86,6 +86,7 @@
                 $_SESSION["loggedUser"] = $user->getNombre();
                 $_SESSION["type"] = $user->getType();
                 $_SESSION["id"] = $user->getId();
+                $_SESSION["fotoPerfil"] = $user->getFotoPerfil();
 
                 $alert=['tipo'=>"exito",'mensaje'=>"Logeado con Éxito"];
 

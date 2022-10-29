@@ -137,6 +137,8 @@ line-height: 4em;
 
 .imgperfilchica{
     border-radius:50%;
+    width:3em;
+    height:3em;
     border: solid 1px rgba(51, 109, 13,0.6);
   }
 

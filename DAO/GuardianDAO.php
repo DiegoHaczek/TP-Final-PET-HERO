@@ -31,7 +31,7 @@
         }
 
 
-        public function EditProfile(Guardian $PerfilGuardian){
+        public function EditProfile(Guardian $PerfilGuardian,$tmp_name){
 
             try {
 
@@ -40,7 +40,22 @@
                 $parameters["nombre"] = $PerfilGuardian->getNombre();
                 $parameters["apellido"] = $PerfilGuardian->getApellido();
                 $parameters["edad"] = $PerfilGuardian->getEdad();
+
                 $parameters["foto_perfil"] = $PerfilGuardian->getFotoPerfil();
+
+                if($PerfilGuardian->getFotoPerfil()){
+                    
+                    $nombre_imagen= $PerfilGuardian->getFotoPerfil();
+                    $ruta="Upload/img".$nombre_imagen;
+                    move_uploaded_file($tmp_name,$ruta);
+                }
+                    else{$ruta=null;}
+    
+                    $parameters["foto_perfil"] = $ruta;
+    
+                    $_SESSION["fotoPerfil"] =  $ruta;
+
+
                 $parameters["tamano"] = implode(",", $PerfilGuardian->getTamano());
                 $parameters["tarifa"] = $PerfilGuardian->getRemuneracion();
                 $parameters["disponibilidad"] = $PerfilGuardian->getDisponibilidad();

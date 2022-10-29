@@ -13,10 +13,22 @@
 
                     
                 <div id="userInfo">
-                <img class="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
+
+                <?php if(isset($_SESSION['fotoPerfil'])){ ?>
+                
+                    <img class="imgperfilchica" src="<?php echo FRONT_ROOT.$_SESSION['fotoPerfil'];?>">
+                <?php }else{ ?>
+
+                    <img class="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
+
+
+                 <?php } ?>
+
                 </div>
 
                 <span>Bienvenido/a, <?php echo ucwords($_SESSION['loggedUser']);?> </span>
+
+                
 
                 <div id="contenedorIcono">
                 <span id="linea1" class=""></span>
