@@ -29,7 +29,7 @@
                                     
                                 <?php if ($usuario->getFotoPerfil()){ ?>
 
-                                <img class="imgperfilgrande" src="<?php echo FRONT_ROOT.$usuario->getFotoPerfil();?>" style="border: 1px solid gray">
+                                    <img class="imgperfilgrande" src="<?php echo FRONT_ROOT.$usuario->getFotoPerfil();?>" style="border: 1px solid gray">
 
                                 <?php }else{ ?>
 

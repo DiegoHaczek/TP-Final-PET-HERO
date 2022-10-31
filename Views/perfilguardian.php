@@ -26,7 +26,7 @@
                             <div class="profilecard" id="perfilguardian" >
 
                                 <div class="mainprofileinfo">
-                                    <img class="imgperfilgrande" src="<?php echo IMG_PATH;?>avatardefault.png">
+                                <img class="imgperfilgrande" src="<?php echo FRONT_ROOT.$usuario->getFotoPerfil();?>" style="border: 1px solid gray">
                                     <span><?php echo ucwords($usuario->getNombre());?></span>
                                     <span><?php echo ucwords($usuario->getApellido());?></span>
                                     <span>Reputacion</span>
@@ -73,7 +73,7 @@
                         </div>
         </section>
 
-        <section id="reserva" class="" style="width:43em;padding-bottom:4em;">
+        <section id="reserva" class="oculta" style="width:43em;padding-bottom:4em;">
             <div class="sectioncontent" style="">
 
                 <summary style="margin:2em 0;"><span ><strong> Datos de la Reserva </span></strong></summary>
@@ -122,22 +122,25 @@
                                     
                                     <?php }}} ?>
                                     
-                                    <?php // var_dump($mascotas);?>
 
                                     <input type="text" style="display:none" value="<?php echo $usuario->getId(); ?>" name="idGuardian">
+
                                     <input type="text" style="display:none" value="<?php echo $_SESSION["id"]; ?>" name="idDueno">
+
                                     <input type="text" style="display:none" value="<?php echo $mascota->getId(); ?>" name="idMascota">
-                                        
+
+
+                                
+
                                     </fieldset>
                                 
                                         <div id="botoneraForm" style="margin-bottom:1em;">
-                                            <button  class="formButton" type="submit"  style="margin-left:1.3em;">Solicitar</button>
+                                            <button class="formButton" type="submit"  style="margin-left:1.3em;">Solicitar</button>
                                             <button class="formButton" type="reset" >Limpiar Campos</button></div>    
 
                         </form>
         
         </section>
-                    
 
               <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
               <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver a Guardianes</span></button></a>
@@ -155,6 +158,7 @@
 
 <script>
 
+
 <?php if ($usuario->getDisponibilidad()=='Fines De Semana') {?>  
 
 $('.date').datepicker('setDaysOfWeekDisabled',[1,2,3,4,5]);
@@ -164,11 +168,15 @@ $('.date').datepicker('setDaysOfWeekDisabled',[1,2,3,4,5]);
 $('.date').datepicker('setDatesDisabled',fechasNoDisponiblesJS);  //funcion de datepicker que setea fechas no disponibles
                                                                   //el dueño solo puede elegir de entre las fechas seleccionadas por el guardian
 <?php }} ?>
+
+
 let solicitarReserva = document.getElementById('solicitar');
 let formularioReserva = document.getElementById('reserva');
 
 
+
 solicitarReserva.addEventListener('click',function(){
+
 
     if($("#reserva").hasClass("oculta")){
 
