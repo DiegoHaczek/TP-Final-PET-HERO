@@ -157,6 +157,41 @@
 
 
         }
+
+        public function getDatosReserva($idGuardian){
+
+            try{
+                $this->DatosReservaList = array();
+                
+                $query = "select m.nombre as nombre_mascota, m.raza, m.edad, m.foto_perfil, d.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final from dueno d inner join reserva r on d.id_dueno=r.id_dueno inner join mascota m on r.id_mascota=m.id_mascota where r.id_guardian=:id_guardian;";
+
+                $parameters["id_guardian"] = $idGuardian;
+
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query,$parameters);
+                //var_dump($resultSet);
+                $DatosReserva = array();
+
+                foreach ($resultSet as $row){
+                    
+                    $DatosReserva["m.nombre"] = $row["nombre_mascota"];
+                    $DatosReserva["m.raza"] = $row["raza"];
+                    $DatosReserva["m.edad"] = $row["edad"];
+                    $DatosReserva["m.foto_perfil"] = $row["foto_perfil"];
+                    $DatosReserva["d.nombre"] = $row["nombre"];
+                    $DatosReserva["r.id_reserva"] = $row["id_reserva"];
+                    $DatosReserva["r.estado"] = $row["estado"];
+                    $DatosReserva["r.fecha_inicio"] = $row["fecha_inicio"];
+                    $DatosReserva["r.fecha_final"] = $row["fecha_final"];
+                    array_push($this->DatosReservaList, $DatosReserva);
+                }
+
+                return $this->DatosReservaList;
+            }catch(Exception $ex){
+                return $ex;
+            }
+
+        }
     }
 
 

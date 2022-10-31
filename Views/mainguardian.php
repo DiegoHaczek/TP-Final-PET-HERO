@@ -85,7 +85,7 @@
                      <?php $mostrarSection=false;
                         foreach($reservas as $reserva){
 
-                        if ($reserva->getEstado()=='Pendiente'){
+                        if ($reserva["r.estado"]=='Pendiente'){
                             $mostrarSection=true;
                         }} 
 
@@ -102,15 +102,16 @@
                         <th><span>Días</span></th><th><span>Fecha Inicio</span></th><th><span>Fecha Fin</span></th></tr>
                         <tr class="espacio"><td></td></tr>
 
-                        <?php foreach($reservas as $reserva) { if($reserva->getEstado()=='Pendiente'){?>
+
+                        <?php foreach($reservas as $reserva) { if($reserva["r.estado"]=='Pendiente'){?>
                         
-                        <tr><td><img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png"></td><td><span><?php echo $reserva->getIdMascota(); ?></span></td>
-                        <td><span><?php echo $reserva->getIdDueno(); ?></span></td><td><span><?php echo " "; ?></span></td><td><span>3</span></td>
-                        <td><span><?php echo $reserva->getFechaInicio(); ?></span></td><td><span><?php echo $reserva->getFechaFinal(); ?></span></td>
+                        <tr><td><img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$reserva["m.foto_perfil"]?>"></td><td><span><?php echo $reserva["m.nombre"]; ?></span></td>
+                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span>3</span></td>
+                        <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
                         <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
 
-                        <input type="number" name="idReserva" value="<?php echo $reserva->getId();?>" style="display:none"></input>
+                        <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
                         <input type="text" name="estado" value="Aceptada" style="display:none"></input>
 
                         <td><button class="formButton" type="submit">Aceptar</button>
@@ -144,15 +145,15 @@
                         <th><span>Días</span></th><th><span>Fecha Inicio</span></th><th><span>Fecha Fin</span></th></tr>
                         <tr class="espacio"><td></td></tr>
 
-                        <?php foreach($reservas as $reserva) { if($reserva->getEstado()=='Aceptada'){?>
+                        <?php foreach($reservas as $reserva) { if($reserva["r.estado"]=='Aceptada'){?>
                         
-                        <tr><td><img  class ="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png"></td><td><span><?php echo $reserva->getIdMascota(); ?></span></td>
-                        <td><span><?php echo $reserva->getIdDueno(); ?></span></td><td><span><?php echo " "; ?></span></td><td><span>3</span></td>
-                        <td><span><?php echo $reserva->getFechaInicio(); ?></span></td><td><span><?php echo $reserva->getFechaFinal(); ?></span></td>
+                        <tr><td><img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$reserva["m.foto_perfil"]?>"></td><td><span><?php echo $reserva["m.nombre"]; ?></span></td>
+                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span>3</span></td>
+                        <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
                         <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
 
-                        <input type="number" name="idReserva" value="<?php echo $reserva->getId();?>" style="display:none"></input>
+                        <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
                         <input type="text" name="estado" value="Cancelada" style="display:none"></input>
 
                         <td><button class="formButton" type="submit">Cancelar</button>
