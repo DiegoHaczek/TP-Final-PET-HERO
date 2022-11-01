@@ -137,6 +137,7 @@
             }
         }
 
+
         public function updateEstado ($idReserva,$estado){
 
             try {
@@ -155,15 +156,15 @@
                 throw $ex;
             }
 
-
         }
 
-        public function getDatosReserva($idGuardian){
+        public function getDatosReservaGuardian($idGuardian){
 
             try{
                 $this->DatosReservaList = array();
                 
-                $query = "select m.nombre as nombre_mascota, m.raza, m.edad, m.foto_perfil, d.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final from dueno d inner join reserva r on d.id_dueno=r.id_dueno inner join mascota m on r.id_mascota=m.id_mascota where r.id_guardian=:id_guardian;";
+                $query = "select m.nombre as nombre_mascota, m.raza, m.edad, m.foto_perfil, d.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final 
+                from dueno d inner join reserva r on d.id_dueno=r.id_dueno inner join mascota m on r.id_mascota=m.id_mascota where r.id_guardian=:id_guardian;";
 
                 $parameters["id_guardian"] = $idGuardian;
 
@@ -192,7 +193,41 @@
             }
 
         }
+    
+
+        public function getDatosReservaDueno($idDueno){
+
+        try{
+            $this->DatosReservaList = array();
+            
+            $query = "select m.nombre as nombre_mascota, m.foto_perfil, g.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final 
+            from guardian g inner join reserva r on g.id_guardian=r.id_guardian inner join mascota m on r.id_mascota=m.id_mascota where r.id_dueno=:id_dueno;";
+
+            $parameters["id_dueno"] = $idDueno;
+
+            $this->connection = Connection::GetInstance();
+            $resultSet = $this->connection->Execute($query,$parameters);
+            //var_dump($resultSet);
+            $DatosReserva = array();
+
+            foreach ($resultSet as $row){
+                
+                $DatosReserva["m.nombre"] = $row["nombre_mascota"];
+                $DatosReserva["m.foto_perfil"] = $row["foto_perfil"];
+                $DatosReserva["g.nombre"] = $row["nombre"];
+                $DatosReserva["r.id_reserva"] = $row["id_reserva"];
+                $DatosReserva["r.estado"] = $row["estado"];
+                $DatosReserva["r.fecha_inicio"] = $row["fecha_inicio"];
+                $DatosReserva["r.fecha_final"] = $row["fecha_final"];
+                array_push($this->DatosReservaList, $DatosReserva);
+            }
+
+            return $this->DatosReservaList;
+        }catch(Exception $ex){
+            return $ex;
+        }
+
     }
 
-
+   }
 ?>

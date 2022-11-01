@@ -81,7 +81,7 @@
                 </div>
                  </section>
 
-                 <section style="width:50em; height:8em">
+                 <section style="width:50em; height:12em">
                 
                     
                     <div class="sectioncontent">
@@ -90,6 +90,10 @@
                         
                     <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
                     <button style="" class="buttonHome">Ver Guardianes</button></a>
+
+                    <br>
+                    <a href="<?php echo FRONT_ROOT."Dueno/listReservas"?>">
+                    <button style="" class="buttonHome">Ver Reservas</button></a>
 
                     
                     </div>

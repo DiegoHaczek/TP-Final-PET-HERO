@@ -2,10 +2,13 @@
     namespace Controllers;
 
     use DAO\DuenoDAO as DuenoDAO;
+    use DAO\ReservaDAO as ReservaDAO;
     use Models\Dueno as Dueno;
     use Models\Guardian as Guardian;
+    use Models\Reserva as Reserva;
     use Controllers\GuardianController as GuardianController;
     use Controllers\HomeController as HomeController;
+    
 
     class DuenoController
     {
@@ -99,6 +102,13 @@
             $controllerHome = new HomeController();
             $controllerHome->index($alert);
 
+        }
+
+        public function listReservas(){
+            $id=$_SESSION['id'];
+            $reservaDao = new ReservaDAO;
+            $reservas = $reservaDao->getDatosReservaDueno($id);
+            require_once(VIEWS_PATH.'listareservasdueno.php');
         }
 
         public function Remove($id)

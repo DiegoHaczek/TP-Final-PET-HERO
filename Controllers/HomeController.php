@@ -39,7 +39,7 @@
                     $usuario = $this->guardianDAO->GetById($_SESSION["id"]);
                     
                     $reservaDao = new ReservaDAO();
-                    $reservas = $reservaDao->getDatosReserva($_SESSION["id"]);
+                    $reservas = $reservaDao->getDatosReservaGuardian($_SESSION["id"]);
                     
                     require_once(VIEWS_PATH."mainguardian.php");
                 }
