@@ -24,8 +24,8 @@
 
             date_default_timezone_set('America/Argentina/Buenos_Aires'); //seteo la zona horaria
 
-            $inicio = \date_create_from_format("d-m",$fechaInicio);
-            $fin = \date_create_from_format("d-m",$fechaFinal);
+            $inicio = \date_create_from_format("Y-m-d",$fechaInicio);
+            $fin = \date_create_from_format("Y-m-d",$fechaFinal);
 
             //var_dump($mascota);
             //var_dump($inicio, $fin);
@@ -93,7 +93,7 @@
 
                         for($fecha=$fechaInicio;$fecha<=$fechaFinal;$fecha->add($unDia)){
 
-                            $fechaFormateada= date_format($fecha,"d-m");
+                            $fechaFormateada= date_format($fecha,"Y-m-d");
 
                             if(!\in_array($fechaFormateada,$arregloDisponibilidad)){
 

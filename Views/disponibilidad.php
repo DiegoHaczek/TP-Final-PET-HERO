@@ -13,7 +13,7 @@
                 
                 for ($fecha = $fechaInicio;$fecha<=$fechaFin;$fecha->add($unDia)){
 
-                $fechaFormateada= date_format($fecha,"d-m");
+                $fechaFormateada= date_format($fecha,"Y-m-d");
                 array_push($arregloFechas,$fechaFormateada);
                 //echo $fechaFormateada . "<br>";
                 }

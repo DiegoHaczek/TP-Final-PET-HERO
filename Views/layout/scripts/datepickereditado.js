@@ -4,8 +4,8 @@ $('.date').datepicker({
     multidate: false,
     //todayHighlight: true,
       //format: 'dd-mm',
-    format: 'dd-mm',
-    clearBtn: true,
+      format: 'yyyy-mm-dd',
+      clearBtn: true,
     updateViewDate: false,
     weekStart: 1
 
