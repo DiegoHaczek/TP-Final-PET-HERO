@@ -197,37 +197,67 @@
 
         public function getDatosReservaDueno($idDueno){
 
-        try{
-            $this->DatosReservaList = array();
-            
-            $query = "select m.nombre as nombre_mascota, m.foto_perfil, g.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final 
-            from guardian g inner join reserva r on g.id_guardian=r.id_guardian inner join mascota m on r.id_mascota=m.id_mascota where r.id_dueno=:id_dueno;";
-
-            $parameters["id_dueno"] = $idDueno;
-
-            $this->connection = Connection::GetInstance();
-            $resultSet = $this->connection->Execute($query,$parameters);
-            //var_dump($resultSet);
-            $DatosReserva = array();
-
-            foreach ($resultSet as $row){
+            try{
+                $this->DatosReservaList = array();
                 
-                $DatosReserva["m.nombre"] = $row["nombre_mascota"];
-                $DatosReserva["m.foto_perfil"] = $row["foto_perfil"];
-                $DatosReserva["g.nombre"] = $row["nombre"];
-                $DatosReserva["r.id_reserva"] = $row["id_reserva"];
-                $DatosReserva["r.estado"] = $row["estado"];
-                $DatosReserva["r.fecha_inicio"] = $row["fecha_inicio"];
-                $DatosReserva["r.fecha_final"] = $row["fecha_final"];
-                array_push($this->DatosReservaList, $DatosReserva);
+                $query = "select m.nombre as nombre_mascota, m.foto_perfil, g.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final 
+                from guardian g inner join reserva r on g.id_guardian=r.id_guardian inner join mascota m on r.id_mascota=m.id_mascota where r.id_dueno=:id_dueno;";
+
+                $parameters["id_dueno"] = $idDueno;
+
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query,$parameters);
+                //var_dump($resultSet);
+                $DatosReserva = array();
+
+                foreach ($resultSet as $row){
+                    
+                    $DatosReserva["m.nombre"] = $row["nombre_mascota"];
+                    $DatosReserva["m.foto_perfil"] = $row["foto_perfil"];
+                    $DatosReserva["g.nombre"] = $row["nombre"];
+                    $DatosReserva["r.id_reserva"] = $row["id_reserva"];
+                    $DatosReserva["r.estado"] = $row["estado"];
+                    $DatosReserva["r.fecha_inicio"] = $row["fecha_inicio"];
+                    $DatosReserva["r.fecha_final"] = $row["fecha_final"];
+                    array_push($this->DatosReservaList, $DatosReserva);
+                }
+
+                return $this->DatosReservaList;
+            }catch(Exception $ex){
+                return $ex;
             }
 
-            return $this->DatosReservaList;
-        }catch(Exception $ex){
-            return $ex;
         }
 
-    }
+        public function getListaRazas($fechaInicio, $fechaFinal){
+
+            try {
+                $RazaList = array();
+
+                $query = "Select m.raza from reserva as r, mascota as m where (r.id_mascota=m.id_mascota) and (r.fecha_inicio between :fecha_inicio and :fecha_final or r.fecha_final between :fecha_inicio and :fecha_final);";
+
+                var_dump($fechaInicio);
+                var_dump($fechaFinal);
+                $parameters["fecha_inicio"] = $fechaInicio;
+                $parameters["fecha_final"] = $fechaFinal;
+
+                $this->connection = Connection::GetInstance();
+                $resultSet = $this->connection->Execute($query,$parameters);
+                //var_dump($resultSet);
+                $DatosRaza = array();
+
+                foreach ($resultSet as $row){
+                    
+                    $DatosRaza["raza"] = $row["raza"];
+                    array_push($RazaList, $DatosRaza); 
+                }
+                    
+                return $RazaList;
+
+            } catch (Exception $ex) {
+                return $ex;
+            }
+        }
 
    }
 ?>

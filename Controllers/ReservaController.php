@@ -27,24 +27,29 @@
             $inicio = \date_create_from_format("Y-m-d",$fechaInicio);
             $fin = \date_create_from_format("Y-m-d",$fechaFinal);
 
-            //var_dump($mascota);
+            var_dump($mascota);
             //var_dump($inicio, $fin);
 
             if ($inicio<=$fin) { 
                 if($this->comprobarDisponibilidad($inicio,$fin,$idGuardian)){
                     if ($this->comprobarRaza($mascota)) {
-                        $reserva = new Reserva();
-                        $reserva->setIdDueno($idDueno);
-                        $reserva->setIdGuardian($idGuardian);
-                        $reserva->setFechaInicio($fechaInicio);
-                        $reserva->setFechaFinal($fechaFinal);
-                        $reserva->setIdMascota($idMascota);
+                        if($this->comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota)){
+                            $reserva = new Reserva();
+                            $reserva->setIdDueno($idDueno);
+                            $reserva->setIdGuardian($idGuardian);
+                            $reserva->setFechaInicio($fechaInicio);
+                            $reserva->setFechaFinal($fechaFinal);
+                            $reserva->setIdMascota($idMascota);
 
-                        $this->ReservaDAO->Add($reserva);
+                            $this->ReservaDAO->Add($reserva);
 
-                        $alert=['tipo'=>"exito",'mensaje'=>"Reserva Creada con Éxito"];
-                        
-                        $controllerHome->Index($alert);
+                            $alert=['tipo'=>"exito",'mensaje'=>"Reserva Creada con Éxito"];
+                            
+                            $controllerHome->Index($alert);
+                        } else {
+                            $alert=['tipo'=>"error",'mensaje'=>"El Guardián tiene una Reserva con otra Raza en la Fecha Indicada."];
+                            $controllerGuardian->ShowProfile($idGuardian,$alert);
+                        }
                     } else {
                         $alert=['tipo'=>"error",'mensaje'=>"Las Mascotas indicadas son de distintas razas"];
                         $controllerGuardian->ShowProfile($idGuardian,$alert);
@@ -118,6 +123,24 @@
                 if($primeraRaza != $item){
                     return false;
                 }
+            }
+
+            return true;
+
+        }
+
+        public function comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota){
+            
+            $arregloRazas = $this->ReservaDAO->getListaRazas($fechaInicio, $fechaFinal);
+
+            $raza = array();
+            
+            $raza = explode(",", $mascota[0]);
+
+            var_dump($arregloRazas);
+
+            if(strtolower($arregloRazas[0]["raza"]) != strtolower($raza[1])){
+                return false;
             }
 
             return true;
