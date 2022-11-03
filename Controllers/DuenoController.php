@@ -84,6 +84,15 @@
             return false;
         }
 
+        public function EditProfile(){
+           
+            $usuario = New Dueno();
+            $usuario = $this->DuenoDAO->GetById($_SESSION["id"]);
+            $editar=true;
+            require_once(VIEWS_PATH."editarperfildueno.php");
+
+        }
+
         public function SetProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name)
         {
 

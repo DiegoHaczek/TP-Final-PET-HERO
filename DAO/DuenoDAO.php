@@ -36,26 +36,29 @@
 
             try {
 
-                $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad, foto_perfil=:foto_perfil WHERE id_dueno = ".$_SESSION["id"].";";
-                
+                //var_dump($tmp_name);
+                if($tmp_name==""){    //si vengo de editar perfil y no añado una foto nueva, no la paso como parametro en la query
+
+                    $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad
+                     WHERE id_dueno = ".$_SESSION["id"].";";
+
+                    }else{
+
+                        $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad,
+                         foto_perfil=:foto_perfil WHERE id_dueno = ".$_SESSION["id"].";";
+
+                            $nombre_imagen= $PerfilDueno->getFotoPerfil();
+                            $ruta="Upload/img".$nombre_imagen;
+                            move_uploaded_file($tmp_name,$ruta);
+                            $_SESSION["fotoPerfil"] =  $ruta;
+                            $parameters["foto_perfil"] = $ruta;
+        
+                    }
+
                 $parameters["nombre"] = $PerfilDueno->getNombre();
                 $parameters["apellido"] = $PerfilDueno->getApellido();
                 $parameters["edad"] = $PerfilDueno->getEdad();
-
-
-                if($PerfilDueno->getFotoPerfil()){
-                    
-                    $nombre_imagen= $PerfilDueno->getFotoPerfil();
-                    $ruta="Upload/img".$nombre_imagen;
-                    move_uploaded_file($tmp_name,$ruta);
-                }
-                    else{$ruta=null;}
-    
-                    $parameters["foto_perfil"] = $ruta;
-    
-                    $_SESSION["fotoPerfil"] =  $ruta;
-
-                
+            
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->ExecuteNonQuery($query, $parameters);
@@ -64,6 +67,7 @@
                 throw $ex;
             }
         }
+
 
         public function GetIdByMail($mail){
 

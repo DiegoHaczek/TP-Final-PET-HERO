@@ -14,9 +14,16 @@
 
                 <fieldset>
                     <label for="informacionpersonal" ><strong><span>Información Personal</span></strong></label><br>
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre">
-                    <input type="text" id="apellido" name="apellido" placeholder="Apellido">
-                    <input type="number" class="number" id="edad" name="edad" placeholder="Edad" min="18" max="90">
+                   
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" 
+                    value="<?php if(isset($editar)){echo $usuario->getNombre();}?>">
+
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" 
+                    value="<?php if(isset($editar)){echo $usuario->getApellido();}?>">
+
+                    <input type="number" class="number" id="edad" name="edad" placeholder="Edad" min="18" max="90" 
+                    value="<?php if(isset($editar)){echo $usuario->getEdad();}?>">
+
                 </fieldset>
 
                 <fieldset>

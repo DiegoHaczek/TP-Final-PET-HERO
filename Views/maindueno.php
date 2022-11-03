@@ -53,7 +53,7 @@
                                         <span>Cantidad Reservas Completadas: <strong>0</strong></span>
                                         
 
-                                        <button class="formButton" style="padding:0.3em 1em; position:relative; top:8.3em; right:2.7em">Editar</button>
+                                        <a href="<?php echo FRONT_ROOT."Dueno/EditPRofile"?>"><button class="formButton" style="padding:0.3em 1em; position:relative; top:8.3em; right:2.7em">Editar</button></a>
                                         
 
                                     </div>
