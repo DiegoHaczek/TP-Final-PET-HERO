@@ -27,7 +27,7 @@
             $inicio = \date_create_from_format("Y-m-d",$fechaInicio);
             $fin = \date_create_from_format("Y-m-d",$fechaFinal);
 
-            var_dump($mascota);
+            //var_dump($mascota);
             //var_dump($inicio, $fin);
 
             if ($inicio<=$fin) { 
@@ -133,14 +133,16 @@
             
             $arregloRazas = $this->ReservaDAO->getListaRazas($fechaInicio, $fechaFinal);
 
+            if($arregloRazas){
             $raza = array();
             
             $raza = explode(",", $mascota[0]);
 
-            var_dump($arregloRazas);
+            //var_dump($arregloRazas);
 
             if(strtolower($arregloRazas[0]["raza"]) != strtolower($raza[1])){
                 return false;
+            }
             }
 
             return true;

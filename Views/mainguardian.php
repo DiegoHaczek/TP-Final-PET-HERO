@@ -104,15 +104,21 @@
 
 
                         <?php foreach($reservas as $reserva) { if($reserva["r.estado"]=='Pendiente'){?>
+
+                            <?php $dateInicio=date_create_from_format('Y-m-d',$reserva['r.fecha_inicio']);
+                            $dateFinal=date_create_from_format('Y-m-d',$reserva['r.fecha_final']);
+                            $diasReserva=date_diff($dateInicio,$dateFinal)->d+1; ?>
+
                         
                         <tr><td><img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$reserva["m.foto_perfil"]?>"></td><td><span><?php echo $reserva["m.nombre"]; ?></span></td>
-                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span>3</span></td>
+                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
                         <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
 
                         <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
                         <input type="text" name="estado" value="Aceptada" style="display:none"></input>
+
 
                         <td><button class="formButton" type="submit">Aceptar</button>
                         
@@ -146,9 +152,14 @@
                         <tr class="espacio"><td></td></tr>
 
                         <?php foreach($reservas as $reserva) { if($reserva["r.estado"]=='Aceptada'){?>
+
+                            <?php $dateInicio=date_create_from_format('Y-m-d',$reserva['r.fecha_inicio']);
+                            $dateFinal=date_create_from_format('Y-m-d',$reserva['r.fecha_final']);
+                            $diasReserva=date_diff($dateInicio,$dateFinal)->d+1; ?>
+
                         
                         <tr><td><img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$reserva["m.foto_perfil"]?>"></td><td><span><?php echo $reserva["m.nombre"]; ?></span></td>
-                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span>3</span></td>
+                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
                         <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">

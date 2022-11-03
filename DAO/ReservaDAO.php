@@ -24,7 +24,7 @@
                 $parameters["fecha_final"] = $Reserva->getFechaFinal();
                 $parameters["estado"] = "Pendiente";
 
-                var_dump($Reserva->getFechaInicio());
+                //var_dump($Reserva->getFechaInicio());
 
                 $this->connection = Connection::GetInstance();
 
@@ -201,7 +201,7 @@
                 $this->DatosReservaList = array();
                 
                 $query = "select m.nombre as nombre_mascota, m.foto_perfil, g.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final 
-                from guardian g inner join reserva r on g.id_guardian=r.id_guardian inner join mascota m on r.id_mascota=m.id_mascota where r.id_dueno=:id_dueno;";
+                from guardian g inner join reserva r on g.id_guardian=r.id_guardian inner join mascota m on r.id_mascota=m.id_mascota where r.id_dueno=:id_dueno order by r.estado;";
 
                 $parameters["id_dueno"] = $idDueno;
 
@@ -236,8 +236,8 @@
 
                 $query = "Select m.raza from reserva as r, mascota as m where (r.id_mascota=m.id_mascota) and (r.fecha_inicio between :fecha_inicio and :fecha_final or r.fecha_final between :fecha_inicio and :fecha_final);";
 
-                var_dump($fechaInicio);
-                var_dump($fechaFinal);
+                //var_dump($fechaInicio);
+                //var_dump($fechaFinal);
                 $parameters["fecha_inicio"] = $fechaInicio;
                 $parameters["fecha_final"] = $fechaFinal;
 

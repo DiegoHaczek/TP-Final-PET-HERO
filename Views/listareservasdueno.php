@@ -22,9 +22,14 @@
                         <tr class="espacio"><td></td></tr>
 
                         <?php foreach($reservas as $reserva) { ?>
+
+                        <?php $dateInicio=date_create_from_format('Y-m-d',$reserva['r.fecha_inicio']);
+                        $dateFinal=date_create_from_format('Y-m-d',$reserva['r.fecha_final']);
+                        $diasReserva=date_diff($dateInicio,$dateFinal)->d+1; ?>
+
                         
                         <tr><td><img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$reserva["m.foto_perfil"]?>"></td><td><span><?php echo $reserva["m.nombre"]; ?></span></td>
-                        <td><span><?php echo $reserva["g.nombre"]; ?></span></td><td><span><?php echo $reserva["r.estado"]; ?></span></td><td></td>
+                        <td><span><?php echo $reserva["g.nombre"]; ?></span></td><td><span><?php echo $reserva["r.estado"]; ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
                         <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
