@@ -9,7 +9,7 @@
         private $MascotaList = array();
         private $tableName = "mascota";
 
-        public function Add(Mascota $Mascota,$tmp_name)
+        public function Add(Mascota $Mascota,$tmp_name,$tmp_nameFichamedica)
         {
             try {
                 $query = "INSERT INTO ".$this->tableName." (nombre, edad, tamano, raza, especie, indicaciones, id_dueno, foto_perfil, ficha_medica) VALUES (:nombre, :edad, :tamano, :raza, :especie, :indicaciones, :id_dueno, :foto_perfil, :ficha_medica);";
@@ -29,8 +29,11 @@
                 move_uploaded_file($tmp_name,$ruta);
                 $parameters["foto_perfil"] = $ruta;
 
+                $nombre_imagenFichamedica= $Mascota->getFichaMedica();
+                $rutaFichamedica="Upload/img".$nombre_imagenFichamedica;
 
-                $parameters["ficha_medica"] = $Mascota->getFichaMedica();
+                move_uploaded_file($tmp_nameFichamedica,$rutaFichamedica);
+                $parameters["ficha_medica"] = $rutaFichamedica;
 
                 $this->connection = Connection::GetInstance();
 
@@ -93,7 +96,10 @@
 
         public function GetById($id){
             try{
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_MASCOTA = :id_mascota;";
+
+                var_dump($id);
+
+                $query = "SELECT * FROM ".$this->tableName." WHERE id_mascota = :id_mascota;";
 
                 $parameters["id_mascota"] = $id;
 
@@ -103,18 +109,51 @@
 
                 //var_dump($result);
                 $Mascota = new Mascota();
-                $Mascota->setId($row[0]["id_mascota"]);
-                $Mascota->setNombre($row[0]["nombre"]);
-                $Mascota->setEdad($row[0]["edad"]);
-                $Mascota->setFotoPerfil($row[0]["foto_perfil"]);
-                $Mascota->setFichaMedica($row[0]["ficha_medica"]);
-                $Mascota->setTamano($row[0]["tamano"]);
-                $Mascota->setRaza($row[0]["raza"]);
-                $Mascota->setEspecie($row[0]["especie"]);
-                $Mascota->setIndicaciones($row[0]["indicaciones"]);
-                $Mascota->setIdDueno($row[0]["id_dueno"]);
+                $Mascota->setId($result[0]["id_mascota"]);
+                $Mascota->setNombre($result[0]["nombre"]);
+                $Mascota->setEdad($result[0]["edad"]);
+                $Mascota->setFotoPerfil($result[0]["foto_perfil"]);
+                $Mascota->setFichaMedica($result[0]["ficha_medica"]);
+                $Mascota->setTamano($result[0]["tamano"]);
+                $Mascota->setRaza($result[0]["raza"]);
+                $Mascota->setEspecie($result[0]["especie"]);
+                $Mascota->setIndicaciones($result[0]["indicaciones"]);
+                $Mascota->setIdDueno($result[0]["id_dueno"]);
 
                 return $Mascota;
+            }catch(Exception $ex){
+                return $ex;
+            }
+        }
+
+        public function GetPetProfile($id){
+
+            try{
+
+                var_dump($id);
+
+                $query = "SELECT m.*,d.nombre as nombre_dueno,d.email FROM mascota as m, dueno as d WHERE (m.id_dueno=d.id_dueno) and (m.id_mascota=:id_mascota);";
+
+                $parameters["id_mascota"] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                //var_dump($result);
+                $perfilMascota = array();
+                $perfilMascota ['nombreMascota'] = $result[0]["nombre"];
+                $perfilMascota ['edad'] = $result[0]["edad"];
+                $perfilMascota ['foto_perfil'] = $result[0]["foto_perfil"];
+                $perfilMascota ['ficha_medica'] = $result[0]["ficha_medica"];
+                $perfilMascota ['tamano'] = $result[0]["tamano"];
+                $perfilMascota ['raza'] = $result[0]["raza"];
+                $perfilMascota ['indicaciones'] = $result[0]["indicaciones"];
+                $perfilMascota ['nombre_dueno'] = $result[0]["nombre_dueno"];
+                $perfilMascota ['email'] = $result[0]["email"];
+
+                return $perfilMascota;
+                
             }catch(Exception $ex){
                 return $ex;
             }

@@ -32,7 +32,7 @@
         }
 
         public function Add($nombre, $edad, $tamano, $especie, $razaPerroChico ,
-         $razaPerroMediano, $razaPerroGrande , $razaGato , $indicaciones, $fotoperfil,$tmp_name)
+         $razaPerroMediano, $razaPerroGrande , $razaGato , $indicaciones, $fotoperfil,$tmp_name,$fichamedica,$tmp_nameFichamedica)
         {
             //require_once(VIEWS_PATH."validate-session.php");
             $Mascota = new Mascota();
@@ -42,6 +42,7 @@
 
             
             $Mascota->setFotoPerfil($fotoperfil);
+            $Mascota->setFichaMedica($fichamedica);
             $Mascota->setTamano($tamano);
             $Mascota->setIndicaciones($indicaciones);
             $Mascota->setIdDueno($_SESSION["id"]);
@@ -61,7 +62,7 @@
 
 
 
-            $this->MascotaDAO->Add($Mascota,$tmp_name);
+            $this->MascotaDAO->Add($Mascota,$tmp_name,$tmp_nameFichamedica);
 
             //echo "<script>alert('Mascota agregada con éxito')</script>";
 
@@ -89,6 +90,17 @@
             require_once(VIEWS_PATH."listamascotas.php");
 
         }
+
+        public function ShowProfile($id,$alert = ""){
+
+            if  ($this->MascotaDAO->GetById($id)){
+ 
+             $perfilMascota = $this->MascotaDAO->GetPetProfile($id);
+             require_once(VIEWS_PATH."perfilmascota.php");
+ 
+            }
+ 
+         }
 
         public function countMascotas ($idDueno){
 

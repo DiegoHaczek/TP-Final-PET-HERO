@@ -36,18 +36,18 @@
 
         public function ShowProfile($id,$alert = ""){
 
-           if  ($this->GuardianDAO->GetById($id)){
-
-            $usuario = $this->GuardianDAO->GetById($id);
-
-            $mascotaDao = new MascotaDAO();
-            $mascotas = $mascotaDao->GetAll();
-
-            require_once(VIEWS_PATH."perfilguardian.php");
-
-           }
-
-        }
+            if  ($this->GuardianDAO->GetById($id)){
+ 
+             $usuario = $this->GuardianDAO->GetById($id);
+ 
+             $mascotaDao = new MascotaDAO();
+             $mascotas = $mascotaDao->GetAll();
+ 
+             require_once(VIEWS_PATH."perfilguardian.php");
+ 
+            }
+ 
+         }
 
         public function Add($password,$passwordconfirm, $mail)
         {

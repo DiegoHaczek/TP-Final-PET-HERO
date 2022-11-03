@@ -5,7 +5,7 @@
 
     interface IMascotaDao
     {
-        function Add(Mascota $Mascota,$tmp_name);
+        function Add(Mascota $Mascota,$tmp_name,$tmp_nameFichamedica);
         function GetAll();
         function Remove($id);
         function GetById($id);

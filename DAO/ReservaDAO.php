@@ -163,7 +163,7 @@
             try{
                 $this->DatosReservaList = array();
                 
-                $query = "select m.nombre as nombre_mascota, m.raza, m.edad, m.foto_perfil, d.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final 
+                $query = "select m.id_mascota, m.nombre as nombre_mascota, m.raza, m.edad, m.foto_perfil, d.nombre, r.id_reserva, r.estado, r.fecha_inicio, r.fecha_final 
                 from dueno d inner join reserva r on d.id_dueno=r.id_dueno inner join mascota m on r.id_mascota=m.id_mascota where r.id_guardian=:id_guardian;";
 
                 $parameters["id_guardian"] = $idGuardian;
@@ -175,6 +175,7 @@
 
                 foreach ($resultSet as $row){
                     
+                    $DatosReserva["m.id_mascota"] = $row["id_mascota"];
                     $DatosReserva["m.nombre"] = $row["nombre_mascota"];
                     $DatosReserva["m.raza"] = $row["raza"];
                     $DatosReserva["m.edad"] = $row["edad"];

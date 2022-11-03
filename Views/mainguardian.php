@@ -114,21 +114,22 @@
                         <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
+                        
                         <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
-
                         <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
                         <input type="text" name="estado" value="Aceptada" style="display:none"></input>
-
-
                         <td><button class="formButton" type="submit">Aceptar</button>
                         
                         </form>
                         
-                        <button class="formButton" type="submit" >Cancelar</button>
+                        <button class="formButton" type="submit" style="">Cancelar</button>
 
+                        <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
+                        <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    
+                        <button class="formButton" type="submit" style="">Ver Info</button></form>
 
+                        </td>
 
-                        <button class="formButton" type="submit" >Ver Info</button></td></tr>
                         <tr class="espacio"><td></td></tr>
 
 
@@ -172,9 +173,9 @@
                         </form>
                         
 
-
-
-                        <button class="formButton" type="submit" >Ver Info</button></td></tr>
+                        <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
+                        <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    
+                        <button class="formButton" type="submit" style="">Ver Info</button></form></td></tr>
                         <tr class="espacio"><td></td></tr>
 
 
