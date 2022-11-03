@@ -84,7 +84,7 @@
             return false;
         }
 
-        public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name)
+        public function SetProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name)
         {
 
             $PerfilDueno = new Dueno();
@@ -93,7 +93,7 @@
             $PerfilDueno->setEdad($edad);
             $PerfilDueno->setFotoPerfil($fotoperfil);
             
-            $this->DuenoDAO->EditProfile($PerfilDueno,$tmp_name);
+            $this->DuenoDAO->SetProfile($PerfilDueno,$tmp_name);
 
             $_SESSION["loggedUser"] = $nombre;
 

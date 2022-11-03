@@ -32,7 +32,7 @@
             
         }
 
-        public function EditProfile(Dueno $PerfilDueno,$tmp_name){
+        public function SetProfile(Dueno $PerfilDueno,$tmp_name){
 
             try {
 

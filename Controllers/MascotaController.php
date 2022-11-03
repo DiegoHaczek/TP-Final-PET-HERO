@@ -73,7 +73,7 @@
             //$this->ShowAddView();
         }
 
-        public function EditProfile($nombre,$edad,$tipo, $indicaciones,$fotoperfil)
+        public function SetProfile($nombre,$edad,$tipo, $indicaciones,$fotoperfil)
         {
 
             $PerfilMascota = new Mascota();
@@ -84,7 +84,7 @@
             $Mascota->setTamano($tipo);
             $Mascota->setIndicaciones($indicaciones);
             
-            $this->MascotaDAO->EditProfile($PerfilMascota);
+            $this->MascotaDAO->SetProfile($PerfilMascota);
 
             require_once(VIEWS_PATH."listamascotas.php");
 

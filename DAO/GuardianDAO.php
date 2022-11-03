@@ -31,31 +31,32 @@
         }
 
 
-        public function EditProfile(Guardian $PerfilGuardian,$tmp_name){
+        public function SetProfile(Guardian $PerfilGuardian,$tmp_name){
 
             try {
 
-                $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad, foto_perfil=:foto_perfil, tamano=:tamano, tarifa=:tarifa, disponibilidad=:disponibilidad WHERE id_guardian = ".$_SESSION["id"].";";
-                
+                //var_dump($tmp_name);
+                if($tmp_name==""){    //si vengo de editar perfil y no añado una foto nueva, no la paso como parametro en la query
+
+                    $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad,
+                     tamano=:tamano, tarifa=:tarifa, disponibilidad=:disponibilidad WHERE id_guardian = ".$_SESSION["id"].";";
+
+                    }else{
+
+                        $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad,
+                         foto_perfil=:foto_perfil, tamano=:tamano, tarifa=:tarifa, disponibilidad=:disponibilidad WHERE id_guardian = ".$_SESSION["id"].";";
+
+                            $nombre_imagen= $PerfilGuardian->getFotoPerfil();
+                            $ruta="Upload/img".$nombre_imagen;
+                            move_uploaded_file($tmp_name,$ruta);
+                            $_SESSION["fotoPerfil"] =  $ruta;
+                            $parameters["foto_perfil"] = $ruta;
+        
+                    }
+
                 $parameters["nombre"] = $PerfilGuardian->getNombre();
                 $parameters["apellido"] = $PerfilGuardian->getApellido();
                 $parameters["edad"] = $PerfilGuardian->getEdad();
-
-                $parameters["foto_perfil"] = $PerfilGuardian->getFotoPerfil();
-
-                if($PerfilGuardian->getFotoPerfil()){
-                    
-                    $nombre_imagen= $PerfilGuardian->getFotoPerfil();
-                    $ruta="Upload/img".$nombre_imagen;
-                    move_uploaded_file($tmp_name,$ruta);
-                }
-                    else{$ruta=null;}
-    
-                    $parameters["foto_perfil"] = $ruta;
-    
-                    $_SESSION["fotoPerfil"] =  $ruta;
-
-
                 $parameters["tamano"] = implode(",", $PerfilGuardian->getTamano());
                 $parameters["tarifa"] = $PerfilGuardian->getRemuneracion();
                 $parameters["disponibilidad"] = $PerfilGuardian->getDisponibilidad();

@@ -121,7 +121,16 @@
             return false;
         }
 
-        public function EditProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name,$remuneracion,$tamano,$disponibilidad)
+        public function EditProfile(){
+           
+            $usuario = New Guardian();
+            $usuario = $this->GuardianDAO->GetById($_SESSION["id"]);
+            $editar=true;
+            require_once(VIEWS_PATH."editarperfilguardian.php");
+
+        }
+
+        public function SetProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name,$remuneracion,$tamano,$disponibilidad)
         {
 
             $PerfilGuardian = new Guardian();
@@ -133,7 +142,7 @@
             $PerfilGuardian->setTamano($tamano);
             $PerfilGuardian->setDisponibilidad($disponibilidad);
             
-            $this->GuardianDAO->EditProfile($PerfilGuardian,$tmp_name);
+            $this->GuardianDAO->SetProfile($PerfilGuardian,$tmp_name);
 
             $_SESSION["loggedUser"] = $nombre;
 

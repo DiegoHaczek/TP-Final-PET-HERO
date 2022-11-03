@@ -77,7 +77,7 @@
                                 </div>
 
                             </div>
-                            <button class="formButton" style="padding:0.3em 1em; position:relative; left:19em; bottom:5em;">Editar</button>
+                            <a href="<?php echo FRONT_ROOT."Guardian/EditPRofile"?>"><button class="formButton" style="padding:0.3em 1em; position:relative; left:19em; bottom:5em;">Editar</button></a>
 
                         </div>
                     </section>
