@@ -5,6 +5,7 @@
     use Models\Reserva as Reserva;
     use Controllers\GuardianController as GuardianController;
     use Controllers\HomeController as HomeController;
+    use Controllers\CuponController as CuponController;
     use DAO\ReservaDAO as ReservaDAO;
 
     class ReservaController
@@ -151,7 +152,14 @@
 
         public function updateEstado($idReserva,$estado){
 
+            if ($estado == "Aceptada") {
+                $CuponController = new CuponController();
+                $CuponController->Add($idReserva);
+                //Agregar para enviar mail
+            }
+
             $this->ReservaDAO->updateEstado($idReserva,$estado);
+
 
             $alert=['tipo'=>"exito",'mensaje'=>"Estado Reserva Actualizado"];
 

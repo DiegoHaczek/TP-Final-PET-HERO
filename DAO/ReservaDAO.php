@@ -235,7 +235,7 @@
             try {
                 $RazaList = array();
 
-                $query = "Select m.raza from reserva as r, mascota as m where (r.id_mascota=m.id_mascota) and (r.fecha_inicio between :fecha_inicio and :fecha_final or r.fecha_final between :fecha_inicio and :fecha_final);";
+                $query = "Select m.raza from reserva as r, mascota as m where (r.id_mascota=m.id_mascota) and (r.fecha_inicio between :fecha_inicio and :fecha_final or r.fecha_final between :fecha_inicio and :fecha_final) and (r.estado != 'Cancelada');";
 
                 //var_dump($fechaInicio);
                 //var_dump($fechaFinal);

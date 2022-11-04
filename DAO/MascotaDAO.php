@@ -97,7 +97,7 @@
         public function GetById($id){
             try{
 
-                var_dump($id);
+                //var_dump($id);
 
                 $query = "SELECT * FROM ".$this->tableName." WHERE id_mascota = :id_mascota;";
 
@@ -130,7 +130,7 @@
 
             try{
 
-                var_dump($id);
+                //var_dump($id);
 
                 $query = "SELECT m.*,d.nombre as nombre_dueno,d.email FROM mascota as m, dueno as d WHERE (m.id_dueno=d.id_dueno) and (m.id_mascota=:id_mascota);";
 
