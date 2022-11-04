@@ -50,7 +50,7 @@
 
     
         public function registroGuardian($alert = ""){
-        require_once(VIEWS_PATH."registroguardian.php");
+            require_once(VIEWS_PATH."registroguardian.php");
         }
 
         public function registroDueno($alert = ""){

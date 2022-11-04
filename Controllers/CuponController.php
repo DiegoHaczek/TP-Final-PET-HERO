@@ -32,6 +32,17 @@
             $controllerHome->index($alert);
 
         }      
+    
+
+        public function verCupon($idCupon,$alert=""){
+
+            $datosCupon =$this->CuponDAO->GetbyId($idCupon);
+
+            //var_dump($datosCupon);
+        
+            require_once(VIEWS_PATH."vercupon.php");
+        }
+
     }
 
     

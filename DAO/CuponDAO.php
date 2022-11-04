@@ -144,20 +144,24 @@
 
                 $parameters["id_cupon"] = $idCupon;
 
-                $DatosReserva["g.nombre"] = $row["nombre_guardian"];
-                $DatosReserva["m.nombre"] = $row["nombre_mascota"];
-                $DatosReserva["d.nombre"] = $row["nombre_dueno"];
-                $DatosReserva["r.id_reserva"] = $row["id_reserva"];
-                $DatosReserva["c.monto"] = $row["monto"];
-                $DatosReserva["r.estado"] = $row["estado"];
-                $DatosReserva["r.fecha_inicio"] = $row["vencimiento"];
-                
+                $DatosCupon = array();
+
                 $this->connection = Connection::GetInstance();
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
-               return $this->DatosReserva;
+
+                $DatosCupon["m.nombre"] = $result[0]["nombre_mascota"];
+                $DatosCupon["g.nombre"] = $result[0]["nombre_guardian"];
+                $DatosCupon["d.nombre"] = $result[0]["nombre_dueno"];
+                $DatosCupon["r.id_reserva"] = $result[0]["id_reserva"];
+                $DatosCupon["c.id_cupon"] = $idCupon;
+                $DatosCupon["c.monto"] = $result[0]["monto"];
+                $DatosCupon["r.estado"] = $result[0]["estado"];
+                $DatosCupon["r.fecha_inicio"] = $result[0]["vencimiento"];
+                
+                
+               return $DatosCupon;
 
             }catch(Exception $ex){
                 return $ex;

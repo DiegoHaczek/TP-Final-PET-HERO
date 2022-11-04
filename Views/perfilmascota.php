@@ -3,10 +3,6 @@
 <?php require 'header.php' ?>
 <?php require 'usernav.php'?>
 
-<link rel="stylesheet" href="<?php echo CSS_PATH;?>bootstrap.css">
-<!-- incluyo bootstrap-->
-<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" rel="stylesheet"/>
-
 <main class="content">
 
 <?php if ($alert!="") {?>

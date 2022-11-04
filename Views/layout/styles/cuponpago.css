@@ -1,0 +1,92 @@
+.cuponpago{
+
+    margin: 0 auto;
+    width:50em;
+    height:25em;
+    opacity:80%;
+    display:flex;
+    flex-direction: column;
+    border-radius:10px;
+    background-color: rgba(194, 216, 143, 0.76);
+    border:1px solid rgba(95, 138, 9, 0.5);
+    font-size: 1.05em;
+    color:rgb(15, 15, 15);
+
+
+}
+
+.headercupon{
+
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:20%;
+    width:100%;
+    font-size: 1.2rem;
+
+}
+
+.contenidocupon{
+    display:flex;
+    height: 80%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-evenly;
+}
+
+
+
+.contenidocupon span:nth-child(3),.contenidocupon span:nth-child(5){
+    align-self:center; 
+    margin-top:-4.5em;
+    margin-left:-5em;}
+
+.contenidocupon span:nth-child(5){
+    margin-left:-4em;
+}
+
+.contenidocupon span:nth-child(6){
+
+align-self:center;
+margin-bottom:-1em;
+margin-left:22em;
+}
+
+.contenidocupon span:nth-child(1),.contenidocupon span:nth-child(2),.contenidocupon span:nth-child(4){
+
+    text-indent: 3em;
+    
+}
+
+#fila{flex-direction: row;}
+
+#fila div{
+    
+    margin-top:1.5em;
+    margin-bottom: -1.8em;
+
+}
+
+#textologo{
+
+    font-size: 1.8rem;
+    color:rgba(41, 40, 40,0.82)
+
+}
+
+.cuponpago{
+
+    font-size:1.1rem;
+
+}
+
+.logo{
+
+    display:flex; 
+    flex-direction:row;
+    position:relative;
+    left:47em;
+    bottom:14.7em;
+
+}
