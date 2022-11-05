@@ -1,0 +1,59 @@
+.seccionComentarios{
+    display: flex;
+    flex-direction: column;
+    width:40em;
+    height:30em;
+    justify-content: space-between;
+}
+
+.comentario {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    height: 7em;
+    width: 50em;
+    margin-left: 4.9em;
+}
+
+.datosDuenoComentario{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 20%;
+}
+
+.fotoPerfilComentario{
+    display: flex;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.mensajeComentario{
+    display: flex;
+    background-color: rgba(235,235,157,0.4);
+    width: 65%;
+    height:91%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+div.comentario:nth-child(even) div.mensajeComentario{
+    
+    background-color: rgba(188, 235, 157, 0.4) !important;
+}
+
+div.comentario div.mensajeComentario span{
+
+    font-style: italic;
+    margin:1.5em;
+
+}
+
+.imgperfilmediana{
+    border-radius:50%;
+    width:4em;
+    height:4em;
+    border: solid 1px rgba(51, 109, 13,0.3);
+}

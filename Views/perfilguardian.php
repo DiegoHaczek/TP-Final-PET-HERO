@@ -18,7 +18,7 @@
     <div id="mainContainer" class="" style="width:75em;">
 
                 
-        <section style="width:52em;padding:3em 0 4em 0;position:relative;z-index: 1 !important">
+        <section style="min-height:36em;width:60em;padding:3em 0 4em 0;position:relative;z-index: 1 !important">
                         
                         <summary><span style=" position:relative; bottom:2em;"><strong> Perfil </span></strong></summary>
                         <div class="sectioncontent" style="height:26em">
@@ -66,12 +66,122 @@
                                             <?php } ?>
 
                                     </div>
+
+                                            
+
                                 </div>
+                                
+                                
                             </div>
+
                             <button id="solicitar" class="formButton" style="padding:0.3em 1em; position:relative; left:16.2em; bottom:5.2em;">Solicitar Reserva</button>
 
+
                         </div>
+
+                            <details class="estilizado" style="margin-top:2em;margin-bottom:-1em;"> <summary><span><strong>Comentarios</strong></span></summary>
+
+
+                            <div class="seccionComentarios" style="">
+
+
+                            <div class="comentario">
+
+                                            <div class="datosDuenoComentario">
+
+                                            <span><strong>Nombre  (Puntos)</strong></span>
+                                            <div class="separador"></div>
+                                            <span>Fecha</span>
+
+                                            </div>
+
+                                            <div class="fotoPerfilComentario">
+
+                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.'/Views/img/avatardefault.png'?>">
+
+                                            </div>
+                                            
+                                            <div class="mensajeComentario">
+
+                                            <span><strong>"Recomendado, muy responsable y puntual, volvería a reservar con él sin lugar a dudas, un saludo para todos los quiero mucho un beso"</strong>
+                                            </span>
+
+                                            </div>
+
+                            </div>
+
+                            <div class="comentario">
+
+                                            <div class="datosDuenoComentario">
+
+                                            <span><strong>Nombre  (Puntos)</strong></span>
+                                            <div class="separador"></div>
+                                            <span>Fecha</span>
+
+                                            </div>
+
+                                            <div class="fotoPerfilComentario">
+
+                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.'/Views/img/avatardefault.png'?>">
+
+                                            </div>
+                                            
+                                            <div class="mensajeComentario"></div>
+
+                            </div>
+
+                            <div class="comentario">
+
+                                            <div class="datosDuenoComentario">
+
+                                            <span><strong>Nombre  (Puntos)</strong></span>
+                                            <div class="separador"></div>
+                                            <span>Fecha</span>
+
+                                            </div>
+
+                                            <div class="fotoPerfilComentario">
+
+                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.'/Views/img/avatardefault.png'?>">
+
+                                            </div>
+                                            
+                                            <div class="mensajeComentario"></div>
+
+                            </div>
+
+                            <div class="comentario">
+
+                                            <div class="datosDuenoComentario">
+
+                                            <span><strong>Nombre  (Puntos)</strong></span>
+                                            <div class="separador"></div>
+                                            <span>Fecha</span>
+
+                                            </div>
+
+                                            <div class="fotoPerfilComentario">
+
+                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.'/Views/img/avatardefault.png'?>">
+
+                                            </div>
+                                            
+                                            <div class="mensajeComentario"></div>
+
+                            </div>
+
+
+
+
+                            </div>
+
+
+                            </details>
+
         </section>
+
+
+
 
         <section id="reserva" class="oculta" style="width:43em;padding-bottom:4em;">
             <div class="sectioncontent" style="">
