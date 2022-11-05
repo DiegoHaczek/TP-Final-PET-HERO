@@ -82,20 +82,67 @@
                         </div>
                     </section>
 
-                     <?php $mostrarSection=false;
+
+                    <section style="width:80em">
+                    <div class="sectioncontent">
+                            
+                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas Confirmadas</strong></span></summary>
+                        <table>
+                        
+                        <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
+                        <th><span>Días</span></th><th><span>Fecha Inicio</span></th><th><span>Fecha Fin</span></th></tr>
+                        <tr class="espacio"><td></td></tr>
+
+                        <?php foreach($reservas as $reserva) { if($reserva["r.estado"]=='Confirmada'){?>
+
+                            <?php $dateInicio=date_create_from_format('Y-m-d',$reserva['r.fecha_inicio']);
+                            $dateFinal=date_create_from_format('Y-m-d',$reserva['r.fecha_final']);
+                            $diasReserva=date_diff($dateInicio,$dateFinal)->d+1; ?>
+
+                        
+                        <tr><td><img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$reserva["m.foto_perfil"]?>"></td><td><span><?php echo $reserva["m.nombre"]; ?></span></td>
+                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo ucwords($reserva["m.raza"]); ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
+                        <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
+
+                        <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
+
+                        <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
+                        <input type="text" name="estado" value="Cancelada" style="display:none"></input>
+
+                        <td><button class="formButton" type="submit">Cancelar</button>
+                        
+                        </form>
+                        
+
+                        <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
+                        <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    
+                        <button class="formButton" type="submit" style="">Ver Info</button></form></td></tr>
+                        <tr class="espacio"><td></td></tr>
+
+
+                        <?php }} ?>
+
+                        </table>
+                        
+                    </div>
+                    </section>
+
+
+
+                    <?php $mostrarSectionPendientes=false;
                         foreach($reservas as $reserva){
 
                         if ($reserva["r.estado"]=='Pendiente'){
-                            $mostrarSection=true;
+                            $mostrarSectionPendientes=true;
                         }} 
 
-                        if($mostrarSection){
+                        if($mostrarSectionPendientes){
                         ?>
 
                     <section style="width:80em">
                     <div class="sectioncontent">
                             
-                        <summary><span><strong>Reservas Pendientes</strong></span></summary>
+                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas sin Aceptar</strong></span></summary>
                         <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
@@ -111,7 +158,7 @@
 
                         
                         <tr><td><img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$reserva["m.foto_perfil"]?>"></td><td><span><?php echo $reserva["m.nombre"]; ?></span></td>
-                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
+                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo ucwords($reserva["m.raza"]); ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
                         
@@ -140,17 +187,29 @@
                     </div>
                     </section>
 
-                    <?php } ?>
 
-                     <section style="width:80em">
+
+                    <?php } ?>
+                    <?php $mostrarSectionAceptadas=false;
+                        foreach($reservas as $reserva){
+
+                        if ($reserva["r.estado"]=='Aceptada'){
+                            $mostrarSectionAceptadas=true;
+                        }} 
+
+                        if($mostrarSectionAceptadas){
+                        ?>
+
+                    <section style="width:80em">
                     <div class="sectioncontent">
                             
-                        <summary><span><strong>Próximas Reservas</strong></span></summary>
+                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas Pendientes de Pago</strong></span></summary>
                         <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
                         <th><span>Días</span></th><th><span>Fecha Inicio</span></th><th><span>Fecha Fin</span></th></tr>
                         <tr class="espacio"><td></td></tr>
+
 
                         <?php foreach($reservas as $reserva) { if($reserva["r.estado"]=='Aceptada'){?>
 
@@ -160,22 +219,16 @@
 
                         
                         <tr><td><img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$reserva["m.foto_perfil"]?>"></td><td><span><?php echo $reserva["m.nombre"]; ?></span></td>
-                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo $reserva["m.raza"]; ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
+                        <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo ucwords($reserva["m.raza"]); ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
-                        <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
-
-                        <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
-                        <input type="text" name="estado" value="Cancelada" style="display:none"></input>
-
-                        <td><button class="formButton" type="submit">Cancelar</button>
                         
-                        </form>
-                        
-
+                        <td><button class="formButton" type="submit" style="">Cancelar</button>
                         <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
                         <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    
-                        <button class="formButton" type="submit" style="">Ver Info</button></form></td></tr>
+                        <button class="formButton" type="submit" style="">Ver Info</button></form>
+                        </td>
+
                         <tr class="espacio"><td></td></tr>
 
 
@@ -185,7 +238,10 @@
                         
                     </div>
                     </section>
-                        
+
+                    <?php } ?>
+
+                       
 
     </div>
 

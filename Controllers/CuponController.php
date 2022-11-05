@@ -24,6 +24,8 @@
 
         public function updateEstado($idCupon){
 
+            //update reserva a 'confirmada'
+
             $this->CuponDAO->updateEstado($idCupon,"Pagado");
 
             $alert=['tipo'=>"exito",'mensaje'=>"Reserva Abonada"];

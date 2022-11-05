@@ -172,7 +172,7 @@
 
             try {
                 
-                $query = "select (datediff(r.fecha_inicio, r.fecha_final) + 1 * g.tarifa)/2 as monto from reserva r inner join guardian g on r.id_guardian = g.id_guardian where r.id_reserva = :id_reserva;";
+                $query = "select ((datediff(r.fecha_final, r.fecha_inicio) + 1) * g.tarifa)/2 as monto from reserva r inner join guardian g on r.id_guardian = g.id_guardian where r.id_reserva = :id_reserva;";
 
                 $parameters["id_reserva"] = $idReserva;
 
@@ -180,7 +180,7 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
+                var_dump($result);
                 $monto = explode(".", $result[0]["monto"]);
 
                 return $monto[0];
