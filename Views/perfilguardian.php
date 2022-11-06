@@ -227,8 +227,11 @@
                                         ?>
 
                                         <label for="idMascota"><span style="margin-left:1em;"><?php echo ucwords($mascota->getNombre()); echo " (".ucwords($mascota->getRaza()).")";?></span></label>
-                                        <input type="checkbox" id="checkbox" name="mascota[]" value="<?php echo ucwords($mascota->getNombre()).",".ucwords($mascota->getRaza());?>"></input> 
+                                        <input type="checkbox" id="checkbox" name="mascota[]" value="<?php echo ucwords($mascota->getNombre()).",".ucwords($mascota->getRaza()).",".$mascota->getId();?>"></input> 
                                         <br>
+
+                                        <!--<input type="text" style="display:none" value="<?php // echo $mascota->getId(); ?>" name="idMascota">-->
+
                                     
                                     <?php }}} ?>
                                     
@@ -237,7 +240,6 @@
 
                                     <input type="text" style="display:none" value="<?php echo $_SESSION["id"]; ?>" name="idDueno">
 
-                                    <input type="text" style="display:none" value="<?php echo $mascota->getId(); ?>" name="idMascota">
 
 
                                 

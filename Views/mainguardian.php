@@ -165,11 +165,18 @@
                         <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
                         <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
                         <input type="text" name="estado" value="Aceptada" style="display:none"></input>
+                        <input type="text" style="display:none" name="mascota[]" value="<?php echo ucwords($reserva['m.nombre']).",".ucwords($reserva['m.raza']).",".$reserva['m.id_mascota'];?>"></input>                         
+                        <input type="text" value="<?php echo $reserva['r.fecha_inicio'];?>" name="fecha_inicio" style="display:none">    
+                        <input type="text" value="<?php echo $reserva['r.fecha_final'];?>" name="fecha_final" style="display:none">    
+                        <input type="text" value="<?php echo $_SESSION['id'];?>" name="idGuardian" style="display:none">  
                         <td><button class="formButton" type="submit">Aceptar</button>
-                        
                         </form>
-                        
+
+                        <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>" style="display:inline;">
+                        <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
+                        <input type="text" name="estado" value="Cancelada" style="display:none"></input>
                         <button class="formButton" type="submit" style="">Cancelar</button>
+                        </form>
 
                         <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
                         <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    

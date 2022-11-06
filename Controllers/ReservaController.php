@@ -17,7 +17,7 @@
             $this->ReservaDAO = new ReservaDAO();
         }
 
-        public function Add($fechaInicio, $fechaFinal, $mascota, $idGuardian, $idDueno, $idMascota)
+        public function Add($fechaInicio, $fechaFinal, $mascota, $idGuardian, $idDueno)
         {
 
             $controllerGuardian = new GuardianController();
@@ -29,12 +29,14 @@
             $fin = \date_create_from_format("Y-m-d",$fechaFinal);
 
             //var_dump($mascota);
+            $idMascota = explode(",", $mascota[0])[2];
+            //var_dump($idMascota);
             //var_dump($inicio, $fin);
 
             if ($inicio<=$fin) { 
                 if($this->comprobarDisponibilidad($inicio,$fin,$idGuardian)){
                     if ($this->comprobarRaza($mascota)) {
-                        if($this->comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota)){
+                        if($this->comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota,$idGuardian)){
                             $reserva = new Reserva();
                             $reserva->setIdDueno($idDueno);
                             $reserva->setIdGuardian($idGuardian);
@@ -130,9 +132,9 @@
 
         }
 
-        public function comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota){
+        public function comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota,$idGuardian){
             
-            $arregloRazas = $this->ReservaDAO->getListaRazas($fechaInicio, $fechaFinal);
+            $arregloRazas = $this->ReservaDAO->getListaRazas($fechaInicio, $fechaFinal,$idGuardian);
 
             if($arregloRazas){
             $raza = array();
@@ -150,11 +152,31 @@
 
         }
 
-        public function updateEstado($idReserva,$estado){
+        public function updateEstado($idReserva,$estado,$mascota = '',$fecha_inicio = '',$fecha_final = '',$idGuardian=''){
+
+
+            // comprobacion si no tiene ya reservas aceptadas con otras razas
+
 
             if ($estado == "Aceptada") {
-                $CuponController = new CuponController();
-                $CuponController->Add($idReserva);
+
+
+                if($this->comprobarRazaPorFecha($fecha_inicio,$fecha_final,$mascota,$idGuardian)){
+
+                    $CuponController = new CuponController();
+                    $CuponController->Add($idReserva);
+
+                }else{
+
+                $alert=['tipo'=>"error",'mensaje'=>"Tienes una Reserva con otra Raza en la Fecha Indicada"];
+
+                 $controllerHome = new HomeController();
+                 $controllerHome->index($alert);
+                    return null;
+
+                }
+
+                
                 //Agregar para enviar mail
             }
 

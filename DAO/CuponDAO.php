@@ -180,7 +180,7 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                var_dump($result);
+                //var_dump($result);
                 $monto = explode(".", $result[0]["monto"]);
 
                 return $monto[0];

@@ -230,15 +230,20 @@
 
         }
 
-        public function getListaRazas($fechaInicio, $fechaFinal){
+        ///agregar id guardian
+
+        public function getListaRazas($fechaInicio, $fechaFinal,$idGuardian){
 
             try {
                 $RazaList = array();
 
-                $query = "Select m.raza from reserva as r, mascota as m where (r.id_mascota=m.id_mascota) and (r.fecha_inicio between :fecha_inicio and :fecha_final or r.fecha_final between :fecha_inicio and :fecha_final) and (r.estado != 'Cancelada');";
+                $query = "Select m.raza from reserva as r, mascota as m where (r.id_mascota=m.id_mascota) and (r.id_guardian=:id_guardian)
+                 and (r.fecha_inicio between :fecha_inicio and :fecha_final or r.fecha_final between :fecha_inicio and :fecha_final) 
+                and ((r.estado != 'Cancelada') and (r.estado != 'Pendiente'));";
 
                 //var_dump($fechaInicio);
                 //var_dump($fechaFinal);
+                $parameters["id_guardian"] = $idGuardian;
                 $parameters["fecha_inicio"] = $fechaInicio;
                 $parameters["fecha_final"] = $fechaFinal;
 
