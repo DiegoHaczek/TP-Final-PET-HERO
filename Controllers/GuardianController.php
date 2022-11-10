@@ -6,6 +6,7 @@
     use DAO\GuardianDAO as GuardianDAO;
     use Models\Dueno as Dueno;
     use Controllers\DuenoController as DuenoController;
+    use Controllers\ComentarioController as ComentarioController;
     use Models\Mascota as Mascota;
     use DAO\MascotaDAO as MascotaDAO;
     use DAO\ComentarioDAO as ComentarioDAO;
@@ -43,6 +44,8 @@
  
              $mascotaDao = new MascotaDAO();
              $comentarioDao = new ComentarioDAO();
+             $comentarioController = new ComentarioController();
+             $comprobacionComentario = $comentarioController->ComprobacionComentario($id,$_SESSION['id']);
              $comentarios = $comentarioDao->GetByIdGuardian($id);
              $mascotas = $mascotaDao->GetAll();
  

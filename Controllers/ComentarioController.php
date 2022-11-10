@@ -13,13 +13,15 @@
             $this->ComentarioDAO = new ComentarioDAO();
         }
 
-        public function Add($idReserva, $puntaje, $mensaje, $fecha)
+        public function Add($idReserva, $puntaje, $mensaje)
         {
             $Comentario = new Comentario();
             $Comentario->setIdReserva($idReserva);
             $Comentario->setPuntaje($puntaje);
             $Comentario->setMensaje($mensaje);
-            $Comentario->setFecha($fecha);
+            $Comentario->setFecha(date('Y-m-d'));
+
+
 
             $this->ComentarioDAO->Add($Comentario);
         }
@@ -34,7 +36,17 @@
             require_once(VIEWS_PATH."verComentario.php");
         }
 
+        public function ComprobacionComentario ($idGuardian,$idDueno){ ///verifica que tengas reservas finalizadas con ese dueño y sin comentarios ya realizados
+
+
+            $idReserva = $this->ComentarioDAO->ComprobacionComentario($idGuardian,$idDueno);
+
+
+            return $idReserva;
+        }
+
     }
+
 
     
 ?>

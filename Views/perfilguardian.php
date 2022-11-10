@@ -79,11 +79,40 @@
 
                         </div>
 
+                                            <?php
+                                                 if ($comprobacionComentario){
+
+                                              ?>
+
+                                            <form method="post" action="<?php echo FRONT_ROOT."Comentario/Add"?>">
+                                            <fieldset style="width: 80%;margin-left:6em;margin-top:1em;">
+                                                <label for="consideraciones"><span><strong>Comentario</strong></span></label><br>
+                                                <textarea name="mensaje" id="mensaje" 
+                                                placeholder="Ingrese su Comentario sobre la Reserva realizada con este Guardián." required></textarea>
+
+                                                <input type="range" min="0" max="10" step="1" style="width:50%;margin-left:6em" name="puntaje"></input>
+
+                                                <input type="number" name="idReserva" value="<?php echo $comprobacionComentario[0]['id_reserva'] ?>" style="display:none">
+                                                </input>
+                                              
+                                            </fieldset>
+                                            <div id="botoneraForm">
+
+                                             <button class="formButton" type="submit" >Enviar</button>
+                                        
+                                        </div>
+                                            </form>
+
+                                            
+                                            <?php } ?>
+
                             <details class="estilizado" style="margin-top:2em;margin-bottom:-1em;"> <summary><span><strong>Comentarios</strong></span></summary>
 
                             <div class="seccionComentarios" style="">
 
                             <?php foreach($comentarios as $comentario) { ?>
+
+
                             <div class="comentario">
 
                             
@@ -107,13 +136,19 @@
                                             </span>
 
                                             </div>
-                            <?php } ?>
 
                             </div>
+
+                            <?php } ?>
+
+
                             </div>
 
 
                             </details>
+
+
+                            
 
         </section>
 

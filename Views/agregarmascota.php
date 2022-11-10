@@ -108,7 +108,7 @@
                      <input type="file" id="fichamedica" name="fichamedica" accept="image/*" >
                 </fieldset>
 
-                     <div id="botoneraForm">
+                <div id="botoneraForm">
                      <button class="formButton" type="submit" >Guardar Info</button>
                      <button class="formButton" type="reset" >Limpiar Campos</button></div>
 

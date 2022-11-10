@@ -9,7 +9,7 @@
     class ComentarioDAO implements IComentarioDAO
     {
         private $ComentarioList = array();
-        private $tableName = "Comentario";
+        private $tableName = "Comentarios";
 
     
         public function Add(Comentario $Comentario)
@@ -18,7 +18,7 @@
             try {
                 $query = "INSERT INTO ".$this->tableName." (id_reserva, puntaje, mensaje, fecha) VALUES (:id_reserva, :puntaje, :mensaje, :fecha);";
                 
-                $parameters["id_reserva"] = $Comentario->getReserva();
+                $parameters["id_reserva"] = $Comentario->getidReserva();
                 $parameters["puntaje"] = $Comentario->getPuntaje();
                 $parameters["mensaje"] = $Comentario->getMensaje();
                 $parameters["fecha"] = $Comentario->getFecha();
@@ -94,5 +94,30 @@
                 return $ex;
             }
         }
+
+        public function ComprobacionComentario ($idGuardian,$idDueno){
+
+            try{
+                
+                $query = "SELECT id_reserva FROM reserva WHERE (id_guardian = :id_guardian) and (id_dueno = :id_dueno) and (estado='Finalizada') and id_reserva 
+                NOT IN (select id_reserva from comentarios);";
+
+
+                $parameters["id_guardian"] = $idGuardian;
+                $parameters["id_dueno"] = $idDueno;
+
+
+                $this->connection = Connection::GetInstance();
+                $result = $this->connection->Execute($query,$parameters);
+
+                return $result;
+
+            }catch(Exception $ex){
+                return $ex;
+            }
+
+
+        }
+
     }
 ?>
