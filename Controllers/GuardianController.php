@@ -8,6 +8,7 @@
     use Controllers\DuenoController as DuenoController;
     use Models\Mascota as Mascota;
     use DAO\MascotaDAO as MascotaDAO;
+    use DAO\ComentarioDAO as ComentarioDAO;
     use Controllers\HomeController as HomeController;
 
     class GuardianController
@@ -41,6 +42,8 @@
              $usuario = $this->GuardianDAO->GetById($id);
  
              $mascotaDao = new MascotaDAO();
+             $comentarioDao = new ComentarioDAO();
+             $comentarios = $comentarioDao->GetByIdGuardian($id);
              $mascotas = $mascotaDao->GetAll();
  
              require_once(VIEWS_PATH."perfilguardian.php");

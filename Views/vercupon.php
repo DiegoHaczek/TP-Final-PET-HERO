@@ -56,7 +56,7 @@
 
                             <div class="logo" style="">
                             
-                            <span id="textologo"><p>Pet Heroe</p></span>
+                            <span id="textologo"><p>Pet Hero</p></span>
 
                             <img src="<?php echo IMG_PATH;?>huella.png" style="width:6em;height:6em;    ">
 

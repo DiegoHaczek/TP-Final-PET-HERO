@@ -39,7 +39,7 @@
                                     <span><?php echo ucwords($usuario->getNombre());?></span>
                                     <span><?php echo ucwords($usuario->getApellido());?></span>
                                     <span>Reputacion</span>
-                                    <span>0/10</span>
+                                    <span><strong><?php echo $usuario->getPuntaje()."/10";?></strong></span>
                                 </div>
 
                                 <div class="secondaryprofileinfo">

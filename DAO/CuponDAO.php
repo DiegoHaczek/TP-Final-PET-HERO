@@ -112,6 +112,7 @@
 
                 $parameters["id_guardian"] = $id;
                 $DatosReserva = array();
+                $resultSet=$this->connection->Execute($query,$parameters);
 
                 foreach ($resultSet as $row){
                     
@@ -127,7 +128,7 @@
 
                 $this->connection = Connection::GetInstance();
 
-                $result=$this->connection->Execute($query,$parameters);
+                
 
                 //var_dump($result);
                return $this->DatosCuponList;

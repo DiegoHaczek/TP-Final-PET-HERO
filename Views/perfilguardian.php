@@ -30,7 +30,7 @@
                                     <span><?php echo ucwords($usuario->getNombre());?></span>
                                     <span><?php echo ucwords($usuario->getApellido());?></span>
                                     <span>Reputacion</span>
-                                    <span>0/10</span>
+                                    <span><?php echo $usuario->getPuntaje()."/10";?> </span>
                                 </div>
 
                                 <div class="secondaryprofileinfo">
@@ -81,98 +81,35 @@
 
                             <details class="estilizado" style="margin-top:2em;margin-bottom:-1em;"> <summary><span><strong>Comentarios</strong></span></summary>
 
-
                             <div class="seccionComentarios" style="">
 
-
+                            <?php foreach($comentarios as $comentario) { ?>
                             <div class="comentario">
 
+                            
                                             <div class="datosDuenoComentario">
 
-                                            <span><strong>Nombre  (Puntos)</strong></span>
+                                            <span><strong><?php echo $comentario["d.nombre"]." (".$comentario["c.puntaje"].")";?></strong></span>
                                             <div class="separador"></div>
-                                            <span>Fecha</span>
+                                            <span><?php echo $comentario["c.fecha"]; ?></span>
 
                                             </div>
 
                                             <div class="fotoPerfilComentario">
 
-                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.'/Views/img/avatardefault.png'?>">
+                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.$comentario["d.foto_perfil"]?>">
 
                                             </div>
                                             
                                             <div class="mensajeComentario">
 
-                                            <span><strong>"Recomendado, muy responsable y puntual, volvería a reservar con él sin lugar a dudas, un saludo para todos los quiero mucho un beso"</strong>
+                                            <span><strong><?php echo $comentario["c.mensaje"]; ?></strong>
                                             </span>
 
                                             </div>
+                            <?php } ?>
 
                             </div>
-
-                            <div class="comentario">
-
-                                            <div class="datosDuenoComentario">
-
-                                            <span><strong>Nombre  (Puntos)</strong></span>
-                                            <div class="separador"></div>
-                                            <span>Fecha</span>
-
-                                            </div>
-
-                                            <div class="fotoPerfilComentario">
-
-                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.'/Views/img/avatardefault.png'?>">
-
-                                            </div>
-                                            
-                                            <div class="mensajeComentario"></div>
-
-                            </div>
-
-                            <div class="comentario">
-
-                                            <div class="datosDuenoComentario">
-
-                                            <span><strong>Nombre  (Puntos)</strong></span>
-                                            <div class="separador"></div>
-                                            <span>Fecha</span>
-
-                                            </div>
-
-                                            <div class="fotoPerfilComentario">
-
-                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.'/Views/img/avatardefault.png'?>">
-
-                                            </div>
-                                            
-                                            <div class="mensajeComentario"></div>
-
-                            </div>
-
-                            <div class="comentario">
-
-                                            <div class="datosDuenoComentario">
-
-                                            <span><strong>Nombre  (Puntos)</strong></span>
-                                            <div class="separador"></div>
-                                            <span>Fecha</span>
-
-                                            </div>
-
-                                            <div class="fotoPerfilComentario">
-
-                                            <img  class ="imgperfilmediana" src="<?php echo FRONT_ROOT.'/Views/img/avatardefault.png'?>">
-
-                                            </div>
-                                            
-                                            <div class="mensajeComentario"></div>
-
-                            </div>
-
-
-
-
                             </div>
 
 

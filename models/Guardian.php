@@ -6,7 +6,7 @@
         private $remuneracion;
         private $tamano;
         private $disponibilidad;
-        private $comentarios;
+        private $puntaje;
 
         public function getRemuneracion()
         {
@@ -50,15 +50,15 @@
         }
 
         
-        public function getComentarios()
+        public function getpuntaje()
         {
-                return $this->comentarios;
+                return $this->puntaje;
         }
 
        
-        public function setComentarios($comentarios): self
+        public function setpuntaje($puntaje): self
         {
-                $this->comentarios = $comentarios;
+                $this->puntaje = $puntaje;
 
                 return $this;
         }

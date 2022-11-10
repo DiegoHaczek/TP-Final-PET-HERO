@@ -144,30 +144,6 @@
             }
 
         }
-        /*private function SaveData()
-        {
-            $arrayToEncode = array();
-
-            foreach($this->GuardianList as $Guardian)
-            {
-                $valuesArray = array();
-                $valuesArray["id"] = $Guardian->getId();
-                $valuesArray["password"] = $Guardian->getPassWord();
-                $valuesArray["mail"] = $Guardian->getMail();
-                $valuesArray["nombre"] = $Guardian->getNombre();
-                $valuesArray["apellido"] = $Guardian->getApellido();
-                $valuesArray["edad"] = $Guardian->getEdad();
-                $valuesArray["fotoperfil"] = $Guardian->getFotoPerfil();
-                $valuesArray["tamano"] = $Guardian->getTamano();
-                $valuesArray["remuneracion"] = $Guardian->getRemuneracion();
-                $valuesArray["disponibilidad"] = $Guardian->getDisponibilidad();
-                array_push($arrayToEncode, $valuesArray);
-            }
-
-            $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-
-            file_put_contents($this->fileName, $fileContent);
-        }*/
 
         public function GetByMail($mail)
         {
@@ -205,7 +181,7 @@
 
         public function GetById($id){
             try{
-                $query = "SELECT * FROM ".$this->tableName." WHERE ID_GUARDIAN = :id_guardian;";
+                $query = "SELECT *, (select round(avg(c.puntaje),0) from comentarios c where id_guardian = :id_guardian) as reputacion FROM ".$this->tableName." WHERE ID_GUARDIAN = :id_guardian;";
 
                 $parameters["id_guardian"] = $id;
 
@@ -225,6 +201,7 @@
                 $Guardian->setRemuneracion($result[0]["tarifa"]);
                 $Guardian->setTamano($result[0]["tamano"]);
                 $Guardian->setDisponibilidad($result[0]["disponibilidad"]);
+                $Guardian->setPuntaje($result[0]["reputacion"]);
 
                 return $Guardian;
             }catch(Exception $ex){
