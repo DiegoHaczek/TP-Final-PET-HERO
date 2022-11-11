@@ -84,23 +84,35 @@
 
                                               ?>
 
-                                            <form method="post" action="<?php echo FRONT_ROOT."Comentario/Add"?>">
-                                            <fieldset style="width: 80%;margin-left:6em;margin-top:1em;">
-                                                <label for="consideraciones"><span><strong>Comentario</strong></span></label><br>
-                                                <textarea name="mensaje" id="mensaje" 
+                                            <form class="formComentario" method="post" style="margin-top:3em;" action="<?php echo FRONT_ROOT."Comentario/Add"?>">
+                                            <fieldset style="">
+                                            <label for="mensaje"><span><strong>Realizar Comentario</strong></span></label><br>
+                                                <textarea name="mensaje" id="mensaje" style="margin-bottom:2.3em;"
                                                 placeholder="Ingrese su Comentario sobre la Reserva realizada con este Guardián." required></textarea>
 
-                                                <input type="range" min="0" max="10" step="1" style="width:50%;margin-left:6em" name="puntaje"></input>
+                                                <br>
 
+
+                                                <label id="puntaje" for="puntaje" style="margin-left:-13.2em;position:relative;bottom:0.2em;"><span><strong>Puntuacion: </strong></span></label> 
+
+
+                                                <div class="inputDiv">
+
+                                                <div class="etiqueta"><span></span></div>
+
+                                                <input id="rangePuntaje" type="range" min="0" max="10" step="1" autocomplete="off" name="puntaje">
+                                                </div>
+
+                                                   
                                                 <input type="number" name="idReserva" value="<?php echo $comprobacionComentario[0]['id_reserva'] ?>" style="display:none">
                                                 </input>
-                                              
-                                            </fieldset>
-                                            <div id="botoneraForm">
+                                                    
+                                                 
+                                                <button class="formButton" type="submit" style="position:relative;left:15.5em;bottom: 0.6em;">Enviar</button>
 
-                                             <button class="formButton" type="submit" >Enviar</button>
-                                        
-                                        </div>
+
+                                            </fieldset>
+                                           
                                             </form>
 
                                             
@@ -132,7 +144,7 @@
                                             
                                             <div class="mensajeComentario">
 
-                                            <span><strong><?php echo $comentario["c.mensaje"]; ?></strong>
+                                            <span><strong><?php echo '"'.$comentario["c.mensaje"].'"'; ?></strong>
                                             </span>
 
                                             </div>
@@ -256,6 +268,7 @@ $('.date').datepicker('setDatesDisabled',fechasNoDisponiblesJS);  //funcion de d
 
 let solicitarReserva = document.getElementById('solicitar');
 let formularioReserva = document.getElementById('reserva');
+let elInput3 = document.querySelector('#rangePuntaje');
 
 
 
@@ -285,6 +298,29 @@ $("#alert").animate({bottom:"3%"},{duration:800}).delay(1000).animate({bottom:"-
 }
 
 
+if (elInput3) {
+  var w = parseInt(window.getComputedStyle(elInput3, null).getPropertyValue('width'))-30;
+
+  // LA ETIQUETA 
+  let etq = document.querySelector('.etiqueta');
+  if (etq) {
+    // el valor de la etiqueta 
+    etq.innerHTML = elInput3.value;
+
+    // calcula la posición inicial de la etiqueta 
+    let pxls = w / 10;
+
+    etq.style.left = ((elInput3.value * pxls) +2) + 'px';
+
+    elInput3.addEventListener('input', function() {
+      // cambia el valor de la etiqueta 
+      etq.innerHTML = elInput3.value;
+      // cambia la posición de la etiqueta 
+      etq.style.left = ((elInput3.value * pxls) +2 ) + 'px';
+
+    }, false);
+  }
+}
 </script>
 
 

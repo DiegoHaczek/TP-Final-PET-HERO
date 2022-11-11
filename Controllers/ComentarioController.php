@@ -3,6 +3,8 @@
 
     use Models\Comentario as Comentario;
     use DAO\ComentarioDAO as ComentarioDAO;
+    use Controllers\HomeController as HomeController;
+
 
     class ComentarioController
     {
@@ -21,9 +23,12 @@
             $Comentario->setMensaje($mensaje);
             $Comentario->setFecha(date('Y-m-d'));
 
-
-
             $this->ComentarioDAO->Add($Comentario);
+
+            
+            $alert=['tipo'=>"exito",'mensaje'=>"Comentario Realizado con Éxito"];
+            $homeController = new HomeController;
+            $homeController->Index($alert);
         }
     
 

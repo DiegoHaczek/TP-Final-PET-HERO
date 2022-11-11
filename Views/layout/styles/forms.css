@@ -80,19 +80,26 @@
     background: linear-gradient(-90deg,rgba(219, 175, 93, 0.75),
     rgba(228, 217, 123, 0.8));}
 
-form input{
+form input:not(input[type='range']){
     margin-top: 5%;
     margin-right: 20%;
     padding: 2%;
+    background-color: rgba(235, 241, 146, 0.733);
     border: 1px solid rgba(64, 114, 8, 0.55);
     border-radius: 3%;
-    background-color: rgba(235, 241, 146, 0.733);
     transition-duration: 0.65s;
     width: 70%;
 }
 
-form input:focus{
+
+
+
+form input:focus:not(input[type='range']):not(input[type='number']){
     width: 95%;
+    outline:none;
+}
+
+form input[type='number']:focus{
     outline:none;
 }
 
