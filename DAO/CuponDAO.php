@@ -39,7 +39,7 @@
 
                 $result = array();
 
-                $query = "SELECT id_cupon from ".$this->tableName." WHERE reserva = :reserva;";
+                $query = "SELECT id_cupon from ".$this->tableName." WHERE id_reserva = :id_reserva;";
                 
                 
                 $parameters["id_reserva"] = $reserva;
@@ -190,6 +190,24 @@
                 return $ex;
             }
 
+        }
+
+        public function encontrarMailDAO($idReserva){
+            try {
+                $query = "select d.email from dueno d inner join reserva r on d.id_dueno = r.id_dueno where r.id_reserva = :id_reserva;";
+
+                $parameters["id_reserva"] = $idReserva;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                //var_dump($result[0]["email"]);
+
+                return $result[0]["email"];
+            } catch (Exception $ex) {
+                return $ex;
+            }
         }
     }
 ?>

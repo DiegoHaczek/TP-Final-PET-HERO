@@ -164,7 +164,9 @@
                 if($this->comprobarRazaPorFecha($fecha_inicio,$fecha_final,$mascota,$idGuardian)){
 
                     $CuponController = new CuponController();
-                    $CuponController->Add($idReserva);
+                    $idCupon = $CuponController->Add($idReserva);
+                    $mailUsuario = $CuponController->encontrarMail($idReserva);
+                    $CuponController->enviarCupon($idCupon, $mailUsuario);
 
                 }else{
 
