@@ -47,7 +47,8 @@
                             
                             </div>
                             <form action="<?php echo FRONT_ROOT."Cupon/updateEstado"?>">
-                        <input type="number" name="idReserva" value="<?php echo $datosCupon["c.id_cupon"];?>" style="display:none"></input>
+                            <input type="number" name="idCupon" value="<?php echo $datosCupon["c.id_cupon"];?>" style="display:none"></input>
+                            <input type="number" name="idReserva" value="<?php echo $datosCupon["r.id_reserva"];?>" style="display:none"></input>
                          <input type="text" name="estado" value="Aceptada" style="display:none"></input>
                          <button id="submit" class="formButton" style="padding:0.3em 1em; position:relative; left:22em; top:4.75em;">Pagar</button>
                         </form>

@@ -7,6 +7,7 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
+    Use Controllers\ReservaController as ReservaController;
 
     class CuponController
     {
@@ -27,12 +28,14 @@
             return $this->CuponDAO->GetIdByReserva($idReserva);
         }  
 
-        public function updateEstado($idCupon){
+        public function updateEstado($idCupon,$idReserva){
 
             //update reserva a 'confirmada'
 
             $this->CuponDAO->updateEstado($idCupon,"Pagado");
 
+            $reservaController = new ReservaController();
+            $reservaController->updateEstado($idReserva,'Confirmada');
             $alert=['tipo'=>"exito",'mensaje'=>"Reserva Abonada"];
 
             $controllerHome = new HomeController();
@@ -58,8 +61,8 @@
                 $mail->isSMTP();                                            //Send using SMTP
                 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                $mail->Username   = 'heropet3@gmail.com';                     //SMTP username
-                $mail->Password   = 'bdgm dfkc irrz njqp';                               //SMTP password
+                $mail->Username   = 'heropet4@gmail.com';                     //SMTP username
+                $mail->Password   = 'zpgt udsn lnaa jaun';                               //SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                 $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
