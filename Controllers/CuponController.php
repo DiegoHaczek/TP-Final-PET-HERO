@@ -15,42 +15,66 @@
 
         public function __construct()
         {
-            $this->CuponDAO = new CuponDAO();
+            try {
+                $this->CuponDAO = new CuponDAO();
+            } catch (Exception $ex) {
+                $alert=['tipo'=>"error",'mensaje'=>"Ha Surgido un Inconveniente, intente Nuevamente."];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
         }
 
         public function Add($idReserva)
         {
-            $Cupon = new Cupon();
-            $Cupon->setReserva($idReserva);
-            $Cupon->setMonto($this->CuponDAO->calcularMonto($idReserva));
+            try {
+                $Cupon = new Cupon();
+                $Cupon->setReserva($idReserva);
+                $Cupon->setMonto($this->CuponDAO->calcularMonto($idReserva));
 
-            $this->CuponDAO->Add($Cupon);
-            return $this->CuponDAO->GetIdByReserva($idReserva);
+                $this->CuponDAO->Add($Cupon);
+                return $this->CuponDAO->GetIdByReserva($idReserva);
+            } catch (Exception $ex) {
+                $alert=['tipo'=>"error",'mensaje'=>"No Se Pudo Confirmar la Reserva."];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }  
 
         public function updateEstado($idCupon,$idReserva){
 
             //update reserva a 'confirmada'
+            try {
+                $this->CuponDAO->updateEstado($idCupon,"Pagado");
 
-            $this->CuponDAO->updateEstado($idCupon,"Pagado");
+                $reservaController = new ReservaController();
+                $reservaController->updateEstado($idReserva,'Confirmada');
+                $alert=['tipo'=>"exito",'mensaje'=>"Reserva Abonada"];
 
-            $reservaController = new ReservaController();
-            $reservaController->updateEstado($idReserva,'Confirmada');
-            $alert=['tipo'=>"exito",'mensaje'=>"Reserva Abonada"];
-
-            $controllerHome = new HomeController();
-            $controllerHome->index($alert);
-
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            } catch (Exception $ex) {
+                $alert=['tipo'=>"error",'mensaje'=>"No Se Pudo Confirmar la Reserva."];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
         }      
     
 
         public function verCupon($idCupon,$alert=""){
 
-            $datosCupon =$this->CuponDAO->GetbyId($idCupon);
+            try {
+                $datosCupon =$this->CuponDAO->GetbyId($idCupon);
 
-            //var_dump($datosCupon);
-        
-            require_once(VIEWS_PATH."vercupon.php");
+                //var_dump($datosCupon);
+            
+                require_once(VIEWS_PATH."vercupon.php");
+            } catch (Exception $ex) {
+                $alert=['tipo'=>"error",'mensaje'=>"No Se Puede ver el Cupón"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
         public function enviarCupon($idCupon, $mailUsuario){
@@ -94,14 +118,23 @@
                 //echo 'Se mandó el mensaje';
                 
             } catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                $alert=['tipo'=>"error",'mensaje'=>"No Se Puede Enviar el Cupón"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
             }
 
         }
 
         public function encontrarMail($idReserva){
-            $mailUsuario = $this->CuponDAO->encontrarMailDAO($idReserva);
-            return $mailUsuario;
+            try {
+                $mailUsuario = $this->CuponDAO->encontrarMailDAO($idReserva);
+                return $mailUsuario;
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
     }

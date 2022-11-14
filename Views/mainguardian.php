@@ -230,7 +230,13 @@
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
                         
-                        <td><button class="formButton" type="submit" style="">Cancelar</button>
+                        <td>
+                        <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>" style="display:inline;">
+                        <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
+                        <input type="text" name="estado" value="Cancelada" style="display:none"></input>
+                        <button class="formButton" type="submit" style="">Cancelar</button>
+                        </form>
+                        
                         <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
                         <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    
                         <button class="formButton" type="submit" style="">Ver Info</button></form>

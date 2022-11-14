@@ -18,155 +18,202 @@
 
         public function __construct()
         {
-            $this->GuardianDAO = new GuardianDAO();
+            try {
+                $this->GuardianDAO = new GuardianDAO();
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
-
-        /*public function ShowAddView()
-        {
-            require_once(VIEWS_PATH."validate-session.php");
-            require_once(VIEWS_PATH."add-Guardian.php");
-        }
-        */
 
         public function ShowListView()
         {
-           // require_once(VIEWS_PATH."validate-session.php");
-            $GuardianList = $this->GuardianDAO->getAll();
+            try {
+                $GuardianList = $this->GuardianDAO->getAll();
 
-            require_once(VIEWS_PATH."listaguardianes.php");
+                require_once(VIEWS_PATH."listaguardianes.php");
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
         public function ShowProfile($id,$alert = ""){
 
-            if  ($this->GuardianDAO->GetById($id)){
+            try {
+                if  ($this->GuardianDAO->GetById($id)){
+
+                    $usuario = $this->GuardianDAO->GetById($id);
+        
+                    $mascotaDao = new MascotaDAO();
+                    $comentarioDao = new ComentarioDAO();
+                    $comentarioController = new ComentarioController();
+                    $comprobacionComentario = $comentarioController->ComprobacionComentario($id,$_SESSION['id']);
+                    $comentarios = $comentarioDao->GetByIdGuardian($id);
+                    $mascotas = $mascotaDao->GetAll();
+        
+                    require_once(VIEWS_PATH."perfilguardian.php");
  
-             $usuario = $this->GuardianDAO->GetById($id);
- 
-             $mascotaDao = new MascotaDAO();
-             $comentarioDao = new ComentarioDAO();
-             $comentarioController = new ComentarioController();
-             $comprobacionComentario = $comentarioController->ComprobacionComentario($id,$_SESSION['id']);
-             $comentarios = $comentarioDao->GetByIdGuardian($id);
-             $mascotas = $mascotaDao->GetAll();
- 
-             require_once(VIEWS_PATH."perfilguardian.php");
- 
+                }
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
             }
- 
+            
          }
 
         public function Add($password,$passwordconfirm, $mail)
         {
-            //require_once(VIEWS_PATH."validate-session.php");
+            try {
+                //require_once(VIEWS_PATH."validate-session.php");
+                if ($password==$passwordconfirm){  //Valida que las contraseñas sean iguales
+                    
 
-            if ($password==$passwordconfirm){  //Valida que las contraseñas sean iguales
-                
+                    if(!$this->mailExiste($mail)){ //Valida que el email no exista
 
-                if(!$this->mailExiste($mail)){ //Valida que el email no exista
+                        $Guardian = new Guardian();
+                        $Guardian->setPassWord($password);
+                        $Guardian->setMail($mail);
 
-                    $Guardian = new Guardian();
-                    $Guardian->setPassWord($password);
-                    $Guardian->setMail($mail);
+                        $this->GuardianDAO->Add($Guardian);
 
-                    $this->GuardianDAO->Add($Guardian);
+                        $_SESSION["type"] = $Guardian->getType();
+                        $_SESSION["id"] = $this->GuardianDAO->GetIdByMail($mail);
 
-                    $_SESSION["type"] = $Guardian->getType();
-                    $_SESSION["id"] = $this->GuardianDAO->GetIdByMail($mail);
-
-                    require_once(VIEWS_PATH."editarperfilguardian.php");
-                    }
-                    else{
-                        $alert=['tipo'=>"error",'mensaje'=>"El Email ya está en uso"];
-                        require_once(VIEWS_PATH."registroguardian.php");}
+                        require_once(VIEWS_PATH."editarperfilguardian.php");
+                        }
+                        else{
+                            $alert=['tipo'=>"error",'mensaje'=>"El Email ya está en uso"];
+                            require_once(VIEWS_PATH."registroguardian.php");}
+                }
+                else{
+                    $alert=['tipo'=>"error",'mensaje'=>"Las contraseñas no coinciden"];
+                    require_once(VIEWS_PATH."registroguardian.php"); 
+                }
+                //$this->ShowAddView();
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
             }
-            else{
-                $alert=['tipo'=>"error",'mensaje'=>"Las contraseñas no coinciden"];
-                require_once(VIEWS_PATH."registroguardian.php"); }
-
-            //$this->ShowAddView();
+            
         }
 
         public function disponibilidadById ($id){
+            try {
+                $GuardianList=$this->GuardianDAO->getAll();
+                foreach($GuardianList as $Guardian){
 
-        $GuardianList=$this->GuardianDAO->getAll();
-        foreach($GuardianList as $Guardian){
-
-            if($Guardian->getId() == $id){
-                return $Guardian->getDisponibilidad();
+                    if($Guardian->getId() == $id){
+                        return $Guardian->getDisponibilidad();
+                    }
+                }
+                return null; 
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
             }
-        }
-        return null;
         }
         
         public function mailExiste($mail)
         {
-            $controller = new DuenoController();
+            try {
+                $controller = new DuenoController();
             
-            if(!$controller->mailDuenoExiste($mail)){ ///verifico que mail no eixste en el otro DAO tampoco
+                if(!$controller->mailDuenoExiste($mail)){ ///verifico que mail no eixste en el otro DAO tampoco
+                
+                    $GuardianList= $this->GuardianDAO->getAll();
+                    foreach ($GuardianList as $Guardian) {
+                        if ($mail == $Guardian->getMail()) {
+                            return true;
+                        }
+                    }
+                    return false;
+                } else {
+                    return true;
+                }
+            }catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+        }
             
+
+        public function mailGuardianExiste($mail){//funcion llamada por el controller de dueno
+
+            try {
                 $GuardianList= $this->GuardianDAO->getAll();
                 foreach ($GuardianList as $Guardian) {
                     if ($mail == $Guardian->getMail()) {
                         return true;
                     }
+                }
+                return false;
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
             }
-            return false;
-        }else{
-            return true;
-        }
-        }
-
-        public function mailGuardianExiste($mail){//funcion llamada por el controller de dueno
-
-            $GuardianList= $this->GuardianDAO->getAll();
-                foreach ($GuardianList as $Guardian) {
-                    if ($mail == $Guardian->getMail()) {
-                        return true;
-                    }
-            }
-            return false;
+            
         }
 
         public function EditProfile(){
            
-            $usuario = New Guardian();
-            $usuario = $this->GuardianDAO->GetById($_SESSION["id"]);
-            $editar=true;
-            require_once(VIEWS_PATH."editarperfilguardian.php");
-
+            try {
+                $usuario = New Guardian();
+                $usuario = $this->GuardianDAO->GetById($_SESSION["id"]);
+                $editar=true;
+                require_once(VIEWS_PATH."editarperfilguardian.php");
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
         }
 
         public function SetProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name,$remuneracion,$tamano,$disponibilidad)
         {
+            try {
+                $PerfilGuardian = new Guardian();
+                $PerfilGuardian->setNombre($nombre);
+                $PerfilGuardian->setApellido($apellido);
+                $PerfilGuardian->setEdad($edad);
+                $PerfilGuardian->setFotoPerfil($fotoperfil);
+                $PerfilGuardian->setRemuneracion($remuneracion);
+                $PerfilGuardian->setTamano($tamano);
+                $PerfilGuardian->setDisponibilidad($disponibilidad);
+                
+                $this->GuardianDAO->SetProfile($PerfilGuardian,$tmp_name);
 
-            $PerfilGuardian = new Guardian();
-            $PerfilGuardian->setNombre($nombre);
-            $PerfilGuardian->setApellido($apellido);
-            $PerfilGuardian->setEdad($edad);
-            $PerfilGuardian->setFotoPerfil($fotoperfil);
-            $PerfilGuardian->setRemuneracion($remuneracion);
-            $PerfilGuardian->setTamano($tamano);
-            $PerfilGuardian->setDisponibilidad($disponibilidad);
-            
-            $this->GuardianDAO->SetProfile($PerfilGuardian,$tmp_name);
+                $_SESSION["loggedUser"] = $nombre;
 
-            $_SESSION["loggedUser"] = $nombre;
-
-            $alert=['tipo'=>"exito",'mensaje'=>"Perfil Creado con Éxito"];
-            $controllerHome = new HomeController();
-            $controllerHome->index($alert);
-
+                $alert=['tipo'=>"exito",'mensaje'=>"Perfil Creado con Éxito"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
         }
        
         public function Remove($id)
         {
-            //require_once(VIEWS_PATH."validate-session.php");
-            
-            $this->GuardianDAO->Remove($id);
-
-            //$this->ShowListView();
+            try {
+                $this->GuardianDAO->Remove($id);
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
         }
-
         
     }
 ?>

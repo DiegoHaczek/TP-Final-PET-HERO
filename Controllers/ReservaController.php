@@ -14,184 +14,210 @@
 
         public function __construct()
         {
-            $this->ReservaDAO = new ReservaDAO();
+            try {
+                $this->ReservaDAO = new ReservaDAO();
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
         public function Add($fechaInicio, $fechaFinal, $mascota, $idGuardian, $idDueno)
         {
+            try {
+                $controllerGuardian = new GuardianController();
+                $controllerHome = new HomeController();
 
-            $controllerGuardian = new GuardianController();
-            $controllerHome = new HomeController();
+                date_default_timezone_set('America/Argentina/Buenos_Aires'); //seteo la zona horaria
 
-            date_default_timezone_set('America/Argentina/Buenos_Aires'); //seteo la zona horaria
+                $inicio = \date_create_from_format("Y-m-d",$fechaInicio);
+                $fin = \date_create_from_format("Y-m-d",$fechaFinal);
 
-            $inicio = \date_create_from_format("Y-m-d",$fechaInicio);
-            $fin = \date_create_from_format("Y-m-d",$fechaFinal);
+                //var_dump($mascota);
+                $idMascota = explode(",", $mascota[0])[2];
+                //var_dump($idMascota);
+                //var_dump($inicio, $fin);
 
-            //var_dump($mascota);
-            $idMascota = explode(",", $mascota[0])[2];
-            //var_dump($idMascota);
-            //var_dump($inicio, $fin);
+                if ($inicio<=$fin) { 
+                    if($this->comprobarDisponibilidad($inicio,$fin,$idGuardian)){
+                        if ($this->comprobarRaza($mascota)) {
+                            if($this->comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota,$idGuardian)){
+                                $reserva = new Reserva();
+                                $reserva->setIdDueno($idDueno);
+                                $reserva->setIdGuardian($idGuardian);
+                                $reserva->setFechaInicio($fechaInicio);
+                                $reserva->setFechaFinal($fechaFinal);
+                                $reserva->setIdMascota($idMascota);
 
-            if ($inicio<=$fin) { 
-                if($this->comprobarDisponibilidad($inicio,$fin,$idGuardian)){
-                    if ($this->comprobarRaza($mascota)) {
-                        if($this->comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota,$idGuardian)){
-                            $reserva = new Reserva();
-                            $reserva->setIdDueno($idDueno);
-                            $reserva->setIdGuardian($idGuardian);
-                            $reserva->setFechaInicio($fechaInicio);
-                            $reserva->setFechaFinal($fechaFinal);
-                            $reserva->setIdMascota($idMascota);
+                                $this->ReservaDAO->Add($reserva);
 
-                            $this->ReservaDAO->Add($reserva);
-
-                            $alert=['tipo'=>"exito",'mensaje'=>"Reserva Creada con Éxito"];
-                            
-                            $controllerHome->Index($alert);
+                                $alert=['tipo'=>"exito",'mensaje'=>"Reserva Creada con Éxito"];
+                                
+                                $controllerHome->Index($alert);
+                            } else {
+                                $alert=['tipo'=>"error",'mensaje'=>"El Guardián tiene una Reserva con otra Raza en la Fecha Indicada."];
+                                $controllerGuardian->ShowProfile($idGuardian,$alert);
+                            }
                         } else {
-                            $alert=['tipo'=>"error",'mensaje'=>"El Guardián tiene una Reserva con otra Raza en la Fecha Indicada."];
+                            $alert=['tipo'=>"error",'mensaje'=>"Las Mascotas indicadas son de distintas razas"];
                             $controllerGuardian->ShowProfile($idGuardian,$alert);
                         }
                     } else {
-                        $alert=['tipo'=>"error",'mensaje'=>"Las Mascotas indicadas son de distintas razas"];
-                        $controllerGuardian->ShowProfile($idGuardian,$alert);
+
+
+                    //echo "<script>alert('El Guardián no se encuentra disponible en las fechas indicadas')</script>";
+
+                    $alert=['tipo'=>"error",'mensaje'=>"El Guardián no se encuentra disponible en las fechas indicadas"];
+                    $controllerGuardian->ShowProfile($idGuardian,$alert);
+
                     }
                 } else {
 
-
-                //echo "<script>alert('El Guardián no se encuentra disponible en las fechas indicadas')</script>";
-
-                $alert=['tipo'=>"error",'mensaje'=>"El Guardián no se encuentra disponible en las fechas indicadas"];
-                $controllerGuardian->ShowProfile($idGuardian,$alert);
-
+                    $alert=['tipo'=>"error",'mensaje'=>"La Fecha Final debe ser posterior a la Fecha Inicial"];
+                    $controllerGuardian->ShowProfile($idGuardian,$alert);
                 }
-            } else {
-
-                $alert=['tipo'=>"error",'mensaje'=>"La Fecha Final debe ser posterior a la Fecha Inicial"];
-                $controllerGuardian->ShowProfile($idGuardian,$alert);
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
             }
+            
         }
 
         public function comprobarDisponibilidad($fechaInicio,$fechaFinal,$idGuardian){
-            
-            $controllerGuardian = new GuardianController();
-            $disponibilidad = $controllerGuardian->disponibilidadById($idGuardian);
+            try {
+                $controllerGuardian = new GuardianController();
+                $disponibilidad = $controllerGuardian->disponibilidadById($idGuardian);
 
-                if ($disponibilidad=='Plena'){return true;}else{
+                    if ($disponibilidad=='Plena'){return true;}else{
 
-                    if ($disponibilidad=='Fines De Semana'){
+                        if ($disponibilidad=='Fines De Semana'){
 
-                        $dateDiff = $fechaInicio->diff($fechaFinal);
+                            $dateDiff = $fechaInicio->diff($fechaFinal);
 
-                        if($dateDiff->d>1){
-                            return false;
+                            if($dateDiff->d>1){
+                                return false;
+
+                            }else{
+                                return true;
+                            }
 
                         }else{
-                            return true;
-                        }
 
-                    }else{
+                            $arregloDisponibilidad = explode(",",$disponibilidad);
 
-                        $arregloDisponibilidad = explode(",",$disponibilidad);
+                            $unDia = new \DateInterval ("P1D");
 
-                        $unDia = new \DateInterval ("P1D");
+                            //var_dump($arregloDisponibilidad);
 
-                        //var_dump($arregloDisponibilidad);
+                            for($fecha=$fechaInicio;$fecha<=$fechaFinal;$fecha->add($unDia)){
 
-                        for($fecha=$fechaInicio;$fecha<=$fechaFinal;$fecha->add($unDia)){
+                                $fechaFormateada= date_format($fecha,"Y-m-d");
 
-                            $fechaFormateada= date_format($fecha,"Y-m-d");
+                                if(!\in_array($fechaFormateada,$arregloDisponibilidad)){
 
-                            if(!\in_array($fechaFormateada,$arregloDisponibilidad)){
-
-                                return false;
+                                    return false;
+                                }
                             }
-                        }
-                        return true;}}
+                            return true;}}
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
         public function comprobarRaza($mascota){
 
-            $raza = array();
-            
-            foreach ($mascota as $value) {
-                $item = explode(",", $value);
-                array_push($raza, $item[1]);
-            }
-
-            $primeraRaza = $raza[0];
-
-            foreach($raza as $item){
-                if($primeraRaza != $item){
-                    return false;
+            try {
+                $raza = array();
+                
+                foreach ($mascota as $value) {
+                    $item = explode(",", $value);
+                    array_push($raza, $item[1]);
                 }
-            }
 
-            return true;
+                $primeraRaza = $raza[0];
+
+                foreach($raza as $item){
+                    if($primeraRaza != $item){
+                        return false;
+                    }
+                }
+
+                return true;
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
 
         }
 
         public function comprobarRazaPorFecha($fechaInicio, $fechaFinal, $mascota,$idGuardian){
             
-            $arregloRazas = $this->ReservaDAO->getListaRazas($fechaInicio, $fechaFinal,$idGuardian);
+            try {
+                $arregloRazas = $this->ReservaDAO->getListaRazas($fechaInicio, $fechaFinal,$idGuardian);
 
-            if($arregloRazas){
-            $raza = array();
+                if($arregloRazas){
+                $raza = array();
+                
+                $raza = explode(",", $mascota[0]);
+
+                //var_dump($arregloRazas);
+
+                if(strtolower($arregloRazas[0]["raza"]) != strtolower($raza[1])){
+                    return false;
+                }
+                }
+
+                return true;
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
             
-            $raza = explode(",", $mascota[0]);
-
-            //var_dump($arregloRazas);
-
-            if(strtolower($arregloRazas[0]["raza"]) != strtolower($raza[1])){
-                return false;
-            }
-            }
-
-            return true;
 
         }
 
         public function updateEstado($idReserva,$estado,$mascota = '',$fecha_inicio = '',$fecha_final = '',$idGuardian=''){
 
+            try {
+                // comprobacion si no tiene ya reservas aceptadas con otras razas
+                if ($estado == "Aceptada") {
+                    if($this->comprobarRazaPorFecha($fecha_inicio,$fecha_final,$mascota,$idGuardian)){
 
-            // comprobacion si no tiene ya reservas aceptadas con otras razas
+                        $CuponController = new CuponController();
+                        $idCupon = $CuponController->Add($idReserva);
+                        $mailUsuario = $CuponController->encontrarMail($idReserva);
+                        $CuponController->enviarCupon($idCupon, $mailUsuario);
+                    }else{
 
+                    $alert=['tipo'=>"error",'mensaje'=>"Tienes una Reserva con otra Raza en la Fecha Indicada"];
 
-            if ($estado == "Aceptada") {
-
-
-                if($this->comprobarRazaPorFecha($fecha_inicio,$fecha_final,$mascota,$idGuardian)){
-
-                    $CuponController = new CuponController();
-                    $idCupon = $CuponController->Add($idReserva);
-                    $mailUsuario = $CuponController->encontrarMail($idReserva);
-                    $CuponController->enviarCupon($idCupon, $mailUsuario);
-
-                }else{
-
-                $alert=['tipo'=>"error",'mensaje'=>"Tienes una Reserva con otra Raza en la Fecha Indicada"];
-
-                 $controllerHome = new HomeController();
-                 $controllerHome->index($alert);
-                    return null;
-
+                    $controllerHome = new HomeController();
+                    $controllerHome->index($alert);
+                        return null;
+                    } 
+                    //Agregar para enviar mail
                 }
 
-                
-                //Agregar para enviar mail
+                $this->ReservaDAO->updateEstado($idReserva,$estado);
+
+                $alert=['tipo'=>"exito",'mensaje'=>"Estado Reserva Actualizado"];
+
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
             }
-
-            $this->ReservaDAO->updateEstado($idReserva,$estado);
-
-
-            $alert=['tipo'=>"exito",'mensaje'=>"Estado Reserva Actualizado"];
-
-            $controllerHome = new HomeController();
-            $controllerHome->index($alert);
-
         }        
     }
-
-    
 ?>

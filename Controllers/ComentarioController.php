@@ -12,42 +12,63 @@
 
         public function __construct()
         {
-            $this->ComentarioDAO = new ComentarioDAO();
+            try {
+                $this->ComentarioDAO = new ComentarioDAO();
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
         public function Add($idReserva, $puntaje, $mensaje)
         {
-            $Comentario = new Comentario();
-            $Comentario->setIdReserva($idReserva);
-            $Comentario->setPuntaje($puntaje);
-            $Comentario->setMensaje($mensaje);
-            $Comentario->setFecha(date('Y-m-d'));
+            try {
+                $Comentario = new Comentario();
+                $Comentario->setIdReserva($idReserva);
+                $Comentario->setPuntaje($puntaje);
+                $Comentario->setMensaje($mensaje);
+                $Comentario->setFecha(date('Y-m-d'));
 
-            $this->ComentarioDAO->Add($Comentario);
+                $this->ComentarioDAO->Add($Comentario);
 
+                
+                $alert=['tipo'=>"exito",'mensaje'=>"Comentario Realizado con Éxito"];
+                $homeController = new HomeController;
+                $homeController->Index($alert);
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
             
-            $alert=['tipo'=>"exito",'mensaje'=>"Comentario Realizado con Éxito"];
-            $homeController = new HomeController;
-            $homeController->Index($alert);
         }
     
 
         public function verComentario($idComentario,$alert=""){
 
-            $datosComentario =$this->ComentarioDAO->GetbyId($idComentario);
-
-            //var_dump($datosComentario);
-        
-            require_once(VIEWS_PATH."verComentario.php");
+            try {
+                $datosComentario =$this->ComentarioDAO->GetbyId($idComentario);
+                require_once(VIEWS_PATH."verComentario.php");
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
         public function ComprobacionComentario ($idGuardian,$idDueno){ ///verifica que tengas reservas finalizadas con ese dueño y sin comentarios ya realizados
-
-
-            $idReserva = $this->ComentarioDAO->ComprobacionComentario($idGuardian,$idDueno);
-
-
-            return $idReserva;
+            try {
+                $idReserva = $this->ComentarioDAO->ComprobacionComentario($idGuardian,$idDueno);
+                return $idReserva;
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
     }

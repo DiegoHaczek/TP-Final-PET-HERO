@@ -19,33 +19,47 @@
 
         public function __construct()
         {
-            $this->duenoDAO = new DuenoDAO();
-            $this->guardianDAO = new GuardianDAO();
+            try {
+                $this->duenoDAO = new DuenoDAO();
+                $this->guardianDAO = new GuardianDAO();
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
 
         public function Index($alert = "")
         {
-            if (isset($_SESSION["loggedUser"])) {
+            try {
+                if (isset($_SESSION["loggedUser"])) {
 
-                if ($_SESSION["type"] == "d") {
-                    $usuario = New Dueno();
-                    $usuario = $this->duenoDAO->GetById($_SESSION["id"]);
-                    $controllerMascota = new MascotaController();
-                    $cantidadMascotas = $controllerMascota->countMascotas($_SESSION["id"]);
-                    require_once(VIEWS_PATH."maindueno.php");
+                    if ($_SESSION["type"] == "d") {
+                        $usuario = New Dueno();
+                        $usuario = $this->duenoDAO->GetById($_SESSION["id"]);
+                        $controllerMascota = new MascotaController();
+                        $cantidadMascotas = $controllerMascota->countMascotas($_SESSION["id"]);
+                        require_once(VIEWS_PATH."maindueno.php");
 
-                } else if ($_SESSION["type"] == "g"){
-                    $usuario = New Guardian();
-                    $usuario = $this->guardianDAO->GetById($_SESSION["id"]);
-                    
-                    $reservaDao = new ReservaDAO();
-                    $reservas = $reservaDao->getDatosReservaGuardian($_SESSION["id"]);
-                    
-                    require_once(VIEWS_PATH."mainguardian.php");
+                    } else if ($_SESSION["type"] == "g"){
+                        $usuario = New Guardian();
+                        $usuario = $this->guardianDAO->GetById($_SESSION["id"]);
+                        
+                        $reservaDao = new ReservaDAO();
+                        $reservas = $reservaDao->getDatosReservaGuardian($_SESSION["id"]);
+                        
+                        require_once(VIEWS_PATH."mainguardian.php");
+                    }
+                } else {
+                    require_once(VIEWS_PATH."home.php");
                 }
-            } else {
-                require_once(VIEWS_PATH."home.php");
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
             }
+            
         }
 
     
@@ -69,37 +83,43 @@
 
         public function Login($mail, $password)
         {
-
-            //1. declarar dao guardian y dueno 
-            //2. array merge con getAll de los dao como parametro
-            
-            $user = new Dueno();
-            $user = $this->duenoDAO->GetByMail($mail);
-
-            if ($user == null) {
-                $user = new Guardian();
-                $user = $this->guardianDAO->GetByMail($mail);
-            }
-
-            if(($user != null) && ($user->getPassword() === $password))
-            {
-                $_SESSION["loggedUser"] = $user->getNombre();
-                $_SESSION["type"] = $user->getType();
-                $_SESSION["id"] = $user->getId();
-                $_SESSION["fotoPerfil"] = $user->getFotoPerfil();
-
-                $alert=['tipo'=>"exito",'mensaje'=>"Logeado con Éxito"];
-
-
-                $this->Index($alert);
-                //$this->ShowAddView();
+            try {
+                //1. declarar dao guardian y dueno 
+                //2. array merge con getAll de los dao como parametro
                 
-            }
-            else
+                $user = new Dueno();
+                $user = $this->duenoDAO->GetByMail($mail);
 
-                $alert=['tipo'=>"error",'mensaje'=>"Datos Incorrectos"];
-                //agregar mensaje de error 
-                $this->Index($alert);
+                if ($user == null) {
+                    $user = new Guardian();
+                    $user = $this->guardianDAO->GetByMail($mail);
+                }
+
+                if(($user != null) && ($user->getPassword() === $password))
+                {
+                    $_SESSION["loggedUser"] = $user->getNombre();
+                    $_SESSION["type"] = $user->getType();
+                    $_SESSION["id"] = $user->getId();
+                    $_SESSION["fotoPerfil"] = $user->getFotoPerfil();
+
+                    $alert=['tipo'=>"exito",'mensaje'=>"Logeado con Éxito"];
+
+
+                    $this->Index($alert);
+                    //$this->ShowAddView();
+                    
+                }
+                else
+
+                    $alert=['tipo'=>"error",'mensaje'=>"Datos Incorrectos"];
+                    //agregar mensaje de error 
+                    $this->Index($alert);
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            
         }
         
         public function Logout()
