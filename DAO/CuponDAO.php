@@ -209,5 +209,42 @@
                 return $ex;
             }
         }
+
+        public function encontrarNombreDAO($idReserva){
+            try {
+                $query = "select d.nombre from dueno d inner join reserva r on d.id_dueno = r.id_dueno where r.id_reserva = :id_reserva;";
+
+                $parameters["id_reserva"] = $idReserva;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                //var_dump($result[0]["email"]);
+
+                return $result[0]["nombre"];
+            } catch (Exception $ex) {
+                return $ex;
+            }
+        }
+
+        public function encontrarIdDuenoDAO($idCupon){
+            try {
+                $query = "select d.id_dueno from dueno d inner join reserva r on d.id_dueno = r.id_dueno inner join cupon c on c.id_reserva = r.id_reserva where c.id_cupon = :id_cupon;";
+
+                $parameters["id_cupon"] = $idCupon;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                //var_dump($result[0]["email"]);
+
+                return $result[0]["id_dueno"];
+            } catch (Exception $ex) {
+                return $ex;
+            }
+        }
+
     }
 ?>

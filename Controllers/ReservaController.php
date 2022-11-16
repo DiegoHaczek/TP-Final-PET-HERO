@@ -195,7 +195,8 @@
                         $CuponController = new CuponController();
                         $idCupon = $CuponController->Add($idReserva);
                         $mailUsuario = $CuponController->encontrarMail($idReserva);
-                        $CuponController->enviarCupon($idCupon, $mailUsuario);
+                        $nombreUsuario = $CuponController->encontrarNombre($idReserva);
+                        $CuponController->enviarCupon($idCupon, $mailUsuario,$nombreUsuario);
                     }else{
 
                     $alert=['tipo'=>"error",'mensaje'=>"Tienes una Reserva con otra Raza en la Fecha Indicada"];

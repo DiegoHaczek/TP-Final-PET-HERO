@@ -65,7 +65,20 @@
 
             try {
                 $datosCupon =$this->CuponDAO->GetbyId($idCupon);
+                $idDueno =$this->CuponDAO->encontrarIdDuenoDAO($idCupon);
 
+                if ($idDueno == $_SESSION['id']){
+    
+                    require_once(VIEWS_PATH."vercupon.php");
+    
+                }else{
+    
+                    $alert=['tipo'=>"advertencia",'mensaje'=>"Acceso invalido"];
+    
+                    $controllerHome = new HomeController();
+                    $controllerHome->index($alert);
+    
+                }
                 //var_dump($datosCupon);
             
                 require_once(VIEWS_PATH."vercupon.php");
@@ -77,7 +90,7 @@
             
         }
 
-        public function enviarCupon($idCupon, $mailUsuario){
+        public function enviarCupon($idCupon, $mailUsuario,$nombreUsuario){
 
             try {
                 $mail = new PHPMailer();
@@ -101,12 +114,12 @@
 
                 <div style="margin-top:3.5em;position:inherit;display:flex;flex-direction: column;justify-content: space-around;width:65%;height:300px;background-color: rgb(245, 255, 240);line-height: 1.6rem;border-radius:5px;">
                 
-                <h2 style="font-family:Arial;color:#054605;margin-left: 1.3em;margin-bottom: -0.5em;">NOMBRE, Tu Cupon de Pago Esta Listo</h2>
+                <h2 style="font-family:Arial;color:#054605;margin-left: 1.3em;margin-bottom: -0.5em;">'.$nombreUsuario.', Tu Cupon de Pago Esta Listo</h2>
         
                 <span style="font-family:arial;margin-left: 4.75em;letter-spacing: 1px;width:65%">Haz click en el boton inferior para acceder a tu cupon de pago y confirmar tu reserva </span>
                 
                 <button style="width:30%;height:11%;align-self:center;margin-bottom: 1em;cursor:pointer;background-color:#628b33;border:none;border-radius:6px;color:white;">
-                <a href="http://localhost/TP-FINAL-PET-HERO/cupon/verCupon?id_cupon='.$idCupon.'">Ver Cupon</a></button>
+                <a style="color:white;" href="http://localhost/TP-FINAL-PET-HERO/cupon/verCupon?id_cupon='.$idCupon.'">Ver Cupon</a></button>
         
                 </div>
         
@@ -135,6 +148,20 @@
                 $controllerHome->index($alert);
             }
             
+        }
+
+        public function encontrarNombre($idReserva){ ///busca nombre guardian por la id de reserva
+           
+            try{
+            $nombreUsuario = $this->CuponDAO->encontrarNombreDAO($idReserva);
+            return $nombreUsuario;
+            }
+            catch (Exception $e){
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+
         }
 
     }
