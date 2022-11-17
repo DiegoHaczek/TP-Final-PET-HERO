@@ -24,7 +24,7 @@
                                 <div class="mainprofileinfo" >
                                 <img class="imgperfilgrande" src="<?php echo FRONT_ROOT.$perfilMascota['foto_perfil'];?>" style="border: 1px solid gray">
                                 <span style="margin-top:-2.5em;"><?php echo $perfilMascota['nombreMascota'];?></span>
-                                <span style="margin-top:-3em;"><?php echo $perfilMascota['edad'].' años';?></span>
+                                <span style="margin-top:-3em;"><?php echo $perfilMascota['edad'].' año(s)';?></span>
                                     <span></span>
                                 </div>
 
@@ -43,7 +43,7 @@
                                         <div class="separador"></div>
                                         <span>Tamaño Mascota: <strong><?php echo $perfilMascota['tamano']?></strong></span>
                                         <span>Raza: <strong><?php echo ucwords($perfilMascota['raza']); ?></strong></span>
-                                        <span>Consideraciones: </span>
+                                        <span>Consideraciones: <strong><?php echo ucwords($perfilMascota['indicaciones']); ?></strong> </span>
                                            
                                        
 

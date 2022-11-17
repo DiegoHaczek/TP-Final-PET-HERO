@@ -7,6 +7,8 @@
     {
         public static function Route(Request $request)
         {
+            try{
+
             $controllerName = $request->getcontroller() . 'Controller';
 
             $methodName = $request->getmethod();
@@ -45,6 +47,13 @@
             }
 
             call_user_func_array(array($controller, $methodName), $methodParameters);
+
+            
+            }catch(Exception $e){
+                
+            }finally{
+                header('location:index.php');
+            }
 
         }
     }

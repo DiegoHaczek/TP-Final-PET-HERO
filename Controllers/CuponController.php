@@ -67,11 +67,12 @@
                 $datosCupon =$this->CuponDAO->GetbyId($idCupon);
                 $idDueno =$this->CuponDAO->encontrarIdDuenoDAO($idCupon);
 
+                if(isset($_SESSION['id'])){
                 if ($idDueno == $_SESSION['id']){
     
                     require_once(VIEWS_PATH."vercupon.php");
     
-                }else{
+                }}else{
     
                     $alert=['tipo'=>"advertencia",'mensaje'=>"Acceso invalido"];
     

@@ -105,7 +105,7 @@
 
 
                 <fieldset><label for="fichamedica"><strong><span>Ficha Médica</span></strong></label><br>
-                     <input type="file" id="fichamedica" name="fichamedica" accept="image/*" >
+                     <input type="file" id="fichamedica" name="fichamedica" accept="image/*" required>
                 </fieldset>
 
                 <div id="botoneraForm">
