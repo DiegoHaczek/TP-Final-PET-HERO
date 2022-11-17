@@ -35,16 +35,15 @@
 
             try {
 
-                //var_dump($tmp_name);
                 if($tmp_name==""){    //si vengo de editar perfil y no añado una foto nueva, no la paso como parametro en la query
 
                     $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad,
-                     tamano=:tamano, tarifa=:tarifa, disponibilidad=:disponibilidad WHERE id_guardian = ".$_SESSION["id"].";";
+                     tamano=:tamano, tarifa=:tarifa, disponibilidad=:disponibilidad WHERE id_guardian = :id_guardian;";
 
                     }else{
 
                         $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad,
-                         foto_perfil=:foto_perfil, tamano=:tamano, tarifa=:tarifa, disponibilidad=:disponibilidad WHERE id_guardian = ".$_SESSION["id"].";";
+                         foto_perfil=:foto_perfil, tamano=:tamano, tarifa=:tarifa, disponibilidad=:disponibilidad WHERE id_guardian = :id_guardian;";
 
                             $nombre_imagen= $PerfilGuardian->getFotoPerfil();
                             $ruta="Upload/img".$nombre_imagen;
@@ -60,6 +59,7 @@
                 $parameters["tamano"] = implode(",", $PerfilGuardian->getTamano());
                 $parameters["tarifa"] = $PerfilGuardian->getRemuneracion();
                 $parameters["disponibilidad"] = $PerfilGuardian->getDisponibilidad();
+                $parameters["id_guardian"] = $_SESSION["id"];
                 //$parameters["reputacion"] = $PerfilGuardian->getReputacion
             
                 $this->connection = Connection::GetInstance();
@@ -82,7 +82,6 @@
 
                 $result=$this->connection->ExecuteNonQuery($query,$parameters);
 
-                //var_dump($id);
             } catch (Excepcion $ex){
                 throw $ex;
             }
@@ -136,7 +135,7 @@
                 $result=$this->connection->Execute($query,$parameters);
 
                 $id=$result[0]["id_guardian"];
-                //var_dump($id);
+
                 return $id;
 
             } catch (Excepcion $ex){
@@ -189,7 +188,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
                 $Guardian = new Guardian();
                 $Guardian->setId($result[0]["id_guardian"]);
                 $Guardian->setMail($result[0]["email"]);

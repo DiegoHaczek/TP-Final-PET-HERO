@@ -80,7 +80,6 @@
                     $controllerHome->index($alert);
     
                 }
-                //var_dump($datosCupon);
             
                 require_once(VIEWS_PATH."vercupon.php");
             } catch (Exception $ex) {

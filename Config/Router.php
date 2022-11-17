@@ -23,8 +23,6 @@
                 call_user_func(array($controller, $methodName));
             else
 
-            //var_dump($methodParameters);
-
             if(isset($methodParameters[0]['tmp_name'])){
 
                 $methodParameters['tmp_name'] = $methodParameters[0]['tmp_name'];
@@ -40,9 +38,6 @@
             }
             
             unset($methodParameters[0]);
-
-            //var_dump($methodParameters);
-
         
             }
 

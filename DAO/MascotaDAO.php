@@ -88,7 +88,6 @@
 
                 $result=$this->connection->ExecuteNonQuery($query,$parameters);
 
-                //var_dump($id);
             } catch (Excepcion $ex){
                 throw $ex;
             }
@@ -96,8 +95,6 @@
 
         public function GetById($id){
             try{
-
-                //var_dump($id);
 
                 $query = "SELECT * FROM ".$this->tableName." WHERE id_mascota = :id_mascota;";
 
@@ -107,7 +104,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
                 $Mascota = new Mascota();
                 $Mascota->setId($result[0]["id_mascota"]);
                 $Mascota->setNombre($result[0]["nombre"]);
@@ -130,8 +126,6 @@
 
             try{
 
-                //var_dump($id);
-
                 $query = "SELECT m.*,d.nombre as nombre_dueno,d.email FROM mascota as m, dueno as d WHERE (m.id_dueno=d.id_dueno) and (m.id_mascota=:id_mascota);";
 
                 $parameters["id_mascota"] = $id;
@@ -140,7 +134,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
                 $perfilMascota = array();
                 $perfilMascota ['nombreMascota'] = $result[0]["nombre"];
                 $perfilMascota ['edad'] = $result[0]["edad"];
@@ -169,7 +162,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
                 $Mascota = new Mascota();
                 $Mascota->setId($row[0]["id_mascota"]);
                 $Mascota->setNombre($row[0]["nombre"]);

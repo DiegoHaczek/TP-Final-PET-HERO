@@ -35,17 +35,15 @@
         public function SetProfile(Dueno $PerfilDueno,$tmp_name){
 
             try {
-
-                //var_dump($tmp_name);
                 if($tmp_name==""){    //si vengo de editar perfil y no añado una foto nueva, no la paso como parametro en la query
 
                     $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad
-                     WHERE id_dueno = ".$_SESSION["id"].";";
+                     WHERE id_dueno = :id_dueno;";
 
                     }else{
 
                         $query = "UPDATE ".$this->tableName." SET nombre=:nombre, apellido=:apellido, edad=:edad,
-                         foto_perfil=:foto_perfil WHERE id_dueno = ".$_SESSION["id"].";";
+                         foto_perfil=:foto_perfil WHERE id_dueno = :id_dueno;";
 
                             $nombre_imagen= $PerfilDueno->getFotoPerfil();
                             $ruta="Upload/img".$nombre_imagen;
@@ -58,6 +56,7 @@
                 $parameters["nombre"] = $PerfilDueno->getNombre();
                 $parameters["apellido"] = $PerfilDueno->getApellido();
                 $parameters["edad"] = $PerfilDueno->getEdad();
+                $parameters["id_dueno"] = $_SESSION["id"];
             
                 $this->connection = Connection::GetInstance();
 
@@ -85,7 +84,7 @@
                 $result=$this->connection->Execute($query,$parameters);
 
                 $id=$result[0]["id_dueno"];
-                //var_dump($id);
+
                 return $id;
 
             } catch (Excepcion $ex){
@@ -105,7 +104,6 @@
 
                 $result=$this->connection->ExecuteNonQuery($query,$parameters);
 
-                //var_dump($id);
             } catch (Excepcion $ex){
                 throw $ex;
             }
@@ -140,43 +138,6 @@
             }
         }
 
-        /*private function SaveData()
-        {
-            /*$arrayToEncode = array();
-
-            foreach($this->DuenoList as $Dueno)
-            {
-                $valuesArray = array();
-                $valuesArray["id"] = $Dueno->getId();
-                $valuesArray["password"] = $Dueno->getPassWord();
-                $valuesArray["mail"] = $Dueno->getMail();
-                $valuesArray["nombre"] = $Dueno->getNombre();
-                $valuesArray["apellido"] = $Dueno->getApellido();
-                $valuesArray["edad"] = $Dueno->getEdad();
-                $valuesArray["fotoperfil"] = $Dueno->getFotoPerfil();
-                $valuesArray["mascotas"] = $Dueno->getMascotas();
-                $valuesArray["historial"] = $Dueno->getHistorial();
-                array_push($arrayToEncode, $valuesArray);
-            }
-
-            $fileContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-
-            file_put_contents($this->fileName, $fileContent);
-
-            try {
-                $arrayToEncode = array();
-
-                $query = "INSERT INTO ".$this->tableName." (email, password, nombre, apellido, edad, fotoperfil) VALUES (:email, :password, :nombre, :apellido, :edad, :foto_perfil);";
-
-                foreach ($this->DuenoList as $Dueno) {
-                    
-                }
-
-            } catch (Exception $ex) {
-                return $ex;
-            }
-        }*/
-
         public function GetById($id){
             try{
                 $query = "SELECT * FROM ".$this->tableName." WHERE ID_DUENO = :id_dueno;";
@@ -187,7 +148,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
                 $Dueno = new Dueno();
                 $Dueno->setId($result[0]["id_dueno"]);
                 $Dueno->setMail($result[0]["email"]);
@@ -209,12 +169,11 @@
                 $query = "SELECT * FROM ".$this->tableName." WHERE email = :email;";
 
                 $parameters["email"] = $mail;
-                //var_dump($mail);
+
                 $this->connection = Connection::GetInstance();
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
                 if (isset($result[0])) {
                     $Dueno = new Dueno();
                     $Dueno->setId($result[0]["id_dueno"]);

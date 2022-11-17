@@ -44,7 +44,6 @@
             
             if($_FILES)
             {
-                //var_dump($_FILES);
                 unset($this->parameters["button"]);
                 
                 foreach($_FILES as $file)

@@ -49,7 +49,7 @@
                 $result=$this->connection->Execute($query,$parameters);
 
                 $id=$result[0]["id_cupon"];
-                //var_dump($id);
+
                 return $id;
 
             } catch (Excepcion $ex){
@@ -128,9 +128,6 @@
 
                 $this->connection = Connection::GetInstance();
 
-                
-
-                //var_dump($result);
                return $this->DatosCuponList;
 
             }catch(Exception $ex){
@@ -181,7 +178,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
                 $monto = explode(".", $result[0]["monto"]);
 
                 return $monto[0];
@@ -202,8 +198,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result[0]["email"]);
-
                 return $result[0]["email"];
             } catch (Exception $ex) {
                 return $ex;
@@ -220,8 +214,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result[0]["email"]);
-
                 return $result[0]["nombre"];
             } catch (Exception $ex) {
                 return $ex;
@@ -237,8 +229,6 @@
                 $this->connection = Connection::GetInstance();
 
                 $result=$this->connection->Execute($query,$parameters);
-
-                //var_dump($result[0]["email"]);
 
                 return $result[0]["id_dueno"];
             } catch (Exception $ex) {

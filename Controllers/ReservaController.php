@@ -35,10 +35,7 @@
                 $inicio = \date_create_from_format("Y-m-d",$fechaInicio);
                 $fin = \date_create_from_format("Y-m-d",$fechaFinal);
 
-                //var_dump($mascota);
                 $idMascota = explode(",", $mascota[0])[2];
-                //var_dump($idMascota);
-                //var_dump($inicio, $fin);
 
                 if ($inicio<=$fin) { 
                     if($this->comprobarDisponibilidad($inicio,$fin,$idGuardian)){
@@ -110,8 +107,6 @@
 
                             $unDia = new \DateInterval ("P1D");
 
-                            //var_dump($arregloDisponibilidad);
-
                             for($fecha=$fechaInicio;$fecha<=$fechaFinal;$fecha->add($unDia)){
 
                                 $fechaFormateada= date_format($fecha,"Y-m-d");
@@ -167,8 +162,6 @@
                 $raza = array();
                 
                 $raza = explode(",", $mascota[0]);
-
-                //var_dump($arregloRazas);
 
                 if(strtolower($arregloRazas[0]["raza"]) != strtolower($raza[1])){
                     return false;

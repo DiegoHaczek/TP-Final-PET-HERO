@@ -24,8 +24,6 @@
                 $parameters["fecha_final"] = $Reserva->getFechaFinal();
                 $parameters["estado"] = "Pendiente";
 
-                //var_dump($Reserva->getFechaInicio());
-
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->ExecuteNonQuery($query, $parameters);
@@ -47,7 +45,6 @@
 
                 $result=$this->connection->ExecuteNonQuery($query,$parameters);
 
-                //var_dump($id);
             } catch (Excepcion $ex){
                 throw $ex;
             }
@@ -91,7 +88,6 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                //var_dump($result);
                 $Reserva = new Reserva();
                 $Reserva->setId($row[0]["id_reserva"]);
                 $Reserva->setIdDueno($row[0]["id_dueno"]);
@@ -170,7 +166,6 @@
 
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query,$parameters);
-                //var_dump($resultSet);
                 $DatosReserva = array();
 
                 foreach ($resultSet as $row){
@@ -208,7 +203,6 @@
 
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query,$parameters);
-                //var_dump($resultSet);
                 $DatosReserva = array();
 
                 foreach ($resultSet as $row){
@@ -241,15 +235,12 @@
                  and (r.fecha_inicio between :fecha_inicio and :fecha_final or r.fecha_final between :fecha_inicio and :fecha_final) 
                 and ((r.estado != 'Cancelada') and (r.estado != 'Pendiente'));";
 
-                //var_dump($fechaInicio);
-                //var_dump($fechaFinal);
                 $parameters["id_guardian"] = $idGuardian;
                 $parameters["fecha_inicio"] = $fechaInicio;
                 $parameters["fecha_final"] = $fechaFinal;
 
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query,$parameters);
-                //var_dump($resultSet);
                 $DatosRaza = array();
 
                 foreach ($resultSet as $row){
