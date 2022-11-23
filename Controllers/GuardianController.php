@@ -178,7 +178,7 @@
             }
         }
 
-        public function SetProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name,$remuneracion,$tamano,$disponibilidad)
+        public function SetProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name,$remuneracion,$disponibilidad,$tamano=['Grande','Mediano','Chico'])
         {
             try {
                 $PerfilGuardian = new Guardian();

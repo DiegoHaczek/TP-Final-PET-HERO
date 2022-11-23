@@ -24,7 +24,7 @@
                 <fieldset>
                     <label for="tamano"><strong><span>Tamaño</span></strong></label><br>
                     <label for="grande" class="labelcheckbox"><span>Grande</span></label>
-                    <input id="radioGrande" type="radio" name="tamano"  value="Grande">
+                    <input id="radioGrande" type="radio" name="tamano"  value="Grande" required>
                     <label for="mediano" class="labelcheckbox"><span>Mediano</span></label>
                     <input id="radioMediano" type="radio" name="tamano"  value="Mediano">
                     <label for="chico" class="labelcheckbox"><span>Chico</span></label>
@@ -34,7 +34,7 @@
                 <fieldset>
                     <label for="especie"><strong><span>Especie</span></strong></label><br>
                     <label for="perro" class="labelcheckbox"><span>Perro</span></label>
-                    <input id="radioPerro" type="radio" name="especie"  value="perro">
+                    <input id="radioPerro" type="radio" name="especie"  value="perro" required>
                     <label for="gato" class="labelcheckbox"><span>Gato</span></label>
                     <input id="radioGato" type="radio" name="especie"  value="gato">
 
@@ -64,7 +64,7 @@
                         <option value="pastor">Pastor</option>
                     </select>
 
-                    <select name="razaPerroGrande" id="selectPerroGrande" style="display:none;" >
+                    <select name="razaPerroGrande" id="selectPerroGrande" style="display:none;">
                         <option value="">--Razas Grandes-- </option>
                         <option value="rottweiler">Rottweiler</option>
                         <option value="dogo">Dogo</option>
@@ -150,10 +150,10 @@ let selectDefecto = document.getElementById('selectDefecto');
 radioGato.addEventListener('click',function(){
   
     $("#selectDefecto").css( "display", "none" );
-    $("#selectPerroGrande").css( "display", "none" );
-    $("#selectPerroMediano").css( "display", "none" );
-    $("#selectPerroChico").css( "display", "none" );
-    $("#selectGato").css( "display", "block" );
+    $("#selectPerroGrande").css( "display", "none" ).attr("required", false);
+    $("#selectPerroMediano").css( "display", "none" ).attr("required", false);
+    $("#selectPerroChico").css( "display", "none" ).attr("required", false);
+    $("#selectGato").css( "display", "block" ).attr("required", true);
   
 })
 
@@ -161,26 +161,26 @@ radioPerro.addEventListener('click',function(){
 
     if($('#radioChico').is(':checked')){
         $("#selectDefecto").css( "display", "none" );
-        $("#selectPerroMediano").css( "display", "none" );
-        $("#selectPerroGrande").css( "display", "none" );
-        $("#selectGato").css( "display", "none" );
-        $("#selectPerroChico").css( "display", "block" );
+        $("#selectPerroMediano").css( "display", "none" ).attr("required", false);
+        $("#selectPerroGrande").css( "display", "none" ).attr("required", false);
+        $("#selectGato").css( "display", "none" ).attr("required", false);
+        $("#selectPerroChico").css( "display", "block" ).attr("required", true);
     }
 
     if($('#radioMediano').is(':checked')){
         $("#selectDefecto").css( "display", "none" );
-        $("#selectPerroChico").css( "display", "none" );
-        $("#selectPerroGrande").css( "display", "none" );
-        $("#selectGato").css( "display", "none" );
-        $("#selectPerroMediano").css( "display", "block" );
+        $("#selectPerroChico").css( "display", "none" ).attr("required", false);
+        $("#selectPerroGrande").css( "display", "none" ).attr("required", false);
+        $("#selectGato").css( "display", "none" ).attr("required", false);
+        $("#selectPerroMediano").css( "display", "block" ).attr("required", true);
     }
 
     if($('#radioGrande').is(':checked')){
         $("#selectDefecto").css( "display", "none" );
-        $("#selectPerroMediano").css( "display", "none" );
-        $("#selectPerroChico").css( "display", "none" );
-        $("#selectGato").css( "display", "none" );
-        $("#selectPerroGrande").css( "display", "block" );
+        $("#selectPerroMediano").css( "display", "none" ).attr("required", false);
+        $("#selectPerroChico").css( "display", "none" ).attr("required", false);
+        $("#selectGato").css( "display", "none" ).attr("required", false);
+        $("#selectPerroGrande").css( "display", "block" ).attr("required", true);
     }
 
     })
@@ -190,10 +190,10 @@ radioChico.addEventListener('click',function(){
 
     if($('#radioPerro').is(':checked')){
         $("#selectDefecto").css( "display", "none" );
-        $("#selectPerroMediano").css( "display", "none" );
-        $("#selectPerroGrande").css( "display", "none" );
-        $("#selectGato").css( "display", "none" );
-        $("#selectPerroChico").css( "display", "block" );
+        $("#selectPerroMediano").css( "display", "none" ).attr("required", false);
+        $("#selectPerroGrande").css( "display", "none" ).attr("required", false);
+        $("#selectGato").css( "display", "none" ).attr("required", false);
+        $("#selectPerroChico").css( "display", "block" ).attr("required", true);;
     }
     })
 
@@ -201,10 +201,10 @@ radioMediano.addEventListener('click',function(){
 
     if($('#radioPerro').is(':checked')){
         $("#selectDefecto").css( "display", "none" );
-        $("#selectPerroChico").css( "display", "none" );
-        $("#selectPerroGrande").css( "display", "none" );
-        $("#selectGato").css( "display", "none" );
-        $("#selectPerroMediano").css( "display", "block" );
+        $("#selectPerroChico").css( "display", "none" ).attr("required", false);
+        $("#selectPerroGrande").css( "display", "none" ).attr("required", false);
+        $("#selectGato").css( "display", "none" ).attr("required", false);
+        $("#selectPerroMediano").css( "display", "block" ).attr("required", true);
     }
     })
 
@@ -212,10 +212,10 @@ radioGrande.addEventListener('click',function(){
 
     if($('#radioPerro').is(':checked')){
         $("#selectDefecto").css( "display", "none" );
-        $("#selectPerroMediano").css( "display", "none" );
-        $("#selectPerroChico").css( "display", "none" );
-        $("#selectGato").css( "display", "none" );
-        $("#selectPerroGrande").css( "display", "block" );
+        $("#selectPerroMediano").css( "display", "none" ).attr("required", false);
+        $("#selectPerroChico").css( "display", "none" ).attr("required", false);
+        $("#selectGato").css( "display", "none" ).attr("required", false);
+        $("#selectPerroGrande").css( "display", "block" ).attr("required", true);
     }
     })
 

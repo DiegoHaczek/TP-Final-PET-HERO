@@ -35,8 +35,8 @@
             
         }
 
-        public function Add($nombre, $edad, $tamano, $especie, $razaPerroChico ,
-         $razaPerroMediano, $razaPerroGrande , $razaGato , $indicaciones, $fotoperfil,$tmp_name,$fichamedica,$tmp_nameFichamedica)
+        public function Add($nombre, $edad, $tamano, $especie ,$razaGato , $indicaciones, $fotoperfil,$tmp_name,$fichamedica,$tmp_nameFichamedica, 
+                            $razaPerroChico, $razaPerroMediano , $razaPerroGrande)
         {
             try {
                 $Mascota = new Mascota();
@@ -50,7 +50,9 @@
                 $Mascota->setIdDueno($_SESSION["id"]);
                 $Mascota->setEspecie($especie);
                 
+
                 if ($especie=="perro"){
+                    
                 if ($razaPerroChico){
                     $Mascota->setRaza($razaPerroChico);}else
                     if($razaPerroMediano){
@@ -73,7 +75,6 @@
                 $controllerHome->index($alert);
                 //header('location:../index.php');
 
-                //$this->ShowAddView();
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
                 $controllerHome = new HomeController();
