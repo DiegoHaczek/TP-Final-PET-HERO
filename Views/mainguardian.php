@@ -104,16 +104,8 @@
                         <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo ucwords($reserva["m.raza"]); ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
-                        <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
-
-                        <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
-                        <input type="text" name="estado" value="Cancelada" style="display:none"></input>
-
-                        <td><button class="formButton" type="submit">Cancelar</button>
+                        <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>"> <td>
                         
-                        </form>
-                        
-
                         <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
                         <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    
                         <button class="formButton" type="submit" style="">Ver Info</button></form></td></tr>

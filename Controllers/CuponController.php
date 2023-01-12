@@ -67,21 +67,20 @@
                 $datosCupon =$this->CuponDAO->GetbyId($idCupon);
                 $idDueno =$this->CuponDAO->encontrarIdDuenoDAO($idCupon);
 
-                if(isset($_SESSION['id'])){
-                if ($idDueno == $_SESSION['id']){
+                if(isset($_SESSION['id']) && $idDueno == $_SESSION['id']){ //verifica que este seteada la sesion y sea del user correspondiente
+                
     
                     require_once(VIEWS_PATH."vercupon.php");
     
-                }}else{
+                }else{
     
                     $alert=['tipo'=>"advertencia",'mensaje'=>"Acceso invalido"];
-    
                     $controllerHome = new HomeController();
                     $controllerHome->index($alert);
     
                 }
             
-                require_once(VIEWS_PATH."vercupon.php");
+               // require_once(VIEWS_PATH."vercupon.php");
             } catch (Exception $ex) {
                 $alert=['tipo'=>"error",'mensaje'=>"No Se Puede ver el Cupón"];
                 $controllerHome = new HomeController();
