@@ -4,9 +4,11 @@
 
     use Models\Cupon as Cupon;
     use DAO\CuponDAO as CuponDAO;
+    use Exception;
+    use Throwable;
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
+   // use PHPMailer\PHPMailer\Exception;
     Use Controllers\ReservaController as ReservaController;
 
     class CuponController

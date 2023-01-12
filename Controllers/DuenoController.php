@@ -3,6 +3,8 @@
 
     use DAO\DuenoDAO as DuenoDAO;
     use DAO\ReservaDAO as ReservaDAO;
+    use Exception;
+    use Throwable;
     use Models\Dueno as Dueno;
     use Models\Guardian as Guardian;
     use Models\Reserva as Reserva;

@@ -256,5 +256,24 @@
             }
         }
 
+        public function ContarReservasFinalizadas($idDueno){
+            try{
+
+                $query = "select count(*) from ".$this->tableName." Where (id_dueno = :id_dueno) and (estado = 'Finalizada');";
+
+                $parameters["id_dueno"] = $idDueno;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+
+                return $result[0];
+            }catch(Exception $ex){
+                return $ex;
+            }
+        }
+
+
    }
 ?>

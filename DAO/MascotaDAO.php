@@ -88,8 +88,8 @@
 
                 $result=$this->connection->ExecuteNonQuery($query,$parameters);
 
-            } catch (Excepcion $ex){
-                throw $ex;
+            } catch (PDOException $ex){
+                return $ex;
             }
         }
 
@@ -175,6 +175,24 @@
                 $Mascota->setIdDueno($row[0]["id_dueno"]);
 
                 return $Mascota;
+            }catch(Exception $ex){
+                return $ex;
+            }
+        }
+
+        public function ContarMascotas($idDueno){
+            try{
+
+                $query = "select count(*) from ".$this->tableName." Where id_dueno = :id_dueno;";
+
+                $parameters["id_dueno"] = $idDueno;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+
+                return $result[0];
             }catch(Exception $ex){
                 return $ex;
             }

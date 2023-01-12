@@ -4,11 +4,13 @@
     use DAO\DuenoDAO as DuenoDAO; 
     use Models\Dueno as Dueno;
     use DAO\GuardianDAO as GuardianDAO; 
+    use Exception;
+    use Throwable;
     use Models\Guardian as Guardian;
     use Controllers\MascotaController as MascotaController;
     use Models\Mascota as Mascota;
+    use Controllers\ReservaController as ReservaController;
     use Models\Reserva as Reserva;
-    use Controllers\Reserva as ReservaController;
     use DAO\ReservaDAO as ReservaDAO;
     
 
@@ -30,6 +32,7 @@
             
         }
 
+
         public function Index($alert = "")
         {
             try {
@@ -39,7 +42,9 @@
                         $usuario = New Dueno();
                         $usuario = $this->duenoDAO->GetById($_SESSION["id"]);
                         $controllerMascota = new MascotaController();
-                        $cantidadMascotas = $controllerMascota->countMascotas($_SESSION["id"]);
+                        $cantidadMascotas = $controllerMascota->countMascotas($_SESSION["id"])[0];
+                        $controllerReserva = new ReservaController();
+                        $cantidadReservasFin = $controllerReserva->CountReservas($_SESSION["id"])[0];
                         require_once(VIEWS_PATH."maindueno.php");
 
                     } else if ($_SESSION["type"] == "g"){
@@ -57,7 +62,7 @@
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
                 $controllerHome = new HomeController();
-                $controllerHome->index($alert);
+                $controllerHome->error($alert);
             }
             
         }
@@ -84,8 +89,6 @@
         public function Login($mail, $password)
         {
             try {
-                //1. declarar dao guardian y dueno 
-                //2. array merge con getAll de los dao como parametro
                 
                 $user = new Dueno();
                 $user = $this->duenoDAO->GetByMail($mail);
@@ -128,6 +131,12 @@
             session_destroy();
             $alert=['tipo'=>"exito",'mensaje'=>"Deslogeado con Éxito"];
             $this->Index($alert);
+        }
+
+        public function Error($alert=''){
+
+            require_once(VIEWS_PATH."error.php");
+
         }
     }
 ?>

@@ -50,7 +50,7 @@
                                         <span>Información Dueño</span>
                                         <div class="separador"></div>
                                         <span>Cantidad Mascotas: <strong><?php echo $cantidadMascotas; ?></strong> </span>
-                                        <span>Cantidad Reservas Completadas: <strong>0</strong></span>
+                                        <span>Cantidad Reservas Completadas: <strong><?php echo $cantidadReservasFin; ?></strong></span>
                                         
 
                                         <a href="<?php echo FRONT_ROOT."Dueno/EditPRofile"?>"><button class="formButton" style="padding:0.3em 1em; position:relative; top:8.3em; right:2.7em">Editar</button></a>
@@ -81,20 +81,26 @@
                 </div>
                  </section>
 
-                 <section style="width:50em; height:12em">
+                 <section style="width:50em; height:16em">
                 
                     
                     <div class="sectioncontent">
 
                     <summary><span style=" position:relative; bottom:-1.5em;"><strong> Mis Reservas </span></strong></summary>
-                        
-                    <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
-                    <button style="" class="buttonHome">Ver Guardianes</button></a>
+                    
+                    <div style="display:flex;flex-direction:column">                    
 
-                    <br>
                     <a href="<?php echo FRONT_ROOT."Dueno/listReservas"?>">
                     <button style="" class="buttonHome">Ver Reservas</button></a>
 
+                    <a href="">
+                    <button style="" class="buttonHome">Ver Chats</button></a>
+
+                    <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
+                    <button style="" class="buttonHome">Ver Guardianes</button></a>
+
+                    
+                                    </div>
                     
                     </div>
                      </section>

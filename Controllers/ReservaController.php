@@ -7,6 +7,9 @@
     use Controllers\HomeController as HomeController;
     use Controllers\CuponController as CuponController;
     use DAO\ReservaDAO as ReservaDAO;
+    use Exception;
+    use Throwable;
+
 
     class ReservaController
     {
@@ -88,7 +91,7 @@
                 }
 
             } catch (Exception $e) {
-                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $alert=['tipo'=>"error",'mensaje'=>"Error al crear reserva"];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }
@@ -220,10 +223,25 @@
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             } catch (Exception $e) {
-                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $alert=['tipo'=>"error",'mensaje'=>"Error al cambiar el estado de la reserva"];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }
         }        
+
+        public function countReservas ($idDueno){
+
+            try {
+                
+                $cantidadReservas = $this->ReservaDAO->ContarReservasFinalizadas($idDueno);
+                
+                return $cantidadReservas;
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+           
+        }
     }
 ?>

@@ -62,7 +62,7 @@
 
                 return $this->pdoStatement->rowCount();
             }
-            catch(Exception $ex)
+            catch(PDOException $ex)
             {
                 throw $ex;
             }        	    	
