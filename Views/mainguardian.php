@@ -104,7 +104,7 @@
                         <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo ucwords($reserva["m.raza"]); ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
-                        <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>"> <td>
+                        <td>
                         
                         <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
                         <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    

@@ -92,7 +92,7 @@
             try{
                 $this->GuardianList = array();
                 
-                $query = "SELECT * FROM ".$this->tableName;
+                $query = "SELECT * FROM ".$this->tableName." where nombre is not null"; //no muestra guardianes con perfil incompleto
 
                 $this->connection = Connection::GetInstance();
                 $resultSet = $this->connection->Execute($query);

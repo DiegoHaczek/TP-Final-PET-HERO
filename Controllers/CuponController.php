@@ -109,7 +109,7 @@
                 $mail->Subject = 'Cupon de Pago - Pet Hero';
                 /*$mail->Body = 'Aqui esta el link de pago: 
                 http://localhost/TP-FINAL-PET-HERO/cupon/verCupon?id_cupon='.$idCupon.' ';*/
-                $mail->Body = '<div style="display:flex;flex-direction:column;align-items:center;width:600px;height:450px;background-color:rgb(231, 231, 179);">
+                $mail->Body = '<div style="display:flex;flex-direction:column;align-items:center;width:600px;height:530px;background-color:rgb(231, 231, 179);">
 
 
 
@@ -123,6 +123,11 @@
                 <a style="color:white;" href="http://localhost/TP-FINAL-PET-HERO/cupon/verCupon?id_cupon='.$idCupon.'">Ver Cupon</a></button>
         
                 </div>
+
+                <span style="margin-top:3em;margin-left:3em;">Si no funciona el boton ingresa el siguiente link en el navegador: 
+                http://localhost/TP-FINAL-PET-HERO/cupon/verCupon?id_cupon='.$idCupon.'
+                </span>
+
         
                 <span style="margin-top:3em;">Pet Heroe - 2022</span>
         

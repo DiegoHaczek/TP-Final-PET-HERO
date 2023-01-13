@@ -1,4 +1,4 @@
-<header><h1><p><br>Pet Hero</p></h1>
+<header><h1><p><br><a href="<?php echo FRONT_ROOT."Home/Index"?>">Pet Hero</a></p></h1>
        
        <nav id="navBar">
          
