@@ -28,6 +28,7 @@
         {
             try {
                 require_once(VIEWS_PATH."validate-session.php");
+                // cambiar implementacion
                 $MascotaList = $this->MascotaDAO->getAll();
                 require_once(VIEWS_PATH."listamascotas.php");
             } catch (Exception $e) {

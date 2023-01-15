@@ -54,6 +54,8 @@
                     $comentarioController = new ComentarioController();
                     $comprobacionComentario = $comentarioController->ComprobacionComentario($id,$_SESSION['id']);
                     $comentarios = $comentarioDao->GetByIdGuardian($id);
+
+                    // cambiar implementacion
                     $mascotas = $mascotaDao->GetAll();
         
                     require_once(VIEWS_PATH."perfilguardian.php");
@@ -106,6 +108,7 @@
 
         public function disponibilidadById ($id){
             try {
+                // cambiar implementacion
                 $GuardianList=$this->GuardianDAO->getAll();
                 foreach($GuardianList as $Guardian){
 
@@ -128,6 +131,7 @@
             
                 if(!$controller->mailDuenoExiste($mail)){ ///verifico que mail no eixste en el otro DAO tampoco
                 
+                    // cambiar implementacion
                     $GuardianList= $this->GuardianDAO->getAll();
                     foreach ($GuardianList as $Guardian) {
                         if ($mail == $Guardian->getMail()) {
@@ -149,6 +153,8 @@
         public function mailGuardianExiste($mail){//funcion llamada por el controller de dueno
 
             try {
+
+                //cambiar implementacion
                 $GuardianList= $this->GuardianDAO->getAll();
                 foreach ($GuardianList as $Guardian) {
                     if ($mail == $Guardian->getMail()) {

@@ -62,7 +62,6 @@
             }
         }      
     
-
         public function verCupon($idCupon,$alert=""){
 
             try {
@@ -105,18 +104,36 @@
 
         public function submitFormulario($numerotarjeta,$vencimientotarjeta,$cvv,$idCupon,$idReserva){
 
-            //comprobaciones formulario
-
             try {   
 
-             $cuponController = new CuponController();   
-             $cuponController->updateEstado($idCupon,$idReserva);
+                $cuponController = new CuponController();   
 
-        } catch (Exception $ex) {
-            $alert=['tipo'=>"error",'mensaje'=>"Ha surgido un error"];
+                if(is_numeric($numerotarjeta)){
+                    
+                    if(is_numeric(substr($vencimientotarjeta,0,2)) && substr($vencimientotarjeta,2,1)=='/' && is_numeric(substr($vencimientotarjeta,3,2))){
+
+                        if(is_numeric($cvv)){
+
+                        $cuponController->updateEstado($idCupon,$idReserva);
+
+                        }else{
+                            $alert=['tipo'=>"advertencia",'mensaje'=>"Código de Verificación (CVV) invalido"];
+                            $cuponController->verFormularioPago($idCupon,$idReserva,$alert); 
+                        }
+                    }else{
+                          $alert=['tipo'=>"advertencia",'mensaje'=>"Fecha de Vencimiento invalida"];
+                          $cuponController->verFormularioPago($idCupon,$idReserva,$alert);  
+                    }
+                }else{  
+                    $alert=['tipo'=>"advertencia",'mensaje'=>"Numero Tarjeta invalido"];
+                    $cuponController->verFormularioPago($idCupon,$idReserva,$alert);
+                }
+
+                } catch (Exception $ex) {
+            $alert=['tipo'=>"error",'mensaje'=>"Ha surgido un error en el pago"];
             $controllerHome = new HomeController();
             $controllerHome->index($alert);
-        }
+                }
 
         }
 

@@ -5,6 +5,12 @@
 
 <main class="content">
 
+<?php if ($alert!="") {?>
+
+<div id="alert" class="<?php echo $alert['tipo'] ?>"><span><strong><?php echo $alert['mensaje']?></strong></span></div>
+
+<?php } ?>
+
 <div id="formContainer">
 
     <form id="editarperfil" action="<?php echo FRONT_ROOT."Cupon/submitFormulario"?>" method="post" class="activo" style="height: 32em">
@@ -17,7 +23,7 @@
                    
                     <input type="text" id="numerotarjeta" name="numerotarjeta" placeholder="Número de Tarjeta" minlength="12" maxlength="12" required>
 
-                    <input type="text" id="vencimientotarjeta" name="vencimientotarjeta" placeholder="Fecha de Vencimiento" minlength="5" maxlength="5" required>
+                    <input type="text" id="vencimientotarjeta" name="vencimientotarjeta" placeholder="Fecha de Vencimiento         'dd/mm'" minlength="5" maxlength="5" required>
 
                     <input type="text" class="number" id="cvv" name="cvv" placeholder="CVV" minlength="3" maxlength="3" required>
 
@@ -37,6 +43,18 @@
 </div>
 
 </main>
+
+<script>
+
+
+if (!$("#alert").hasClass("")){
+
+$("#alert").animate({bottom:"3%"},{duration:800}).delay(1000).animate({bottom:"-8%"},{duration:800});
+
+}
+
+
+</script>
 
 
 <?php require 'footer.php' ?>

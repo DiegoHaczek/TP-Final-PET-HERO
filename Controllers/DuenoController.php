@@ -75,6 +75,8 @@
             
                 if(!$controller->mailGuardianExiste($mail)){ ///verifico que mail no eixste en el otro DAO tampoco
 
+
+                 // cambiar implementacion   
                 $DuenoList= $this->DuenoDAO->getAll();
                 foreach ($DuenoList as $Dueno) {
                     if ($mail == $Dueno->getMail()) {
@@ -98,6 +100,8 @@
         public function mailDuenoExiste($mail){//funcion llamada por el controller de guardian
 
             try {
+
+                // cambiar implementacion
                 $DuenoList= $this->DuenoDAO->getAll();
 
                 foreach ($DuenoList as $Dueno) {
