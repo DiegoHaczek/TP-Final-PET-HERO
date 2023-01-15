@@ -10,13 +10,16 @@ define("CSS_PATH", FRONT_ROOT.VIEWS_PATH . "layout/styles/");
 define("JS_PATH", FRONT_ROOT.VIEWS_PATH . "layout/scripts/");
 define("IMG_PATH", FRONT_ROOT.VIEWS_PATH . "img/");
 
-//constantes datos de la bdd
+//constantes bdd
 define("DB_HOST", "localhost");
 define("DB_NAME", "pet_hero");
 define("DB_USER", "root");
 define("DB_PASS", "");
 
-//constantes datos mail
+//constantes mail
+define("MAIL_HOST","smtp.gmail.com");
+define("MAIL_USER","heropet6@gmail.com");
+define("MAIL_PASS","zaym gpfw wuis vpnc");
 ?>
 
 

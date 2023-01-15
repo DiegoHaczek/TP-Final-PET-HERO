@@ -36,7 +36,7 @@
                 $this->CuponDAO->Add($Cupon);
                 return $this->CuponDAO->GetIdByReserva($idReserva);
             } catch (Exception $ex) {
-                $alert=['tipo'=>"error",'mensaje'=>"No Se Pudo Confirmar la Reserva."];
+                $alert=['tipo'=>"error",'mensaje'=>"Ya existe el Cupón para esta Reserva."];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }
@@ -88,7 +88,36 @@
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }
-            
+        }
+
+        public function verFormularioPago($idCupon,$idReserva,$alert=""){
+
+            try {   
+                    require_once(VIEWS_PATH."formulariopago.php");
+    
+            } catch (Exception $ex) {
+                $alert=['tipo'=>"error",'mensaje'=>"Ha surgido un error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+
+        }
+
+        public function submitFormulario($numerotarjeta,$vencimientotarjeta,$cvv,$idCupon,$idReserva){
+
+            //comprobaciones formulario
+
+            try {   
+
+             $cuponController = new CuponController();   
+             $cuponController->updateEstado($idCupon,$idReserva);
+
+        } catch (Exception $ex) {
+            $alert=['tipo'=>"error",'mensaje'=>"Ha surgido un error"];
+            $controllerHome = new HomeController();
+            $controllerHome->index($alert);
+        }
+
         }
 
         public function enviarCupon($idCupon, $mailUsuario,$nombreUsuario){
@@ -97,14 +126,14 @@
                 $mail = new PHPMailer();
                 //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
                 $mail->isSMTP();                                            //Send using SMTP
-                $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $mail->Host       = MAIL_HOST;                     //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                $mail->Username   = 'heropet4@gmail.com';                     //SMTP username
-                $mail->Password   = 'zpgt udsn lnaa jaun';                               //SMTP password
+                $mail->Username   = MAIL_USER;                     //SMTP username
+                $mail->Password   = MAIL_PASS;                               //SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                 $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-                $mail->setFrom('heropet3@gmail.com', 'Pet Hero');
+                $mail->setFrom(MAIL_USER, 'Pet Hero');
                 $mail->addAddress($mailUsuario);
                 $mail->Subject = 'Cupon de Pago - Pet Hero';
                 /*$mail->Body = 'Aqui esta el link de pago: 
