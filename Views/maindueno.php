@@ -93,7 +93,7 @@
                     <a href="<?php echo FRONT_ROOT."Dueno/listReservas"?>">
                     <button style="" class="buttonHome">Ver Reservas</button></a>
 
-                    <a href="">
+                    <a href="<?php echo FRONT_ROOT."Chat/mostrarChat"?>">
                     <button style="" class="buttonHome">Ver Chats</button></a>
 
                     <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">

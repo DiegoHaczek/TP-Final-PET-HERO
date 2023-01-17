@@ -1,0 +1,153 @@
+
+.chat{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width:58em;
+    height:43em;
+    opacity:80%;
+    display:flex;
+    border-radius:10px;
+    /**border:1px solid rgba(100,150,0,0.5);**/
+    font-size: 1.05em;
+    color:rgb(15, 15, 15);
+}
+
+
+.conversacionesList{
+    background-color: rgb(146, 185, 138);
+    width: 28.5%;
+    border-radius: 30px;
+    box-shadow: -1px 12px 38px -5px rgba(0,0,0,0.32);
+    -webkit-box-shadow: -1px 12px 38px -5px rgba(0,0,0,0.32);
+    -moz-box-shadow: -1px 12px 38px -5px rgba(0,0,0,0.32);
+}   
+
+.infoConversacion{
+ height: 12%;
+ background-color: rgb(156, 216, 132);   
+}
+
+.infoConversacion:nth-child(1){
+    border-radius: 30px 30px 0 0;
+}
+
+.infoConversacion:hover{
+
+   opacity: 60%;
+}
+
+.infoConversacion .imgperfilchica{
+
+    position: relative;
+    margin-right: 12em;
+    margin-top: 1.1em;
+}
+
+.nombreUsuarioChat{
+    font-size: 1.2em;
+}
+
+.contenedorNombre{
+    position: relative;
+    margin-top: -2.7em;
+    margin-right: 1.8em;
+}
+
+.infoConversacion:nth-child(even){
+background-color: rgb(120, 172, 110);
+}
+
+.conversacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /**background-color: rgb(197, 216, 173);**/
+    width: 70%;
+}
+
+.headerConversacion{
+    display: flex;
+    justify-content: space-between;
+
+    background-color: rgb(167, 184, 147);
+    height: 12%;
+    border-radius: 10px 10px 0 0;
+}
+
+.headerConversacion .imgperfilchica{
+    margin-left: 2em;
+    margin-top: 1em;
+}
+
+.headerConversacion .contenedorNombre{
+    justify-self: start;
+    margin-top: 1.5em;
+    margin-left: 1em;
+}
+
+.cuerpoConversacion{
+    height: 68%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    background: rgb(185,198,170);
+background: linear-gradient(180deg, rgba(185,198,170,1) 0%, rgba(159,176,138,1) 100%);
+}
+
+.cajaComentarios{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(167, 184, 147);
+    height: 20%;
+    border-radius: 0 0 10px 10px;
+}
+
+
+.cajaComentarios textarea{
+    background-color: rgb(190, 207, 171);
+    border: none;
+    border-radius: 5px;
+    text-indent: 1em;
+    line-height: 2.5em;
+    font-family: arial;
+    font-size: 0.9rem;
+    margin-left: 1em;
+}
+
+.cajaComentarios .formButton{
+
+    margin-left: 0.7em;
+    margin-top: 0.5em;
+    height: 50%;
+    
+}
+
+.mensajeChat{
+    max-width: fit-content;
+    padding:10px 17px;
+    border-radius: 50px;
+    margin-top: 1em;
+    box-shadow: -1px 12px 38px -5px rgba(0,0,0,0.32);
+    -webkit-box-shadow: -1px 12px 38px -5px rgba(0,0,0,0.32);
+    -moz-box-shadow: -1px 12px 38px -5px rgba(0,0,0,0.32);
+}
+
+
+
+.mensajeChat:nth-child(1){
+    margin-top: 2em;
+}
+
+.propio{
+    background-color: rgb(169, 196, 136);
+    margin-left: 1.3em;
+}
+
+.ajeno{
+    background-color: rgb(185, 196, 136);
+    margin-right: 1.3em;
+    align-self: flex-end;
+}
