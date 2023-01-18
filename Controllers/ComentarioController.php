@@ -47,7 +47,6 @@
             
         }
     
-
         public function verComentario($idComentario,$alert=""){
 
             try {

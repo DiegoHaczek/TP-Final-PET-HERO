@@ -22,23 +22,26 @@
 
                 <div class="conversacionesList">
 
-                <div class="infoConversacion"> <a href="">
-                        <img class="imgperfilchica" src="<?php echo FRONT_ROOT;?>Upload/imgfotoperfilmujer.jpg">
+
+                        <?php   $i=0;
+                                foreach($ChatList as $chat){ //muestro los chats disponinbles
+
+                           ?>
+
+                            <div class="infoConversacion"> 
+                                <a href="<?php echo FRONT_ROOT ?>Chat/mostrarChatDueno?id_reserva=<?php echo $chat['id_reserva'].'&numeroConversacion='.$i;?>">
+                                <img class="imgperfilchica" src="<?php echo FRONT_ROOT.$chat['foto_perfil']?>">
+                                <div class="contenedorNombre"><span class="nombreUsuarioChat"><?php echo $chat['nombre']; ?></span></div>
+                            </a></div>
+
+                            <?php $i++; } ?>
+
+
+                        <!--<div class="infoConversacion"> <a href="">
+                        <img class="imgperfilchica" src="<?php// echo FRONT_ROOT;?>Upload/imgfotoperfilmujer.jpg">
                             <div class="contenedorNombre"><span class="nombreUsuarioChat">Sandra</span></div>
-                        </a></div>
-                        <div class="infoConversacion"> <a href="">
-                        <img class="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
-                            <div class="contenedorNombre"><span class="nombreUsuarioChat">Juan</span></div>
-                        </a></div>
-                        <div class="infoConversacion"> <a href="">
-                        <img class="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
-                            <div class="contenedorNombre"><span class="nombreUsuarioChat">Pedro</span></div>
-                        </a></div>
-                        <div class="infoConversacion"> <a href="">
-                        <img class="imgperfilchica" src="<?php echo IMG_PATH;?>avatardefault.png">
-                            <div class="contenedorNombre"><span class="nombreUsuarioChat">Nombre</span></div>
-                        </a></div>
-                
+                        </a></div> -->
+                       
 
                 </div>
 
@@ -46,28 +49,73 @@
 
 
                     <div class="headerConversacion">
-                        <img class="imgperfilchica" src="<?php echo FRONT_ROOT;?>Upload/imgfotoperfilmujer.jpg">
-                        <div class="contenedorNombre"><span class="nombreUsuarioChat">Sandra</span></div>
+
+
+                        <?php if($ChatList){ 
+                            if ($idReserva==''){?> <!-- si no se selecciono ninguna conversacion sale la primera -->
+
+
+                        <img class="imgperfilchica" src="<?php echo FRONT_ROOT.$ChatList[0]['foto_perfil'];?>">
+                        <div class="contenedorNombre"><span class="nombreUsuarioChat"><?php echo $ChatList[0]['nombre']; ?></span></div>
+                        <a href="<?php echo FRONT_ROOT ?>Guardian/ShowProfile/<?php echo $ChatList[0]['id_guardian']; ?>">
                         <button class="formButton" type="submit" style="align-self:center; position:relative;margin-bottom:1.2em;margin-right:1em">Ver Perfil</button>
+                        </a>
+
+                        <?php }else{ ?>
+
+                        <img class="imgperfilchica" src="<?php echo FRONT_ROOT.$ChatList[$numeroConversacion]['foto_perfil'];?>">
+                        <div class="contenedorNombre"><span class="nombreUsuarioChat"><?php echo $ChatList[$numeroConversacion]['nombre']; ?></span></div>
+                        <a href="<?php echo FRONT_ROOT ?>Guardian/ShowProfile/<?php echo $ChatList[$numeroConversacion]['id_guardian']; ?>">
+                        <button class="formButton" type="submit" style="align-self:center; position:relative;margin-bottom:1.2em;margin-right:1em">Ver Perfil</button>
+                        </a>
+
+                        <?php }} ?>
 
                     </div>
 
 
                     <div class="cuerpoConversacion">
 
-                    <div class="mensajeChat propio" ><span>Qué hacés capo todo bien?</span></div>
-                    <div class="mensajeChat propio"><span>te cuido el rrope?</span></div>
-                    <div class="mensajeChat propio"><span>santa fe 3000</span></div>
-                    <div class="mensajeChat ajeno"><span>messi</span></div>
-                    
+                            
+                        <?php if ($Mensajes) {  
+
+                            foreach($Mensajes as $mensaje) { 
+                                
+                                if ($_SESSION['type']=='d') {  //los mensajes propios salen a la izquierda
+                                    
+                                    if($mensaje['emisor']=='dueno'){?> 
+
+                                    <div class="mensajeChat propio" ><span><?php echo $mensaje['mensaje']; ?></span></div>
+
+                                    <?php }else { ?>
+
+                                    <div class="mensajeChat ajeno"><span><?php echo $mensaje['mensaje'];?></span></div>
+           
+                                    <?php }} else{?>
+
+
+                         <?php }}} ?>   
+                        <!--
+                        <div class="mensajeChat propio" ><span>Qué hacés capo todo bien?</span></div>
+                        <div class="mensajeChat propio"><span>te cuido el rrope?</span></div>
+                        <div class="mensajeChat propio"><span>santa fe 3000</span></div>
+                        <div class="mensajeChat ajeno"><span>messi</span></div>
+                        -->        
+                        <?php //var_dump($numeroConversacion);?>
+                        <?php //var_dump($Mensajes);?>
+                        <?php  ?>
+
                     </div>
 
 
                     <div class="cajaComentarios">
-                    <textarea name="mensaje" 
-                    placeholder="Ingrese su Mensaje." required></textarea>
-
-                    <button class="formButton" type="submit" >Enviar</button>
+                        <form action="<?php echo FRONT_ROOT."Chat/Add"?>">
+                            <input type="number" name="idReserva" style="display:none"value="<?php  echo ($idReserva == '')? $ChatList[0]['id_reserva'] : $idReserva ;?>">
+                            <textarea name="mensaje" placeholder="Ingrese su Mensaje." required></textarea>
+                            <input type="text" style="display:none" name="emisor" value="<?php echo ($_SESSION['type'] == 'd')? 'dueno'  : 'guardian' ;?>">
+                            <input type="number" style="display:none" name="numeroConversacion" value="<?php echo ($numeroConversacion)? $numeroConversacion : 0 ;?>">
+                            <button class="formButton" type="submit" >Enviar</button>
+                        <form>
                     </div>
 
                 </div>
