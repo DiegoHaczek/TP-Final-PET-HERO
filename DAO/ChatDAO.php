@@ -58,7 +58,29 @@
         }
 
 
-        public function GetChatListGuardian($idGuardian){}
+        public function GetChatListGuardian($idGuardian){
+
+            try {
+
+                $result=array();
+
+                $query = "select d.id_dueno,d.nombre,d.foto_perfil,r.id_reserva from dueno d inner join reserva r on d.id_dueno=r.id_dueno
+                where d.id_dueno in (select distinct id_dueno from reserva where (id_guardian = :id_guardian and estado='Confirmada'))
+                and r.id_reserva in(select id_reserva from reserva where(id_guardian = :id_guardian and estado='Confirmada'));";
+                
+                $parameters["id_guardian"] = $idGuardian;
+                
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                return $result;
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
+
+        }
 
 
         public function GetIdByReserva($reserva){

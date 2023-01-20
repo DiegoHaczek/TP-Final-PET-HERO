@@ -27,7 +27,7 @@
             
         }
 
-        public function Add($fechaInicio, $fechaFinal, $idGuardian, $idDueno,$mascota)
+        public function Add($fechaInicio, $fechaFinal, $idGuardian, $idDueno,$mascota = "")
         {
             try {
                 $controllerGuardian = new GuardianController();
@@ -41,7 +41,7 @@
 
 
                 if($fechaInicio and $fechaFinal != ''){
-                    if ($mascota){
+                    if (!$mascota == ""){
                         $idMascota = explode(",", $mascota[0])[2];
                     if ($inicio<=$fin) { 
                         if($this->comprobarDisponibilidad($inicio,$fin,$idGuardian)){

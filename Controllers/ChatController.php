@@ -24,6 +24,15 @@
             }
         }
 
+        public function mostrarChat ($idReserva = "",$numeroConversacion = "", $alert = ""){
+
+            $controllerChat = new ChatController ();
+
+            ($_SESSION['type'] == 'd')?  $controllerChat->mostrarChatDueno($idReserva,$numeroConversacion)
+                                      :  $controllerChat->mostrarChatGuardian($idReserva,$numeroConversacion);
+
+        }
+
         public function mostrarChatDueno ($idReserva = "",$numeroConversacion = "",$alert=""){
 
             try {
@@ -50,6 +59,31 @@
             }
         }
 
+        public function mostrarChatGuardian ($idReserva = "",$numeroConversacion = "",$alert=""){
+
+            try {
+
+                $id=$_SESSION["id"];
+                $ChatList = $this->ChatDAO->GetChatListGuardian($id);
+
+                if ($idReserva == "" && $ChatList){ //conversacion que sale por defecto si no se selecciona ninguna Y hay conversaciones
+
+                    $Mensajes = $this->ChatDAO->GetMensajes($ChatList[0]['id_reserva']);
+
+                }else if($idReserva != ""){
+                    
+                    $Mensajes = $this->ChatDAO->GetMensajes($idReserva);} // conversacion que sale si se selecciono una de la lista
+                    else{$Mensajes=null;}
+
+                    
+                require_once(VIEWS_PATH."chat.php");    
+
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+        }
 
         public function Add($idReserva,$Mensaje,$emisor,$numeroConversacion){
 
@@ -62,7 +96,7 @@
                 $this->ChatDAO->Add($Chat);
 
                 $ChatController= new ChatController();
-                $ChatController->mostrarChatDueno($idReserva,$numeroConversacion);
+                $ChatController->mostrarChat($idReserva,$numeroConversacion);
 
             } catch (Exception $e) {
                 var_dump($Chat);

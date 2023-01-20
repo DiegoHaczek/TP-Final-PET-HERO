@@ -189,7 +189,7 @@
             }
 
         }
-    
+
 
         public function getDatosReservaDueno($idDueno){
 

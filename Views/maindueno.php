@@ -81,29 +81,27 @@
                 </div>
                  </section>
 
-                 <section style="width:50em; height:16em">
-                
-                    
+                 <section style="width:50em; height:16em"> 
                     <div class="sectioncontent">
 
-                    <summary><span style=" position:relative; bottom:-1.5em;"><strong> Mis Reservas </span></strong></summary>
+                        <summary><span style=" position:relative; bottom:-1.5em;"><strong> Mis Reservas </span></strong></summary>
+                        
+                        <div style="display:flex;flex-direction:column">                    
+
+                        <a href="<?php echo FRONT_ROOT."Dueno/listReservas"?>">
+                        <button style="" class="buttonHome">Ver Reservas</button></a>
+
+                        <a href="<?php echo FRONT_ROOT."Chat/mostrarChat"?>">
+                        <button style="" class="buttonHome">Ver Chats</button></a>
+
+                        <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
+                        <button style="" class="buttonHome">Ver Guardianes</button></a>
+
                     
-                    <div style="display:flex;flex-direction:column">                    
-
-                    <a href="<?php echo FRONT_ROOT."Dueno/listReservas"?>">
-                    <button style="" class="buttonHome">Ver Reservas</button></a>
-
-                    <a href="<?php echo FRONT_ROOT."Chat/mostrarChatDueno"?>">
-                    <button style="" class="buttonHome">Ver Chats</button></a>
-
-                    <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
-                    <button style="" class="buttonHome">Ver Guardianes</button></a>
-
-                    
-                                    </div>
+                         </div>
                     
                     </div>
-                     </section>
+                </section>
 
 
     </div>

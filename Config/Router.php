@@ -11,7 +11,7 @@
     {
         public static function Route(Request $request)
         { 
-
+            
             
             $controllerName = $request->getcontroller() . 'Controller';
 
@@ -22,7 +22,7 @@
             $controllerClassName = "Controllers\\". $controllerName;            
             
             $controller = new $controllerClassName;
-
+          
             if(!isset($methodParameters))            
                 call_user_func(array($controller, $methodName));
             else
@@ -47,6 +47,7 @@
 
             call_user_func_array(array($controller, $methodName), $methodParameters);
 
+        
         }
 
     }

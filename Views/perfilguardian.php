@@ -67,15 +67,14 @@
 
                                     </div>
 
-                                            
-
                                 </div>
                                 
                                 
                             </div>
 
+                            <?php if($_SESSION['type'] == 'd' ) {?>
                             <button id="solicitar" class="formButton" style="padding:0.3em 1em; position:relative; left:16.2em; bottom:5.2em;">Solicitar Reserva</button>
-
+                                <?php } ?>
 
                         </div>
 
@@ -92,9 +91,7 @@
 
                                                 <br>
 
-
                                                 <label id="puntaje" for="puntaje" style="margin-left:-13.2em;position:relative;bottom:0.2em;"><span><strong>Puntuacion: </strong></span></label> 
-
 
                                                 <div class="inputDiv">
 
@@ -102,12 +99,10 @@
 
                                                 <input id="rangePuntaje" type="range" min="0" max="10" step="1" autocomplete="off" name="puntaje">
                                                 </div>
-
-                                                   
+      
                                                 <input type="number" name="idReserva" value="<?php echo $comprobacionComentario[0]['id_reserva'] ?>" style="display:none">
                                                 </input>
-                                                    
-                                                 
+                                                       
                                                 <button class="formButton" type="submit" style="position:relative;left:15.5em;bottom: 0.6em;">Enviar</button>
 
 
@@ -153,18 +148,12 @@
 
                             <?php } ?>
 
-
                             </div>
 
-
                             </details>
-
-
-                            
+           
 
         </section>
-
-
 
 
         <section id="reserva" class="oculta" style="width:43em;padding-bottom:4em;">
@@ -225,9 +214,6 @@
                                     <input type="text" style="display:none" value="<?php echo $_SESSION["id"]; ?>" name="idDueno">
 
 
-
-                                
-
                                     </fieldset>
                                 
                                         <div id="botoneraForm" style="margin-bottom:1em;">
@@ -238,9 +224,14 @@
         
         </section>
 
+            <?php if($_SESSION['type']=='d') { ?>
               <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
               <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver a Guardianes</span></button></a>
- 
+            <?php  }else{ ?>
+              <a href="<?php echo FRONT_ROOT."Home/Index"?>">
+              <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver al Home</span></button></a>
+
+                <?php } ?>
 </main>
 
 <style>

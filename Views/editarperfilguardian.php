@@ -1,7 +1,7 @@
 <?php require_once 'validate-session.php'?> 
 
 <?php require 'header.php' ?>
-<?php require 'visitornav.php'?>
+<?php (isset($_SESSION['fotoPerfil']))? require 'usernav.php' : require 'visitornav.php'; ?>
 
 <link rel="stylesheet" href="<?php echo CSS_PATH;?>bootstrap.css">
 <!-- incluyo bootstrap-->

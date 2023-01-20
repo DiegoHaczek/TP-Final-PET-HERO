@@ -83,10 +83,31 @@
                     </section>
 
 
+                    <section style="width:50em; height:12em"> 
+                    <div class="sectioncontent">
+
+                        <summary><span style=" position:relative; bottom:-1.5em;"><strong> Menú </span></strong></summary>
+                        
+                        <div style="display:flex;flex-direction:column">                    
+
+                        <a href="<?php echo FRONT_ROOT ?>Guardian/ShowProfile/<?php echo $_SESSION['id']?>">
+                        <button style="" class="buttonHome">Ver Perfil Público</button></a>
+
+                        <a href="<?php echo FRONT_ROOT."Chat/mostrarChat"?>">
+                        <button style="" class="buttonHome">Ver Chats</button></a>
+
+                         </div>
+                    
+                    </div>
+                </section>
+
+
                     <section style="width:80em">
+
+                    <details class="estilizado" style="margin-top:1.5em;margin-bottom:-1em;"><summary><span><strong>Reservas Confirmadas</strong></span></summary>
+
                     <div class="sectioncontent">
                             
-                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas Confirmadas</strong></span></summary>
                         <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
@@ -117,6 +138,9 @@
                         </table>
                         
                     </div>
+
+                        </details>
+
                     </section>
 
 
@@ -132,9 +156,11 @@
                         ?>
 
                     <section style="width:80em">
+
+                    <details class="estilizado" style="margin-top:1.5em;margin-bottom:-1em;"><summary><span><strong>Reservas sin Aceptar</strong></span></summary>
+
                     <div class="sectioncontent">
                             
-                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas sin Aceptar</strong></span></summary>
                         <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
@@ -184,6 +210,7 @@
                         </table>
                         
                     </div>
+                        </details>
                     </section>
 
 
@@ -200,9 +227,9 @@
                         ?>
 
                     <section style="width:80em">
+                    <details class="estilizado" style="margin-top:1.5em;margin-bottom:-1em;"><summary><span><strong>Reservas Pendientes de Pago</strong></span></summary>
                     <div class="sectioncontent">
                             
-                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas Pendientes de Pago</strong></span></summary>
                         <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
@@ -242,6 +269,7 @@
                         </table>
                         
                     </div>
+                        </details>
                     </section>
 
                     <?php } ?>
