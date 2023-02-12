@@ -99,7 +99,6 @@
                 $ChatController->mostrarChat($idReserva,$numeroConversacion);
 
             } catch (Exception $e) {
-                var_dump($Chat);
                 $alert=['tipo'=>"error",'mensaje'=>'Error al enviar el Mensaje'];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);

@@ -83,7 +83,9 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                $id=$result[0]["id_dueno"];
+                if(isset($result[0]['id_dueno'])){
+                $id=$result[0]["id_dueno"];}
+                else {return false;}
 
                 return $id;
 

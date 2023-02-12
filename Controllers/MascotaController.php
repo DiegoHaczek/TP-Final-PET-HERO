@@ -28,8 +28,7 @@
         {
             try {
                 require_once(VIEWS_PATH."validate-session.php");
-                // cambiar implementacion
-                $MascotaList = $this->MascotaDAO->getAll();
+                $MascotaList = $this->MascotaDAO->getByIdDueno($_SESSION['id']);
                 require_once(VIEWS_PATH."listamascotas.php");
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];

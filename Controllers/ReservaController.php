@@ -102,7 +102,6 @@
             try {
                 $controllerGuardian = new GuardianController();
                 $disponibilidad = $controllerGuardian->disponibilidadById($idGuardian);
-
                     if ($disponibilidad=='Plena'){return true;}else{
 
                         if ($disponibilidad=='Fines De Semana'){

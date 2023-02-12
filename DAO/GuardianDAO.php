@@ -134,7 +134,9 @@
 
                 $result=$this->connection->Execute($query,$parameters);
 
-                $id=$result[0]["id_guardian"];
+                if (isset($result[0]['id_guardian'])){
+                $id=$result[0]["id_guardian"];}
+                else{return false;}
 
                 return $id;
 
@@ -178,6 +180,7 @@
             }
         }
 
+
         public function GetById($id){
             try{
                 $query = "SELECT *, (select round(avg(c.puntaje),0) from comentarios c where id_guardian = :id_guardian) as reputacion FROM ".$this->tableName." WHERE ID_GUARDIAN = :id_guardian;";
@@ -205,6 +208,28 @@
             }catch(Exception $ex){
                 return $ex;
             }
+        }
+
+
+        public function getDisponibilidadById($id){
+
+            try {
+
+                $query = "SELECT disponibilidad from ".$this->tableName." WHERE id_guardian = :id;";
+                
+                
+                $parameters["id"] = $id;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+                return $result[0][0];
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
+
         }
     }
 ?>

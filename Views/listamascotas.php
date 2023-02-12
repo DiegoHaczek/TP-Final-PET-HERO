@@ -22,7 +22,6 @@
 
                         <?php foreach($MascotaList as $mascota) { ?>
                             
-                            <?php if($mascota->getIdDueno()==$_SESSION["id"]) { ?>
                             <tr><td>
                             <img  class ="imgperfilchica" src="<?php echo FRONT_ROOT.$mascota->getFotoPerfil();?>"></td><td><span><?php echo ucwords($mascota->getNombre()); ?> </span> </td>
                             <td> <span> <?php echo ucwords($mascota->getEspecie()); ?> </span> </td>  <td> <span> <?php echo $mascota->getEdad(); ?></span> </td> 
@@ -39,7 +38,6 @@
 
                             <tr class="espacio"><td></td></tr>
 
-                            <?php }?>
                             <?php } ?>
 
                         </table>

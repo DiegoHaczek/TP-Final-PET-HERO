@@ -190,13 +190,10 @@
                                     <fieldset style="padding-bottom:1em;">
                                     <label for="mascotas"><span><strong>Mascotas a cuidar:</strong></span></label>
                                     <br>
-
                                     
                                     <?php foreach($mascotas as $mascota) { 
-                                        
-                                        if ($mascota->getIdDueno()==$_SESSION["id"]){
-                                            
-                                            if(in_array($mascota->getTamano(), explode(",",$usuario->getTamano()))){
+                                                                              
+                                        if(in_array($mascota->getTamano(), explode(",",$usuario->getTamano()))){
                                         ?>
 
                                         <label for="idMascota"><span style="margin-left:1em;"><?php echo ucwords($mascota->getNombre()); echo " (".ucwords($mascota->getRaza()).")";?></span></label>
@@ -204,9 +201,8 @@
                                         <br>
 
                                         <!--<input type="text" style="display:none" value="<?php // echo $mascota->getId(); ?>" name="idMascota">-->
-
                                     
-                                    <?php }}} ?>
+                                    <?php }} ?>
                                     
 
                                     <input type="text" style="display:none" value="<?php echo $usuario->getId(); ?>" name="idGuardian">
