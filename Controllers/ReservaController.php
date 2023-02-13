@@ -242,5 +242,20 @@
             }
            
         }
+
+        
+        public function TieneChats($idUsuario){
+
+            try {
+
+                $ChatDisponibles = $this->ReservaDAO->TieneChats($idUsuario);
+                return $ChatDisponibles;
+
+            } catch (Exception $e) {
+                $alert=['tipo'=>"error",'mensaje'=>'Error 123'];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
+            }
     }
 ?>

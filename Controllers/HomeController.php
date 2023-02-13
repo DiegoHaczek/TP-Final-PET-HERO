@@ -45,15 +45,17 @@
                         $cantidadMascotas = $controllerMascota->countMascotas($_SESSION["id"])[0];
                         $controllerReserva = new ReservaController();
                         $cantidadReservasFin = $controllerReserva->CountReservas($_SESSION["id"])[0];
+                        $chatDisponibles = $controllerReserva->TieneChats($_SESSION["id"]);
                         require_once(VIEWS_PATH."maindueno.php");
 
                     } else if ($_SESSION["type"] == "g"){
                         $usuario = New Guardian();
                         $usuario = $this->guardianDAO->GetById($_SESSION["id"]);
-                        
                         $reservaDao = new ReservaDAO();
                         $reservas = $reservaDao->getDatosReservaGuardian($_SESSION["id"]);
-                        
+                        $controllerReserva = new ReservaController();
+                        $chatDisponibles = $controllerReserva->TieneChats($_SESSION["id"]);
+
                         require_once(VIEWS_PATH."mainguardian.php");
                     }
                 } else {

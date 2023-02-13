@@ -39,7 +39,7 @@
                                     <span><?php echo ucwords($usuario->getNombre());?></span>
                                     <span><?php echo ucwords($usuario->getApellido());?></span>
                                     <span>Reputacion</span>
-                                    <span><strong><?php echo $usuario->getPuntaje()."/10";?></strong></span>
+                                    <span><?php if($usuario->getPuntaje()){ echo $usuario->getPuntaje();}else{echo'?';}echo '/10';?> </span>
                                 </div>
 
                                 <div class="secondaryprofileinfo">
@@ -94,7 +94,7 @@
                         <button style="" class="buttonHome">Ver Perfil Público</button></a>
 
                         <a href="<?php echo FRONT_ROOT."Chat/mostrarChat"?>">
-                        <button style="" class="buttonHome">Ver Chats</button></a>
+                        <button style="" class="buttonHome" <?php if (!$chatDisponibles){echo 'Disabled';}?>>Ver Chats</button></a>
 
                          </div>
                     

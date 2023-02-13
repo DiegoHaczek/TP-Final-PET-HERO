@@ -35,12 +35,6 @@
                             </a></div>
 
                             <?php $i++; } ?>
-
-
-                        <!--<div class="infoConversacion"> <a href="">
-                        <img class="imgperfilchica" src="<?php// echo FRONT_ROOT;?>Upload/imgfotoperfilmujer.jpg">
-                            <div class="contenedorNombre"><span class="nombreUsuarioChat">Sandra</span></div>
-                        </a></div> -->
                        
 
                 </div>
@@ -101,26 +95,16 @@
 
 
                          <?php }}} ?>   
-                        <!--
-                        <div class="mensajeChat propio" ><span>Qué hacés capo todo bien?</span></div>
-                        <div class="mensajeChat propio"><span>te cuido el rrope?</span></div>
-                        <div class="mensajeChat propio"><span>santa fe 3000</span></div>
-                        <div class="mensajeChat ajeno"><span>messi</span></div>
-                        -->        
-                        <?php //var_dump($numeroConversacion);?>
-                        <?php //var_dump($Mensajes);?>
-                        <?php  ?>
 
                     </div>
 
                     <div class="cajaComentarios">
-
                         <form action="<?php echo FRONT_ROOT."Chat/Add"?>">
                             <input type="number" name="idReserva" style="display:none" value="<?php  echo ($idReserva == '')? $ChatList[0]['id_reserva'] : $idReserva ;?>">
                             <textarea name="mensaje" id="inputMensaje" placeholder="Ingrese su Mensaje." autofocus required></textarea>
                             <input type="text" style="display:none" name="emisor" value="<?php echo ($_SESSION['type'] == 'd')? 'dueno'  : 'guardian' ;?>">
                             <input type="number" style="display:none" name="numeroConversacion" value="<?php echo ($numeroConversacion)? $numeroConversacion : 0 ;?>">
-                            <button class="formButton" id='botonEnviar' type="submit" >Enviar</button>
+                            <button class="formButton" id='botonEnviar' type="submit"> Enviar </button>
                         <form>
                     </div>
 

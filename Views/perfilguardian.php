@@ -117,7 +117,7 @@
 
                             <div class="seccionComentarios" style="">
 
-                            <?php foreach($comentarios as $comentario) { ?>
+                            <?php if($comentarios){foreach($comentarios as $comentario) { ?>
 
 
                             <div class="comentario">
@@ -146,7 +146,8 @@
 
                             </div>
 
-                            <?php } ?>
+                            <?php }}else echo '<span style="position:relative; top:3em;">El Guardian aun no tiene Comentarios Disponibles</span>' ?>
+
 
                             </div>
 
@@ -170,7 +171,7 @@
 
                                 <fieldset style="height:9.7em;">
                                 <label for="fechaInicio" style="margin-top:2em; margin-bottom:0em;"><span><strong>Fecha de Inicio:</strong></span></label>
-                                <div class="container" style="width:28%;">
+                                <div class="container" style="width:32%;">
                                                 <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:2.6em; right:2.5em; !important; border-radius: 3%; background-color:
                                                 rgba(235, 241, 146, 0.733);"
                                             type="text" class="form-control date" placeholder="Ver fechas" name="fechaInicio" id="calendario" autocomplete="off"
@@ -178,7 +179,7 @@
                                             </div>
 
                                             <label for="fechaFinal" style="margin-top:-1em;position:relative;bottom:1.7em;left:0.4em;"><span><strong>Fecha Final:</strong></span></label>
-                                <div class="container" style="width:28%;">
+                                <div class="container" style="width:32%;">
                                                 <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:5em; right:2.4em; !important; border-radius: 3%; background-color:
                                                 rgba(235, 241, 146, 0.733);"
                                             type="text" class="form-control date" placeholder="Ver fechas" name="fechaFinal" id="calendario" autocomplete="off"

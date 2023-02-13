@@ -183,7 +183,8 @@
 
         public function GetById($id){
             try{
-                $query = "SELECT *, (select round(avg(c.puntaje),0) from comentarios c where id_guardian = :id_guardian) as reputacion FROM ".$this->tableName." WHERE ID_GUARDIAN = :id_guardian;";
+                $query = "SELECT *, (select round(avg(c.puntaje),0) from comentarios c where :id_guardian = (select id_guardian from reserva r where r.id_reserva=c.id_reserva)) 
+                as reputacion FROM ".$this->tableName." WHERE ID_GUARDIAN = :id_guardian;";
 
                 $parameters["id_guardian"] = $id;
 

@@ -274,6 +274,26 @@
             }
         }
 
+        public function TieneChats($idUsuario)
+        {
+
+            try {
+                $query = "select * from ".$this->tableName." where (id_dueno=:id_usuario or id_guardian=:id_usuario) and (estado='Confirmada');";
+                
+                $parameters["id_usuario"] = $idUsuario;
+               
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query, $parameters);
+                
+                if($result){return true;}else{return false;}
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
+            
+        }
 
    }
 ?>

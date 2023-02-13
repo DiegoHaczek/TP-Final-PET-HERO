@@ -91,11 +91,11 @@
                         <a href="<?php echo FRONT_ROOT."Dueno/listReservas"?>">
                         <button style="" class="buttonHome">Ver Reservas</button></a>
 
-                        <a href="<?php echo FRONT_ROOT."Chat/mostrarChat"?>">
-                        <button style="" class="buttonHome">Ver Chats</button></a>
-
                         <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
                         <button style="" class="buttonHome">Ver Guardianes</button></a>
+
+                        <a href="<?php echo FRONT_ROOT."Chat/mostrarChat"?>">
+                        <button style="" class="buttonHome" <?php if (!$chatDisponibles){echo 'Disabled';}?>>Ver Chats</button></a>
 
                     
                          </div>

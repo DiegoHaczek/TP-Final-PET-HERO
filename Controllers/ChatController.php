@@ -27,9 +27,16 @@
         public function mostrarChat ($idReserva = "",$numeroConversacion = "", $alert = ""){
 
             $controllerChat = new ChatController ();
-
-            ($_SESSION['type'] == 'd')?  $controllerChat->mostrarChatDueno($idReserva,$numeroConversacion)
-                                      :  $controllerChat->mostrarChatGuardian($idReserva,$numeroConversacion);
+            $controllerReserva = new ReservaController ();
+            $chatDisponibles= $controllerReserva->TieneChats($_SESSION["id"]);
+            if ($chatDisponibles){
+                         ($_SESSION['type'] == 'd')?  $controllerChat->mostrarChatDueno($idReserva,$numeroConversacion)
+                                                   :  $controllerChat->mostrarChatGuardian($idReserva,$numeroConversacion);
+            }else{
+                $alert=['tipo'=>"error",'mensaje'=>"Acceso Invalido"];
+                $controllerHome = new HomeController();
+                $controllerHome->index($alert);
+            }
 
         }
 
@@ -105,8 +112,8 @@
             }
 
         }
-    }
 
+        }
 
     
 ?>

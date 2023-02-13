@@ -83,16 +83,6 @@
         }
 
 
-        public function GetIdByReserva($reserva){
-
-            try {
-
-            } catch (Excepcion $ex){
-                throw $ex;
-            }
-
-        }
-
         public function GetMensajes($idReserva){
 
             try {
