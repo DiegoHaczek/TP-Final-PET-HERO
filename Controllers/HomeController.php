@@ -108,12 +108,12 @@
                     $this->Index($alert);
                     //$this->ShowAddView();
                     
-                }
-                else
-
+                } else {
                     $alert=['tipo'=>"error",'mensaje'=>"Datos Incorrectos"];
-                    //agregar mensaje de error 
-                    $this->Index($alert);
+                }
+                //agregar mensaje de error 
+                
+                $this->Index($alert);
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
                 $controllerHome = new HomeController();
