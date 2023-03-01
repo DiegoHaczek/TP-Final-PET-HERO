@@ -1,4 +1,4 @@
-<header><h1><p><br>Pet Hero</p></h1>
+<header><h1><p><br><a href="<?php echo FRONT_ROOT."Home/Index"?>">Pet Hero</a></p></h1>
        
        <nav id="navBar">
          
@@ -46,14 +46,14 @@
                        <li><a href="<?php echo FRONT_ROOT."Home/Index"?>"><span class="textmenu">Home</span></a></li>
                        
                        <?php if($_SESSION['type']=='g'){?>
-                       <li><a href="#"?><span class="textmenu">Mi Perfil</span></a></li> 
+                       <li><a href="<?php echo FRONT_ROOT ?>Guardian/ShowProfile/<?php echo $_SESSION['id']?>"?><span class="textmenu">Mi Perfil</span></a></li> 
                        <?php } ?>
 
                        <?php if($_SESSION['type']=='d'){?>
                        <li><a href="<?php echo FRONT_ROOT."Mascota/ShowListView"?>"><span class="textmenu">Mis Mascotas</span></a></li> 
                        <?php } ?>
                        
-                       <li><a href="#"><span class="textmenu">Mis Reservas</span></a></li>
+                       <li><a href="<?php echo FRONT_ROOT."Dueno/ListReservas"?>"><span class="textmenu">Mis Reservas</span></a></li>
 
                        <?php if($_SESSION['type']=='d'){?>
                        <li><a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>"><span class="textmenu">Guardianes</span></a></li>

@@ -39,7 +39,7 @@
                                     <span><?php echo ucwords($usuario->getNombre());?></span>
                                     <span><?php echo ucwords($usuario->getApellido());?></span>
                                     <span>Reputacion</span>
-                                    <span><strong><?php echo $usuario->getPuntaje()."/10";?></strong></span>
+                                    <span><?php if($usuario->getPuntaje()){ echo $usuario->getPuntaje();}else{echo'?';}echo '/10';?> </span>
                                 </div>
 
                                 <div class="secondaryprofileinfo">
@@ -83,10 +83,31 @@
                     </section>
 
 
+                    <section style="width:50em; height:12em"> 
+                    <div class="sectioncontent">
+
+                        <summary><span style=" position:relative; bottom:-1.5em;"><strong> Menú </span></strong></summary>
+                        
+                        <div style="display:flex;flex-direction:column">                    
+
+                        <a href="<?php echo FRONT_ROOT ?>Guardian/ShowProfile/<?php echo $_SESSION['id']?>">
+                        <button style="" class="buttonHome">Ver Perfil Público</button></a>
+
+                        <a href="<?php echo FRONT_ROOT."Chat/mostrarChat"?>">
+                        <button style="" class="buttonHome" <?php if (!$chatDisponibles){echo 'Disabled';}?>>Ver Chats</button></a>
+
+                         </div>
+                    
+                    </div>
+                </section>
+
+
                     <section style="width:80em">
+
+                    <details class="estilizado" style="margin-top:1.5em;margin-bottom:-1em;"><summary><span><strong>Reservas Confirmadas</strong></span></summary>
+
                     <div class="sectioncontent">
                             
-                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas Confirmadas</strong></span></summary>
                         <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
@@ -104,16 +125,8 @@
                         <td><span><?php echo $reserva["d.nombre"]; ?></span></td><td><span><?php echo ucwords($reserva["m.raza"]); ?></span></td><td><span><?php echo $diasReserva; ?></span></td>
                         <td><span><?php echo $reserva["r.fecha_inicio"]; ?></span></td><td><span><?php echo $reserva["r.fecha_final"]; ?></span></td>
 
-                        <form action="<?php echo FRONT_ROOT."Reserva/updateEstado"?>">
-
-                        <input type="number" name="idReserva" value="<?php echo $reserva["r.id_reserva"];?>" style="display:none"></input>
-                        <input type="text" name="estado" value="Cancelada" style="display:none"></input>
-
-                        <td><button class="formButton" type="submit">Cancelar</button>
+                        <td>
                         
-                        </form>
-                        
-
                         <form action="<?php echo FRONT_ROOT."Mascota/ShowProfile"?>" style="display:inline;">
                         <input type="number" value="<?php echo $reserva['m.id_mascota'];?>" name="id_mascota" style="display:none">    
                         <button class="formButton" type="submit" style="">Ver Info</button></form></td></tr>
@@ -125,6 +138,9 @@
                         </table>
                         
                     </div>
+
+                        </details>
+
                     </section>
 
 
@@ -140,9 +156,11 @@
                         ?>
 
                     <section style="width:80em">
+
+                    <details class="estilizado" style="margin-top:1.5em;margin-bottom:-1em;"><summary><span><strong>Reservas sin Aceptar</strong></span></summary>
+
                     <div class="sectioncontent">
                             
-                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas sin Aceptar</strong></span></summary>
                         <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
@@ -192,6 +210,7 @@
                         </table>
                         
                     </div>
+                        </details>
                     </section>
 
 
@@ -208,9 +227,9 @@
                         ?>
 
                     <section style="width:80em">
+                    <details class="estilizado" style="margin-top:1.5em;margin-bottom:-1em;"><summary><span><strong>Reservas Pendientes de Pago</strong></span></summary>
                     <div class="sectioncontent">
                             
-                        <summary><span style="position:relative; bottom:-1em;"><strong>Reservas Pendientes de Pago</strong></span></summary>
                         <table>
                         
                         <tr> <th><span>Foto</span></th> <th><span>Nombre</span></th><th><span>Nombre Dueño</span></th><th><span>Raza</span></th> 
@@ -250,6 +269,7 @@
                         </table>
                         
                     </div>
+                        </details>
                     </section>
 
                     <?php } ?>

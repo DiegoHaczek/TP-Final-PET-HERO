@@ -13,7 +13,6 @@
 
     <div id="mainContainer" class="" style="min-height:20em;min-width:75em;">
 
-                
         <section style="min-height:35em;min-width:30em;padding:3em 0 4em 0;position:relative;z-index: 1 !important">
                         
                         <summary><span style=" position:relative; bottom:2em;"><strong> Cupón de Pago </span></strong></summary>
@@ -46,12 +45,19 @@
 
                             
                             </div>
-                            <form action="<?php echo FRONT_ROOT."Cupon/updateEstado"?>">
-                            <input type="number" name="idCupon" value="<?php echo $datosCupon["c.id_cupon"];?>" style="display:none"></input>
-                            <input type="number" name="idReserva" value="<?php echo $datosCupon["r.id_reserva"];?>" style="display:none"></input>
+                            <!--<form action="<?php //echo FRONT_ROOT."Cupon/updateEstado"?>">
+                            <input type="number" name="idCupon" value="<?php // echo $datosCupon["c.id_cupon"];?>" style="display:none"></input>
+                            <input type="number" name="idReserva" value="<?php // echo $datosCupon["r.id_reserva"];?>" style="display:none"></input>
                          <input type="text" name="estado" value="Aceptada" style="display:none"></input>
                          <button id="submit" class="formButton" style="padding:0.3em 1em; position:relative; left:22em; top:4.75em;">Pagar</button>
-                        </form>
+                        </form>  -->
+
+                       <form action="<?php echo FRONT_ROOT."Cupon/verFormularioPago"?>">
+                            <input type="number" name="idCupon" value="<?php  echo $datosCupon["c.id_cupon"];?>" style="display:none"></input>
+                            <input type="number" name="idReserva" value="<?php  echo $datosCupon["r.id_reserva"];?>" style="display:none"></input>
+                            <!--<input type="text" name="estado" value="Aceptada" style="display:none"></input>-->
+                         <button id="submit" class="formButton" style="padding:0.3em 1em; position:relative; left:22em; top:4.75em;">Continuar</button>
+                        </form>  
                             
                             
 
@@ -59,7 +65,7 @@
                             
                             <span id="textologo"><p>Pet Hero</p></span>
 
-                            <img src="<?php echo IMG_PATH;?>huella.png" style="width:6em;height:6em;    ">
+                            <img src="<?php echo IMG_PATH;?>huella.png" style="width:6em;height:6em;">
 
 
                             <a href="<?php echo FRONT_ROOT."Home/Index"?>" style="position:relative;right:37.5em;top:27em">

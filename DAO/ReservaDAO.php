@@ -189,7 +189,7 @@
             }
 
         }
-    
+
 
         public function getDatosReservaDueno($idDueno){
 
@@ -254,6 +254,45 @@
             } catch (Exception $ex) {
                 return $ex;
             }
+        }
+
+        public function ContarReservasFinalizadas($idDueno){
+            try{
+
+                $query = "select count(*) from ".$this->tableName." Where (id_dueno = :id_dueno) and (estado = 'Finalizada');";
+
+                $parameters["id_dueno"] = $idDueno;
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query,$parameters);
+
+
+                return $result[0];
+            }catch(Exception $ex){
+                return $ex;
+            }
+        }
+
+        public function TieneChats($idUsuario)
+        {
+
+            try {
+                $query = "select * from ".$this->tableName." where (id_dueno=:id_usuario or id_guardian=:id_usuario) and (estado='Confirmada');";
+                
+                $parameters["id_usuario"] = $idUsuario;
+               
+
+                $this->connection = Connection::GetInstance();
+
+                $result=$this->connection->Execute($query, $parameters);
+                
+                if($result){return true;}else{return false;}
+
+            } catch (Excepcion $ex){
+                throw $ex;
+            }
+            
         }
 
    }

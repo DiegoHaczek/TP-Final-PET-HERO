@@ -11,6 +11,8 @@
     use DAO\MascotaDAO as MascotaDAO;
     use DAO\ComentarioDAO as ComentarioDAO;
     use Controllers\HomeController as HomeController;
+    use Exception;
+    use Throwable;
 
     class GuardianController
     {
@@ -54,8 +56,7 @@
                     $comentarioController = new ComentarioController();
                     $comprobacionComentario = $comentarioController->ComprobacionComentario($id,$_SESSION['id']);
                     $comentarios = $comentarioDao->GetByIdGuardian($id);
-                    $mascotas = $mascotaDao->GetAll();
-        
+                    $mascotas=$mascotaDao->getByIdDueno($_SESSION['id']);
                     require_once(VIEWS_PATH."perfilguardian.php");
  
                 }
@@ -106,14 +107,9 @@
 
         public function disponibilidadById ($id){
             try {
-                $GuardianList=$this->GuardianDAO->getAll();
-                foreach($GuardianList as $Guardian){
-
-                    if($Guardian->getId() == $id){
-                        return $Guardian->getDisponibilidad();
-                    }
-                }
-                return null; 
+            
+                $Disponibilidad=$this->GuardianDAO->getDisponibilidadById($id);
+                return $Disponibilidad;
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
                 $controllerHome = new HomeController();
@@ -127,17 +123,13 @@
                 $controller = new DuenoController();
             
                 if(!$controller->mailDuenoExiste($mail)){ ///verifico que mail no eixste en el otro DAO tampoco
-                
-                    $GuardianList= $this->GuardianDAO->getAll();
-                    foreach ($GuardianList as $Guardian) {
-                        if ($mail == $Guardian->getMail()) {
-                            return true;
-                        }
-                    }
-                    return false;
-                } else {
-                    return true;
-                }
+
+                    $MailExiste=$this->GuardianDAO->getidByMail($mail);
+                    if ($MailExiste)
+                    {return true;}else{return false;}
+
+            }else{return true;}
+
             }catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
                 $controllerHome = new HomeController();
@@ -149,13 +141,11 @@
         public function mailGuardianExiste($mail){//funcion llamada por el controller de dueno
 
             try {
-                $GuardianList= $this->GuardianDAO->getAll();
-                foreach ($GuardianList as $Guardian) {
-                    if ($mail == $Guardian->getMail()) {
-                        return true;
-                    }
-                }
-                return false;
+                 $MailExiste=$this->GuardianDAO->GetIdByMail($mail);
+                 if($MailExiste)
+                 {return true;}else{return false;}
+
+        
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
                 $controllerHome = new HomeController();
@@ -178,7 +168,7 @@
             }
         }
 
-        public function SetProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name,$remuneracion,$tamano,$disponibilidad)
+        public function SetProfile($nombre,$apellido,$edad,$fotoperfil,$tmp_name,$remuneracion,$disponibilidad,$tamano=['Grande','Mediano','Chico'])
         {
             try {
                 $PerfilGuardian = new Guardian();
@@ -214,6 +204,7 @@
                 $controllerHome->index($alert);
             }
         }
+
         
     }
 ?>

@@ -3,6 +3,8 @@
 
     use Models\Comentario as Comentario;
     use DAO\ComentarioDAO as ComentarioDAO;
+    use Exception;
+    use Throwable;
     use Controllers\HomeController as HomeController;
 
 
@@ -38,14 +40,13 @@
                 $homeController = new HomeController;
                 $homeController->Index($alert);
             } catch (Exception $e) {
-                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $alert=['tipo'=>"error",'mensaje'=>"Error al publicar el comentario"];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }
             
         }
     
-
         public function verComentario($idComentario,$alert=""){
 
             try {

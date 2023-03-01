@@ -2,8 +2,11 @@
     namespace Controllers;
 
     use DAO\MascotaDAO as MascotaDAO;
+    use Exception;
+    use Throwable;
     use Models\Mascota as Mascota;
     use Controllers\HomeController as HomeController;
+   
 
     class MascotaController
     {
@@ -25,7 +28,7 @@
         {
             try {
                 require_once(VIEWS_PATH."validate-session.php");
-                $MascotaList = $this->MascotaDAO->getAll();
+                $MascotaList = $this->MascotaDAO->getByIdDueno($_SESSION['id']);
                 require_once(VIEWS_PATH."listamascotas.php");
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
@@ -35,8 +38,8 @@
             
         }
 
-        public function Add($nombre, $edad, $tamano, $especie, $razaPerroChico ,
-         $razaPerroMediano, $razaPerroGrande , $razaGato , $indicaciones, $fotoperfil,$tmp_name,$fichamedica,$tmp_nameFichamedica)
+        public function Add($nombre, $edad, $tamano, $especie ,$razaGato , $indicaciones, $fotoperfil,$tmp_name,$fichamedica,$tmp_nameFichamedica, 
+                            $razaPerroChico, $razaPerroMediano , $razaPerroGrande)
         {
             try {
                 $Mascota = new Mascota();
@@ -50,7 +53,9 @@
                 $Mascota->setIdDueno($_SESSION["id"]);
                 $Mascota->setEspecie($especie);
                 
+
                 if ($especie=="perro"){
+                    
                 if ($razaPerroChico){
                     $Mascota->setRaza($razaPerroChico);}else
                     if($razaPerroMediano){
@@ -73,9 +78,8 @@
                 $controllerHome->index($alert);
                 //header('location:../index.php');
 
-                //$this->ShowAddView();
             } catch (Exception $e) {
-                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $alert=['tipo'=>"error",'mensaje'=>"Error al agregar mascota"];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }
@@ -97,7 +101,7 @@
 
                 require_once(VIEWS_PATH."listamascotas.php");
             } catch (Exception $e) {
-                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $alert=['tipo'=>"error",'mensaje'=>"Error al editar el perfil"];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }
@@ -111,24 +115,20 @@
                     require_once(VIEWS_PATH."perfilmascota.php");
                 }
             } catch (Exception $e) {
-                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $alert=['tipo'=>"error",'mensaje'=>"Error al mostrar el perfil"];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }
             
          }
 
-        public function countMascotas ($idDueno){
+         public function countMascotas ($idDueno){
 
             try {
-                $MascotaList = $this->MascotaDAO->getAll();
-                $cantidad=0;
-                foreach($MascotaList as $mascota){
-                    if($mascota->getIdDueno()==$idDueno){
-                        $cantidad++;
-                    }
-                }
-                return $cantidad;
+                
+                $cantidadMascotas = $this->MascotaDAO->contarMascotas($idDueno);
+                
+                return $cantidadMascotas;
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
                 $controllerHome = new HomeController();
@@ -145,7 +145,7 @@
 
                 $this->ShowListView();
             } catch (Exception $e) {
-                $alert=['tipo'=>"error",'mensaje'=>"Error"];
+                $alert=['tipo'=>"error",'mensaje'=>"La Mascota tiene reservas asociadas"];
                 $controllerHome = new HomeController();
                 $controllerHome->index($alert);
             }

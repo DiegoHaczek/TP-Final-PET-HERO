@@ -2,13 +2,17 @@
     namespace Config;
 
     use Config\Request as Request;
+    use Exception;
+    use Throwable;
+
+
 
     class Router
     {
         public static function Route(Request $request)
-        {
-            try{
-
+        { 
+            
+            
             $controllerName = $request->getcontroller() . 'Controller';
 
             $methodName = $request->getmethod();
@@ -16,9 +20,9 @@
             $methodParameters = $request->getparameters();          
 
             $controllerClassName = "Controllers\\". $controllerName;            
-
-            $controller = new $controllerClassName;
             
+            $controller = new $controllerClassName;
+          
             if(!isset($methodParameters))            
                 call_user_func(array($controller, $methodName));
             else
@@ -43,13 +47,8 @@
 
             call_user_func_array(array($controller, $methodName), $methodParameters);
 
-            
-            }catch(Exception $e){
-                
-            }finally{
-                header('location:index.php');
-            }
-
+        
         }
+
     }
 ?>

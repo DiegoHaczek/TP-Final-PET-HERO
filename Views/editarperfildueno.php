@@ -1,7 +1,7 @@
 <?php require_once 'validate-session.php'?> 
 
 <?php require 'header.php' ?>
-<?php require 'visitornav.php'?>
+<?php (isset($_SESSION['fotoPerfil']))? require 'usernav.php' : require 'visitornav.php'; ?>
 
 <main class="content">
 
@@ -16,13 +16,13 @@
                     <label for="informacionpersonal" ><strong><span>Información Personal</span></strong></label><br>
                    
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" 
-                    value="<?php if(isset($editar)){echo $usuario->getNombre();}?>">
+                    value="<?php if(isset($editar)){echo $usuario->getNombre();}?>" required>
 
                     <input type="text" id="apellido" name="apellido" placeholder="Apellido" 
-                    value="<?php if(isset($editar)){echo $usuario->getApellido();}?>">
+                    value="<?php if(isset($editar)){echo $usuario->getApellido();}?>" required>
 
                     <input type="number" class="number" id="edad" name="edad" placeholder="Edad" min="18" max="90" 
-                    value="<?php if(isset($editar)){echo $usuario->getEdad();}?>">
+                    value="<?php if(isset($editar)){echo $usuario->getEdad();}?>" required>
 
                 </fieldset>
 

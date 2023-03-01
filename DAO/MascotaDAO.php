@@ -88,8 +88,8 @@
 
                 $result=$this->connection->ExecuteNonQuery($query,$parameters);
 
-            } catch (Excepcion $ex){
-                throw $ex;
+            } catch (PDOException $ex){
+                return $ex;
             }
         }
 
@@ -160,21 +160,44 @@
 
                 $this->connection = Connection::GetInstance();
 
+                $resultSet=$this->connection->Execute($query,$parameters);
+
+                foreach ($resultSet as $row){
+                    $Mascota = new Mascota();
+                    $Mascota->setId($row["id_mascota"]);
+                    $Mascota->setNombre($row["nombre"]);
+                    $Mascota->setEdad($row["edad"]);
+                    $Mascota->setFotoPerfil($row["foto_perfil"]);
+                    $Mascota->setFichaMedica($row["ficha_medica"]);
+                    $Mascota->setTamano($row["tamano"]);
+                    $Mascota->setRaza($row["raza"]);
+                    $Mascota->setEspecie($row["especie"]);
+                    $Mascota->setIndicaciones($row["indicaciones"]);
+                    $Mascota->setIdDueno($row["id_dueno"]);
+
+
+                    array_push($this->MascotaList, $Mascota);
+                }
+
+                return $this->MascotaList;
+            }catch(Exception $ex){
+                return $ex;
+            }
+        }
+
+        public function ContarMascotas($idDueno){
+            try{
+
+                $query = "select count(*) from ".$this->tableName." Where id_dueno = :id_dueno;";
+
+                $parameters["id_dueno"] = $idDueno;
+
+                $this->connection = Connection::GetInstance();
+
                 $result=$this->connection->Execute($query,$parameters);
 
-                $Mascota = new Mascota();
-                $Mascota->setId($row[0]["id_mascota"]);
-                $Mascota->setNombre($row[0]["nombre"]);
-                $Mascota->setEdad($row[0]["edad"]);
-                $Mascota->setFotoPerfil($row[0]["foto_perfil"]);
-                $Mascota->setFichaMedica($row[0]["ficha_medica"]);
-                $Mascota->setTamano($row[0]["tamano"]);
-                $Mascota->setRaza($row[0]["raza"]);
-                $Mascota->setEspecie($row[0]["especie"]);
-                $Mascota->setIndicaciones($row[0]["indicaciones"]);
-                $Mascota->setIdDueno($row[0]["id_dueno"]);
 
-                return $Mascota;
+                return $result[0];
             }catch(Exception $ex){
                 return $ex;
             }

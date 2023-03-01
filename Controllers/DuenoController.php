@@ -3,6 +3,8 @@
 
     use DAO\DuenoDAO as DuenoDAO;
     use DAO\ReservaDAO as ReservaDAO;
+    use Exception;
+    use Throwable;
     use Models\Dueno as Dueno;
     use Models\Guardian as Guardian;
     use Models\Reserva as Reserva;
@@ -73,15 +75,10 @@
             
                 if(!$controller->mailGuardianExiste($mail)){ ///verifico que mail no eixste en el otro DAO tampoco
 
-                $DuenoList= $this->DuenoDAO->getAll();
-                foreach ($DuenoList as $Dueno) {
-                    if ($mail == $Dueno->getMail()) {
-                        return true;
-                    }
-                    }
-                    return false;
+                    $MailExiste=$this->DuenoDAO->getidBymail($mail);
+                    if($MailExiste){return true;}else{return false;}
+                
                 }else{
-
                     return true;
                 }
             } catch (Exception $e) {
@@ -96,14 +93,9 @@
         public function mailDuenoExiste($mail){//funcion llamada por el controller de guardian
 
             try {
-                $DuenoList= $this->DuenoDAO->getAll();
+                $MailExiste=$this->DuenoDAO->GetIdByMail($mail);
+                 if($MailExiste){return true;}else{return false;}
 
-                foreach ($DuenoList as $Dueno) {
-                    if ($mail == $Dueno->getMail()) {
-                        return true;
-                    }
-                }
-                return false;
             } catch (Exception $e) {
                 $alert=['tipo'=>"error",'mensaje'=>"Error"];
                 $controllerHome = new HomeController();

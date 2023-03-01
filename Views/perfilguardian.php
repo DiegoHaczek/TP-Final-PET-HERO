@@ -67,15 +67,14 @@
 
                                     </div>
 
-                                            
-
                                 </div>
                                 
                                 
                             </div>
 
+                            <?php if($_SESSION['type'] == 'd' ) {?>
                             <button id="solicitar" class="formButton" style="padding:0.3em 1em; position:relative; left:16.2em; bottom:5.2em;">Solicitar Reserva</button>
-
+                                <?php } ?>
 
                         </div>
 
@@ -92,9 +91,7 @@
 
                                                 <br>
 
-
                                                 <label id="puntaje" for="puntaje" style="margin-left:-13.2em;position:relative;bottom:0.2em;"><span><strong>Puntuacion: </strong></span></label> 
-
 
                                                 <div class="inputDiv">
 
@@ -102,12 +99,10 @@
 
                                                 <input id="rangePuntaje" type="range" min="0" max="10" step="1" autocomplete="off" name="puntaje">
                                                 </div>
-
-                                                   
+      
                                                 <input type="number" name="idReserva" value="<?php echo $comprobacionComentario[0]['id_reserva'] ?>" style="display:none">
                                                 </input>
-                                                    
-                                                 
+                                                       
                                                 <button class="formButton" type="submit" style="position:relative;left:15.5em;bottom: 0.6em;">Enviar</button>
 
 
@@ -122,7 +117,7 @@
 
                             <div class="seccionComentarios" style="">
 
-                            <?php foreach($comentarios as $comentario) { ?>
+                            <?php if($comentarios){foreach($comentarios as $comentario) { ?>
 
 
                             <div class="comentario">
@@ -151,20 +146,15 @@
 
                             </div>
 
-                            <?php } ?>
+                            <?php }}else echo '<span style="position:relative; top:3em;">El Guardian aun no tiene Comentarios Disponibles</span>' ?>
 
 
                             </div>
 
-
                             </details>
-
-
-                            
+           
 
         </section>
-
-
 
 
         <section id="reserva" class="oculta" style="width:43em;padding-bottom:4em;">
@@ -181,7 +171,7 @@
 
                                 <fieldset style="height:9.7em;">
                                 <label for="fechaInicio" style="margin-top:2em; margin-bottom:0em;"><span><strong>Fecha de Inicio:</strong></span></label>
-                                <div class="container" style="width:28%;">
+                                <div class="container" style="width:32%;">
                                                 <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:2.6em; right:2.5em; !important; border-radius: 3%; background-color:
                                                 rgba(235, 241, 146, 0.733);"
                                             type="text" class="form-control date" placeholder="Ver fechas" name="fechaInicio" id="calendario" autocomplete="off"
@@ -189,7 +179,7 @@
                                             </div>
 
                                             <label for="fechaFinal" style="margin-top:-1em;position:relative;bottom:1.7em;left:0.4em;"><span><strong>Fecha Final:</strong></span></label>
-                                <div class="container" style="width:28%;">
+                                <div class="container" style="width:32%;">
                                                 <input style="cursor: pointer; border: 1px solid rgba(64, 114, 8, 0.1); position:relative; bottom:5em; right:2.4em; !important; border-radius: 3%; background-color:
                                                 rgba(235, 241, 146, 0.733);"
                                             type="text" class="form-control date" placeholder="Ver fechas" name="fechaFinal" id="calendario" autocomplete="off"
@@ -201,13 +191,10 @@
                                     <fieldset style="padding-bottom:1em;">
                                     <label for="mascotas"><span><strong>Mascotas a cuidar:</strong></span></label>
                                     <br>
-
                                     
                                     <?php foreach($mascotas as $mascota) { 
-                                        
-                                        if ($mascota->getIdDueno()==$_SESSION["id"]){
-                                            
-                                            if(in_array($mascota->getTamano(), explode(",",$usuario->getTamano()))){
+                                                                              
+                                        if(in_array($mascota->getTamano(), explode(",",$usuario->getTamano()))){
                                         ?>
 
                                         <label for="idMascota"><span style="margin-left:1em;"><?php echo ucwords($mascota->getNombre()); echo " (".ucwords($mascota->getRaza()).")";?></span></label>
@@ -215,18 +202,14 @@
                                         <br>
 
                                         <!--<input type="text" style="display:none" value="<?php // echo $mascota->getId(); ?>" name="idMascota">-->
-
                                     
-                                    <?php }}} ?>
+                                    <?php }} ?>
                                     
 
                                     <input type="text" style="display:none" value="<?php echo $usuario->getId(); ?>" name="idGuardian">
 
                                     <input type="text" style="display:none" value="<?php echo $_SESSION["id"]; ?>" name="idDueno">
 
-
-
-                                
 
                                     </fieldset>
                                 
@@ -238,9 +221,14 @@
         
         </section>
 
+            <?php if($_SESSION['type']=='d') { ?>
               <a href="<?php echo FRONT_ROOT."Guardian/ShowListView"?>">
               <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver a Guardianes</span></button></a>
- 
+            <?php  }else{ ?>
+              <a href="<?php echo FRONT_ROOT."Home/Index"?>">
+              <button id="goback" type="button" style="position:relative; right:1.5em; margin-top:-1.5em;"><span id="backward">Volver al Home</span></button></a>
+
+                <?php } ?>
 </main>
 
 <style>
